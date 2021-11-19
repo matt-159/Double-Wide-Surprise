@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.github.matt159.putin;
 
 // Use this class for Strings only. Do not import any classes here. It will lead to issues with Mixins if in use!
 
