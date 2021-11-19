@@ -2,7 +2,7 @@
     {
       "modid": "${modId}",
       "name": "${modName}",
-      "description": "An example mod for Minecraft 1.7.10 with Forge focussed on a stable setup.",
+      "description": "A 1.7.10 Minecraft mod for "Putin" more stuff in your inventory",
       "version": "${modVersion}",
       "mcversion": "${minecraftVersion}",
       "url": "https://github.com/TheBrochacho/Putin",
