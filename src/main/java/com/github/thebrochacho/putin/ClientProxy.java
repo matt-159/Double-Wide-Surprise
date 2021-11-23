@@ -1,6 +1,8 @@
 package com.github.thebrochacho.putin;
 
+import com.github.thebrochacho.putin.events.PlayerGuiEvent;
 import cpw.mods.fml.common.event.*;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
 
@@ -8,6 +10,7 @@ public class ClientProxy extends CommonProxy {
     // etc, and register them with the GameRegistry."
     public void preInit(FMLPreInitializationEvent event) 	{
         super.preInit(event);
+        MinecraftForge.EVENT_BUS.register(new PlayerGuiEvent());
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
