@@ -11,6 +11,9 @@ public class Putin {
 
     private static Logger LOG = LogManager.getLogger(Tags.MODID);
 
+    @Mod.Instance(Tags.MODID)
+    public static Putin INSTANCE;
+
     @SidedProxy(clientSide= Tags.GROUPNAME + ".ClientProxy", serverSide=Tags.GROUPNAME + ".CommonProxy")
     public static CommonProxy proxy;
 
