@@ -1,6 +1,8 @@
 package com.github.thebrochacho.putin;
 
+import com.github.thebrochacho.putin.gui.Handler;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class CommonProxy {
 
@@ -15,7 +17,7 @@ public class CommonProxy {
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
     public void init(FMLInitializationEvent event) {
-
+        NetworkRegistry.INSTANCE.registerGuiHandler(Putin.INSTANCE, new Handler());
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
