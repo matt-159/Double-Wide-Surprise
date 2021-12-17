@@ -1,5 +1,6 @@
 package com.github.matt159.putin;
 
+import com.github.matt159.putin.mixins.ContainerPlayerMixin;
 import com.google.common.collect.Lists;
 import org.spongepowered.asm.lib.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -30,7 +31,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     @Override
     public List<String> getMixins() {
         return Lists.newArrayList(
-                "GuiContainerMixin"
+                "ContainerPlayerMixin"
         );
     }
 
