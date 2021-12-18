@@ -19,9 +19,9 @@ public abstract class ContainerPlayerMixin {
     }
 
     @ModifyConstant(method="<init>",
-            constant = @Constant(intValue = 144,
-                    ordinal = 0),
-            require = 1)
+                    constant = @Constant(intValue = 144,
+                                        ordinal = 0),
+                    require = 1)
     private int shiftResultMatrix(int value) {
         return CRAFT_RESULT_X_OFFSET;
     }
