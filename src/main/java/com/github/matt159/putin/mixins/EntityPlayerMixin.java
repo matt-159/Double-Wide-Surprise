@@ -18,11 +18,13 @@ public abstract class EntityPlayerMixin {
 
     @Shadow public Container inventoryContainer;
     @Shadow public InventoryPlayer inventory;
+    @Shadow public Container openContainer;
 
     @Inject(method = "<init>",
             at = @At("RETURN"))
     public void bypassEntityPlayer(World p_i45324_1_, GameProfile p_i45324_2_, CallbackInfo ci) {
         this.inventory = new InventoryPutin((EntityPlayer) (Object)this);
         this.inventoryContainer = new ContainerPutin(this.inventory, !p_i45324_1_.isRemote, (EntityPlayer) (Object)this);
+        this.openContainer = this.inventoryContainer;
     }
 }
