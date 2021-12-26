@@ -1,7 +1,11 @@
 package com.github.thebrochacho.putin.inventory;
 
+import baubles.common.container.InventoryBaubles;
+import baubles.common.lib.PlayerHandler;
+import com.github.thebrochacho.putin.Config;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -10,13 +14,17 @@ public class InventoryPutin extends InventoryPlayer {
 
     public ItemStack[] armorInventory = new ItemStack[4];
 
-    public ItemStack[] baublesInventory = new ItemStack[4];
+    public InventoryBaubles baublesInventory;
     public ItemStack[] tinkersInventory = new ItemStack[7];
     public ItemStack[] travellersGearInventory = new ItemStack[5];
 
     public InventoryPutin(EntityPlayer p_i1750_1_) {
         super(p_i1750_1_);
         this.mainInventory = new ItemStack[72];
+
+        if (Config.isBaublesLoaded) {
+            baublesInventory = PlayerHandler.getPlayerBaubles(p_i1750_1_);
+        }
     }
 
     /**
