@@ -14,6 +14,11 @@ import net.minecraft.inventory.Slot;
 public class ContainerPutin extends ContainerPlayer {
     //Offset so that itemslots don't get mapped to each other
     private static final int INVENTORY_OFFSET = 27;
+    public static int BAUBLES_SLOT_START = -1;
+    public static int TINKERS_SLOT_START = -1;
+    public static int GC_SLOT_START = -1;
+    public static int TG_SLOT_START = -1;
+
     private InventoryBaubles baubles;
     private IInventory tinkers;
 
@@ -34,6 +39,10 @@ public class ContainerPutin extends ContainerPlayer {
         }
 
         if (Config.isBaublesLoaded) {
+            if (BAUBLES_SLOT_START == -1) {
+                BAUBLES_SLOT_START = this.inventorySlots.size();
+            }
+
             baubles = new InventoryBaubles(p_i1819_3_);
             baubles.setEventHandler(this);
             if (!p_i1819_3_.worldObj.isRemote) {
