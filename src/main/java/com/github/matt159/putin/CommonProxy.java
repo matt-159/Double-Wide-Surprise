@@ -1,9 +1,19 @@
 package com.github.matt159.putin;
 
+import baubles.client.gui.GuiEvents;
 import com.github.matt159.putin.gui.Handler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.IEventListener;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.ForgeEventFactory;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CommonProxy {
 
@@ -28,7 +38,25 @@ public class CommonProxy {
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
     public void postInit(FMLPostInitializationEvent event) {
+        //Trying to get a mixin to work was too annoying because baubles is normally obfuscated
+        //So I gave this a go and it worked.
+        try {
+            Field f = MinecraftForge.EVENT_BUS.getClass().getDeclaredField("listeners");
+            f.setAccessible(true);
 
+            ConcurrentHashMap<Object, ArrayList<IEventListener>> listeners = (ConcurrentHashMap<Object, ArrayList<IEventListener>>) f.get(MinecraftForge.EVENT_BUS);
+
+            Enumeration<Object> keys = listeners.keys();
+            while (keys.hasMoreElements()) {
+                Object key = keys.nextElement();
+                if (key instanceof GuiEvents) {
+                    MinecraftForge.EVENT_BUS.unregister(key);
+                    return;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void serverAboutToStart(FMLServerAboutToStartEvent event) {
