@@ -1,21 +1,36 @@
 package com.github.matt159.putin.gui;
 
+import com.github.matt159.putin.Config;
 import com.github.matt159.putin.Tags;
+import com.github.matt159.putin.gui.SlotOverlays.Hints;
+import com.github.matt159.putin.inventory.ContainerPutin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 public class PutinGui extends GuiInventory {
 
     private static final ResourceLocation PUTIN_TEXTURE = new ResourceLocation(Tags.MODID, "textures/putinv.png");
+    private static final int GUI_WIDTH = 338;
+    private static final int GUI_HEIGHT = 166;
 
     public PutinGui(EntityPlayer p_i1094_1_) {
         super(p_i1094_1_);
-        this.xSize = 338;
-        this.ySize = 166;
+        this.xSize = GUI_WIDTH;
+        this.ySize = GUI_HEIGHT;
+    }
+
+    @Override
+    public void initGui() {
+        super.initGui();
+        this.guiLeft = (this.width-this.xSize)/2;
+        this.guiTop = (this.height-this.ySize)/2;
+
+        this.buttonList.clear();
     }
 
     @Override
@@ -24,26 +39,60 @@ public class PutinGui extends GuiInventory {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
         this.mc.getTextureManager().bindTexture(PUTIN_TEXTURE);
-        int k = this.guiLeft;
-        int l = this.guiTop;
 
-        //PutInv.png is too big for drawTexturedModalRect()
-        double uMax = (double)this.xSize / 512D;
-        double vMax = (double)this.ySize / 512D;
+        this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, GUI_WIDTH, GUI_HEIGHT);
 
-        Tessellator tessellator = Tessellator.instance;
-        tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV(k, l + this.ySize, 0, 0, vMax);
-        tessellator.addVertexWithUV(k + this.xSize, l + this.ySize, 0, uMax, vMax);
-        tessellator.addVertexWithUV(k + this.xSize, l, 0, uMax, 0);
-        tessellator.addVertexWithUV(k, l, 0,0, 0);
-        tessellator.draw();
+        func_147046_a(  this.guiLeft + 51,
+                        this.guiTop + 75,
+                        30,
+                        (float)(this.guiLeft + 51) - this.xSize,
+                        (float)(this.guiTop + 75 - 50) - this.ySize,
+                        this.mc.thePlayer);
 
-        func_147046_a(k + 51, l + 75, 30, (float)(k + 51) - this.xSize, (float)(l + 75 - 50) - this.ySize, this.mc.thePlayer);
+        if (Config.isBaublesLoaded) {
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 0), Hints.AMULET);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 1), Hints.RING);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 2), Hints.RING);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 3), Hints.BAUBLE_BELT);
+        }
     }
 
     @Override
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
+        for (int i = 0; i < this.inventorySlots.inventorySlots.size(); ++i) {
+            Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i);
+            this.fontRendererObj.drawString(Integer.toString(i), slot.xDisplayPosition, slot.yDisplayPosition, 4210752);
+        }
+    }
 
+    private void drawSlotAndOverlay(Slot slot, Hints hint) {
+        GL11.glColor3f(1, 1, 1);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(PUTIN_TEXTURE);
+        GL11.glEnable(3042);
+
+        int x = this.guiLeft + slot.xDisplayPosition - 1;
+        int y = this.guiTop + slot.yDisplayPosition - 1;
+
+        //draw empty slot
+        this.drawTexturedModalRect(x, y, 96,176, 18,18);
+
+        if(!slot.getHasStack())
+        {
+            this.drawTexturedModalRect(x + 1, y + 1, hint.getX(), hint.getY(), 16,16);
+        }
+    }
+
+    //Need to override because this function in Gui.java only allows for 256x256 textures at max
+    @Override
+    public void drawTexturedModalRect(int x, int y, int u, int v, int width, int height)
+    {
+        float f = 0.001953125F;
+        Tessellator tessellator = Tessellator.instance;
+        tessellator.startDrawingQuads();
+        tessellator.addVertexWithUV((x + 0),    (y + height),   this.zLevel,(u + 0) * f,    (v + height) * f);
+        tessellator.addVertexWithUV((x + width),(y + height),   this.zLevel,(u + width) * f,(v + height) * f);
+        tessellator.addVertexWithUV((x + width),(y + 0),        this.zLevel,(u + width) * f,(v + 0) * f);
+        tessellator.addVertexWithUV((x + 0),    (y + 0),        this.zLevel,(u + 0) * f,    (v + 0) * f);
+        tessellator.draw();
     }
 }
