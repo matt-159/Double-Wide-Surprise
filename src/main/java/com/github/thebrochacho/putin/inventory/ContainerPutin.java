@@ -7,8 +7,10 @@ import baubles.common.lib.PlayerHandler;
 import com.github.thebrochacho.putin.Config;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
+import org.apache.commons.lang3.tuple.Pair;
 import tconstruct.armor.inventory.SlotAccessory;
 import tconstruct.armor.player.ArmorExtended;
 import tconstruct.armor.player.TPlayerStats;
@@ -24,7 +26,6 @@ public class ContainerPutin extends ContainerPlayer {
     public static int TINKERS_SLOT_START = -1;
     public static int TG_SLOT_START = -1;
     public static int GC_SLOT_START = -1;
-
 
     private InventoryBaubles baubles;
     private ArmorExtended tinkers;
@@ -88,7 +89,20 @@ public class ContainerPutin extends ContainerPlayer {
         }
 
         if (Config.isTravellersGearLoaded) {
+            if (TG_SLOT_START == -1) {
+                TG_SLOT_START = this.inventorySlots.size();
+            }
 
+            travellers = new InventoryTG(this, p_i1819_3_);
+            if(!p_i1819_3_.worldObj.isRemote) {
+                travellers.stackList = TravellersGearAPI.getExtendedInventory(p_i1819_3_);
+            }
+
+            this.addSlotToContainer(new SlotRestricted(travellers, 0, xOffset, 8 + 0 * 18, p_i1819_3_, SlotType.TRAVEL_CLOAK));
+            this.addSlotToContainer(new SlotRestricted(travellers, 1, xOffset, 8 + 1 * 18, p_i1819_3_, SlotType.TRAVEL_SHOULDER));
+            this.addSlotToContainer(new SlotRestricted(travellers, 2, xOffset, 8 + 2 * 18, p_i1819_3_, SlotType.TRAVEL_VAMBRACE));
+            this.addSlotToContainer(new SlotRestricted(travellers, 3, xOffset, 8 + 3 * 18, p_i1819_3_, SlotType.TRAVEL_TITLE));
+            xOffset += 18;
         }
 
         if (Config.isGalacticraftLoaded) {
