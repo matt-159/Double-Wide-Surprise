@@ -55,6 +55,21 @@ public class PutinGui extends GuiInventory {
             this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 2), Hints.RING);
             this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 3), Hints.BAUBLE_BELT);
         }
+
+        if (Config.isTinkersLoaded) {
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 0), Hints.MASK);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 1), Hints.GLOVE);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 2), Hints.TINKERS_BELT);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 3), Hints.KNAPSACK);
+
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 4), Hints.RED_CANISTER);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 5), Hints.YELLOW_CANISTER);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 6), Hints.GREEN_CANISTER);
+        }
+
+        if (Config.isTravellersGearLoaded) {
+
+        }
     }
 
     @Override

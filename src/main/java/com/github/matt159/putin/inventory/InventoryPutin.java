@@ -9,14 +9,17 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import tconstruct.armor.player.TPlayerStats;
+import travellersgear.api.TravellersGearAPI;
+import travellersgear.common.inventory.InventoryTG;
 
 public class InventoryPutin extends InventoryPlayer {
 
     public ItemStack[] armorInventory = new ItemStack[4];
 
     public InventoryBaubles baublesInventory;
-    public ItemStack[] tinkersInventory = new ItemStack[7];
-    public ItemStack[] travellersGearInventory = new ItemStack[5];
+    public ItemStack[] tinkersInventory;
+    public ItemStack[] travellersGearInventory;
 
     public InventoryPutin(EntityPlayer p_i1750_1_) {
         super(p_i1750_1_);
@@ -24,6 +27,10 @@ public class InventoryPutin extends InventoryPlayer {
 
         if (Config.isBaublesLoaded) {
             baublesInventory = PlayerHandler.getPlayerBaubles(p_i1750_1_);
+        }
+
+        if (Config.isTinkersLoaded) {
+            tinkersInventory = TPlayerStats.get(player).armor.inventory;
         }
     }
 
