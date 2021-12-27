@@ -2,12 +2,15 @@ package com.github.thebrochacho.putin;
 
 import baubles.client.gui.GuiEvents;
 import com.github.thebrochacho.putin.gui.Handler;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.eventhandler.IEventListener;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeEventFactory;
+import tconstruct.client.tabs.TabRegistry;
+import travellersgear.common.util.TGEventHandler;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -37,9 +40,8 @@ public class CommonProxy {
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
+    @SuppressWarnings("unchecked")
     public void postInit(FMLPostInitializationEvent event) {
-        //Trying to get a mixin to work was too annoying because baubles is normally obfuscated
-        //So I gave this a go and it worked.
         try {
             Field f = MinecraftForge.EVENT_BUS.getClass().getDeclaredField("listeners");
             f.setAccessible(true);
@@ -49,9 +51,14 @@ public class CommonProxy {
             Enumeration<Object> keys = listeners.keys();
             while (keys.hasMoreElements()) {
                 Object key = keys.nextElement();
+                // Stop baubles ring button from rendering
                 if (key instanceof GuiEvents) {
                     MinecraftForge.EVENT_BUS.unregister(key);
-                    return;
+                }
+
+                // Stop tinker's tabs from rendering
+                if (key instanceof TabRegistry) {
+                    MinecraftForge.EVENT_BUS.unregister(key);
                 }
             }
         } catch (Exception e) {
