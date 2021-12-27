@@ -32,6 +32,10 @@ public class InventoryPutin extends InventoryPlayer {
         if (Config.isTinkersLoaded) {
             tinkersInventory = TPlayerStats.get(player).armor.inventory;
         }
+
+        if (Config.isTravellersGearLoaded) {
+            travellersGearInventory = TravellersGearAPI.getExtendedInventory(p_i1750_1_);
+        }
     }
 
     /**
