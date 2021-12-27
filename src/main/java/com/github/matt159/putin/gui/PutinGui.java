@@ -74,6 +74,10 @@ public class PutinGui extends GuiInventory {
             this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TG_SLOT_START + 2), Hints.VAMBRACE);
             this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TG_SLOT_START + 3), Hints.TITLE);
         }
+
+        for (Pair<Integer, Integer> nullSlotXY : ContainerPutin.nullSlots) {
+            this.drawTexturedModalRect(guiLeft + nullSlotXY.getLeft() - 1, guiTop + nullSlotXY.getRight() - 1, 96, 208, 18, 18);
+        }
     }
 
     @Override

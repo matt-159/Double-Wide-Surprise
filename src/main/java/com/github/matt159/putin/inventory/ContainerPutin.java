@@ -16,8 +16,11 @@ import tconstruct.armor.player.ArmorExtended;
 import tconstruct.armor.player.TPlayerStats;
 import travellersgear.api.TravellersGearAPI;
 import travellersgear.common.inventory.InventoryTG;
+import travellersgear.common.inventory.SlotNull;
 import travellersgear.common.inventory.SlotRestricted;
 import travellersgear.common.inventory.SlotRestricted.SlotType;
+
+import java.util.ArrayList;
 
 public class ContainerPutin extends ContainerPlayer {
     //Offset so that itemslots don't get mapped to each other
@@ -30,9 +33,11 @@ public class ContainerPutin extends ContainerPlayer {
     private InventoryBaubles baubles;
     private ArmorExtended tinkers;
     private InventoryTG travellers;
+    public static ArrayList<Pair<Integer, Integer>> nullSlots = null;
 
     public ContainerPutin(InventoryPlayer p_i1819_1_, boolean p_i1819_2_, EntityPlayer p_i1819_3_) {
         super(p_i1819_1_, p_i1819_2_, p_i1819_3_);
+        ArrayList<Pair<Integer, Integer>> nullSlots = new ArrayList<>();
 
         for (int i = 0; i < 3; ++i)
         {
@@ -85,6 +90,8 @@ public class ContainerPutin extends ContainerPlayer {
             this.addSlotToContainer(new SlotAccessory(tinkers, 4, xOffset, 8 + 0 * 18, 10));
             this.addSlotToContainer(new SlotAccessory(tinkers, 5, xOffset, 8 + 1 * 18, 10));
             this.addSlotToContainer(new SlotAccessory(tinkers, 6, xOffset, 8 + 2 * 18, 10));
+            nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+
             xOffset += 18;
         }
 
@@ -107,6 +114,10 @@ public class ContainerPutin extends ContainerPlayer {
 
         if (Config.isGalacticraftLoaded) {
 
+        }
+
+        if (ContainerPutin.nullSlots == null) {
+            ContainerPutin.nullSlots = nullSlots;
         }
     }
 
