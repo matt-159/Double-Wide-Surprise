@@ -13,6 +13,9 @@ import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 
+import java.lang.reflect.Field;
+import java.util.List;
+
 public class PlayerGuiEvent {
 
     @SubscribeEvent
@@ -22,22 +25,6 @@ public class PlayerGuiEvent {
             event.setCanceled(true);
 
             FMLNetworkHandler.openGui(Minecraft.getMinecraft().thePlayer, Putin.INSTANCE, 1, Minecraft.getMinecraft().theWorld, 0, 0, 0);
-        }
-    }
-
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    @SideOnly(Side.CLIENT)
-    public void onGuiPostInit(GuiScreenEvent.InitGuiEvent.Post event) {
-        if (event.gui instanceof GuiInventory) {
-            try {
-                final Class<?> TG_GuiButtonGear = Class.forName("travellersgear.client.gui.GuiButtonGear");
-
-                for (Object button : event.buttonList) {
-                    if (TG_GuiButtonGear.isInstance(button)) {
-                        event.buttonList.remove(button);
-                    }
-                }
-            } catch (Exception ignored) { }
         }
     }
 }
