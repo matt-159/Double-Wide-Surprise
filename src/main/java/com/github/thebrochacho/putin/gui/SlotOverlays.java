@@ -22,7 +22,16 @@ public class SlotOverlays {
         KNAPSACK(64, 208),
         RED_CANISTER(16, 224),
         YELLOW_CANISTER(32, 224),
-        GREEN_CANISTER(48, 224);
+        GREEN_CANISTER(48, 224),
+        THERMAL_HELMET(16, 240),
+        THERMAL_CHEST(32, 240),
+        THERMAL_PANTS(48, 240),
+        THERMAL_BOOTS(64, 240),
+        FREQUENCY_MODULE(16, 256),
+        PARACHUTE(32, 256),
+        OXYGEN_MASK(48, 256),
+        OXYGEN_GEAR(64, 256),
+        OXYGEN_TANK(80, 256);
 
         private int x, y;
 
