@@ -5,6 +5,9 @@ import baubles.common.container.InventoryBaubles;
 import baubles.common.container.SlotBauble;
 import baubles.common.lib.PlayerHandler;
 import com.github.thebrochacho.putin.Config;
+import com.github.thebrochacho.putin.util.ModCompat;
+import micdoodle8.mods.galacticraft.core.inventory.InventoryExtended;
+import micdoodle8.mods.galacticraft.core.inventory.SlotExtendedInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ContainerPlayer;
@@ -31,6 +34,7 @@ public class ContainerPutin extends ContainerPlayer {
     private InventoryBaubles baubles;
     private ArmorExtended tinkers;
     private InventoryTG travellers;
+    private InventoryExtended gc;
     public static ArrayList<Pair<Integer, Integer>> nullSlots = null;
 
     public ContainerPutin(InventoryPlayer p_i1819_1_, boolean p_i1819_2_, EntityPlayer p_i1819_3_) {
@@ -112,7 +116,31 @@ public class ContainerPutin extends ContainerPlayer {
         }
 
         if (Config.isGalacticraftLoaded) {
+            if (GC_SLOT_START == -1) {
+                GC_SLOT_START = this.inventorySlots.size();
+            }
 
+            gc = ModCompat.getPlayerStats(p_i1819_3_).extendedInventory;
+
+            if (gc != null) {
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 6, xOffset, 8 + 0 * 18));
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 7, xOffset, 8 + 1 * 18));
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 8, xOffset, 8 + 2 * 18));
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 9, xOffset, 8 + 3 * 18));
+                xOffset += 18;
+
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 4, xOffset, 8 + 0 * 18));
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 0, xOffset, 8 + 1 * 18));
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 2, xOffset, 8 + 2 * 18));
+                nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+                xOffset += 18;
+
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 5, xOffset, 8 + 0 * 18));
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 1, xOffset, 8 + 1 * 18));
+                this.addSlotToContainer(new SlotExtendedInventory(gc, 3, xOffset, 8 + 2 * 18));
+                nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+                xOffset += 18;
+            }
         }
 
         if (ContainerPutin.nullSlots == null) {
