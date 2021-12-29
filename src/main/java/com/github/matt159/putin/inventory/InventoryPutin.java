@@ -3,15 +3,16 @@ package com.github.matt159.putin.inventory;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.matt159.putin.Config;
+import com.github.matt159.putin.util.ModCompat;
+import micdoodle8.mods.galacticraft.core.inventory.InventoryExtended;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import tconstruct.armor.player.TPlayerStats;
 import travellersgear.api.TravellersGearAPI;
-import travellersgear.common.inventory.InventoryTG;
 
 public class InventoryPutin extends InventoryPlayer {
 
@@ -20,6 +21,7 @@ public class InventoryPutin extends InventoryPlayer {
     public InventoryBaubles baublesInventory;
     public ItemStack[] tinkersInventory;
     public ItemStack[] travellersGearInventory;
+    public InventoryExtended gcInventory;
 
     public InventoryPutin(EntityPlayer p_i1750_1_) {
         super(p_i1750_1_);
@@ -35,6 +37,10 @@ public class InventoryPutin extends InventoryPlayer {
 
         if (Config.isTravellersGearLoaded) {
             travellersGearInventory = TravellersGearAPI.getExtendedInventory(p_i1750_1_);
+        }
+
+        if (Config.isGalacticraftLoaded) {
+            gcInventory = ModCompat.getPlayerStats(p_i1750_1_).extendedInventory;
         }
     }
 
