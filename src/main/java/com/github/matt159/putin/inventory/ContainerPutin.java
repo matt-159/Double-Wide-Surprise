@@ -83,15 +83,21 @@ public class ContainerPutin extends ContainerPlayer {
 
             tinkers = TPlayerStats.get(p_i1819_3_).armor;
 
+            //Mask
             this.addSlotToContainer(new SlotAccessory(tinkers, 0, xOffset, 8 + 0 * 18, 1));
+            //Glove
             this.addSlotToContainer(new SlotAccessory(tinkers, 1, xOffset, 8 + 1 * 18, 1));
+            //Belt
             this.addSlotToContainer(new SlotAccessory(tinkers, 3, xOffset, 8 + 2 * 18, 1));
+            //Knapsack
             this.addSlotToContainer(new SlotAccessory(tinkers, 2, xOffset, 8 + 3 * 18, 1));
             xOffset += 18;
 
-            //re-ordering canisters
+            //Red Canister
             this.addSlotToContainer(new SlotAccessory(tinkers, 6, xOffset, 8 + 0 * 18, 10));
+            //Yellow Canister
             this.addSlotToContainer(new SlotAccessory(tinkers, 5, xOffset, 8 + 1 * 18, 10));
+            //Green Canister
             this.addSlotToContainer(new SlotAccessory(tinkers, 4, xOffset, 8 + 2 * 18, 10));
             nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
 
@@ -123,20 +129,30 @@ public class ContainerPutin extends ContainerPlayer {
             gc = ModCompat.getPlayerStats(p_i1819_3_).extendedInventory;
 
             if (gc != null) {
+                //Thermal Helmet
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 6, xOffset, 8 + 0 * 18));
+                //Thermal Chestplate
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 7, xOffset, 8 + 1 * 18));
+                //Thermal Leggings
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 8, xOffset, 8 + 2 * 18));
+                //Thermal Boots
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 9, xOffset, 8 + 3 * 18));
                 xOffset += 18;
 
+                //Parachute
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 4, xOffset, 8 + 0 * 18));
+                //Oxygen Mask
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 0, xOffset, 8 + 1 * 18));
+                //Oxygen Tank
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 2, xOffset, 8 + 2 * 18));
                 nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
                 xOffset += 18;
 
+                //Frequency Module
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 5, xOffset, 8 + 0 * 18));
+                //Oxygen gear
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 1, xOffset, 8 + 1 * 18));
+                //Oxygen Tank
                 this.addSlotToContainer(new SlotExtendedInventory(gc, 3, xOffset, 8 + 2 * 18));
                 nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
                 xOffset += 18;
