@@ -7,7 +7,6 @@ import baubles.common.lib.PlayerHandler;
 import com.github.matt159.putin.Config;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import org.apache.commons.lang3.tuple.Pair;
@@ -16,7 +15,6 @@ import tconstruct.armor.player.ArmorExtended;
 import tconstruct.armor.player.TPlayerStats;
 import travellersgear.api.TravellersGearAPI;
 import travellersgear.common.inventory.InventoryTG;
-import travellersgear.common.inventory.SlotNull;
 import travellersgear.common.inventory.SlotRestricted;
 import travellersgear.common.inventory.SlotRestricted.SlotType;
 
@@ -83,13 +81,14 @@ public class ContainerPutin extends ContainerPlayer {
 
             this.addSlotToContainer(new SlotAccessory(tinkers, 0, xOffset, 8 + 0 * 18, 1));
             this.addSlotToContainer(new SlotAccessory(tinkers, 1, xOffset, 8 + 1 * 18, 1));
-            this.addSlotToContainer(new SlotAccessory(tinkers, 2, xOffset, 8 + 2 * 18, 1));
-            this.addSlotToContainer(new SlotAccessory(tinkers, 3, xOffset, 8 + 3 * 18, 1));
+            this.addSlotToContainer(new SlotAccessory(tinkers, 3, xOffset, 8 + 2 * 18, 1));
+            this.addSlotToContainer(new SlotAccessory(tinkers, 2, xOffset, 8 + 3 * 18, 1));
             xOffset += 18;
 
-            this.addSlotToContainer(new SlotAccessory(tinkers, 4, xOffset, 8 + 0 * 18, 10));
+            //re-ordering canisters
+            this.addSlotToContainer(new SlotAccessory(tinkers, 6, xOffset, 8 + 0 * 18, 10));
             this.addSlotToContainer(new SlotAccessory(tinkers, 5, xOffset, 8 + 1 * 18, 10));
-            this.addSlotToContainer(new SlotAccessory(tinkers, 6, xOffset, 8 + 2 * 18, 10));
+            this.addSlotToContainer(new SlotAccessory(tinkers, 4, xOffset, 8 + 2 * 18, 10));
             nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
 
             xOffset += 18;
