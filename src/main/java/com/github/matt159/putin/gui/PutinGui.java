@@ -6,12 +6,17 @@ import com.github.matt159.putin.gui.SlotOverlays.Hints;
 import com.github.matt159.putin.inventory.ContainerPutin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.lang3.tuple.Pair;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 public class PutinGui extends GuiInventory {
 
@@ -35,20 +40,13 @@ public class PutinGui extends GuiInventory {
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
+    protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseZ)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
         this.mc.getTextureManager().bindTexture(PUTIN_TEXTURE);
 
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, GUI_WIDTH, GUI_HEIGHT);
-
-        func_147046_a(  this.guiLeft + 51,
-                        this.guiTop + 75,
-                        30,
-                        (float)(this.guiLeft + 51) - this.xSize,
-                        (float)(this.guiTop + 75 - 50) - this.ySize,
-                        this.mc.thePlayer);
 
         if (Config.isBaublesLoaded) {
             this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 0), Hints.AMULET);
@@ -91,6 +89,13 @@ public class PutinGui extends GuiInventory {
         for (Pair<Integer, Integer> nullSlotXY : ContainerPutin.nullSlots) {
             this.drawTexturedModalRect(guiLeft + nullSlotXY.getLeft() - 1, guiTop + nullSlotXY.getRight() - 1, 96, 208, 18, 18);
         }
+
+        drawPlayerModel(    this.guiLeft + 51,
+                            this.guiTop + 75,
+                            30,
+                            (float)(this.guiLeft + 51) - mouseX,
+                            (float)(this.guiTop + 75 - 50) - mouseZ,
+                            this.mc.thePlayer);
     }
 
     @Override
@@ -130,5 +135,38 @@ public class PutinGui extends GuiInventory {
         tessellator.addVertexWithUV((x + width),(y + 0),        this.zLevel,(u + width) * f,(v + 0) * f);
         tessellator.addVertexWithUV((x + 0),    (y + 0),        this.zLevel,(u + 0) * f,    (v + 0) * f);
         tessellator.draw();
+    }
+
+    public static void drawPlayerModel(int x, int y, int scale, float mouseX, float mouseZ, EntityLivingBase playerdrawn)
+    {
+        GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+        GL11.glPushMatrix();
+        GL11.glTranslatef((float) x, (float) y, 50.0F);
+        GL11.glScalef((float) (-scale), (float) scale, (float) scale);
+        GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
+        float f2 = playerdrawn.renderYawOffset;
+        float f3 = playerdrawn.rotationYaw;
+        float f4 = playerdrawn.rotationPitch;
+        mouseZ -= 19;
+        GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
+        RenderHelper.enableStandardItemLighting();
+        GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
+        GL11.glRotatef(-((float) Math.atan((double) (mouseZ / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
+        playerdrawn.renderYawOffset = (float) Math.atan((double) (mouseX / 40.0F)) * 20.0F;
+        playerdrawn.rotationYaw = (float) Math.atan((double) (mouseX / 40.0F)) * 40.0F;
+        playerdrawn.rotationPitch = -((float) Math.atan((double) (mouseZ / 40.0F))) * 20.0F;
+        playerdrawn.rotationYawHead = playerdrawn.rotationYaw;
+        GL11.glTranslatef(0.0F, playerdrawn.yOffset, 0.0F);
+        RenderManager.instance.playerViewY = 180.0F;
+        RenderManager.instance.renderEntityWithPosYaw(playerdrawn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+        playerdrawn.renderYawOffset = f2;
+        playerdrawn.rotationYaw = f3;
+        playerdrawn.rotationPitch = f4;
+        GL11.glPopMatrix();
+        RenderHelper.disableStandardItemLighting();
+        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+        OpenGlHelper.setActiveTexture(OpenGlHelper.lightmapTexUnit);
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        OpenGlHelper.setActiveTexture(OpenGlHelper.defaultTexUnit);
     }
 }
