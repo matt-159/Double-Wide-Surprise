@@ -2,9 +2,10 @@ package com.github.matt159.putin.inventory;
 
 import baubles.api.BaubleType;
 import baubles.common.container.InventoryBaubles;
-import baubles.common.container.SlotBauble;
 import baubles.common.lib.PlayerHandler;
 import com.github.matt159.putin.Config;
+import com.github.matt159.putin.gui.SlotPutin;
+import com.github.matt159.putin.gui.SlotPutin.SlotType;
 import com.github.matt159.putin.util.ModCompat;
 import micdoodle8.mods.galacticraft.core.inventory.InventoryExtended;
 import micdoodle8.mods.galacticraft.core.inventory.SlotExtendedInventory;
@@ -12,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.tuple.Pair;
 import tconstruct.armor.inventory.SlotAccessory;
 import tconstruct.armor.player.ArmorExtended;
@@ -19,9 +21,10 @@ import tconstruct.armor.player.TPlayerStats;
 import travellersgear.api.TravellersGearAPI;
 import travellersgear.common.inventory.InventoryTG;
 import travellersgear.common.inventory.SlotRestricted;
-import travellersgear.common.inventory.SlotRestricted.SlotType;
 
 import java.util.ArrayList;
+
+import static com.github.matt159.putin.gui.SlotPutin.SlotType.*;
 
 public class ContainerPutin extends ContainerPlayer {
     //Offset so that itemslots don't get mapped to each other
@@ -37,21 +40,21 @@ public class ContainerPutin extends ContainerPlayer {
     private InventoryExtended gc;
     public static ArrayList<Pair<Integer, Integer>> nullSlots = null;
 
-    public ContainerPutin(InventoryPlayer p_i1819_1_, boolean p_i1819_2_, EntityPlayer p_i1819_3_) {
-        super(p_i1819_1_, p_i1819_2_, p_i1819_3_);
+    public ContainerPutin(InventoryPlayer inventoryPlayer, boolean p_i1819_2_, EntityPlayer player) {
+        super(inventoryPlayer, p_i1819_2_, player);
         ArrayList<Pair<Integer, Integer>> nullSlots = new ArrayList<>();
 
         for (int i = 0; i < 3; ++i)
         {
             for (int j = 9; j < 18; ++j)
             {
-                this.addSlotToContainer(new Slot(p_i1819_1_, j + (i + 1) * 9 + INVENTORY_OFFSET, 8 + j * 18, 84 + i * 18));
+                this.addSlotToContainer(new Slot(inventoryPlayer, j + (i + 1) * 9 + INVENTORY_OFFSET, 8 + j * 18, 84 + i * 18));
             }
         }
 
         for (int i = 9; i < 18; ++i)
         {
-            this.addSlotToContainer(new Slot(p_i1819_1_, i + INVENTORY_OFFSET, 8 + i * 18, 142));
+            this.addSlotToContainer(new Slot(inventoryPlayer, i + INVENTORY_OFFSET, 8 + i * 18, 142));
         }
 
         int xOffset = 80;
@@ -61,16 +64,16 @@ public class ContainerPutin extends ContainerPlayer {
                 BAUBLES_SLOT_START = this.inventorySlots.size();
             }
 
-            baubles = PlayerHandler.getPlayerBaubles(p_i1819_3_);
+            baubles = PlayerHandler.getPlayerBaubles(player);
             baubles.setEventHandler(this);
-            if (!p_i1819_3_.worldObj.isRemote) {
-                baubles.stackList = PlayerHandler.getPlayerBaubles(p_i1819_3_).stackList;
+            if (!player.worldObj.isRemote) {
+                baubles.stackList = PlayerHandler.getPlayerBaubles(player).stackList;
             }
 
-            this.addSlotToContainer(new SlotBauble(baubles, BaubleType.AMULET,0, xOffset,8 + 0 * 18));
-            this.addSlotToContainer(new SlotBauble(baubles, BaubleType.RING,1, xOffset,8 + 1 * 18));
-            this.addSlotToContainer(new SlotBauble(baubles, BaubleType.RING,2, xOffset,8 + 2 * 18));
-            this.addSlotToContainer(new SlotBauble(baubles, BaubleType.BELT,3, xOffset,8 + 3 * 18));
+            this.addSlotToContainer(new SlotPutin(baubles, 0, xOffset,8 + 0 * 18, player, BAUBLE_AMULET));
+            this.addSlotToContainer(new SlotPutin(baubles, 1, xOffset,8 + 1 * 18, player, BAUBLE_RING));
+            this.addSlotToContainer(new SlotPutin(baubles, 2, xOffset,8 + 2 * 18, player, BAUBLE_RING));
+            this.addSlotToContainer(new SlotPutin(baubles, 3, xOffset,8 + 3 * 18, player, BAUBLE_BELT));
 
             //size of one inventory slot;
             xOffset += 18;
@@ -81,24 +84,17 @@ public class ContainerPutin extends ContainerPlayer {
                 TINKERS_SLOT_START = this.inventorySlots.size();
             }
 
-            tinkers = TPlayerStats.get(p_i1819_3_).armor;
+            tinkers = TPlayerStats.get(player).armor;
 
-            //Mask
-            this.addSlotToContainer(new SlotAccessory(tinkers, 0, xOffset, 8 + 0 * 18, 1));
-            //Glove
-            this.addSlotToContainer(new SlotAccessory(tinkers, 1, xOffset, 8 + 1 * 18, 1));
-            //Belt
-            this.addSlotToContainer(new SlotAccessory(tinkers, 3, xOffset, 8 + 2 * 18, 1));
-            //Knapsack
-            this.addSlotToContainer(new SlotAccessory(tinkers, 2, xOffset, 8 + 3 * 18, 1));
+            this.addSlotToContainer(new SlotPutin(tinkers, 0, xOffset, 8 + 0 * 18, player, TINKERS_MASK));
+            this.addSlotToContainer(new SlotPutin(tinkers, 1, xOffset, 8 + 1 * 18, player, TINKERS_GLOVE));
+            this.addSlotToContainer(new SlotPutin(tinkers, 3, xOffset, 8 + 2 * 18, player, TINKERS_BELT));
+            this.addSlotToContainer(new SlotPutin(tinkers, 2, xOffset, 8 + 3 * 18, player, TINKERS_KNAPSACK));
             xOffset += 18;
 
-            //Red Canister
-            this.addSlotToContainer(new SlotAccessory(tinkers, 6, xOffset, 8 + 0 * 18, 10));
-            //Yellow Canister
-            this.addSlotToContainer(new SlotAccessory(tinkers, 5, xOffset, 8 + 1 * 18, 10));
-            //Green Canister
-            this.addSlotToContainer(new SlotAccessory(tinkers, 4, xOffset, 8 + 2 * 18, 10));
+            this.addSlotToContainer(new SlotPutin(tinkers, 6, xOffset, 8 + 0 * 18, player, TINKERS_HEART_RED));
+            this.addSlotToContainer(new SlotPutin(tinkers, 5, xOffset, 8 + 1 * 18, player, TINKERS_HEART_YELLOW));
+            this.addSlotToContainer(new SlotPutin(tinkers, 4, xOffset, 8 + 2 * 18, player, TINKERS_HEART_GREEN));
             nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
 
             xOffset += 18;
@@ -109,15 +105,15 @@ public class ContainerPutin extends ContainerPlayer {
                 TG_SLOT_START = this.inventorySlots.size();
             }
 
-            travellers = new InventoryTG(this, p_i1819_3_);
-            if(!p_i1819_3_.worldObj.isRemote) {
-                travellers.stackList = TravellersGearAPI.getExtendedInventory(p_i1819_3_);
+            travellers = new InventoryTG(this, player);
+            if(!player.worldObj.isRemote) {
+                travellers.stackList = TravellersGearAPI.getExtendedInventory(player);
             }
 
-            this.addSlotToContainer(new SlotRestricted(travellers, 0, xOffset, 8 + 0 * 18, p_i1819_3_, SlotType.TRAVEL_CLOAK));
-            this.addSlotToContainer(new SlotRestricted(travellers, 1, xOffset, 8 + 1 * 18, p_i1819_3_, SlotType.TRAVEL_SHOULDER));
-            this.addSlotToContainer(new SlotRestricted(travellers, 2, xOffset, 8 + 2 * 18, p_i1819_3_, SlotType.TRAVEL_VAMBRACE));
-            this.addSlotToContainer(new SlotRestricted(travellers, 3, xOffset, 8 + 3 * 18, p_i1819_3_, SlotType.TRAVEL_TITLE));
+            this.addSlotToContainer(new SlotPutin(travellers, 0, xOffset, 8 + 0 * 18, player, TRAVEL_CLOAK));
+            this.addSlotToContainer(new SlotPutin(travellers, 1, xOffset, 8 + 1 * 18, player, TRAVEL_PAULDRON));
+            this.addSlotToContainer(new SlotPutin(travellers, 2, xOffset, 8 + 2 * 18, player, TRAVEL_VAMBRACE));
+            this.addSlotToContainer(new SlotPutin(travellers, 3, xOffset, 8 + 3 * 18, player, TRAVEL_TITLE));
             xOffset += 18;
         }
 
@@ -126,34 +122,24 @@ public class ContainerPutin extends ContainerPlayer {
                 GC_SLOT_START = this.inventorySlots.size();
             }
 
-            gc = ModCompat.getPlayerStats(p_i1819_3_).extendedInventory;
+            gc = ModCompat.getPlayerStats(player).extendedInventory;
 
             if (gc != null) {
-                //Thermal Helmet
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 6, xOffset, 8 + 0 * 18));
-                //Thermal Chestplate
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 7, xOffset, 8 + 1 * 18));
-                //Thermal Leggings
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 8, xOffset, 8 + 2 * 18));
-                //Thermal Boots
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 9, xOffset, 8 + 3 * 18));
+                this.addSlotToContainer(new SlotPutin(gc, 6, xOffset, 8 + 0 * 18, player, GC_THERMAL_HELM));
+                this.addSlotToContainer(new SlotPutin(gc, 7, xOffset, 8 + 1 * 18, player, GC_THERMAL_CHEST));
+                this.addSlotToContainer(new SlotPutin(gc, 8, xOffset, 8 + 2 * 18, player, GC_THERMAL_LEGS));
+                this.addSlotToContainer(new SlotPutin(gc, 9, xOffset, 8 + 3 * 18, player, GC_THERMAL_BOOTS));
                 xOffset += 18;
 
-                //Parachute
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 4, xOffset, 8 + 0 * 18));
-                //Oxygen Mask
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 0, xOffset, 8 + 1 * 18));
-                //Oxygen Tank
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 2, xOffset, 8 + 2 * 18));
+                this.addSlotToContainer(new SlotPutin(gc, 4, xOffset, 8 + 0 * 18, player, GC_PARACHUTE));
+                this.addSlotToContainer(new SlotPutin(gc, 0, xOffset, 8 + 1 * 18, player, GC_OXYGEN_MASK));
+                this.addSlotToContainer(new SlotPutin(gc, 2, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
                 nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
                 xOffset += 18;
 
-                //Frequency Module
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 5, xOffset, 8 + 0 * 18));
-                //Oxygen gear
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 1, xOffset, 8 + 1 * 18));
-                //Oxygen Tank
-                this.addSlotToContainer(new SlotExtendedInventory(gc, 3, xOffset, 8 + 2 * 18));
+                this.addSlotToContainer(new SlotPutin(gc, 5, xOffset, 8 + 0 * 18, player, GC_FREQUENCY_MODULE));
+                this.addSlotToContainer(new SlotPutin(gc, 1, xOffset, 8 + 1 * 18, player, GC_OXYGEN_GEAR));
+                this.addSlotToContainer(new SlotPutin(gc, 3, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
                 nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
                 xOffset += 18;
             }
@@ -173,5 +159,16 @@ public class ContainerPutin extends ContainerPlayer {
                 PlayerHandler.setPlayerBaubles(player, baubles);
             }
         }
+    }
+
+    @Override
+    public boolean canInteractWith(EntityPlayer var1)
+    {
+        return true;
+    }
+
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
+        return null;
     }
 }
