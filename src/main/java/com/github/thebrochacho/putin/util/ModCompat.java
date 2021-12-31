@@ -6,9 +6,10 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 
 import java.util.UUID;
 import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ModCompat {
-    private static final WeakHashMap<UUID, GCPlayerStats> playerMap = new WeakHashMap<>();
+    private static final ConcurrentHashMap<UUID, GCPlayerStats> playerMap = new ConcurrentHashMap<>();
 
     //Have to go around GCCore's back because reasons
     public static GCPlayerStats getPlayerStats(EntityPlayer player)
