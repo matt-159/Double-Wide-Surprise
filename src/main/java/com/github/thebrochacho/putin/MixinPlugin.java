@@ -31,7 +31,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     @Override
     public List<String> getMixins() {
         return Lists.newArrayList(
-                "ContainerPlayerMixin", "EntityPlayerMixin", "TGButtonGearMixin"
+                "ContainerPlayerMixin", "EntityPlayerMixin", "TGButtonGearMixin", "GalacticraftEquipableMixin"
         );
     }
 
