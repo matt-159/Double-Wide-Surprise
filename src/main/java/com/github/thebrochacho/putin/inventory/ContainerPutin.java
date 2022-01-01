@@ -1,26 +1,33 @@
 package com.github.thebrochacho.putin.inventory;
 
 import baubles.api.BaubleType;
+import baubles.api.IBauble;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.thebrochacho.putin.Config;
 import com.github.thebrochacho.putin.gui.SlotPutin;
-import com.github.thebrochacho.putin.gui.SlotPutin.SlotType;
+import com.github.thebrochacho.putin.util.IGalacticWearable;
 import com.github.thebrochacho.putin.util.ModCompat;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import micdoodle8.mods.galacticraft.api.item.IItemThermal;
 import micdoodle8.mods.galacticraft.core.inventory.InventoryExtended;
-import micdoodle8.mods.galacticraft.core.inventory.SlotExtendedInventory;
+import micdoodle8.mods.galacticraft.core.items.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import org.apache.commons.lang3.tuple.Pair;
-import tconstruct.armor.inventory.SlotAccessory;
 import tconstruct.armor.player.ArmorExtended;
 import tconstruct.armor.player.TPlayerStats;
+import tconstruct.library.accessory.IAccessory;
+import travellersgear.api.ITravellersGear;
 import travellersgear.api.TravellersGearAPI;
 import travellersgear.common.inventory.InventoryTG;
-import travellersgear.common.inventory.SlotRestricted;
 
 import java.util.ArrayList;
 
@@ -28,11 +35,12 @@ import static com.github.thebrochacho.putin.gui.SlotPutin.SlotType.*;
 
 public class ContainerPutin extends ContainerPlayer {
     //Offset so that itemslots don't get mapped to each other
-    private static final int INVENTORY_OFFSET = 27;
     public static int BAUBLES_SLOT_START = -1;
     public static int TINKERS_SLOT_START = -1;
     public static int TG_SLOT_START = -1;
     public static int GC_SLOT_START = -1;
+
+    private static final int CRAFTING_SLOT_X_OFFSET = 162;
 
     private InventoryBaubles baubles;
     private ArmorExtended tinkers;
@@ -42,20 +50,72 @@ public class ContainerPutin extends ContainerPlayer {
 
     public ContainerPutin(InventoryPlayer inventoryPlayer, boolean p_i1819_2_, EntityPlayer player) {
         super(inventoryPlayer, p_i1819_2_, player);
+        this.inventorySlots.clear();
         ArrayList<Pair<Integer, Integer>> nullSlots = new ArrayList<>();
 
-        for (int i = 0; i < 3; ++i)
-        {
-            for (int j = 9; j < 18; ++j)
-            {
-                this.addSlotToContainer(new Slot(inventoryPlayer, j + (i + 1) * 9 + INVENTORY_OFFSET, 8 + j * 18, 84 + i * 18));
+        /**=========================================================================================================
+         * Vanilla Slots + Putinventory
+         *========================================================================================================*/
+        this.addSlotToContainer(new SlotCrafting(inventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 144 + CRAFTING_SLOT_X_OFFSET, 36));
+        int i;
+        int j;
+
+        //Crafting grid
+        for (i = 0; i < 2; ++i) {
+            for (j = 0; j < 2; ++j) {
+                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * 2, 88 + CRAFTING_SLOT_X_OFFSET + j * 18, 26 + i * 18));
             }
         }
 
-        for (int i = 9; i < 18; ++i)
-        {
-            this.addSlotToContainer(new Slot(inventoryPlayer, i + INVENTORY_OFFSET, 8 + i * 18, 142));
+        //Armor slots
+        for (i = 0; i < 4; ++i) {
+            final int k = i;
+            this.addSlotToContainer(new Slot(inventoryPlayer, inventoryPlayer.getSizeInventory() - 1 - i, 8, 8 + i * 18) {
+                private static final String __OBFID = "CL_00001755";
+                /**
+                 * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1
+                 * in the case of armor slots)
+                 */
+                public int getSlotStackLimit()
+                {
+                    return 1;
+                }
+                /**
+                 * Check if the stack is a valid item for this slot. Always true beside for the armor slots.
+                 */
+                public boolean isItemValid(ItemStack itemStack) {
+                    if (itemStack == null) return false;
+                    return itemStack.getItem().isValidArmor(itemStack, k, player);
+                }
+                /**
+                 * Returns the icon index on items.png that is used as background image of the slot.
+                 */
+                @SideOnly(Side.CLIENT)
+                public IIcon getBackgroundIconIndex()
+                {
+                    return ItemArmor.func_94602_b(k);
+                }
+            });
         }
+
+        //main inventory
+        for (i = 0; i < 3; ++i) {
+            for (j = 0; j < 18; ++j) {
+                this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 18 + 9, 8 + j * 18, 84 + i * 18));
+            }
+        }
+
+        //left half of hotbar
+        for (i = 0; i < 9; ++i) {
+            this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+        }
+
+        //right half of hotbar
+        for (i = 0; i < 9; ++i) {
+            this.addSlotToContainer(new Slot(inventoryPlayer, i + 63, 8 + (i + 9) * 18, 142));
+        }
+
+        this.onCraftMatrixChanged(this.craftMatrix);
 
         int xOffset = 80;
 
