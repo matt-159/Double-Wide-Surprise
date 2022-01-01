@@ -1,6 +1,5 @@
 package com.github.thebrochacho.putin;
 
-import com.github.thebrochacho.putin.mixins.ContainerPlayerMixin;
 import com.google.common.collect.Lists;
 import org.spongepowered.asm.lib.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -31,7 +30,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
     @Override
     public List<String> getMixins() {
         return Lists.newArrayList(
-                "ContainerPlayerMixin", "EntityPlayerMixin", "TGButtonGearMixin", "GalacticraftEquipableMixin"
+                "EntityPlayerMixin", "TGButtonGearMixin", "GalacticraftEquipableMixin"
         );
     }
 
