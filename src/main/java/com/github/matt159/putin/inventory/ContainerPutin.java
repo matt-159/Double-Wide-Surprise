@@ -218,6 +218,10 @@ public class ContainerPutin extends ContainerPlayer {
             if (Config.isBaublesLoaded) {
                 PlayerHandler.setPlayerBaubles(player, baubles);
             }
+
+            if (Config.isTravellersGearLoaded) {
+                TravellersGearAPI.setExtendedInventory(player, travellers.stackList);
+            }
         }
     }
 
@@ -228,7 +232,163 @@ public class ContainerPutin extends ContainerPlayer {
     }
 
     @Override
-    public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
-        return null;
+    public ItemStack transferStackInSlot(EntityPlayer player, int slotNumber) {
+        ItemStack itemStack = null;
+        final Slot slot = (Slot) this.inventorySlots.get(slotNumber);
+
+        if (slot != null && slot.getHasStack()) {
+            ItemStack itemStackInSlot = slot.getStack();
+            itemStack = itemStackInSlot.copy();
+
+            if (slotNumber >= 0 && slotNumber < 9 || slotNumber > 80) { //Crafting Matrix + Crafting Result + Armor Slots
+                if (!mergeItemStack(itemStackInSlot, 9, 81, false))
+                    return null;
+            }
+            /**=========================================================================================================
+             * Vanilla Armor
+             *========================================================================================================*/
+            else if (((itemStack.getItem() instanceof ItemArmor)) &&
+                    (!((Slot)this.inventorySlots.get(((ItemArmor)itemStack.getItem()).armorType)).getHasStack())) {
+                int armorType = ((ItemArmor)itemStack.getItem()).armorType;
+                if (!mergeItemStack(itemStackInSlot, armorType + 5, armorType + 6, false))
+                    return null;
+            }
+            /**=========================================================================================================
+             * Baubles
+             *========================================================================================================*/
+            else if (Config.isBaublesLoaded &&
+                    itemStack.getItem() instanceof IBauble &&
+                    ((IBauble) itemStack.getItem()).getBaubleType(itemStack) != null) {
+                IBauble bauble = (IBauble) itemStack.getItem();
+                BaubleType type = bauble.getBaubleType(itemStack);
+
+                if (type == BaubleType.AMULET &&
+                        bauble.canEquip(itemStack, player) &&
+                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 0)).getHasStack()) {
+                    if (!mergeItemStack(itemStackInSlot, BAUBLES_SLOT_START + 0, BAUBLES_SLOT_START + 1, false))
+                        return null;
+                }
+                else if (type == BaubleType.RING &&
+                        bauble.canEquip(itemStack, player) &&
+                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 1)).getHasStack()) {
+                    if (!mergeItemStack(itemStackInSlot, BAUBLES_SLOT_START + 1, BAUBLES_SLOT_START + 2, false))
+                        return null;
+                }
+                else if (type == BaubleType.RING &&
+                        bauble.canEquip(itemStack, player) &&
+                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 2)).getHasStack()) {
+                    if (!mergeItemStack(itemStackInSlot, BAUBLES_SLOT_START + 2, BAUBLES_SLOT_START + 3, false))
+                        return null;
+                }
+                else if (type == BaubleType.BELT &&
+                        bauble.canEquip(itemStack, player) &&
+                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 0)).getHasStack()) {
+                    if (!mergeItemStack(itemStackInSlot, BAUBLES_SLOT_START + 3, BAUBLES_SLOT_START + 4, false))
+                        return null;
+                }
+            }
+            /**=========================================================================================================
+             * Tinkers Construct
+             *========================================================================================================*/
+            else if (Config.isTinkersLoaded &&
+                    itemStackInSlot.getItem() instanceof IAccessory) {
+
+                IAccessory accessory = ((IAccessory) itemStackInSlot.getItem());
+                //Tinkers Mask
+                if (accessory.canEquipAccessory(itemStackInSlot, 0) &&
+                    !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 0, TINKERS_SLOT_START + 1, false)) {
+                    return null;
+                }
+                //Travel Glove
+                else if (accessory.canEquipAccessory(itemStackInSlot, 1) &&
+                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 1, TINKERS_SLOT_START + 2, false)) {
+                        return null;
+                }
+                //Travel Belt
+                else if (accessory.canEquipAccessory(itemStackInSlot, 3) &&
+                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 2, TINKERS_SLOT_START + 3, false)) {
+                        return null;
+                }
+                //Knapsack
+                else if (accessory.canEquipAccessory(itemStackInSlot, 2) &&
+                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 3, TINKERS_SLOT_START + 4, false)) {
+                        return null;
+                }
+                //Red Canister
+                else if (accessory.canEquipAccessory(itemStackInSlot, 6) &&
+                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 4, TINKERS_SLOT_START + 5, false)) {
+                        return null;
+                }
+                //Yellow Canister
+                else if (accessory.canEquipAccessory(itemStackInSlot, 5) &&
+                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 5, TINKERS_SLOT_START + 6, false)) {
+                        return null;
+                }
+                //Green Canister
+                else if (accessory.canEquipAccessory(itemStackInSlot, 4) &&
+                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 6, TINKERS_SLOT_START + 7, false)) {
+                        return null;
+                }
+            }
+            /**=========================================================================================================
+             * Traveller's Gear
+             *========================================================================================================*/
+            else if (Config.isTravellersGearLoaded &&
+                    itemStack.getItem() instanceof ITravellersGear) {
+                ITravellersGear travellersGear = (ITravellersGear) itemStack.getItem();
+
+                int tgSlot = travellersGear.getSlot(itemStack);
+
+                if (!mergeItemStack(itemStackInSlot, TG_SLOT_START + tgSlot, TG_SLOT_START + tgSlot + 1, false))
+                    return null;
+            }
+            /**=========================================================================================================
+             * Galacticraft
+             *========================================================================================================*/
+            else if (Config.isGalacticraftLoaded &&
+                    itemStack.getItem() instanceof IGalacticWearable) {
+                IGalacticWearable gcItem = (IGalacticWearable) itemStack.getItem();
+
+                if (gcItem instanceof IItemThermal &&
+                    !mergeItemStack(itemStackInSlot, GC_SLOT_START + 0, GC_SLOT_START + 4, false)) {
+                    return null;
+                }
+                else if (gcItem instanceof ItemOxygenMask &&
+                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 5, GC_SLOT_START + 6, false)) {
+                    return null;
+                }
+                else if (gcItem instanceof ItemOxygenGear &&
+                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 8, GC_SLOT_START + 9, false)) {
+                    return null;
+                }
+                else if (gcItem instanceof ItemOxygenTank &&
+                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 6, GC_SLOT_START + 10, false)) {
+                    return null;
+                }
+                else if (gcItem instanceof ItemBasic &&
+                        itemStack.getItemDamage() == 19 &&
+                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 7, GC_SLOT_START + 8, false)) {
+                    return null;
+                }
+                else if (gcItem instanceof ItemParaChute &&
+                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 4, GC_SLOT_START + 5, false)) {
+                    return null;
+                }
+            }
+
+            if (itemStackInSlot.stackSize == 0) {
+                slot.putStack((ItemStack)null);
+            } else {
+                slot.onSlotChanged();
+            }
+
+            if (itemStackInSlot.stackSize == itemStack.stackSize) {
+                return null;
+            }
+
+            slot.onPickupFromSlot(player, itemStackInSlot);
+        }
+
+        return itemStack;
     }
 }
