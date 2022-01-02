@@ -11,9 +11,14 @@ import com.github.matt159.putin.util.ModCompat;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.item.IItemThermal;
+import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStats;
 import micdoodle8.mods.galacticraft.core.inventory.InventoryExtended;
 import micdoodle8.mods.galacticraft.core.items.*;
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
+import micdoodle8.mods.galacticraft.core.util.PlayerUtil;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
@@ -182,7 +187,12 @@ public class ContainerPutin extends ContainerPlayer {
                 GC_SLOT_START = this.inventorySlots.size();
             }
 
-            gc = ModCompat.getPlayerStats(player).extendedInventory;
+            if (!player.worldObj.isRemote) {
+                EntityPlayerMP playerMP = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
+                gc = GCPlayerStats.get(playerMP).extendedInventory;
+            } else {
+                gc = ClientProxyCore.dummyInventory;
+            }
 
             if (gc != null) {
                 this.addSlotToContainer(new SlotPutin(gc, 6, xOffset, 8 + 0 * 18, player, GC_THERMAL_HELM));
