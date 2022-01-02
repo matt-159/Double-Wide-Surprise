@@ -13,12 +13,9 @@ public abstract class TGButtonGearMixin {
     @Inject(method = "drawButton",
             at = @At("HEAD"),
             remap = false,
+            cancellable = true,
             require = 1)
     protected void dontDrawButton(Minecraft mc, int x, int y, CallbackInfo ci) {
-        try {
-            ((GuiButton) (Object) this).visible = false;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ci.cancel();
     }
 }
