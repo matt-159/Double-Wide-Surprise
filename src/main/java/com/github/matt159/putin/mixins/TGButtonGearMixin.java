@@ -10,6 +10,14 @@ import travellersgear.client.gui.GuiButtonGear;
 
 @Mixin(GuiButtonGear.class)
 public abstract class TGButtonGearMixin {
+    @Inject(method = "<init>",
+            at = @At("RETURN"),
+            remap = false,
+            require = 1)
+    protected void disableButton(int id, int x, int y, CallbackInfo ci) {
+        ((GuiButtonGear) (Object) (this)).enabled = false;
+    }
+
     @Inject(method = "drawButton",
             at = @At("HEAD"),
             remap = false,
