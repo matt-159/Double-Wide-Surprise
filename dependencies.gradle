@@ -1,16 +1,13 @@
 // Add your dependencies here
 
 dependencies {
-    compileOnly("com.github.GTNewHorizons:TravellersGear:master-SNAPSHOT:deobf") {
-        transitive = false
+    compile("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
+        transitive = true
     }
-    compileOnly("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
-        transitive = false
-    }
-    compileOnly("com.github.GTNewHorizons:TinkersConstruct:master-SNAPSHOT:dev") {
-        transitive = false
+    compile("com.github.GTNewHorizons:TinkersConstruct:master-SNAPSHOT:dev") {
+        transitive = true
     }
     compileOnly("com.github.GTNewHorizons:Galacticraft:master-SNAPSHOT:dev") {
-        transitive = false
+        transitive = true
     }
 }
