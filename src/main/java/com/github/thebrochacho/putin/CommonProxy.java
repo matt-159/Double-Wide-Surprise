@@ -1,24 +1,23 @@
 package com.github.thebrochacho.putin;
 
 import baubles.client.gui.GuiEvents;
-import com.github.thebrochacho.putin.gui.Handler;
-import cpw.mods.fml.common.FMLCommonHandler;
+import com.github.thebrochacho.putin.inventory.ContainerPutin;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.eventhandler.IEventListener;
+import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeEventFactory;
 import tconstruct.client.tabs.TabRegistry;
-import travellersgear.common.util.TGEventHandler;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class CommonProxy {
+public class CommonProxy implements IGuiHandler {
 
     // preInit "Run before anything else. Read your config, create blocks, items,
     // etc, and register them with the GameRegistry."
@@ -31,8 +30,6 @@ public class CommonProxy {
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
     public void init(FMLInitializationEvent event) {
-        NetworkRegistry.INSTANCE.registerGuiHandler(Putin.INSTANCE, new Handler());
-
         Config.isBaublesLoaded = Loader.isModLoaded("Baubles");
         Config.isTravellersGearLoaded = Loader.isModLoaded("TravellersGear");
         Config.isTinkersLoaded = Loader.isModLoaded("TConstruct");
@@ -86,4 +83,23 @@ public class CommonProxy {
     public void serverStopped(FMLServerStoppedEvent event) {
 
     }
+
+    @Override
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        return null;
+    }
+
+    @Override
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        switch (ID) {
+            case 1:
+                return new ContainerPutin(player.inventory, !world.isRemote, player);
+            default:
+                return null;
+        }
+    }
+
+    public void registerHandlers() {}
+
+    public void registerKeyBindings() {}
 }

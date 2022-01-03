@@ -3,6 +3,7 @@ package com.github.thebrochacho.putin;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,12 +27,15 @@ public class Putin {
     // etc, and register them with the GameRegistry."
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+        proxy.registerHandlers();
     }
 
     @Mod.EventHandler
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
+        NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, proxy);
+        proxy.registerKeyBindings();
     }
 
     @Mod.EventHandler
