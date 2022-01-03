@@ -36,7 +36,7 @@ public class CommonProxy {
         Config.isBaublesLoaded = Loader.isModLoaded("Baubles");
         Config.isTravellersGearLoaded = Loader.isModLoaded("TravellersGear");
         Config.isTinkersLoaded = Loader.isModLoaded("TConstruct");
-        Config.isGalacticraftLoaded = Loader.isModLoaded("Galacticraft");
+        Config.isGalacticraftLoaded = Loader.isModLoaded("GalacticraftCore");
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
