@@ -7,7 +7,6 @@ import baubles.common.lib.PlayerHandler;
 import com.github.thebrochacho.putin.Config;
 import com.github.thebrochacho.putin.gui.SlotPutin;
 import com.github.thebrochacho.putin.util.IGalacticWearable;
-import com.github.thebrochacho.putin.util.ModCompat;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.item.IItemThermal;
@@ -16,13 +15,10 @@ import micdoodle8.mods.galacticraft.core.inventory.InventoryExtended;
 import micdoodle8.mods.galacticraft.core.items.*;
 import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
 import micdoodle8.mods.galacticraft.core.util.PlayerUtil;
-import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ContainerPlayer;
-import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -38,7 +34,7 @@ import java.util.ArrayList;
 
 import static com.github.thebrochacho.putin.gui.SlotPutin.SlotType.*;
 
-public class ContainerPutin extends ContainerPlayer {
+public class ContainerPutin extends Container {
     //Offset so that itemslots don't get mapped to each other
     public static int BAUBLES_SLOT_START = -1;
     public static int TINKERS_SLOT_START = -1;
@@ -47,14 +43,21 @@ public class ContainerPutin extends ContainerPlayer {
 
     private static final int CRAFTING_SLOT_X_OFFSET = 162;
 
-    private InventoryBaubles baubles;
-    private ArmorExtended tinkers;
-    private InventoryTG travellers;
-    private InventoryExtended gc;
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 2, 2);
+    public IInventory craftResult = new InventoryCraftResult();
+    public boolean isLocalWorld;
+    private final EntityPlayer thePlayer;
+
+    public InventoryBaubles baubles;
+    public ArmorExtended tinkers;
+    public InventoryTG travellers;
+    public InventoryExtended gc;
     public static ArrayList<Pair<Integer, Integer>> nullSlots = null;
 
     public ContainerPutin(InventoryPlayer inventoryPlayer, boolean p_i1819_2_, EntityPlayer player) {
-        super(inventoryPlayer, p_i1819_2_, player);
+        this.isLocalWorld = p_i1819_2_;
+        this.thePlayer = player;
+
         this.inventorySlots.clear();
         ArrayList<Pair<Integer, Integer>> nullSlots = new ArrayList<>();
 
@@ -76,7 +79,6 @@ public class ContainerPutin extends ContainerPlayer {
         for (i = 0; i < 4; ++i) {
             final int k = i;
             this.addSlotToContainer(new Slot(inventoryPlayer, inventoryPlayer.getSizeInventory() - 1 - i, 8, 8 + i * 18) {
-                private static final String __OBFID = "CL_00001755";
                 /**
                  * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1
                  * in the case of armor slots)
@@ -129,7 +131,7 @@ public class ContainerPutin extends ContainerPlayer {
                 BAUBLES_SLOT_START = this.inventorySlots.size();
             }
 
-            baubles = PlayerHandler.getPlayerBaubles(player);
+            baubles = new InventoryBaubles(player);
             baubles.setEventHandler(this);
             if (!player.worldObj.isRemote) {
                 baubles.stackList = PlayerHandler.getPlayerBaubles(player).stackList;
@@ -187,11 +189,11 @@ public class ContainerPutin extends ContainerPlayer {
                 GC_SLOT_START = this.inventorySlots.size();
             }
 
+            gc = ClientProxyCore.dummyInventory;
+
             if (!player.worldObj.isRemote) {
                 EntityPlayerMP playerMP = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
                 gc = GCPlayerStats.get(playerMP).extendedInventory;
-            } else {
-                gc = ClientProxyCore.dummyInventory;
             }
 
             if (gc != null) {
@@ -236,8 +238,7 @@ public class ContainerPutin extends ContainerPlayer {
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer var1)
-    {
+    public boolean canInteractWith(EntityPlayer var1) {
         return true;
     }
 
