@@ -4,6 +4,7 @@ import com.github.thebrochacho.putin.Config;
 import com.github.thebrochacho.putin.Tags;
 import com.github.thebrochacho.putin.gui.SlotOverlays.Hints;
 import com.github.thebrochacho.putin.inventory.ContainerPutin;
+import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -46,7 +47,7 @@ public class PutinGui extends GuiInventory {
 
         this.mc.getTextureManager().bindTexture(PUTIN_TEXTURE);
 
-        this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, GUI_WIDTH, GUI_HEIGHT);
+        PutinUtil.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, GUI_WIDTH, GUI_HEIGHT, this.zLevel);
 
         if (Config.isBaublesLoaded) {
             this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 0), Hints.AMULET);
@@ -87,7 +88,7 @@ public class PutinGui extends GuiInventory {
         }
 
         for (Pair<Integer, Integer> nullSlotXY : ContainerPutin.nullSlots) {
-            this.drawTexturedModalRect(guiLeft + nullSlotXY.getLeft() - 1, guiTop + nullSlotXY.getRight() - 1, 96, 208, 18, 18);
+            PutinUtil.drawTexturedModalRect(guiLeft + nullSlotXY.getLeft() - 1, guiTop + nullSlotXY.getRight() - 1, 96, 208, 18, 18, this.zLevel);
         }
 
         drawPlayerModel(    this.guiLeft + 51,
@@ -115,26 +116,12 @@ public class PutinGui extends GuiInventory {
         int y = this.guiTop + slot.yDisplayPosition - 1;
 
         //draw empty slot
-        this.drawTexturedModalRect(x, y, 96,176, 18,18);
+        PutinUtil.drawTexturedModalRect(x, y, 96,176, 18,18, this.zLevel);
 
         if(!slot.getHasStack())
         {
-            this.drawTexturedModalRect(x + 1, y + 1, hint.getX(), hint.getY(), 16,16);
+            PutinUtil.drawTexturedModalRect(x + 1, y + 1, hint.getX(), hint.getY(), 16,16, this.zLevel);
         }
-    }
-
-    //Need to override because this function in Gui.java only allows for 256x256 textures at max
-    @Override
-    public void drawTexturedModalRect(int x, int y, int u, int v, int width, int height)
-    {
-        float f = 0.001953125F;
-        Tessellator tessellator = Tessellator.instance;
-        tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV((x + 0),    (y + height),   this.zLevel,(u + 0) * f,    (v + height) * f);
-        tessellator.addVertexWithUV((x + width),(y + height),   this.zLevel,(u + width) * f,(v + height) * f);
-        tessellator.addVertexWithUV((x + width),(y + 0),        this.zLevel,(u + width) * f,(v + 0) * f);
-        tessellator.addVertexWithUV((x + 0),    (y + 0),        this.zLevel,(u + 0) * f,    (v + 0) * f);
-        tessellator.draw();
     }
 
     public static void drawPlayerModel(int x, int y, int scale, float mouseX, float mouseZ, EntityLivingBase playerdrawn)
