@@ -16,32 +16,9 @@ import travellersgear.api.TravellersGearAPI;
 
 public class InventoryPutin extends InventoryPlayer {
 
-    public ItemStack[] armorInventory = new ItemStack[4];
-
-    public InventoryBaubles baublesInventory;
-    public ItemStack[] tinkersInventory;
-    public ItemStack[] travellersGearInventory;
-    public InventoryExtended gcInventory;
-
     public InventoryPutin(EntityPlayer p_i1750_1_) {
         super(p_i1750_1_);
         this.mainInventory = new ItemStack[72];
-
-        if (Config.isBaublesLoaded) {
-            baublesInventory = PlayerHandler.getPlayerBaubles(p_i1750_1_);
-        }
-
-        if (Config.isTinkersLoaded) {
-            tinkersInventory = TPlayerStats.get(player).armor.inventory;
-        }
-
-        if (Config.isTravellersGearLoaded) {
-            travellersGearInventory = TravellersGearAPI.getExtendedInventory(p_i1750_1_);
-        }
-
-        if (Config.isGalacticraftLoaded) {
-            gcInventory = ModCompat.getPlayerStats(p_i1750_1_).extendedInventory;
-        }
     }
 
     /**
