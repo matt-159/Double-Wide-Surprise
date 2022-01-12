@@ -1,4 +1,4 @@
-package com.github.matt159.putin.mixins;
+package com.github.matt159.putin.mixins.common.minecraft;
 
 import com.github.matt159.putin.inventory.ContainerPutin;
 import com.github.matt159.putin.inventory.InventoryPutin;

@@ -1,4 +1,4 @@
-package com.github.matt159.putin.mixins;
+package com.github.matt159.putin.mixins.common.minecraft;
 
 import com.github.matt159.putin.Tags;
 import com.github.matt159.putin.gui.PutinGui;

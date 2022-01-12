@@ -1,4 +1,4 @@
-package com.github.matt159.putin.mixins;
+package com.github.matt159.putin.mixins.client.forge;
 
 import com.github.matt159.putin.gui.GuiScreenDecorator;
 import cpw.mods.fml.common.ModContainer;
