@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import travellersgear.client.gui.GuiButtonGear;
 
 @Mixin(GuiButtonGear.class)
-public abstract class TGButtonGearMixin {
+public abstract class GuiButtonGearMixin {
     @Inject(method = "<init>",
             at = @At("RETURN"),
             remap = false,
