@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 @Mixin(NetworkRegistry.class)
-public abstract class ForgeNetworkRegistryMixin {
+public abstract class NetworkRegistryMixin {
 
     @Shadow private Map<ModContainer, IGuiHandler> clientGuiHandlers;
 
