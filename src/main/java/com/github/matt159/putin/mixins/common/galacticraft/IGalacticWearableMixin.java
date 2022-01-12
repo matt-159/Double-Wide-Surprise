@@ -14,6 +14,6 @@ import org.spongepowered.asm.mixin.Mixin;
                 ItemThermalPadding.class,
                 ItemBasic.class})
 @Implements(@Interface(iface = IGalacticWearable.class, prefix = "pu$"))
-public abstract class GalacticraftEquipableMixin{
+public abstract class IGalacticWearableMixin {
     //Pls work
 }
