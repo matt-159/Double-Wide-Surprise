@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(NEIClientUtils.class)
-public abstract class NEIClientUtilsMixin {
+public abstract class ClientUtilsMixin {
 
     @Inject(method = "canItemFitInInventory",
             at = @At("HEAD"),
