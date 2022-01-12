@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.mixins;
+package com.github.thebrochacho.putin.mixins.client.travellersgear;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;

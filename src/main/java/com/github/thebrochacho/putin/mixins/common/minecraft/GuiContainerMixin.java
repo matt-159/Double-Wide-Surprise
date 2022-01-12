@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.mixins;
+package com.github.thebrochacho.putin.mixins.common.minecraft;
 
 import com.github.thebrochacho.putin.Tags;
 import com.github.thebrochacho.putin.gui.PutinGui;

@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.mixins;
+package com.github.thebrochacho.putin.mixins.common.minecraft;
 
 import com.github.thebrochacho.putin.inventory.ContainerPutin;
 import com.github.thebrochacho.putin.inventory.InventoryPutin;

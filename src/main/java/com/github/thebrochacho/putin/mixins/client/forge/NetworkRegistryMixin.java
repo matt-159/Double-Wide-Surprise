@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.mixins;
+package com.github.thebrochacho.putin.mixins.client.forge;
 
 import com.github.thebrochacho.putin.gui.GuiScreenDecorator;
 import cpw.mods.fml.common.ModContainer;

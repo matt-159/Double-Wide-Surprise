@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.mixins;
+package com.github.thebrochacho.putin.mixins.client.nei;
 
 import codechicken.lib.inventory.InventoryRange;
 import codechicken.lib.inventory.InventoryUtils;
