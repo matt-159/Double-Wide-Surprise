@@ -21,7 +21,7 @@ import org.lwjgl.opengl.GL12;
 
 public class PutinGui extends GuiInventory {
 
-    private static final ResourceLocation PUTIN_TEXTURE = new ResourceLocation(Tags.MODID, "textures/putinv.png");
+    public static final ResourceLocation PUTIN_TEXTURE = new ResourceLocation(Tags.MODID, "textures/putinv.png");
     private static final int GUI_WIDTH = 338;
     private static final int GUI_HEIGHT = 166;
 
