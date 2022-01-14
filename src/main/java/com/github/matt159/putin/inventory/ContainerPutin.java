@@ -6,7 +6,7 @@ import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.matt159.putin.Config;
 import com.github.matt159.putin.gui.SlotPutin;
-import com.github.matt159.putin.util.IGalacticWearable;
+import com.github.matt159.putin.interfaces.IGalacticWearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.item.IItemThermal;
