@@ -1,6 +1,7 @@
 package com.github.thebrochacho.putin;
 
 import com.github.thebrochacho.putin.events.PlayerGuiEvent;
+import com.github.thebrochacho.putin.events.GuiEvents;
 import com.github.thebrochacho.putin.gui.PutinGui;
 import cpw.mods.fml.common.event.*;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -20,6 +21,7 @@ public class ClientProxy extends CommonProxy {
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
     public void init(FMLInitializationEvent event) {
         super.init(event);
+        MinecraftForge.EVENT_BUS.register(new GuiEvents());
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
