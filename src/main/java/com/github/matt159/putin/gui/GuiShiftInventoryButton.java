@@ -6,10 +6,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class GuiShiftInventoryButton extends GuiButton {
 
@@ -23,10 +20,9 @@ public class GuiShiftInventoryButton extends GuiButton {
     private Facing facing;
     private ItemStack items[];
 
-    public GuiShiftInventoryButton(int id, int xPos, int yPos, int width, int height, String displayString, Facing facing, ItemStack items[]) {
+    public GuiShiftInventoryButton(int id, int xPos, int yPos, int width, int height, String displayString, Facing facing) {
         super(id, xPos, yPos, width, height, displayString);
         this.facing = facing;
-        this.items = Arrays.copyOf(items, items.length);
     }
 
     @Override
@@ -45,16 +41,5 @@ public class GuiShiftInventoryButton extends GuiButton {
 
     public void setFacing(Facing facing) {
         this.facing = facing;
-    }
-
-    public ItemStack[] getItemsForFacing(Facing facing) {
-        if (facing == Facing.Right) {
-            return Arrays.copyOfRange(items, 36, 72);
-        } else {
-            List<ItemStack> result = new ArrayList<>(36);
-            Collections.addAll(result, Arrays.copyOfRange(items, 9, 36));
-            Collections.addAll(result, Arrays.copyOfRange(items, 0, 9));
-            return result.toArray(new ItemStack[0]);
-        }
     }
 }
