@@ -2,11 +2,11 @@ package com.github.thebrochacho.putin;
 
 import baubles.client.gui.GuiEvents;
 import com.github.thebrochacho.putin.inventory.ContainerPutin;
+import com.github.thebrochacho.putin.network.PacketHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.eventhandler.IEventListener;
 import cpw.mods.fml.common.network.IGuiHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,6 +26,8 @@ public class CommonProxy implements IGuiHandler {
         
         Putin.info(Config.greeting);
         Putin.info("I am " + Tags.MODNAME + " at version " + Tags.VERSION + " and group name " + Tags.GROUPNAME);
+
+        PacketHandler.init();
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
