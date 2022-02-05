@@ -293,7 +293,7 @@ public class ContainerPutin extends Container {
                 }
                 else if (type == BaubleType.BELT &&
                         bauble.canEquip(itemStack, player) &&
-                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 0)).getHasStack()) {
+                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 3)).getHasStack()) {
                     if (!mergeItemStack(itemStackInSlot, BAUBLES_SLOT_START + 3, BAUBLES_SLOT_START + 4, false))
                         return null;
                 }
