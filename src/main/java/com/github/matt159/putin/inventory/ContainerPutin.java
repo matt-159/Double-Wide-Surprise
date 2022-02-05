@@ -61,7 +61,7 @@ public class ContainerPutin extends Container {
         this.inventorySlots.clear();
         ArrayList<Pair<Integer, Integer>> nullSlots = new ArrayList<>();
 
-        /**=========================================================================================================
+        /*=========================================================================================================
          * Vanilla Slots + Putinventory
          *========================================================================================================*/
         this.addSlotToContainer(new SlotCrafting(inventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 144 + CRAFTING_SLOT_X_OFFSET, 36));
@@ -255,7 +255,7 @@ public class ContainerPutin extends Container {
                 if (!mergeItemStack(itemStackInSlot, 9, 81, false))
                     return null;
             }
-            /**=========================================================================================================
+            /*=========================================================================================================
              * Vanilla Armor
              *========================================================================================================*/
             else if (((itemStack.getItem() instanceof ItemArmor)) &&
@@ -264,7 +264,7 @@ public class ContainerPutin extends Container {
                 if (!mergeItemStack(itemStackInSlot, armorType + 5, armorType + 6, false))
                     return null;
             }
-            /**=========================================================================================================
+            /*=========================================================================================================
              * Baubles
              *========================================================================================================*/
             else if (Config.isBaublesLoaded &&
@@ -298,7 +298,7 @@ public class ContainerPutin extends Container {
                         return null;
                 }
             }
-            /**=========================================================================================================
+            /*=========================================================================================================
              * Tinkers Construct
              *========================================================================================================*/
             else if (Config.isTinkersLoaded &&
@@ -341,7 +341,7 @@ public class ContainerPutin extends Container {
                         return null;
                 }
             }
-            /**=========================================================================================================
+            /*=========================================================================================================
              * Traveller's Gear
              *========================================================================================================*/
             else if (Config.isTravellersGearLoaded &&
@@ -353,7 +353,7 @@ public class ContainerPutin extends Container {
                 if (!mergeItemStack(itemStackInSlot, TG_SLOT_START + tgSlot, TG_SLOT_START + tgSlot + 1, false))
                     return null;
             }
-            /**=========================================================================================================
+            /*=========================================================================================================
              * Galacticraft
              *========================================================================================================*/
             else if (Config.isGalacticraftLoaded &&
@@ -361,7 +361,7 @@ public class ContainerPutin extends Container {
                 IGalacticWearable gcItem = (IGalacticWearable) itemStack.getItem();
 
                 if (gcItem instanceof IItemThermal &&
-                    !mergeItemStack(itemStackInSlot, GC_SLOT_START + 0, GC_SLOT_START + 4, false)) {
+                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 0, GC_SLOT_START + 4, false)) {
                     return null;
                 }
                 else if (gcItem instanceof ItemOxygenMask &&
