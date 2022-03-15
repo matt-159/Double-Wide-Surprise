@@ -3,7 +3,6 @@ package com.github.thebrochacho.putin.events;
 import com.github.thebrochacho.putin.gui.GuiShiftInventoryButton;
 import com.github.thebrochacho.putin.gui.GuiShiftInventoryButton.Facing;
 import com.github.thebrochacho.putin.gui.PutinGui;
-import com.github.thebrochacho.putin.inventory.InventoryPutin;
 import com.github.thebrochacho.putin.network.PacketHandler;
 import com.github.thebrochacho.putin.network.PutinInventorySwapPacket;
 import com.github.thebrochacho.putin.util.PutinUtil;
