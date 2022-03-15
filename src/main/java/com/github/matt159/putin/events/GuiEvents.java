@@ -3,7 +3,6 @@ package com.github.matt159.putin.events;
 import com.github.matt159.putin.gui.GuiShiftInventoryButton;
 import com.github.matt159.putin.gui.GuiShiftInventoryButton.Facing;
 import com.github.matt159.putin.gui.PutinGui;
-import com.github.matt159.putin.inventory.InventoryPutin;
 import com.github.matt159.putin.network.PacketHandler;
 import com.github.matt159.putin.network.PutinInventorySwapPacket;
 import com.github.matt159.putin.util.PutinUtil;

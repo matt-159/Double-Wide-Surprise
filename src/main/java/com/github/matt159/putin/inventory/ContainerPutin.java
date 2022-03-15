@@ -30,6 +30,7 @@ import travellersgear.api.ITravellersGear;
 import travellersgear.api.TravellersGearAPI;
 import travellersgear.common.inventory.InventoryTG;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import static com.github.matt159.putin.gui.SlotPutin.SlotType.*;
@@ -401,5 +402,19 @@ public class ContainerPutin extends Container {
         }
 
         return itemStack;
+    }
+
+    @Override
+    public void putStacksInSlots(ItemStack[] p_75131_1_) {
+        baubles.blockEvents = true;
+        try {
+            Field allowEvents = travellers.getClass().getDeclaredField("allowEvents");
+            allowEvents.setAccessible(true);
+            allowEvents.set(travellers, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        super.putStacksInSlots(p_75131_1_);
     }
 }
