@@ -4,10 +4,16 @@ dependencies {
     compile("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
         transitive = true
     }
-    compile("com.github.GTNewHorizons:TinkersConstruct:master-SNAPSHOT:dev") {
+    compile("com.github.GTNewHorizons:NotEnoughItems:2.2.6-GTNH:dev") {
         transitive = true
     }
+    compile("com.github.GTNewHorizons:Mantle:0.3.4:dev") {
+        transitive = false
+    }
+    compile("com.github.GTNewHorizons:TinkersConstruct:master-SNAPSHOT:dev") {
+        transitive = false
+    }
     compileOnly("com.github.GTNewHorizons:Galacticraft:master-SNAPSHOT:dev") {
-        transitive = true
+        transitive = false
     }
 }
