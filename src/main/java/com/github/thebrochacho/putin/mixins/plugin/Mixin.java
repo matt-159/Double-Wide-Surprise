@@ -12,6 +12,7 @@ public enum Mixin {
 
     // Vanilla
     EntityPlayerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.EntityPlayerMixin")),
+    ContainerChestMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerChestMixin")),
 
     GuiMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiMixin")),
     GuiChestMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiChestMixin")),
