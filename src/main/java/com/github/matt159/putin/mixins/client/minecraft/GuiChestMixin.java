@@ -2,7 +2,6 @@ package com.github.matt159.putin.mixins.client.minecraft;
 
 import com.github.matt159.putin.Tags;
 import com.github.matt159.putin.interfaces.IMinecraftGuiMixin;
-import com.github.matt159.putin.interfaces.IPutinGui;
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -15,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiChest.class)
-public class GuiChestMixin implements IPutinGui {
+public class GuiChestMixin {
 
     private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/generic_54.png");
     private static final int X_SIZE = 338;
