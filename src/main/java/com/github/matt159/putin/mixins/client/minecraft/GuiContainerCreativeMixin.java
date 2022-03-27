@@ -13,7 +13,9 @@ import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -24,6 +26,8 @@ public class GuiContainerCreativeMixin {
     @Shadow private static int selectedTabIndex;
 
     @Shadow public static InventoryBasic field_147060_v;
+    @Mutable
+    @Shadow @Final private static ResourceLocation field_147061_u;
     private Slot slot;
 
     private static final String locationPrefix = "textures/minecraft/creative_inventory/tab_";
@@ -32,6 +36,7 @@ public class GuiContainerCreativeMixin {
 
     static {
         field_147060_v = new InventoryBasic("tmp", true, 90);
+        field_147061_u = new ResourceLocation(Tags.MODID, "textures/minecraft/creative_inventory/tabs.png");
     }
 
     @Inject(method = "<init>",
@@ -97,7 +102,7 @@ public class GuiContainerCreativeMixin {
                             ordinal = 0,
                             remap = false),
             require = 1)
-    private void rerouteDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
+    private void rerouteBackgroundDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
         GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
         float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
 
@@ -105,6 +110,18 @@ public class GuiContainerCreativeMixin {
         int y1 = (gcc.height - gcc.ySize) / 2;
 
         PutinUtil.drawTexturedModalRect(x1, y1, 0, 0, gcc.xSize, gcc.ySize, zLevel);
+    }
+
+    @Redirect(  method = "func_147051_a",
+                at = @At(   value = "INVOKE",
+                            target = "Lnet/minecraft/client/gui/inventory/GuiContainerCreative;drawTexturedModalRect(IIIIII)V",
+                            ordinal = 0),
+                require = 1)
+    private void rerouteDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
+        GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
+        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+
+        PutinUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 
     @Inject(method = "handleMouseClick",
@@ -158,5 +175,14 @@ public class GuiContainerCreativeMixin {
                     require = 1)
     private int updateTabPageOffset(int constant) {
         return 20;
+    }
+
+    @ModifyConstant(method =    {   "func_147049_a",
+                                    "func_147051_a",
+                                    "renderCreativeInventoryHoveringText" },
+                    constant = @Constant(intValue = 5),
+                    require = 1)
+    private int updateRightmostColumnIndex(int constant) {
+        return 10;
     }
 }
