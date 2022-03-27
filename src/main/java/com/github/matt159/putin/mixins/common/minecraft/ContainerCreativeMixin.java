@@ -25,7 +25,7 @@ public abstract class ContainerCreativeMixin extends Container {
         int i;
         for(i = 0; i < 5; ++i) {
             for(int j = 0; j < 18; ++j) {
-                this.addSlotToContainer(new Slot(GuiContainerCreative.field_147060_v, i * 9 + j, 9 + j * 18, 18 + i * 18));
+                this.addSlotToContainer(new Slot(GuiContainerCreative.field_147060_v, i * 18 + j, 9 + j * 18, 18 + i * 18));
             }
         }
 
