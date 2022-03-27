@@ -101,8 +101,8 @@ public class GuiContainerCreativeMixin {
                             target = "Lnet/minecraft/client/gui/inventory/GuiContainerCreative;drawTexturedModalRect(IIIIII)V",
                             ordinal = 0,
                             remap = false),
-            require = 1)
-    private void rerouteBackgroundDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
+                require = 1)
+    private void rerouteBackgroundGuiDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
         GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
         float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
 
@@ -110,6 +110,41 @@ public class GuiContainerCreativeMixin {
         int y1 = (gcc.height - gcc.ySize) / 2;
 
         PutinUtil.drawTexturedModalRect(x1, y1, 0, 0, gcc.xSize, gcc.ySize, zLevel);
+    }
+
+    @Redirect(  method = "drawGuiContainerBackgroundLayer",
+                at = @At(   value = "INVOKE",
+                            target = "Lnet/minecraft/client/gui/inventory/GuiContainerCreative;drawTexturedModalRect(IIIIII)V",
+                            ordinal = 1),
+                require = 1)
+    private void rerouteScrollBarDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
+        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+        PutinUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
+    }
+
+    @ModifyConstant(method =    {  "drawGuiContainerBackgroundLayer", "drawScreen" },
+                    constant = @Constant(intValue = 175),
+                    require = 1)
+    private int updateScrollBarXOffset(int constant) {
+        return 337;
+    }
+
+    @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
+                    constant = @Constant(intValue = 232),
+                    require = 1)
+    private int updateScrollBarTextureOffset(int constant) {
+        return 372;
+    }
+
+    @ModifyConstant(method =    { "drawScreen", "drawGuiContainerBackgroundLayer" },
+                    constant =  {   @Constant(  intValue = 10,
+                                                ordinal = 0),
+                                    @Constant(  intValue = 10,
+                                                ordinal = 1)
+                                },
+                    require = 1)
+    private int updateTabPageOffset(int constant) {
+        return 20;
     }
 
     @Redirect(  method = "func_147051_a",
@@ -164,17 +199,6 @@ public class GuiContainerCreativeMixin {
                     require = 1)
     private int updateDivisor(int constant) {
         return 18;
-    }
-
-    @ModifyConstant(method =    {   "drawScreen", "drawGuiContainerBackgroundLayer" },
-                    constant =  {   @Constant(  intValue = 10,
-                                                ordinal = 0),
-                                    @Constant(  intValue = 10,
-                                                ordinal = 1)
-                                },
-                    require = 1)
-    private int updateTabPageOffset(int constant) {
-        return 20;
     }
 
     @ModifyConstant(method =    {   "func_147049_a",
