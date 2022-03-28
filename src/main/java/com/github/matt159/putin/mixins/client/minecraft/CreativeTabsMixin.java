@@ -48,6 +48,9 @@ public class CreativeTabsMixin implements ICreativeTabsMixin {
         creativeTabArray[tabDecorations.getTabIndex()] = CreativeTabs.tabDecorations;
     }
 
+    /*  Vanilla uses some wonky modulus math to place the search tab and the survival inventory tab
+        I chose to simplify it by moving those two tabs to the front of the creativeTabArray
+     */
     @SideOnly(Side.CLIENT)
     @Inject(method = "getTabColumn",
             at = @At("HEAD"),
