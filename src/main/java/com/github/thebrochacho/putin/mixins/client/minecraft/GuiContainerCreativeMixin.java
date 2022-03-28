@@ -77,7 +77,7 @@ public class GuiContainerCreativeMixin {
                 offset = slotIndex - 9;
 
                 slot.xDisplayPosition = 9 + (offset % 18) * 18;
-                slot.yDisplayPosition = (slotIndex < 54) ? 54 + (offset / 18) * 18 : 112;
+                slot.yDisplayPosition = (slotIndex < 63) ? 54 + (offset / 18) * 18 : 112;
             }
 
             containerCreative.inventorySlots.add(slot);
