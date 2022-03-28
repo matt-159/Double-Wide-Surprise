@@ -169,8 +169,8 @@ public class GuiContainerCreativeMixin {
     @Inject(method = "handleMouseClick",
             at = @At(   value = "HEAD"),
             require = 1)
-    private void captureSlot(Slot p_handleMouseClick_1_, int p_handleMouseClick_2_, int p_handleMouseClick_3_, int p_handleMouseClick_4_, CallbackInfo ci) {
-        slot = p_handleMouseClick_1_;
+    private void captureSlot(Slot slot, int p_handleMouseClick_2_, int p_handleMouseClick_3_, int p_handleMouseClick_4_, CallbackInfo ci) {
+        this.slot = slot instanceof SlotCreative ? ((SlotCreative) slot).field_148332_b : slot;
     }
 
     @Redirect(  method = "handleMouseClick",
