@@ -30,14 +30,14 @@ public abstract class ContainerCreativeMixin extends Container {
         }
 
         //left half of hotbar
-        int row, col;
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row, 9 + row * 18, 112));
+        int col;
+        for (col = 0; col < 9; ++col) {
+            this.addSlotToContainer(new Slot(inventoryPlayer, col, 9 + col * 18, 112));
         }
 
         //right half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row + 63, 9 + (row + 9) * 18, 112));
+        for (col = 0; col < 9; ++col) {
+            this.addSlotToContainer(new Slot(inventoryPlayer, col + 63, 9 + (col + 9) * 18, 112));
         }
 
         this.scrollTo(0.0F);
