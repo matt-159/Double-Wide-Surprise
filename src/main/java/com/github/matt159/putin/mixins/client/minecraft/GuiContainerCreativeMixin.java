@@ -84,6 +84,13 @@ public class GuiContainerCreativeMixin {
         }
     }
 
+    @ModifyConstant(method = "setCurrentCreativeTab",
+                    constant = @Constant(intValue = 173),
+                    require = 1)
+    private int modifyTrashSlotTextureXOffset(int constant) {
+        return 335;
+    }
+
     @Redirect(  method = "drawGuiContainerBackgroundLayer",
                 at = @At(   value = "INVOKE",
                             target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
