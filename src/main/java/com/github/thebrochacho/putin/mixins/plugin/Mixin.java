@@ -13,30 +13,39 @@ public enum Mixin {
     // Vanilla
     EntityPlayerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.EntityPlayerMixin")),
 
-    ContainerChestMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerChestMixin")),
-    ContainerWorkbenchMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerWorkbenchMixin")),
-    ContainerFurnaceMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerFurnaceMixin")),
-    ContainerHopperMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerHopperMixin")),
-    ContainerDispenserMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerDispenserMixin")),
-    ContainerBrewingStandMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerBrewingStandMixin")),
-    ContainerHorseInventoryMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerHorseInventoryMixin")),
-    ContainerCreativeMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerCreativeMixin")),
-    ContainerEnchantmentMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerEnchantmentMixin")),
-    ContainerRepairMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerRepairMixin")),
-
     GuiMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiMixin")),
+
     GuiChestMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiChestMixin")),
+    ContainerChestMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerChestMixin")),
+
     GuiCraftingMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiCraftingMixin")),
+    ContainerWorkbenchMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerWorkbenchMixin")),
+
     GuiFurnaceMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiFurnaceMixin")),
+    ContainerFurnaceMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerFurnaceMixin")),
+
     GuiHopperMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiHopperMixin")),
+    ContainerHopperMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerHopperMixin")),
+
     GuiDispenserMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiDispenserMixin")),
+    ContainerDispenserMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerDispenserMixin")),
+
     GuiBrewingStandMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiBrewingStandMixin")),
+    ContainerBrewingStandMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerBrewingStandMixin")),
+
     GuiScreenHorseInventoryMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiScreenHorseInventoryMixin")),
-    GuiContainerCreativeMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiContainerCreativeMixin")),
-    GuiEnchantmentMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiEnchantmentMixin")),
-    GuiRepairMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiRepairMixin")),
+    ContainerHorseInventoryMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerHorseInventoryMixin")),
 
     CreativeTabsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.CreativeTabsMixin")),
+
+    GuiContainerCreativeMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiContainerCreativeMixin")),
+    ContainerCreativeMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerCreativeMixin")),
+
+    GuiEnchantmentMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiEnchantmentMixin")),
+    ContainerEnchantmentMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerEnchantmentMixin")),
+
+    GuiRepairMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiRepairMixin")),
+    ContainerRepairMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerRepairMixin")),
 
     //Forge
     //NetworkRegistryMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.NetworkRegistryMixin")),
