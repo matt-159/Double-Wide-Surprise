@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.interfaces;
+package com.github.thebrochacho.putin.interfaces.minecraft;
 
 import net.minecraft.inventory.IInventory;
 

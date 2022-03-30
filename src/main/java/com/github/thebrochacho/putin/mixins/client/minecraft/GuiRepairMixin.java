@@ -1,7 +1,7 @@
 package com.github.thebrochacho.putin.mixins.client.minecraft;
 
 import com.github.thebrochacho.putin.Tags;
-import com.github.thebrochacho.putin.interfaces.IMinecraftGuiMixin;
+import com.github.thebrochacho.putin.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.gui.GuiRepair;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -40,7 +40,7 @@ public class GuiRepairMixin {
                             target = "Lnet/minecraft/client/gui/GuiRepair;drawTexturedModalRect(IIIIII)V"),
                 require = 1)
     private void rerouteDrawCall(GuiRepair instance, int x, int y, int u, int v, int w, int h) {
-        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
         PutinUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 

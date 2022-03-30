@@ -1,7 +1,7 @@
 package com.github.thebrochacho.putin.mixins.client.minecraft;
 
 import com.github.thebrochacho.putin.Tags;
-import com.github.thebrochacho.putin.interfaces.IMinecraftGuiMixin;
+import com.github.thebrochacho.putin.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.putin.inventory.slots.minecraft.SlotCreative;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
@@ -111,7 +111,7 @@ public class GuiContainerCreativeMixin {
                 require = 1)
     private void rerouteBackgroundGuiDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
         GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
-        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 
         int x1 = (gcc.width - gcc.xSize) / 2;
         int y1 = (gcc.height - gcc.ySize) / 2;
@@ -125,7 +125,7 @@ public class GuiContainerCreativeMixin {
                             ordinal = 1),
                 require = 1)
     private void rerouteScrollBarDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
-        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
         PutinUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 
@@ -161,7 +161,7 @@ public class GuiContainerCreativeMixin {
                 require = 1)
     private void rerouteDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
         GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
-        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 
         PutinUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
