@@ -1,7 +1,7 @@
 package com.github.thebrochacho.putin.mixins.common.minecraft;
 
-import com.github.thebrochacho.putin.inventory.SlotHorseArmor;
-import com.github.thebrochacho.putin.inventory.SlotSaddle;
+import com.github.thebrochacho.putin.inventory.slots.minecraft.SlotHorseArmor;
+import com.github.thebrochacho.putin.inventory.slots.minecraft.SlotSaddle;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;

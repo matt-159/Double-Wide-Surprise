@@ -2,7 +2,7 @@ package com.github.thebrochacho.putin.mixins.client.minecraft;
 
 import com.github.thebrochacho.putin.Tags;
 import com.github.thebrochacho.putin.interfaces.IMinecraftGuiMixin;
-import com.github.thebrochacho.putin.inventory.SlotCreative;
+import com.github.thebrochacho.putin.inventory.slots.minecraft.SlotCreative;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.client.renderer.texture.TextureManager;
