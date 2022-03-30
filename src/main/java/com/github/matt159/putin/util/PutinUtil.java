@@ -4,7 +4,9 @@ import com.github.matt159.putin.inventory.ContainerPutin;
 import com.github.matt159.putin.inventory.InventoryPutin;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
@@ -60,5 +62,33 @@ public class PutinUtil {
             }
         }
         return -1;
+    }
+
+    public static void addPutinSlotsToContainer(Container container, InventoryPlayer inventoryPlayer) {
+        int row, col;
+        //main inventory
+        for (row = 0; row < 3; ++row) {
+            for (col = 0; col < 18; ++col) {
+                PutinUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col + row * 18 + 9, 8 + col * 18, 84 + row * 18));
+            }
+        }
+
+        //left half of hotbar
+        for (row = 0; row < 9; ++row) {
+            PutinUtil.addSlotToContainer(container, new Slot(inventoryPlayer, row, 8 + row * 18, 142));
+        }
+
+        //right half of hotbar
+        for (row = 0; row < 9; ++row) {
+            PutinUtil.addSlotToContainer(container, new Slot(inventoryPlayer, row + 63, 8 + (row + 9) * 18, 142));
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Slot addSlotToContainer(Container container, Slot slot) {
+        slot.slotNumber = container.inventorySlots.size();
+        container.inventorySlots.add(slot);
+        container.inventoryItemStacks.add((Object)null);
+        return slot;
     }
 }

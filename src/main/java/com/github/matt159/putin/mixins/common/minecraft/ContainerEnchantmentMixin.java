@@ -1,6 +1,7 @@
 package com.github.matt159.putin.mixins.common.minecraft;
 
 import com.github.matt159.putin.inventory.SlotEnchantment;
+import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
@@ -23,23 +24,7 @@ public class ContainerEnchantmentMixin extends Container {
         ((ContainerEnchantment) (Object) (this)).inventorySlots.clear();
         this.addSlotToContainer(new SlotEnchantment(tableInventory, 0, 106, 47));
 
-        int row, col;
-        //main inventory
-        for (row = 0; row < 3; ++row) {
-            for (col = 0; col < 18; ++col) {
-                this.addSlotToContainer(new Slot(inventoryPlayer, col + row * 18 + 9, 8 + col * 18, 84 + row * 18));
-            }
-        }
-
-        //left half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row, 8 + row * 18, 142));
-        }
-
-        //right half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row + 63, 8 + (row + 9) * 18, 142));
-        }
+        PutinUtil.addPutinSlotsToContainer((ContainerEnchantment) (Object) (this), inventoryPlayer);
     }
 
     @Override

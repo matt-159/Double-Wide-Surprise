@@ -1,5 +1,6 @@
 package com.github.matt159.putin.mixins.common.minecraft;
 
+import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -25,23 +26,8 @@ public class ContainerFurnaceMixin extends Container {
         this.addSlotToContainer(new Slot(p_i1812_2_, 0, 137, 17));
         this.addSlotToContainer(new Slot(p_i1812_2_, 1, 137, 53));
         this.addSlotToContainer(new SlotFurnace(inventoryPlayer.player, p_i1812_2_, 2, 197, 35));
-        //main inventory
-        int row, col;
-        for (row = 0; row < 3; ++row) {
-            for (col = 0; col < 18; ++col) {
-                this.addSlotToContainer(new Slot(inventoryPlayer, col + row * 18 + 9, 8 + col * 18, 84 + row * 18));
-            }
-        }
 
-        //left half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row, 8 + row * 18, 142));
-        }
-
-        //right half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row + 63, 8 + (row + 9) * 18, 142));
-        }
+        PutinUtil.addPutinSlotsToContainer((ContainerFurnace) (Object) (this), inventoryPlayer);
     }
 
 
