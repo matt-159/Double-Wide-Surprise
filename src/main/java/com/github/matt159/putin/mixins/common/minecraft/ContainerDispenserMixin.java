@@ -1,6 +1,5 @@
 package com.github.matt159.putin.mixins.common.minecraft;
 
-import com.github.matt159.putin.interfaces.IContainerChestMixin;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.tileentity.TileEntityDispenser;

@@ -1,7 +1,7 @@
 package com.github.matt159.putin.mixins.client.minecraft;
 
 import com.github.matt159.putin.Tags;
-import com.github.matt159.putin.interfaces.IMinecraftGuiMixin;
+import com.github.matt159.putin.interfaces.minecraft.IGuiMixin;
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.gui.inventory.GuiScreenHorseInventory;
@@ -54,7 +54,7 @@ public class GuiScreenHorseInventoryMixin {
             require = 1)
     private void rerouteDrawCall(float p_drawGuiContainerBackgroundLayer_1_, int p_drawGuiContainerBackgroundLayer_2_, int p_drawGuiContainerBackgroundLayer_3_, CallbackInfo ci) {
         GuiScreenHorseInventory gshi = (GuiScreenHorseInventory) (Object) (this);
-        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 
         int x = (gshi.width - gshi.xSize) / 2;
         int y = (gshi.height - gshi.ySize) / 2;

@@ -1,10 +1,9 @@
 package com.github.matt159.putin.mixins.client.minecraft;
 
 import com.github.matt159.putin.Tags;
-import com.github.matt159.putin.interfaces.IMinecraftGuiMixin;
+import com.github.matt159.putin.interfaces.minecraft.IGuiMixin;
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
-import net.minecraft.client.gui.inventory.GuiDispenser;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntityBrewingStand;
@@ -50,7 +49,7 @@ public class GuiBrewingStandMixin {
             require = 1)
     private void rerouteDrawCall(float f, int i1, int i2, CallbackInfo ci) {
         GuiBrewingStand gbs = (GuiBrewingStand) (Object) (this);
-        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 
         int x = (gbs.width - gbs.xSize) / 2;
         int y = (gbs.height - gbs.ySize) / 2;

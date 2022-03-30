@@ -1,7 +1,7 @@
 package com.github.matt159.putin.mixins.client.minecraft;
 
 import com.github.matt159.putin.Tags;
-import com.github.matt159.putin.interfaces.IMinecraftGuiMixin;
+import com.github.matt159.putin.interfaces.minecraft.IGuiMixin;
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -41,7 +41,7 @@ public class GuiChestMixin {
                             target = "Lnet/minecraft/client/gui/inventory/GuiChest;drawTexturedModalRect(IIIIII)V"),
                 require = 1)
     private void rerouteDrawCall(GuiChest instance, int x, int y, int u, int v, int w, int h) {
-        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
         PutinUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 }

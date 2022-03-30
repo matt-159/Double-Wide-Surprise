@@ -1,6 +1,6 @@
 package com.github.matt159.putin.inventory.slots.minecraft;
 
-import com.github.matt159.putin.interfaces.IContainerRepairMixin;
+import com.github.matt159.putin.interfaces.minecraft.IContainerRepairMixin;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ContainerRepair;

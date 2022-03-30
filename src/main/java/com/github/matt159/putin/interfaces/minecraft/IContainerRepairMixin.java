@@ -1,4 +1,4 @@
-package com.github.matt159.putin.interfaces;
+package com.github.matt159.putin.interfaces.minecraft;
 
 import net.minecraft.inventory.IInventory;
 

@@ -1,13 +1,11 @@
 package com.github.matt159.putin.mixins.client.minecraft;
 
 import com.github.matt159.putin.Tags;
-import com.github.matt159.putin.interfaces.IMinecraftGuiMixin;
+import com.github.matt159.putin.interfaces.minecraft.IGuiMixin;
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.client.gui.GuiEnchantment;
-import net.minecraft.client.gui.inventory.GuiDispenser;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -44,7 +42,7 @@ public class GuiEnchantmentMixin {
                             ordinal = 0),
                 require = 1)
     private void rerouteDrawCall(GuiEnchantment instance, int x, int y, int u, int v, int w, int h) {
-        float zLevel = ((IMinecraftGuiMixin) (Object) (this)).getZLevel();
+        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
         PutinUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 
