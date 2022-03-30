@@ -1,6 +1,6 @@
 package com.github.thebrochacho.putin.mixins.client.minecraft;
 
-import com.github.thebrochacho.putin.interfaces.ICreativeTabsMixin;
+import com.github.thebrochacho.putin.interfaces.minecraft.ICreativeTabsMixin;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;

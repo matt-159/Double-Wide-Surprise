@@ -1,6 +1,6 @@
 package com.github.thebrochacho.putin.mixins.common.minecraft;
 
-import com.github.thebrochacho.putin.interfaces.IContainerRepairMixin;
+import com.github.thebrochacho.putin.interfaces.minecraft.IContainerRepairMixin;
 import com.github.thebrochacho.putin.inventory.slots.minecraft.SlotAnvil;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
