@@ -47,6 +47,9 @@ public enum Mixin {
     GuiRepairMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiRepairMixin")),
     ContainerRepairMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerRepairMixin")),
 
+    GuiMerchantMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiMerchantMixin")),
+    ContainerMerchantMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerMerchantMixin")),
+
     //Forge
     //NetworkRegistryMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.NetworkRegistryMixin")),
 
