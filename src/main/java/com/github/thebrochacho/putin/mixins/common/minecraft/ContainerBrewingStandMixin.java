@@ -2,6 +2,7 @@ package com.github.thebrochacho.putin.mixins.common.minecraft;
 
 import com.github.thebrochacho.putin.inventory.SlotIngredient;
 import com.github.thebrochacho.putin.inventory.SlotPotion;
+import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -33,24 +34,7 @@ public class ContainerBrewingStandMixin extends Container {
         this.addSlotToContainer(new SlotPotion(inventoryPlayer.player, p_i1805_2_, 2, 183, 46));
         this.theSlot = this.addSlotToContainer(new SlotIngredient((ContainerBrewingStand) (Object) (this), p_i1805_2_, 3, 160, 17));
 
-        //main inventory
-        int row, col;
-        //main inventory
-        for (row = 0; row < 3; ++row) {
-            for (col = 0; col < 18; ++col) {
-                this.addSlotToContainer(new Slot(inventoryPlayer, col + row * 18 + 9, 8 + col * 18, 84 + row * 18));
-            }
-        }
-
-        //left half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row, 8 + row * 18, 142));
-        }
-
-        //right half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row + 63, 8 + (row + 9) * 18, 142));
-        }
+        PutinUtil.addPutinSlotsToContainer((ContainerBrewingStand) (Object) (this), inventoryPlayer);
     }
 
     @Override
