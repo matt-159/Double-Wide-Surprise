@@ -2,7 +2,7 @@ package com.github.matt159.putin.mixins.client.minecraft;
 
 import com.github.matt159.putin.Tags;
 import com.github.matt159.putin.interfaces.IMinecraftGuiMixin;
-import com.github.matt159.putin.inventory.SlotCreative;
+import com.github.matt159.putin.inventory.slots.minecraft.SlotCreative;
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.client.renderer.texture.TextureManager;

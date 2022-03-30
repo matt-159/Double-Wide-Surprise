@@ -1,4 +1,4 @@
-package com.github.matt159.putin.inventory;
+package com.github.matt159.putin.inventory.slots.minecraft;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

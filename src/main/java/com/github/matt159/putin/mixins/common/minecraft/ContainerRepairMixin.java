@@ -1,7 +1,7 @@
 package com.github.matt159.putin.mixins.common.minecraft;
 
 import com.github.matt159.putin.interfaces.IContainerRepairMixin;
-import com.github.matt159.putin.inventory.SlotAnvil;
+import com.github.matt159.putin.inventory.slots.minecraft.SlotAnvil;
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

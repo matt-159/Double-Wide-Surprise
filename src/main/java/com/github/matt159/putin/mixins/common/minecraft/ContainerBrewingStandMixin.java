@@ -1,7 +1,7 @@
 package com.github.matt159.putin.mixins.common.minecraft;
 
-import com.github.matt159.putin.inventory.SlotIngredient;
-import com.github.matt159.putin.inventory.SlotPotion;
+import com.github.matt159.putin.inventory.slots.minecraft.SlotIngredient;
+import com.github.matt159.putin.inventory.slots.minecraft.SlotPotion;
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
