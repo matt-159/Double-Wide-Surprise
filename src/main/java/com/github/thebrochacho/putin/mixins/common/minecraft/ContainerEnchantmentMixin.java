@@ -1,6 +1,6 @@
 package com.github.thebrochacho.putin.mixins.common.minecraft;
 
-import com.github.thebrochacho.putin.inventory.SlotEnchantment;
+import com.github.thebrochacho.putin.inventory.slots.minecraft.SlotEnchantment;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.inventory;
+package com.github.thebrochacho.putin.inventory.slots.minecraft;
 
 import com.github.thebrochacho.putin.interfaces.IContainerRepairMixin;
 import net.minecraft.entity.player.EntityPlayer;

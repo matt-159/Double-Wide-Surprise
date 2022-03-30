@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.inventory;
+package com.github.thebrochacho.putin.inventory.slots.minecraft;
 
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
