@@ -17,8 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ContainerFurnaceMixin extends Container {
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN",
-                        remap = false),
+            at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, TileEntityFurnace tileEntityFurnace, CallbackInfo ci) {
         ((ContainerFurnace) (Object) (this)).inventorySlots.clear();

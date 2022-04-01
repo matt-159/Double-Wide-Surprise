@@ -19,8 +19,7 @@ public class ContainerChestMixin extends Container implements IContainerChestMix
     @Shadow private int numRows;
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN",
-                        remap = false),
+            at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(IInventory inventoryPlayer, IInventory inventoryChest, CallbackInfo ci) {
         ((ContainerChest) (Object) (this)).inventorySlots.clear();

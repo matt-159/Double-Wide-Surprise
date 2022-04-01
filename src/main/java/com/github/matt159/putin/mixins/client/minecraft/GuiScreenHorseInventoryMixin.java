@@ -28,8 +28,7 @@ public class GuiScreenHorseInventoryMixin implements IPutinGui {
     private static final int Y_SIZE = 166;
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN",
-                        remap = false),
+            at = @At(value = "RETURN"),
             require = 1)
     private void updateGuiSize(IInventory inventoryPlayer, IInventory inventoryHorse, EntityHorse entityHorse, CallbackInfo ci) {
         ((GuiScreenHorseInventory) (Object) (this)).xSize = X_SIZE;
@@ -38,8 +37,7 @@ public class GuiScreenHorseInventoryMixin implements IPutinGui {
 
     @Redirect(  method = "drawGuiContainerBackgroundLayer",
                 at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
-                            remap = false),
+                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
                 require = 1)
     private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
         instance.bindTexture(location);
@@ -49,8 +47,7 @@ public class GuiScreenHorseInventoryMixin implements IPutinGui {
             at = @At(   value = "INVOKE",
                         target = "Lnet/minecraft/client/gui/inventory/GuiScreenHorseInventory;drawTexturedModalRect(IIIIII)V",
                         ordinal = 0,
-                        shift = At.Shift.BEFORE,
-                        remap = false),
+                        shift = At.Shift.BEFORE),
             cancellable = true,
             require = 1)
     private void rerouteDrawCall(float f1, int i1, int i2, CallbackInfo ci) {

@@ -21,8 +21,7 @@ public abstract class EntityPlayerMixin {
     @Shadow public Container openContainer;
 
     @Inject(method = "<init>",
-            at = @At(value = "RETURN",
-            remap = false))
+            at = @At(value = "RETURN"))
     public void bypassEntityPlayer(World world, GameProfile gameProfile, CallbackInfo ci) {
         this.inventory = new InventoryPutin((EntityPlayer) (Object)this);
         this.inventoryContainer = new ContainerPutin(this.inventory, !world.isRemote, (EntityPlayer) (Object)this);

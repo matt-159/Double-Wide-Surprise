@@ -21,8 +21,7 @@ public class GuiChestMixin implements IPutinGui {
     private static final int X_SIZE = 338;
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN",
-                        remap = false),
+            at = @At(value = "RETURN"),
             require = 1)
     private void updateGuiSize(IInventory upperChest, IInventory lowerChest, CallbackInfo ci) {
         ((GuiChest) (Object) (this)).xSize = X_SIZE;
@@ -30,8 +29,7 @@ public class GuiChestMixin implements IPutinGui {
 
     @Redirect(  method = "drawGuiContainerBackgroundLayer",
                 at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
-                            remap = false),
+                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
                 require = 1)
     private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
         instance.bindTexture(location);

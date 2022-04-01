@@ -24,8 +24,7 @@ public class ContainerBrewingStandMixin extends Container {
     @Shadow @Final private Slot theSlot;
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN",
-                        remap = false),
+            at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, TileEntityBrewingStand tileEntityBrewingStand, CallbackInfo ci) {
         ((ContainerBrewingStand) (Object) (this)).inventorySlots.clear();
