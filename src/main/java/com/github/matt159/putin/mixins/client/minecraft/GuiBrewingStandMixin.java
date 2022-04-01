@@ -1,6 +1,7 @@
 package com.github.matt159.putin.mixins.client.minecraft;
 
 import com.github.matt159.putin.Tags;
+import com.github.matt159.putin.interfaces.IPutinGui;
 import com.github.matt159.putin.interfaces.minecraft.IGuiMixin;
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
@@ -16,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiBrewingStand.class)
-public class GuiBrewingStandMixin {
+public class GuiBrewingStandMixin implements IPutinGui {
     @Shadow private TileEntityBrewingStand tileBrewingStand;
     private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/brewing_stand.png");
     private static final int X_SIZE = 338;

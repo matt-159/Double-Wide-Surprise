@@ -1,6 +1,7 @@
 package com.github.matt159.putin.mixins.client.minecraft;
 
 import com.github.matt159.putin.Tags;
+import com.github.matt159.putin.interfaces.IPutinGui;
 import com.github.matt159.putin.interfaces.minecraft.IGuiMixin;
 import com.github.matt159.putin.inventory.slots.minecraft.SlotCreative;
 import com.github.matt159.putin.util.PutinUtil;
@@ -21,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiContainerCreative.class)
-public class GuiContainerCreativeMixin {
+public class GuiContainerCreativeMixin implements IPutinGui {
 
     @Shadow private static int selectedTabIndex;
 
