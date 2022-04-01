@@ -1,6 +1,7 @@
 package com.github.thebrochacho.putin.mixins.client.minecraft;
 
 import com.github.thebrochacho.putin.Tags;
+import com.github.thebrochacho.putin.interfaces.IPutinGui;
 import com.github.thebrochacho.putin.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.gui.GuiRepair;
@@ -13,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiRepair.class)
-public class GuiRepairMixin {
+public class GuiRepairMixin implements IPutinGui {
 
     private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/anvil.png");
     private static final int X_SIZE = 338;

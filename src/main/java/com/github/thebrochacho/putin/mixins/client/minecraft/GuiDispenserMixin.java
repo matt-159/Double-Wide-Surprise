@@ -1,6 +1,7 @@
 package com.github.thebrochacho.putin.mixins.client.minecraft;
 
 import com.github.thebrochacho.putin.Tags;
+import com.github.thebrochacho.putin.interfaces.IPutinGui;
 import com.github.thebrochacho.putin.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiDispenser;
@@ -15,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiDispenser.class)
-public class GuiDispenserMixin {
+public class GuiDispenserMixin implements IPutinGui {
 
     private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/dispenser.png");
     private static final int X_SIZE = 338;
