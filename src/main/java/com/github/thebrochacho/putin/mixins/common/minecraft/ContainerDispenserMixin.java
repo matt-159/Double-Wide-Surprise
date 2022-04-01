@@ -1,5 +1,6 @@
 package com.github.thebrochacho.putin.mixins.common.minecraft;
 
+import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.tileentity.TileEntityDispenser;
@@ -26,22 +27,7 @@ public class ContainerDispenserMixin extends Container {
             }
         }
 
-        //main inventory
-        for (row = 0; row < 3; ++row) {
-            for (col = 0; col < 18; ++col) {
-                this.addSlotToContainer(new Slot(inventoryPlayer, col + row * 18 + 9, 8 + col * 18, 84 + row * 18));
-            }
-        }
-
-        //left half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row, 8 + row * 18, 142));
-        }
-
-        //right half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row + 63, 8 + (row + 9) * 18, 142));
-        }
+        PutinUtil.addPutinSlotsToContainer((ContainerDispenser) (Object) (this), inventoryPlayer);
     }
 
     @Override

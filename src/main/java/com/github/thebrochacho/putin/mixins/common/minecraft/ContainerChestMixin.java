@@ -1,6 +1,7 @@
 package com.github.thebrochacho.putin.mixins.common.minecraft;
 
 import com.github.thebrochacho.putin.interfaces.minecraft.IContainerChestMixin;
+import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
@@ -34,22 +35,7 @@ public class ContainerChestMixin extends Container implements IContainerChestMix
             }
         }
 
-        //main inventory
-        for (row = 0; row < 3; ++row) {
-            for (col = 0; col < 18; ++col) {
-                this.addSlotToContainer(new Slot(inventoryPlayer, col + row * 18 + 9, 8 + col * 18, 103 + row * 18 + var3));
-            }
-        }
-
-        //left half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row, 8 + row * 18, 161 + var3));
-        }
-
-        //right half of hotbar
-        for (row = 0; row < 9; ++row) {
-            this.addSlotToContainer(new Slot(inventoryPlayer, row + 63, 8 + (row + 9) * 18, 161 + var3));
-        }
+        PutinUtil.addPutinSlotsToContainer(this, inventoryPlayer, 8, 103 + var3, 161 + var3);
     }
 
     @Override
