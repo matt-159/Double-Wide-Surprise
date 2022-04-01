@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
@@ -64,23 +65,28 @@ public class PutinUtil {
         return -1;
     }
 
-    public static void addPutinSlotsToContainer(Container container, InventoryPlayer inventoryPlayer) {
+    public static void addPutinSlotsToContainer(Container container, IInventory inventoryPlayer) {
+        addPutinSlotsToContainer(container, inventoryPlayer, 8, 84, 142);
+    }
+
+    public static void addPutinSlotsToContainer(Container container, IInventory inventoryPlayer, int xOffset, int yOffset1, int yOffset2) {
+
         int row, col;
         //main inventory
         for (row = 0; row < 3; ++row) {
             for (col = 0; col < 18; ++col) {
-                PutinUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col + row * 18 + 9, 8 + col * 18, 84 + row * 18));
+                PutinUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col + row * 18 + 9, xOffset + col * 18, yOffset1 + row * 18));
             }
         }
 
         //left half of hotbar
-        for (row = 0; row < 9; ++row) {
-            PutinUtil.addSlotToContainer(container, new Slot(inventoryPlayer, row, 8 + row * 18, 142));
+        for (col = 0; col < 9; ++col) {
+            PutinUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col, xOffset + col * 18, yOffset2));
         }
 
         //right half of hotbar
-        for (row = 0; row < 9; ++row) {
-            PutinUtil.addSlotToContainer(container, new Slot(inventoryPlayer, row + 63, 8 + (row + 9) * 18, 142));
+        for (col = 0; col < 9; ++col) {
+            PutinUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col + 63, xOffset + (col+ 9) * 18 , yOffset2));
         }
     }
 
