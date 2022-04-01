@@ -14,8 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ContainerWorkbenchMixin extends Container {
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN",
-                        remap = false),
+            at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
         ((ContainerWorkbench) (Object) (this)).inventorySlots.clear();

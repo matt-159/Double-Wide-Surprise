@@ -31,8 +31,8 @@ public class CreativeTabsMixin implements ICreativeTabsMixin {
 
     @SideOnly(Side.CLIENT)
     @Inject(method = "<clinit>",
-                    at = @At(value = "RETURN"),
-                    require = 1)
+            at = @At(value = "RETURN"),
+            require = 1)
     private static void adjustTabs(CallbackInfo ci) {
 
         ((ICreativeTabsMixin) tabBlock).setTabIndex(5);
