@@ -27,7 +27,7 @@ public class GuiBrewingStandMixin implements IPutinGui {
             at = @At(   value = "RETURN",
                         remap = false),
             require = 1)
-    private void updateGuiSize(InventoryPlayer p_i1081_1_, TileEntityBrewingStand p_i1081_2_, CallbackInfo ci) {
+    private void updateGuiSize(InventoryPlayer inventoryPlayer, TileEntityBrewingStand tileEntityBrewingStand, CallbackInfo ci) {
         ((GuiBrewingStand) (Object) (this)).xSize = X_SIZE;
         ((GuiBrewingStand) (Object) (this)).ySize = Y_SIZE;
     }
@@ -37,7 +37,7 @@ public class GuiBrewingStandMixin implements IPutinGui {
                     target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
                     remap = false),
             require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
+    private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
         instance.bindTexture(location);
     }
 

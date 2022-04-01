@@ -26,7 +26,7 @@ public class GuiCraftingMixin implements IPutinGui {
             at = @At(   value = "RETURN",
                         remap = false),
             require = 1)
-    private void updateGuiSize(InventoryPlayer p_i1084_1_, World p_i1084_2_, int p_i1084_3_, int p_i1084_4_, int p_i1084_5_, CallbackInfo ci) {
+    private void updateGuiSize(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
         ((GuiCrafting) (Object) (this)).xSize = X_SIZE;
         ((GuiCrafting) (Object) (this)).ySize = Y_SIZE;
     }
@@ -36,7 +36,7 @@ public class GuiCraftingMixin implements IPutinGui {
                             target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
                             remap = false),
                 require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
+    private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
         instance.bindTexture(location);
     }
 

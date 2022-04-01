@@ -24,7 +24,7 @@ public class GuiChestMixin implements IPutinGui {
             at = @At(   value = "RETURN",
                         remap = false),
             require = 1)
-    private void updateGuiSize(IInventory p_i1083_1_, IInventory p_i1083_2_, CallbackInfo ci) {
+    private void updateGuiSize(IInventory upperChest, IInventory lowerChest, CallbackInfo ci) {
         ((GuiChest) (Object) (this)).xSize = X_SIZE;
     }
 

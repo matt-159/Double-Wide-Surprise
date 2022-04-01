@@ -28,7 +28,7 @@ public class GuiFurnaceMixin implements IPutinGui {
             at = @At(   value = "RETURN",
                         remap = false),
             require = 1)
-    private void updateGuiSize(InventoryPlayer p_i1091_1_, TileEntityFurnace p_i1091_2_, CallbackInfo ci) {
+    private void updateGuiSize(InventoryPlayer inventoryPlayer, TileEntityFurnace tileEntityFurnace, CallbackInfo ci) {
         ((GuiFurnace) (Object) (this)).xSize = X_SIZE;
         ((GuiFurnace) (Object) (this)).ySize = Y_SIZE;
     }
@@ -38,7 +38,7 @@ public class GuiFurnaceMixin implements IPutinGui {
                             target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
                             remap = false),
                 require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
+    private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
         instance.bindTexture(location);
     }
 
@@ -50,7 +50,7 @@ public class GuiFurnaceMixin implements IPutinGui {
                         remap = false),
             cancellable = true,
             require = 1)
-    private void rerouteDrawCall(float p_drawGuiContainerBackgroundLayer_1_, int p_drawGuiContainerBackgroundLayer_2_, int p_drawGuiContainerBackgroundLayer_3_, CallbackInfo ci) {
+    private void rerouteDrawCall(float f1, int i1, int i2, CallbackInfo ci) {
         GuiFurnace gf = (GuiFurnace) (Object) (this);
         float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 

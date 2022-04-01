@@ -43,7 +43,7 @@ public class GuiContainerCreativeMixin implements IPutinGui {
     @Inject(method = "<init>",
             at = @At(   value = "RETURN"),
             require = 1)
-    private void updateGuiSize(EntityPlayer p_i1088_1_, CallbackInfo ci) {
+    private void updateGuiSize(EntityPlayer entityPlayer, CallbackInfo ci) {
         ((GuiContainerCreative) (Object) this).xSize = X_SIZE;
         ((GuiContainerCreative) (Object) this).ySize = Y_SIZE;
     }
@@ -54,7 +54,7 @@ public class GuiContainerCreativeMixin implements IPutinGui {
                         shift = At.Shift.BEFORE),
             require = 1)
     @SuppressWarnings("unchecked")
-    private void addSlotsToContainer(CreativeTabs p_setCurrentCreativeTab_1_, CallbackInfo ci) {
+    private void addSlotsToContainer(CreativeTabs creativeTabs, CallbackInfo ci) {
         GuiContainerCreative gcc = ((GuiContainerCreative) (Object) (this));
         GuiContainerCreative.ContainerCreative containerCreative = (GuiContainerCreative.ContainerCreative) gcc.inventorySlots;
         containerCreative.inventorySlots.clear();
