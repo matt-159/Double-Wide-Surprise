@@ -26,7 +26,7 @@ public class GuiDispenserMixin implements IPutinGui {
             at = @At(   value = "RETURN",
                         remap = false),
             require = 1)
-    private void updateGuiSize(InventoryPlayer p_i1098_1_, TileEntityDispenser p_i1098_2_, CallbackInfo ci) {
+    private void updateGuiSize(InventoryPlayer inventoryPlayer, TileEntityDispenser tileEntityDispenser, CallbackInfo ci) {
         ((GuiDispenser) (Object) (this)).xSize = X_SIZE;
         ((GuiDispenser) (Object) (this)).ySize = Y_SIZE;
     }
@@ -36,7 +36,7 @@ public class GuiDispenserMixin implements IPutinGui {
                         target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
                         remap = false),
                 require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
+    private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
         instance.bindTexture(location);
     }
 

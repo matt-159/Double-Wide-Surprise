@@ -23,7 +23,7 @@ public class GuiRepairMixin implements IPutinGui {
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
             require = 1)
-    private void updateGuiSize(InventoryPlayer inventoryPlayer, World world, int p_i1073_3_, int p_i1073_4_, int p_i1073_5_, CallbackInfo ci) {
+    private void updateGuiSize(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
         ((GuiRepair) (Object) (this)).xSize = X_SIZE;
         ((GuiRepair) (Object) (this)).ySize = Y_SIZE;
     }

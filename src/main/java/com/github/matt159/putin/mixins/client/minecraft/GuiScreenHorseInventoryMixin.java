@@ -31,7 +31,7 @@ public class GuiScreenHorseInventoryMixin implements IPutinGui {
             at = @At(   value = "RETURN",
                         remap = false),
             require = 1)
-    private void updateGuiSize(IInventory p_i1817_1_, IInventory p_i1817_2_, EntityHorse p_i1817_3_, CallbackInfo ci) {
+    private void updateGuiSize(IInventory inventoryPlayer, IInventory inventoryHorse, EntityHorse entityHorse, CallbackInfo ci) {
         ((GuiScreenHorseInventory) (Object) (this)).xSize = X_SIZE;
         ((GuiScreenHorseInventory) (Object) (this)).ySize = Y_SIZE;
     }
@@ -53,7 +53,7 @@ public class GuiScreenHorseInventoryMixin implements IPutinGui {
                         remap = false),
             cancellable = true,
             require = 1)
-    private void rerouteDrawCall(float p_drawGuiContainerBackgroundLayer_1_, int p_drawGuiContainerBackgroundLayer_2_, int p_drawGuiContainerBackgroundLayer_3_, CallbackInfo ci) {
+    private void rerouteDrawCall(float f1, int i1, int i2, CallbackInfo ci) {
         GuiScreenHorseInventory gshi = (GuiScreenHorseInventory) (Object) (this);
         float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 

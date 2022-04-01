@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 
 public class SlotSaddle extends Slot {
 
-    public SlotSaddle(IInventory horseInventory, int p_i1824_2_, int p_i1824_3_, int p_i1824_4_) {
-        super(horseInventory, p_i1824_2_, p_i1824_3_, p_i1824_4_);
+    public SlotSaddle(IInventory horseInventory, int slotIndex, int xDisplayPosition, int yDisplayPosition) {
+        super(horseInventory, slotIndex, xDisplayPosition, yDisplayPosition);
     }
 
     @Override

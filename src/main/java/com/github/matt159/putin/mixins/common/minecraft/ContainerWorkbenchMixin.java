@@ -17,7 +17,7 @@ public class ContainerWorkbenchMixin extends Container {
             at = @At(   value = "RETURN",
                         remap = false),
             require = 1)
-    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World p_i1084_2_, int p_i1084_3_, int p_i1084_4_, int p_i1084_5_, CallbackInfo ci) {
+    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
         ((ContainerWorkbench) (Object) (this)).inventorySlots.clear();
         InventoryCrafting craftMatrix = ((ContainerWorkbench) (Object) (this)).craftMatrix;
 

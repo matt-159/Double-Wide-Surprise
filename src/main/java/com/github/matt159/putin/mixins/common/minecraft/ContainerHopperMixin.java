@@ -19,12 +19,12 @@ public class ContainerHopperMixin extends Container {
             at = @At(   value = "RETURN",
                         remap = false),
             require = 1)
-    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, IInventory p_i1814_2_, CallbackInfo ci) {
+    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, IInventory inventoryHopper, CallbackInfo ci) {
         ((ContainerHopper) (Object) (this)).inventorySlots.clear();
 
         int var4;
-        for(var4 = 0; var4 < p_i1814_2_.getSizeInventory(); ++var4) {
-            this.addSlotToContainer(new Slot(p_i1814_2_, var4, 125 + var4 * 18, 20));
+        for(var4 = 0; var4 < inventoryHopper.getSizeInventory(); ++var4) {
+            this.addSlotToContainer(new Slot(inventoryHopper, var4, 125 + var4 * 18, 20));
         }
 
         PutinUtil.addPutinSlotsToContainer((ContainerHopper) (Object) (this), inventoryPlayer, 8, 51, 109);
