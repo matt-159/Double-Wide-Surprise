@@ -1,4 +1,4 @@
-package com.github.matt159.putin.mixins.common.minecraft;
+package com.github.matt159.putin.mixins.common.minecraft.inventory;
 
 import com.github.matt159.putin.util.PutinUtil;
 import net.minecraft.entity.player.EntityPlayer;
