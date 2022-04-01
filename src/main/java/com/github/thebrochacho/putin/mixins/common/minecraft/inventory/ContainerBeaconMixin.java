@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.mixins.common.minecraft;
+package com.github.thebrochacho.putin.mixins.common.minecraft.inventory;
 
 import com.github.thebrochacho.putin.inventory.slots.minecraft.SlotBeacon;
 import com.github.thebrochacho.putin.util.PutinUtil;

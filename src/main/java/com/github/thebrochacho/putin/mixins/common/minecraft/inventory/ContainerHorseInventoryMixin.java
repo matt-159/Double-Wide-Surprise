@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.mixins.common.minecraft;
+package com.github.thebrochacho.putin.mixins.common.minecraft.inventory;
 
 import com.github.thebrochacho.putin.inventory.slots.minecraft.SlotHorseArmor;
 import com.github.thebrochacho.putin.inventory.slots.minecraft.SlotSaddle;
