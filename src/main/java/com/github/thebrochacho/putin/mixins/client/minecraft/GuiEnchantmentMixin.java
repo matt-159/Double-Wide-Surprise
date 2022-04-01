@@ -23,7 +23,7 @@ public class GuiEnchantmentMixin implements IPutinGui {
     @Inject(method = "<init>",
             at = @At(   value = "RETURN"),
             require = 1)
-    private void updateGuiSize(InventoryPlayer inventoryPlayer, World world, int p_i1090_3_, int p_i1090_4_, int p_i1090_5_, String p_i1090_6_, CallbackInfo ci) {
+    private void updateGuiSize(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, String p_i1090_6_, CallbackInfo ci) {
         ((GuiEnchantment) (Object) (this)).xSize = X_SIZE;
         ((GuiEnchantment) (Object) (this)).ySize = Y_SIZE;
     }

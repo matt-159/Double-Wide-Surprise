@@ -20,7 +20,7 @@ public class ContainerEnchantmentMixin extends Container {
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
             require = 1)
-    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World p_i1811_2_, int p_i1811_3_, int p_i1811_4_, int p_i1811_5_, CallbackInfo ci) {
+    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
         ((ContainerEnchantment) (Object) (this)).inventorySlots.clear();
         this.addSlotToContainer(new SlotEnchantment(tableInventory, 0, 106, 47));
 

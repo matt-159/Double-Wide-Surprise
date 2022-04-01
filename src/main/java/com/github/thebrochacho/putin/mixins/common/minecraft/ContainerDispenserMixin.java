@@ -16,14 +16,14 @@ public class ContainerDispenserMixin extends Container {
             at = @At(   value = "RETURN",
                     remap = false),
             require = 1)
-    private void addSlotsToContainer(IInventory inventoryPlayer, TileEntityDispenser p_i1825_2_, CallbackInfo ci) {
+    private void addSlotsToContainer(IInventory inventoryPlayer, TileEntityDispenser tileEntityDispenser, CallbackInfo ci) {
         ((ContainerDispenser) (Object) (this)).inventorySlots.clear();
 
         int row;
         int col;
         for(row = 0; row < 3; ++row) {
             for(col = 0; col < 3; ++col) {
-                this.addSlotToContainer(new Slot(p_i1825_2_, col + row * 3, 143 + col * 18, 17 + row * 18));
+                this.addSlotToContainer(new Slot(tileEntityDispenser, col + row * 3, 143 + col * 18, 17 + row * 18));
             }
         }
 
