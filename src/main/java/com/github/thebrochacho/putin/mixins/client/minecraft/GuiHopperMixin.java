@@ -23,8 +23,7 @@ public class GuiHopperMixin implements IPutinGui {
     private static final int Y_SIZE = 133;
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN",
-                        remap = false),
+            at = @At(value = "RETURN"),
             require = 1)
     private void updateGuiSize(InventoryPlayer inventoryPlayer, IInventory inventoryHopper, CallbackInfo ci) {
         ((GuiHopper) (Object) (this)).xSize = X_SIZE;
@@ -33,8 +32,7 @@ public class GuiHopperMixin implements IPutinGui {
 
     @Redirect(  method = "drawGuiContainerBackgroundLayer",
                 at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
-                            remap = false),
+                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
                 require = 1)
     private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
         instance.bindTexture(location);
@@ -42,8 +40,7 @@ public class GuiHopperMixin implements IPutinGui {
 
     @Redirect(  method = "drawGuiContainerBackgroundLayer",
                 at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/gui/GuiHopper;drawTexturedModalRect(IIIIII)V",
-                            remap = false),
+                            target = "Lnet/minecraft/client/gui/GuiHopper;drawTexturedModalRect(IIIIII)V"),
                 require = 1)
     private void rerouteDrawCall(GuiHopper instance, int x, int y, int u, int v, int w, int h) {
         float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();

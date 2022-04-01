@@ -13,8 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ContainerDispenserMixin extends Container {
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN",
-                    remap = false),
+            at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(IInventory inventoryPlayer, TileEntityDispenser tileEntityDispenser, CallbackInfo ci) {
         ((ContainerDispenser) (Object) (this)).inventorySlots.clear();

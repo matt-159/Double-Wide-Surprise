@@ -41,7 +41,7 @@ public class GuiContainerCreativeMixin implements IPutinGui {
     }
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN"),
+            at = @At(value = "RETURN"),
             require = 1)
     private void updateGuiSize(EntityPlayer entityPlayer, CallbackInfo ci) {
         ((GuiContainerCreative) (Object) this).xSize = X_SIZE;
@@ -95,8 +95,7 @@ public class GuiContainerCreativeMixin implements IPutinGui {
     @Redirect(  method = "drawGuiContainerBackgroundLayer",
                 at = @At(   value = "INVOKE",
                             target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
-                            ordinal = 3,
-                            remap = false),
+                            ordinal = 3),
                 require = 1)
     private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
         CreativeTabs creativeTabs = CreativeTabs.creativeTabArray[selectedTabIndex];
@@ -107,8 +106,7 @@ public class GuiContainerCreativeMixin implements IPutinGui {
     @Redirect(  method = "drawGuiContainerBackgroundLayer",
                 at = @At(   value = "INVOKE",
                             target = "Lnet/minecraft/client/gui/inventory/GuiContainerCreative;drawTexturedModalRect(IIIIII)V",
-                            ordinal = 0,
-                            remap = false),
+                            ordinal = 0),
                 require = 1)
     private void rerouteBackgroundGuiDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
         GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
@@ -168,7 +166,7 @@ public class GuiContainerCreativeMixin implements IPutinGui {
     }
 
     @Inject(method = "handleMouseClick",
-            at = @At(   value = "HEAD"),
+            at = @At(value = "HEAD"),
             require = 1)
     private void captureSlot(Slot slot, int p_handleMouseClick_2_, int p_handleMouseClick_3_, int p_handleMouseClick_4_, CallbackInfo ci) {
         this.slot = slot instanceof SlotCreative ? ((SlotCreative) slot).field_148332_b : slot;

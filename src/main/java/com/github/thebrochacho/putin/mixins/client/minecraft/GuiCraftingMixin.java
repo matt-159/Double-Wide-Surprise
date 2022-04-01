@@ -23,8 +23,7 @@ public class GuiCraftingMixin implements IPutinGui {
     private static final int Y_SIZE = 166;
 
     @Inject(method = "<init>",
-            at = @At(   value = "RETURN",
-                        remap = false),
+            at = @At(   value = "RETURN"),
             require = 1)
     private void updateGuiSize(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
         ((GuiCrafting) (Object) (this)).xSize = X_SIZE;
@@ -33,8 +32,7 @@ public class GuiCraftingMixin implements IPutinGui {
 
     @Redirect(  method = "drawGuiContainerBackgroundLayer",
                 at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
-                            remap = false),
+                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
                 require = 1)
     private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
         instance.bindTexture(location);
