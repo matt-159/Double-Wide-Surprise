@@ -50,6 +50,8 @@ public enum Mixin {
     GuiMerchantMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiMerchantMixin")),
     ContainerMerchantMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerMerchantMixin")),
 
+    GuiBeaconMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiBeaconMixin")),
+    GuiContainerBeaconMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ContainerBeaconMixin")),
     //Forge
     //NetworkRegistryMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.NetworkRegistryMixin")),
 
