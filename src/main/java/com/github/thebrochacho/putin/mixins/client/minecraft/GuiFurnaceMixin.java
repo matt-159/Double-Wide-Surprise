@@ -1,6 +1,7 @@
 package com.github.thebrochacho.putin.mixins.client.minecraft;
 
 import com.github.thebrochacho.putin.Tags;
+import com.github.thebrochacho.putin.interfaces.IPutinGui;
 import com.github.thebrochacho.putin.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiFurnace;
@@ -16,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiFurnace.class)
-public class GuiFurnaceMixin {
+public class GuiFurnaceMixin implements IPutinGui {
 
     @Shadow private TileEntityFurnace tileFurnace;
     private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/furnace.png");

@@ -1,6 +1,7 @@
 package com.github.thebrochacho.putin.mixins.client.minecraft;
 
 import com.github.thebrochacho.putin.Tags;
+import com.github.thebrochacho.putin.interfaces.IPutinGui;
 import com.github.thebrochacho.putin.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiScreenHorseInventory.class)
-public class GuiScreenHorseInventoryMixin {
+public class GuiScreenHorseInventoryMixin implements IPutinGui {
 
     @Shadow private EntityHorse field_147034_x;
     @Shadow private float field_147033_y;
