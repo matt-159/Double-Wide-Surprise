@@ -5,8 +5,8 @@ import baubles.api.IBauble;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.thebrochacho.putin.Config;
-import com.github.thebrochacho.putin.gui.SlotPutin;
-import com.github.thebrochacho.putin.interfaces.IGalacticWearable;
+import com.github.thebrochacho.putin.inventory.slots.SlotPutin;
+import com.github.thebrochacho.putin.interfaces.galacticraft.IGalacticWearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import micdoodle8.mods.galacticraft.api.item.IItemThermal;
@@ -33,7 +33,7 @@ import travellersgear.common.inventory.InventoryTG;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-import static com.github.thebrochacho.putin.gui.SlotPutin.SlotType.*;
+import static com.github.thebrochacho.putin.inventory.slots.SlotPutin.SlotType.*;
 
 public class ContainerPutin extends Container {
     //Offset so that itemslots don't get mapped to each other

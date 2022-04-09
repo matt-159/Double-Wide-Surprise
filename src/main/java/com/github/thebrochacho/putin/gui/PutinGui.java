@@ -3,6 +3,7 @@ package com.github.thebrochacho.putin.gui;
 import com.github.thebrochacho.putin.Config;
 import com.github.thebrochacho.putin.Tags;
 import com.github.thebrochacho.putin.gui.SlotOverlays.Hints;
+import com.github.thebrochacho.putin.interfaces.IPutinGui;
 import com.github.thebrochacho.putin.inventory.ContainerPutin;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.Minecraft;
@@ -19,7 +20,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-public class PutinGui extends GuiInventory {
+public class PutinGui extends GuiInventory implements IPutinGui {
 
     public static final ResourceLocation PUTIN_TEXTURE = new ResourceLocation(Tags.MODID, "textures/putinv.png");
     private static final int GUI_WIDTH = 338;
