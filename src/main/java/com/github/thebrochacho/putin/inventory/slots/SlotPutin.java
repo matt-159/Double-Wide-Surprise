@@ -1,4 +1,4 @@
-package com.github.thebrochacho.putin.gui;
+package com.github.thebrochacho.putin.inventory.slots;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
