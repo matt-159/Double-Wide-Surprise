@@ -1,4 +1,4 @@
-package com.github.matt159.putin.gui;
+package com.github.matt159.putin.inventory.slots;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;

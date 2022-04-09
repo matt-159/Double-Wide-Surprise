@@ -1,6 +1,6 @@
 package com.github.matt159.putin.mixins.common.galacticraft;
 
-import com.github.matt159.putin.interfaces.IGalacticWearable;
+import com.github.matt159.putin.interfaces.galacticraft.IGalacticWearable;
 import micdoodle8.mods.galacticraft.core.items.*;
 import micdoodle8.mods.galacticraft.planets.asteroids.items.ItemThermalPadding;
 import org.spongepowered.asm.mixin.Implements;
