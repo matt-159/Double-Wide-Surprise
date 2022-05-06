@@ -1,6 +1,7 @@
 package com.github.thebrochacho.putin.mixins.plugin;
 
 import com.github.thebrochacho.putin.Tags;
+import com.github.thebrochacho.putin.mixins.common.galacticraft.ContainerExtendedInventoryMixin;
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import org.spongepowered.asm.mixin.throwables.MixinException;
 
@@ -60,10 +61,11 @@ public enum Mixin {
     //NetworkRegistryMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.NetworkRegistryMixin")),
 
     //NEI
-    ClientUtilsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.ClientUtilsMixin"));
+    ClientUtilsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.ClientUtilsMixin")),
 
     //Galacticraft
 //    IGalacticWearableMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.GalacticWearableMixin")),
+    ContainerExtendedInventoryMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.ContainerExtendedInventoryMixin"));
 
     //TravellersGear
 //    GuiButtonGearMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "travellersgear.GuiButtonGearMixin"));
