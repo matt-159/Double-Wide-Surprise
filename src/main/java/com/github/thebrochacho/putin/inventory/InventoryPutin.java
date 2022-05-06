@@ -1,18 +1,10 @@
 package com.github.thebrochacho.putin.inventory;
 
-import baubles.common.container.InventoryBaubles;
-import baubles.common.lib.PlayerHandler;
-import com.github.thebrochacho.putin.Config;
-import com.github.thebrochacho.putin.util.ModCompat;
-import micdoodle8.mods.galacticraft.core.inventory.InventoryExtended;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import tconstruct.armor.player.TPlayerStats;
-import travellersgear.api.TravellersGearAPI;
 
 public class InventoryPutin extends InventoryPlayer {
 
@@ -84,5 +76,18 @@ public class InventoryPutin extends InventoryPlayer {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean isItemValidForSlot(int slot, ItemStack stack) {
+        boolean retval = false;
+
+        if (slot > 0 && slot < 72) {
+            retval = true;
+        } else if (slot < 76) {
+            retval = stack.getItem().isValidArmor(stack, 75 - slot, null);
+        }
+
+        return retval;
     }
 }
