@@ -37,11 +37,6 @@ import static com.github.matt159.putin.inventory.slots.SlotPutin.SlotType.*;
 
 public class ContainerPutin extends Container {
     //Offset so that itemslots don't get mapped to each other
-    public static int BAUBLES_SLOT_START = -1;
-    public static int TINKERS_SLOT_START = -1;
-    public static int TG_SLOT_START = -1;
-    public static int GC_SLOT_START = -1;
-
     private static final int CRAFTING_SLOT_X_OFFSET = 162;
 
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 2, 2);
@@ -49,10 +44,6 @@ public class ContainerPutin extends Container {
     public boolean isLocalWorld;
     private final EntityPlayer thePlayer;
 
-    public InventoryBaubles baubles;
-    public ArmorExtended tinkers;
-    public InventoryTG travellers;
-    public InventoryExtended gc;
     public static ArrayList<Pair<Integer, Integer>> nullSlots = null;
 
     public ContainerPutin(InventoryPlayer inventoryPlayer, boolean p_i1819_2_, EntityPlayer player) {
@@ -60,7 +51,6 @@ public class ContainerPutin extends Container {
         this.thePlayer = player;
 
         this.inventorySlots.clear();
-        ArrayList<Pair<Integer, Integer>> nullSlots = new ArrayList<>();
 
         /*=========================================================================================================
          * Vanilla Slots + Putinventory
@@ -126,116 +116,12 @@ public class ContainerPutin extends Container {
         this.onCraftMatrixChanged(this.craftMatrix);
 
         int xOffset = 80;
-
-        if (Config.isBaublesLoaded) {
-            if (BAUBLES_SLOT_START == -1) {
-                BAUBLES_SLOT_START = this.inventorySlots.size();
-            }
-
-            baubles = new InventoryBaubles(player);
-            baubles.setEventHandler(this);
-            if (!player.worldObj.isRemote) {
-                baubles.stackList = PlayerHandler.getPlayerBaubles(player).stackList;
-            }
-
-            this.addSlotToContainer(new SlotPutin(baubles, 0, xOffset,8 + 0 * 18, player, BAUBLE_AMULET));
-            this.addSlotToContainer(new SlotPutin(baubles, 1, xOffset,8 + 1 * 18, player, BAUBLE_RING));
-            this.addSlotToContainer(new SlotPutin(baubles, 2, xOffset,8 + 2 * 18, player, BAUBLE_RING));
-            this.addSlotToContainer(new SlotPutin(baubles, 3, xOffset,8 + 3 * 18, player, BAUBLE_BELT));
-
-            //size of one inventory slot;
-            xOffset += 18;
-        }
-
-        if (Config.isTinkersLoaded) {
-            if (TINKERS_SLOT_START == -1) {
-                TINKERS_SLOT_START = this.inventorySlots.size();
-            }
-
-            tinkers = TPlayerStats.get(player).armor;
-
-            this.addSlotToContainer(new SlotPutin(tinkers, 0, xOffset, 8 + 0 * 18, player, TINKERS_MASK));
-            this.addSlotToContainer(new SlotPutin(tinkers, 1, xOffset, 8 + 1 * 18, player, TINKERS_GLOVE));
-            this.addSlotToContainer(new SlotPutin(tinkers, 3, xOffset, 8 + 2 * 18, player, TINKERS_BELT));
-            this.addSlotToContainer(new SlotPutin(tinkers, 2, xOffset, 8 + 3 * 18, player, TINKERS_KNAPSACK));
-            xOffset += 18;
-
-            this.addSlotToContainer(new SlotPutin(tinkers, 6, xOffset, 8 + 0 * 18, player, TINKERS_HEART_RED));
-            this.addSlotToContainer(new SlotPutin(tinkers, 5, xOffset, 8 + 1 * 18, player, TINKERS_HEART_YELLOW));
-            this.addSlotToContainer(new SlotPutin(tinkers, 4, xOffset, 8 + 2 * 18, player, TINKERS_HEART_GREEN));
-            nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
-
-            xOffset += 18;
-        }
-
-        if (Config.isTravellersGearLoaded) {
-            if (TG_SLOT_START == -1) {
-                TG_SLOT_START = this.inventorySlots.size();
-            }
-
-            travellers = new InventoryTG(this, player);
-            if(!player.worldObj.isRemote) {
-                travellers.stackList = TravellersGearAPI.getExtendedInventory(player);
-            }
-
-            this.addSlotToContainer(new SlotPutin(travellers, 0, xOffset, 8 + 0 * 18, player, TRAVEL_CLOAK));
-            this.addSlotToContainer(new SlotPutin(travellers, 1, xOffset, 8 + 1 * 18, player, TRAVEL_PAULDRON));
-            this.addSlotToContainer(new SlotPutin(travellers, 2, xOffset, 8 + 2 * 18, player, TRAVEL_VAMBRACE));
-            this.addSlotToContainer(new SlotPutin(travellers, 3, xOffset, 8 + 3 * 18, player, TRAVEL_TITLE));
-            xOffset += 18;
-        }
-
-        if (Config.isGalacticraftLoaded) {
-            if (GC_SLOT_START == -1) {
-                GC_SLOT_START = this.inventorySlots.size();
-            }
-
-            gc = ClientProxyCore.dummyInventory;
-
-            if (!player.worldObj.isRemote) {
-                EntityPlayerMP playerMP = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
-                gc = GCPlayerStats.get(playerMP).extendedInventory;
-            }
-
-            if (gc != null) {
-                this.addSlotToContainer(new SlotPutin(gc, 6, xOffset, 8 + 0 * 18, player, GC_THERMAL_HELM));
-                this.addSlotToContainer(new SlotPutin(gc, 7, xOffset, 8 + 1 * 18, player, GC_THERMAL_CHEST));
-                this.addSlotToContainer(new SlotPutin(gc, 8, xOffset, 8 + 2 * 18, player, GC_THERMAL_LEGS));
-                this.addSlotToContainer(new SlotPutin(gc, 9, xOffset, 8 + 3 * 18, player, GC_THERMAL_BOOTS));
-                xOffset += 18;
-
-                this.addSlotToContainer(new SlotPutin(gc, 4, xOffset, 8 + 0 * 18, player, GC_PARACHUTE));
-                this.addSlotToContainer(new SlotPutin(gc, 0, xOffset, 8 + 1 * 18, player, GC_OXYGEN_MASK));
-                this.addSlotToContainer(new SlotPutin(gc, 2, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
-                nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
-                xOffset += 18;
-
-                this.addSlotToContainer(new SlotPutin(gc, 5, xOffset, 8 + 0 * 18, player, GC_FREQUENCY_MODULE));
-                this.addSlotToContainer(new SlotPutin(gc, 1, xOffset, 8 + 1 * 18, player, GC_OXYGEN_GEAR));
-                this.addSlotToContainer(new SlotPutin(gc, 3, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
-                nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
-                xOffset += 18;
-            }
-        }
-
-        if (ContainerPutin.nullSlots == null) {
-            ContainerPutin.nullSlots = nullSlots;
-        }
     }
 
     @Override
     public void onContainerClosed(EntityPlayer player) {
         super.onContainerClosed(player);
 
-        if (!player.worldObj.isRemote) {
-            if (Config.isBaublesLoaded) {
-                PlayerHandler.setPlayerBaubles(player, baubles);
-            }
-
-            if (Config.isTravellersGearLoaded) {
-                TravellersGearAPI.setExtendedInventory(player, travellers.stackList);
-            }
-        }
     }
 
     @Override
@@ -265,128 +151,6 @@ public class ContainerPutin extends Container {
                 if (!mergeItemStack(itemStackInSlot, armorType + 5, armorType + 6, false))
                     return null;
             }
-            /*=========================================================================================================
-             * Baubles
-             *========================================================================================================*/
-            else if (Config.isBaublesLoaded &&
-                    itemStack.getItem() instanceof IBauble &&
-                    ((IBauble) itemStack.getItem()).getBaubleType(itemStack) != null) {
-                IBauble bauble = (IBauble) itemStack.getItem();
-                BaubleType type = bauble.getBaubleType(itemStack);
-
-                if (type == BaubleType.AMULET &&
-                        bauble.canEquip(itemStack, player) &&
-                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 0)).getHasStack()) {
-                    if (!mergeItemStack(itemStackInSlot, BAUBLES_SLOT_START + 0, BAUBLES_SLOT_START + 1, false))
-                        return null;
-                }
-                else if (type == BaubleType.RING &&
-                        bauble.canEquip(itemStack, player) &&
-                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 1)).getHasStack()) {
-                    if (!mergeItemStack(itemStackInSlot, BAUBLES_SLOT_START + 1, BAUBLES_SLOT_START + 2, false))
-                        return null;
-                }
-                else if (type == BaubleType.RING &&
-                        bauble.canEquip(itemStack, player) &&
-                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 2)).getHasStack()) {
-                    if (!mergeItemStack(itemStackInSlot, BAUBLES_SLOT_START + 2, BAUBLES_SLOT_START + 3, false))
-                        return null;
-                }
-                else if (type == BaubleType.BELT &&
-                        bauble.canEquip(itemStack, player) &&
-                        !((Slot) this.inventorySlots.get(BAUBLES_SLOT_START + 3)).getHasStack()) {
-                    if (!mergeItemStack(itemStackInSlot, BAUBLES_SLOT_START + 3, BAUBLES_SLOT_START + 4, false))
-                        return null;
-                }
-            }
-            /*=========================================================================================================
-             * Tinkers Construct
-             *========================================================================================================*/
-            else if (Config.isTinkersLoaded &&
-                    itemStackInSlot.getItem() instanceof IAccessory) {
-
-                IAccessory accessory = ((IAccessory) itemStackInSlot.getItem());
-                //Tinkers Mask
-                if (accessory.canEquipAccessory(itemStackInSlot, 0) &&
-                    !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 0, TINKERS_SLOT_START + 1, false)) {
-                    return null;
-                }
-                //Travel Glove
-                else if (accessory.canEquipAccessory(itemStackInSlot, 1) &&
-                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 1, TINKERS_SLOT_START + 2, false)) {
-                        return null;
-                }
-                //Travel Belt
-                else if (accessory.canEquipAccessory(itemStackInSlot, 3) &&
-                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 2, TINKERS_SLOT_START + 3, false)) {
-                        return null;
-                }
-                //Knapsack
-                else if (accessory.canEquipAccessory(itemStackInSlot, 2) &&
-                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 3, TINKERS_SLOT_START + 4, false)) {
-                        return null;
-                }
-                //Red Canister
-                else if (accessory.canEquipAccessory(itemStackInSlot, 6) &&
-                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 4, TINKERS_SLOT_START + 5, false)) {
-                        return null;
-                }
-                //Yellow Canister
-                else if (accessory.canEquipAccessory(itemStackInSlot, 5) &&
-                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 5, TINKERS_SLOT_START + 6, false)) {
-                        return null;
-                }
-                //Green Canister
-                else if (accessory.canEquipAccessory(itemStackInSlot, 4) &&
-                        !mergeItemStack(itemStackInSlot, TINKERS_SLOT_START + 6, TINKERS_SLOT_START + 7, false)) {
-                        return null;
-                }
-            }
-            /*=========================================================================================================
-             * Traveller's Gear
-             *========================================================================================================*/
-            else if (Config.isTravellersGearLoaded &&
-                    itemStack.getItem() instanceof ITravellersGear) {
-                ITravellersGear travellersGear = (ITravellersGear) itemStack.getItem();
-
-                int tgSlot = travellersGear.getSlot(itemStack);
-
-                if (!mergeItemStack(itemStackInSlot, TG_SLOT_START + tgSlot, TG_SLOT_START + tgSlot + 1, false))
-                    return null;
-            }
-            /*=========================================================================================================
-             * Galacticraft
-             *========================================================================================================*/
-            else if (Config.isGalacticraftLoaded &&
-                    itemStack.getItem() instanceof IGalacticWearable) {
-                IGalacticWearable gcItem = (IGalacticWearable) itemStack.getItem();
-
-                if (gcItem instanceof IItemThermal &&
-                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 0, GC_SLOT_START + 4, false)) {
-                    return null;
-                }
-                else if (gcItem instanceof ItemOxygenMask &&
-                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 5, GC_SLOT_START + 6, false)) {
-                    return null;
-                }
-                else if (gcItem instanceof ItemOxygenGear &&
-                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 8, GC_SLOT_START + 9, false)) {
-                    return null;
-                }
-                else if (gcItem instanceof ItemOxygenTank &&
-                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 6, GC_SLOT_START + 10, false)) {
-                    return null;
-                }
-                else if (gcItem instanceof ItemBasic &&
-                        itemStack.getItemDamage() == 19 &&
-                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 7, GC_SLOT_START + 8, false)) {
-                    return null;
-                }
-                else if (gcItem instanceof ItemParaChute &&
-                        !mergeItemStack(itemStackInSlot, GC_SLOT_START + 4, GC_SLOT_START + 5, false)) {
-                    return null;
-                }
-            }
 
             if (itemStackInSlot.stackSize == 0) {
                 slot.putStack((ItemStack)null);
@@ -406,15 +170,6 @@ public class ContainerPutin extends Container {
 
     @Override
     public void putStacksInSlots(ItemStack[] p_75131_1_) {
-        baubles.blockEvents = true;
-        try {
-            Field allowEvents = travellers.getClass().getDeclaredField("allowEvents");
-            allowEvents.setAccessible(true);
-            allowEvents.set(travellers, false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         super.putStacksInSlots(p_75131_1_);
     }
 }
