@@ -1,22 +1,18 @@
 package com.github.thebrochacho.putin.gui;
 
-import com.github.thebrochacho.putin.Config;
 import com.github.thebrochacho.putin.Tags;
 import com.github.thebrochacho.putin.gui.SlotOverlays.Hints;
 import com.github.thebrochacho.putin.interfaces.IPutinGui;
-import com.github.thebrochacho.putin.inventory.ContainerPutin;
 import com.github.thebrochacho.putin.util.PutinUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
-import org.apache.commons.lang3.tuple.Pair;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -49,48 +45,6 @@ public class PutinGui extends GuiInventory implements IPutinGui {
         this.mc.getTextureManager().bindTexture(PUTIN_TEXTURE);
 
         PutinUtil.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, GUI_WIDTH, GUI_HEIGHT, this.zLevel);
-
-        if (Config.isBaublesLoaded) {
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 0), Hints.AMULET);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 1), Hints.RING);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 2), Hints.RING);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.BAUBLES_SLOT_START + 3), Hints.BAUBLE_BELT);
-        }
-
-        if (Config.isTinkersLoaded) {
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 0), Hints.MASK);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 1), Hints.GLOVE);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 2), Hints.TINKERS_BELT);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 3), Hints.KNAPSACK);
-
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 4), Hints.RED_CANISTER);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 5), Hints.YELLOW_CANISTER);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TINKERS_SLOT_START + 6), Hints.GREEN_CANISTER);
-        }
-
-        if (Config.isTravellersGearLoaded) {
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TG_SLOT_START + 0), Hints.CLOAK);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TG_SLOT_START + 1), Hints.PAULDRON);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TG_SLOT_START + 2), Hints.VAMBRACE);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.TG_SLOT_START + 3), Hints.TITLE);
-        }
-
-        if (Config.isGalacticraftLoaded) {
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 0), Hints.THERMAL_HELMET);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 1), Hints.THERMAL_CHEST);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 2), Hints.THERMAL_PANTS);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 3), Hints.THERMAL_BOOTS);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 4), Hints.PARACHUTE);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 5), Hints.OXYGEN_MASK);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 6), Hints.OXYGEN_TANK);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 7), Hints.FREQUENCY_MODULE);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 8), Hints.OXYGEN_GEAR);
-            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerPutin.GC_SLOT_START + 9), Hints.OXYGEN_TANK);
-        }
-
-        for (Pair<Integer, Integer> nullSlotXY : ContainerPutin.nullSlots) {
-            PutinUtil.drawTexturedModalRect(guiLeft + nullSlotXY.getLeft() - 1, guiTop + nullSlotXY.getRight() - 1, 96, 208, 18, 18, this.zLevel);
-        }
 
         drawPlayerModel(    this.guiLeft + 51,
                             this.guiTop + 75,
