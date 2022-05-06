@@ -56,12 +56,11 @@ public class PutinGui extends GuiInventory implements IPutinGui {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
-        for (int i = 0; i < this.inventorySlots.inventorySlots.size(); ++i) {
-            Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i);
-//            String value = Integer.toString(i);
-            String value = Integer.toString(slot.getSlotIndex());
-            this.fontRendererObj.drawString(value, slot.xDisplayPosition, slot.yDisplayPosition, 4210752);
-        }
+//        for (int i = 0; i < this.inventorySlots.inventorySlots.size(); ++i) {
+//            Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i);
+//            String value = Integer.toString(slot.getSlotIndex());
+//            this.fontRendererObj.drawString(value, slot.xDisplayPosition, slot.yDisplayPosition, 4210752);
+//        }
     }
 
     private void drawSlotAndOverlay(Slot slot, Hints hint) {
