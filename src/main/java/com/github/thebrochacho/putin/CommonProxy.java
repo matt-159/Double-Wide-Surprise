@@ -41,28 +41,7 @@ public class CommonProxy implements IGuiHandler {
     // postInit "Handle interaction with other mods, complete your setup based on this."
     @SuppressWarnings("unchecked")
     public void postInit(FMLPostInitializationEvent event) {
-        try {
-            Field f = MinecraftForge.EVENT_BUS.getClass().getDeclaredField("listeners");
-            f.setAccessible(true);
-
-            ConcurrentHashMap<Object, ArrayList<IEventListener>> listeners = (ConcurrentHashMap<Object, ArrayList<IEventListener>>) f.get(MinecraftForge.EVENT_BUS);
-
-            Enumeration<Object> keys = listeners.keys();
-            while (keys.hasMoreElements()) {
-                Object key = keys.nextElement();
-                // Stop baubles ring button from rendering
-                if (key instanceof GuiEvents) {
-                    MinecraftForge.EVENT_BUS.unregister(key);
-                }
-
-                // Stop tinker's tabs from rendering
-                if (key instanceof TabRegistry) {
-                    MinecraftForge.EVENT_BUS.unregister(key);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        disableOtherInventoryButtons();
     }
 
     public void serverAboutToStart(FMLServerAboutToStartEvent event) {
@@ -104,4 +83,29 @@ public class CommonProxy implements IGuiHandler {
     public void registerHandlers() {}
 
     public void registerKeyBindings() {}
+
+    public void disableOtherInventoryButtons() {
+        try {
+            Field f = MinecraftForge.EVENT_BUS.getClass().getDeclaredField("listeners");
+            f.setAccessible(true);
+
+            ConcurrentHashMap<Object, ArrayList<IEventListener>> listeners = (ConcurrentHashMap<Object, ArrayList<IEventListener>>) f.get(MinecraftForge.EVENT_BUS);
+
+            Enumeration<Object> keys = listeners.keys();
+            while (keys.hasMoreElements()) {
+                Object key = keys.nextElement();
+                // Stop baubles ring button from rendering
+                if (key instanceof GuiEvents) {
+                    MinecraftForge.EVENT_BUS.unregister(key);
+                }
+
+                // Stop tinker's tabs from rendering
+                if (key instanceof TabRegistry) {
+                    MinecraftForge.EVENT_BUS.unregister(key);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
