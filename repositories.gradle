@@ -9,5 +9,8 @@ repositories {
             artifact()
         }
     }
-    maven { url "https://cursemaven.com" }
+    maven {
+        name = "cursemaven"
+        url = "https://cursemaven.falsepattern.com/"
+    }
 }
