@@ -27,7 +27,7 @@ public class GuiShiftInventoryButton extends GuiButton {
     public void drawButton(Minecraft mc, int x, int y) {
         if (this.visible) {
             FontRenderer fontRenderer = mc.fontRenderer;
-            mc.getTextureManager().bindTexture(DWSGui.PUTIN_TEXTURE);
+            mc.getTextureManager().bindTexture(DWSGui.DWS_TEXTURE);
 
             DWSUtil.drawTexturedModalRect(this.xPosition, this.yPosition, 128, 176 + facing.ordinal() * 16, 18, 12, 10);
         }
