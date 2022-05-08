@@ -12,7 +12,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.ArrayList;
 
-public class ContainerPutin extends Container {
+public class ContainerDWS extends Container {
     //Offset so that itemslots don't get mapped to each other
     private static final int CRAFTING_SLOT_X_OFFSET = 162;
 
@@ -23,7 +23,7 @@ public class ContainerPutin extends Container {
 
     public static ArrayList<Pair<Integer, Integer>> nullSlots = null;
 
-    public ContainerPutin(InventoryPlayer inventoryPlayer, boolean p_i1819_2_, EntityPlayer player) {
+    public ContainerDWS(InventoryPlayer inventoryPlayer, boolean p_i1819_2_, EntityPlayer player) {
         this.isLocalWorld = p_i1819_2_;
         this.thePlayer = player;
 

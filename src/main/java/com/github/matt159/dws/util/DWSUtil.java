@@ -1,7 +1,7 @@
 package com.github.matt159.dws.util;
 
-import com.github.matt159.dws.inventory.ContainerPutin;
-import com.github.matt159.dws.inventory.InventoryPutin;
+import com.github.matt159.dws.inventory.ContainerDWS;
+import com.github.matt159.dws.inventory.InventoryDWS;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -29,8 +29,8 @@ public class DWSUtil {
     }
 
     public static void shiftMainInventory(EntityPlayer player) {
-        if (player.inventoryContainer instanceof ContainerPutin) {
-            InventoryPutin inventory = (InventoryPutin) player.inventory;
+        if (player.inventoryContainer instanceof ContainerDWS) {
+            InventoryDWS inventory = (InventoryDWS) player.inventory;
 
             int size = inventory.mainInventory.length;
             List<ItemStack> items = new ArrayList<>(size);
@@ -57,7 +57,7 @@ public class DWSUtil {
 
     public static int getFirstPlayerSlotIndex(Container container) {
         for (int i = 0; i < container.inventorySlots.size(); ++i) {
-            if (container.getSlot(i).inventory instanceof InventoryPutin) {
+            if (container.getSlot(i).inventory instanceof InventoryDWS) {
                 return i;
             }
         }

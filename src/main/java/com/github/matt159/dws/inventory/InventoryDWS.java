@@ -6,9 +6,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
-public class InventoryPutin extends InventoryPlayer {
+public class InventoryDWS extends InventoryPlayer {
 
-    public InventoryPutin(EntityPlayer p_i1750_1_) {
+    public InventoryDWS(EntityPlayer p_i1750_1_) {
         super(p_i1750_1_);
         this.mainInventory = new ItemStack[72];
     }

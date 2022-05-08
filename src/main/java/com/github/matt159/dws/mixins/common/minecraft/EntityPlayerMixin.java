@@ -1,7 +1,7 @@
 package com.github.matt159.dws.mixins.common.minecraft;
 
-import com.github.matt159.dws.inventory.ContainerPutin;
-import com.github.matt159.dws.inventory.InventoryPutin;
+import com.github.matt159.dws.inventory.ContainerDWS;
+import com.github.matt159.dws.inventory.InventoryDWS;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -16,15 +16,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(EntityPlayer.class)
 public abstract class EntityPlayerMixin {
 
-    @Shadow public Container inventoryContainer;
+    //needs the alias because forge being forge and not working outside of dev
+    @Shadow(aliases = {"field_71069_bz"})
+    public Container inventoryContainer;
+
     @Shadow public InventoryPlayer inventory;
     @Shadow public Container openContainer;
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"))
     public void bypassEntityPlayer(World world, GameProfile gameProfile, CallbackInfo ci) {
-        this.inventory = new InventoryPutin((EntityPlayer) (Object)this);
-        this.inventoryContainer = new ContainerPutin(this.inventory, !world.isRemote, (EntityPlayer) (Object)this);
+        this.inventory = new InventoryDWS((EntityPlayer) (Object)this);
+        this.inventoryContainer = new ContainerDWS(this.inventory, !world.isRemote, (EntityPlayer) (Object)this);
         this.openContainer = this.inventoryContainer;
     }
 }

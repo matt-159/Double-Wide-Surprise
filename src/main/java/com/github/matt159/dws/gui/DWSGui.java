@@ -18,7 +18,7 @@ import org.lwjgl.opengl.GL12;
 
 public class DWSGui extends GuiInventory implements IDWSGui {
 
-    public static final ResourceLocation PUTIN_TEXTURE = new ResourceLocation(Tags.MODID, "textures/dwsinv.png");
+    public static final ResourceLocation DWS_TEXTURE = new ResourceLocation(Tags.MODID, "textures/dwsinv.png");
     private static final int GUI_WIDTH = 338;
     private static final int GUI_HEIGHT = 166;
 
@@ -42,7 +42,7 @@ public class DWSGui extends GuiInventory implements IDWSGui {
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-        this.mc.getTextureManager().bindTexture(PUTIN_TEXTURE);
+        this.mc.getTextureManager().bindTexture(DWS_TEXTURE);
 
         DWSUtil.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, GUI_WIDTH, GUI_HEIGHT, this.zLevel);
 
@@ -65,7 +65,7 @@ public class DWSGui extends GuiInventory implements IDWSGui {
 
     private void drawSlotAndOverlay(Slot slot, Hints hint) {
         GL11.glColor3f(1, 1, 1);
-        Minecraft.getMinecraft().getTextureManager().bindTexture(PUTIN_TEXTURE);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(DWS_TEXTURE);
         GL11.glEnable(3042);
 
         int x = this.guiLeft + slot.xDisplayPosition - 1;
