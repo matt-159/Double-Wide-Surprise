@@ -7,7 +7,8 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(Gui.class)
 public class GuiMixin implements IGuiMixin {
-    @Shadow protected float zLevel;
+    @Shadow(aliases = {"field_73735_i"})
+    protected float zLevel;
 
     @Override
     public float getZLevel() {
