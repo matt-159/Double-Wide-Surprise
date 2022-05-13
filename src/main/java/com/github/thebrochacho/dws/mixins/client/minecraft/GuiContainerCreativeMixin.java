@@ -5,7 +5,9 @@ import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.dws.inventory.slots.minecraft.SlotCreative;
 import com.github.thebrochacho.dws.util.DWSUtil;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
+import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,11 +24,12 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiContainerCreative.class)
-public class GuiContainerCreativeMixin implements IDWSGui {
+public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer implements IDWSGui {
 
     @Shadow private static int selectedTabIndex;
 
     @Shadow public static InventoryBasic field_147060_v;
+
     @Mutable
     @Shadow @Final private static ResourceLocation field_147061_u;
     private Slot slot;
@@ -38,6 +41,10 @@ public class GuiContainerCreativeMixin implements IDWSGui {
     static {
         field_147060_v = new InventoryBasic("tmp", true, 90);
         field_147061_u = new ResourceLocation(Tags.MODID, "textures/minecraft/creative_inventory/tabs.png");
+    }
+
+    public GuiContainerCreativeMixin(Container container) {
+        super(container);
     }
 
     @Inject(method = "<init>",
@@ -110,7 +117,7 @@ public class GuiContainerCreativeMixin implements IDWSGui {
                 require = 1)
     private void rerouteBackgroundGuiDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
         GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
-        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
+        float zLevel = ((IGuiMixin) (Gui) (Object) (this)).getZLevel();
 
         int x1 = (gcc.width - gcc.xSize) / 2;
         int y1 = (gcc.height - gcc.ySize) / 2;
@@ -160,7 +167,7 @@ public class GuiContainerCreativeMixin implements IDWSGui {
                 require = 1)
     private void rerouteDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
         GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
-        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
+//        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 
         DWSUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
