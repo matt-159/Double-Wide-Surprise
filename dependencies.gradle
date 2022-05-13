@@ -16,11 +16,4 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:Galacticraft:master-SNAPSHOT:dev") {
         transitive = false
     }
-
-    compileOnly("curse.maven:ftb-utilities-forge-237102:2291494") {
-        transitive = false;
-    }
-    compileOnly("curse.maven:ftb-library-legacy-forge-237167:2291433") {
-        transitive = false;
-    }
 }
