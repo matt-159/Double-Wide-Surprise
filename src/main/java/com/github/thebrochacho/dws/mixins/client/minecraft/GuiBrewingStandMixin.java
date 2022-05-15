@@ -5,8 +5,10 @@ import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.dws.util.DWSUtil;
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntityBrewingStand;
 import net.minecraft.util.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,11 +19,15 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiBrewingStand.class)
-public class GuiBrewingStandMixin implements IDWSGui {
+public abstract class GuiBrewingStandMixin extends GuiContainer implements IDWSGui {
     @Shadow private TileEntityBrewingStand tileBrewingStand;
     private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/brewing_stand.png");
     private static final int X_SIZE = 338;
     private static final int Y_SIZE = 166;
+
+    public GuiBrewingStandMixin(Container container) {
+        super(container);
+    }
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
@@ -48,7 +54,6 @@ public class GuiBrewingStandMixin implements IDWSGui {
             require = 1)
     private void rerouteDrawCall(float f, int i1, int i2, CallbackInfo ci) {
         GuiBrewingStand gbs = (GuiBrewingStand) (Object) (this);
-        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 
         int x = (gbs.width - gbs.xSize) / 2;
         int y = (gbs.height - gbs.ySize) / 2;
