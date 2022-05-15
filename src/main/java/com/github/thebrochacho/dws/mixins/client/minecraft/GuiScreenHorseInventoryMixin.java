@@ -4,10 +4,12 @@ import com.github.thebrochacho.dws.Tags;
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.dws.util.DWSUtil;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.gui.inventory.GuiScreenHorseInventory;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiScreenHorseInventory.class)
-public class GuiScreenHorseInventoryMixin implements IDWSGui {
+public abstract class GuiScreenHorseInventoryMixin extends GuiContainer implements IDWSGui {
 
     @Shadow private EntityHorse field_147034_x;
     @Shadow private float field_147033_y;
@@ -26,6 +28,10 @@ public class GuiScreenHorseInventoryMixin implements IDWSGui {
     private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/horse.png");
     private static final int X_SIZE = 338;
     private static final int Y_SIZE = 166;
+
+    public GuiScreenHorseInventoryMixin(Container container) {
+        super(container);
+    }
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
@@ -52,7 +58,6 @@ public class GuiScreenHorseInventoryMixin implements IDWSGui {
             require = 1)
     private void rerouteDrawCall(float f1, int i1, int i2, CallbackInfo ci) {
         GuiScreenHorseInventory gshi = (GuiScreenHorseInventory) (Object) (this);
-        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 
         int x = (gshi.width - gshi.xSize) / 2;
         int y = (gshi.height - gshi.ySize) / 2;

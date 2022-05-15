@@ -4,9 +4,11 @@ import com.github.thebrochacho.dws.Tags;
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.dws.util.DWSUtil;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiFurnace;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,12 +19,16 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiFurnace.class)
-public class GuiFurnaceMixin implements IDWSGui {
+public abstract class GuiFurnaceMixin extends GuiContainer implements IDWSGui {
 
     @Shadow private TileEntityFurnace tileFurnace;
     private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/furnace.png");
     private static final int X_SIZE = 338;
     private static final int Y_SIZE = 166;
+
+    public GuiFurnaceMixin(Container container) {
+        super(container);
+    }
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
@@ -49,7 +55,6 @@ public class GuiFurnaceMixin implements IDWSGui {
             require = 1)
     private void rerouteDrawCall(float f1, int i1, int i2, CallbackInfo ci) {
         GuiFurnace gf = (GuiFurnace) (Object) (this);
-        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 
         int x = (gf.width - gf.xSize) / 2;
         int y = (gf.height - gf.ySize) / 2;

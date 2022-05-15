@@ -117,7 +117,6 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
                 require = 1)
     private void rerouteBackgroundGuiDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
         GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
-        float zLevel = ((IGuiMixin) (Gui) (Object) (this)).getZLevel();
 
         int x1 = (gcc.width - gcc.xSize) / 2;
         int y1 = (gcc.height - gcc.ySize) / 2;
@@ -131,7 +130,6 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
                             ordinal = 1),
                 require = 1)
     private void rerouteScrollBarDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
-        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
         DWSUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 
@@ -167,7 +165,6 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
                 require = 1)
     private void rerouteDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
         GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
-//        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
 
         DWSUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }

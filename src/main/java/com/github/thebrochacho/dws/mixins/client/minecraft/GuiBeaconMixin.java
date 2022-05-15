@@ -5,8 +5,10 @@ import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.interfaces.minecraft.IGuiMixin;
 import com.github.thebrochacho.dws.util.DWSUtil;
 import net.minecraft.client.gui.inventory.GuiBeacon;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.util.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,11 +16,15 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiBeacon.class)
-public class GuiBeaconMixin implements IDWSGui {
+public abstract class GuiBeaconMixin extends GuiContainer implements IDWSGui {
 
     private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/beacon.png");
     private static final int X_SIZE = 338;
     private static final int Y_SIZE = 219;
+
+    public GuiBeaconMixin(Container container) {
+        super(container);
+    }
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
@@ -41,7 +47,6 @@ public class GuiBeaconMixin implements IDWSGui {
                             target = "Lnet/minecraft/client/gui/inventory/GuiBeacon;drawTexturedModalRect(IIIIII)V"),
                 require = 1)
     private void rerouteDrawCall(GuiBeacon instance, int x, int y, int u, int v, int w, int h) {
-        float zLevel = ((IGuiMixin) (Object) (this)).getZLevel();
         DWSUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 
