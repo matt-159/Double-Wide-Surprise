@@ -195,6 +195,13 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
         return 22;
     }
 
+    @ModifyConstant(method = "initGui",
+                    constant = @Constant(intValue = 10),
+                    require = 1)
+    private int modifyTabCountDivisor(int constant) {
+        return 20;
+    }
+
     @ModifyConstant(method = {"initGui", "setCurrentCreativeTab"},
                     constant = { @Constant(intValue = 82), @Constant(intValue = 171) },
                     require = 1)
