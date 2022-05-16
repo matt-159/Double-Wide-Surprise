@@ -30,7 +30,7 @@ public class ContainerDWS extends Container {
         this.inventorySlots.clear();
 
         /*=========================================================================================================
-         * Vanilla Slots + Putinventory
+         * Vanilla Slots + DWSInventory
          *========================================================================================================*/
         this.addSlotToContainer(new SlotCrafting(inventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 144 + CRAFTING_SLOT_X_OFFSET, 36));
         int i;
