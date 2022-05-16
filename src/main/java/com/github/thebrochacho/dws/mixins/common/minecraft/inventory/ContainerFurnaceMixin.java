@@ -26,7 +26,7 @@ public class ContainerFurnaceMixin extends Container {
         this.addSlotToContainer(new Slot(tileEntityFurnace, 1, 137, 53));
         this.addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntityFurnace, 2, 197, 35));
 
-        DWSUtil.addPutinSlotsToContainer((ContainerFurnace) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer((ContainerFurnace) (Object) (this), inventoryPlayer);
     }
 
 

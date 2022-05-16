@@ -34,7 +34,7 @@ public class ContainerChestMixin extends Container implements IContainerChestMix
             }
         }
 
-        DWSUtil.addPutinSlotsToContainer(this, inventoryPlayer, 8, 103 + var3, 161 + var3);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer, 8, 103 + var3, 161 + var3);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class ContainerBrewingStandMixin extends Container {
         this.addSlotToContainer(new SlotPotion(inventoryPlayer.player, tileEntityBrewingStand, 2, 183, 46));
         this.theSlot = this.addSlotToContainer(new SlotIngredient((ContainerBrewingStand) (Object) (this), tileEntityBrewingStand, 3, 160, 17));
 
-        DWSUtil.addPutinSlotsToContainer((ContainerBrewingStand) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer((ContainerBrewingStand) (Object) (this), inventoryPlayer);
     }
 
     @Override
