@@ -30,7 +30,7 @@ public class ContainerWorkbenchMixin extends Container {
             }
         }
 
-        DWSUtil.addPutinSlotsToContainer((ContainerWorkbench) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer((ContainerWorkbench) (Object) (this), inventoryPlayer);
     }
 
     @Override

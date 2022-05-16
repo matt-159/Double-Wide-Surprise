@@ -26,7 +26,7 @@ public class ContainerHopperMixin extends Container {
             this.addSlotToContainer(new Slot(inventoryHopper, var4, 125 + var4 * 18, 20));
         }
 
-        DWSUtil.addPutinSlotsToContainer((ContainerHopper) (Object) (this), inventoryPlayer, 8, 51, 109);
+        DWSUtil.addDWSSlotsToContainer((ContainerHopper) (Object) (this), inventoryPlayer, 8, 51, 109);
     }
 
     @Override

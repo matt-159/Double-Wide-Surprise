@@ -27,7 +27,7 @@ public class ContainerMerchantMixin extends Container {
         this.addSlotToContainer(new Slot(this.merchantInventory, 1, 143, 53));
         this.addSlotToContainer(new SlotMerchantResult(inventoryPlayer.player, merchant, this.merchantInventory, 2, 201, 53));
 
-        DWSUtil.addPutinSlotsToContainer((ContainerMerchant) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer((ContainerMerchant) (Object) (this), inventoryPlayer);
     }
 
     @Override

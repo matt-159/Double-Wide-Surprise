@@ -64,11 +64,11 @@ public class DWSUtil {
         return -1;
     }
 
-    public static void addPutinSlotsToContainer(Container container, IInventory inventoryPlayer) {
-        addPutinSlotsToContainer(container, inventoryPlayer, 8, 84, 142);
+    public static void addDWSSlotsToContainer(Container container, IInventory inventoryPlayer) {
+        addDWSSlotsToContainer(container, inventoryPlayer, 8, 84, 142);
     }
 
-    public static void addPutinSlotsToContainer(Container container, IInventory inventoryPlayer, int xOffset, int yOffset1, int yOffset2) {
+    public static void addDWSSlotsToContainer(Container container, IInventory inventoryPlayer, int xOffset, int yOffset1, int yOffset2) {
 
         int row, col;
         //main inventory

@@ -35,7 +35,7 @@ public class ContainerRepairMixin extends Container implements IContainerRepairM
         this.addSlotToContainer(new Slot(this.inputSlots, 1, 157, 47));
         this.addSlotToContainer(new SlotAnvil(this.outputSlot, world, ((ContainerRepair) (Object) (this)), 2, 215, 47));
 
-        DWSUtil.addPutinSlotsToContainer((Container) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer((Container) (Object) (this), inventoryPlayer);
     }
 
     public IInventory getInputSlots() {

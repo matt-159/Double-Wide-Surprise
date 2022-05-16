@@ -37,7 +37,7 @@ public class ContainerHorseInventoryMixin extends Container {
             }
         }
 
-        DWSUtil.addPutinSlotsToContainer((ContainerHorseInventory) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer((ContainerHorseInventory) (Object) (this), inventoryPlayer);
     }
 
     @Override
