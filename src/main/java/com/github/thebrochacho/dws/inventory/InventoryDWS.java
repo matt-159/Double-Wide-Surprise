@@ -82,7 +82,7 @@ public class InventoryDWS extends InventoryPlayer {
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
         boolean retval = false;
 
-        if (slot > 0 && slot < 72) {
+        if (slot >= 0 && slot < 72) {
             retval = true;
         } else if (slot < 76) {
             retval = stack.getItem().isValidArmor(stack, 75 - slot, null);
