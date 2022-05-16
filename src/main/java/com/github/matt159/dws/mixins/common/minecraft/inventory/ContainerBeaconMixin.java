@@ -29,7 +29,7 @@ public class ContainerBeaconMixin extends Container {
         this.beaconSlot = new SlotBeacon((ContainerBeacon) (Object) (this), tileEntityBeacon, 0, 190, 110);
         this.addSlotToContainer(beaconSlot);
 
-        DWSUtil.addPutinSlotsToContainer((ContainerBeacon) (Object) (this), inventoryPlayer, 8, 137, 195);
+        DWSUtil.addDWSSlotsToContainer((ContainerBeacon) (Object) (this), inventoryPlayer, 8, 137, 195);
     }
 
 

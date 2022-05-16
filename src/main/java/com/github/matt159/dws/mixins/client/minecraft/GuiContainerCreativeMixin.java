@@ -164,8 +164,6 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
                             ordinal = 0),
                 require = 1)
     private void rerouteDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
-        GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
-
         DWSUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 

@@ -24,7 +24,7 @@ public class ContainerEnchantmentMixin extends Container {
         ((ContainerEnchantment) (Object) (this)).inventorySlots.clear();
         this.addSlotToContainer(new SlotEnchantment(tableInventory, 0, 106, 47));
 
-        DWSUtil.addPutinSlotsToContainer((ContainerEnchantment) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer((ContainerEnchantment) (Object) (this), inventoryPlayer);
     }
 
     @Override

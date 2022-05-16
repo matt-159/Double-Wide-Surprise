@@ -26,7 +26,7 @@ public class ContainerDispenserMixin extends Container {
             }
         }
 
-        DWSUtil.addPutinSlotsToContainer((ContainerDispenser) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer((ContainerDispenser) (Object) (this), inventoryPlayer);
     }
 
     @Override
