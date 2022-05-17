@@ -11,6 +11,8 @@ import static com.github.thebrochacho.dws.mixins.plugin.TargetedMod.VANILLA;
 public enum Mixin {
 
     // Vanilla
+    MinecraftMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.MinecraftMixin")),
+
     EntityPlayerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.EntityPlayerMixin")),
 
 //    GuiMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiMixin")),
