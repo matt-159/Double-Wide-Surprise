@@ -67,10 +67,14 @@ public enum Mixin {
 
     //Galacticraft
 //    IGalacticWearableMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.GalacticWearableMixin")),
-    ContainerExtendedInventoryMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.ContainerExtendedInventoryMixin"));
+    ContainerExtendedInventoryMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.ContainerExtendedInventoryMixin")),
 
     //TravellersGear
 //    GuiButtonGearMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "travellersgear.GuiButtonGearMixin"));
+    ClientProxyMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "travellersgear.ClientProxyMixin")),
+
+    //Baubles
+    GuiEventsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "baubles.GuiEventsMixin"));
 
     public final MixinUnit[] units;
     public final Set<TargetedMod> targetedMods;
