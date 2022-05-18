@@ -11,7 +11,8 @@ import org.apache.logging.log4j.Logger;
     dependencies =  "after:Baubles; " +
                     "after:TravellersGear; " +
                     "after:Galacticraft; " +
-                    "after:TConstruct; ")
+                    "after:TConstruct; " +
+                    "after:IronChest; ")
 public class DoubleWideSurprise {
 
     private static Logger LOG = LogManager.getLogger(Tags.MODID);

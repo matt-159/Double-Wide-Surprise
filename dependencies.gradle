@@ -16,4 +16,7 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:Galacticraft:3.0.36-GTNH:dev") {
         transitive = false
     }
+    compile("com.github.GTNewHorizons:ironchest:6.0.70:dev") {
+        transitive = false
+    }
 }
