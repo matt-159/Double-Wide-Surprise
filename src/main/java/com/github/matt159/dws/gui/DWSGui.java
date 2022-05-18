@@ -3,18 +3,29 @@ package com.github.matt159.dws.gui;
 import com.github.matt159.dws.Tags;
 import com.github.matt159.dws.gui.SlotOverlays.Hints;
 import com.github.matt159.dws.interfaces.IDWSGui;
+import com.github.matt159.dws.network.DWSInventorySwapPacket;
+import com.github.matt159.dws.network.PacketHandler;
 import com.github.matt159.dws.util.DWSUtil;
+import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class DWSGui extends GuiInventory implements IDWSGui {
 
