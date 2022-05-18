@@ -14,6 +14,9 @@ import org.lwjgl.input.Keyboard;
 
 public class DWSKeyHandler {
 
+    @SideOnly(Side.CLIENT)
+    private static int swapCooldown = 0;
+
     public KeyBinding key = new KeyBinding(StatCollector.translateToLocal("keybind.inventoryswap"),
                                             Keyboard.KEY_H,
                                             "key.categories.inventory");
@@ -22,13 +25,19 @@ public class DWSKeyHandler {
         ClientRegistry.registerKeyBinding(key);
     }
 
-    @SideOnly(value= Side.CLIENT)
+    @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void playerTick(TickEvent.PlayerTickEvent event) {
         if (event.side == Side.SERVER) return;
-        if (event.phase == TickEvent.Phase.START ) {
-            if (key.getIsKeyPressed() && FMLClientHandler.instance().getClient().inGameHasFocus) {
+        if (event.phase == TickEvent.Phase.START) {
+            if (swapCooldown > 0) { swapCooldown--; }
+
+            if (key.getIsKeyPressed() &&
+                    FMLClientHandler.instance().getClient().inGameHasFocus &&
+                    swapCooldown == 0) {
                 PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(event.player));
+
+                swapCooldown += 5; //ticks
             }
         }
     }
