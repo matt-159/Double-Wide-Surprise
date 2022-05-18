@@ -1,6 +1,7 @@
 package com.github.thebrochacho.dws;
 
 import baubles.client.gui.GuiEvents;
+import com.github.thebrochacho.dws.events.DWSKeyHandler;
 import com.github.thebrochacho.dws.inventory.ContainerDWS;
 import com.github.thebrochacho.dws.network.PacketHandler;
 import cpw.mods.fml.common.Loader;
@@ -18,6 +19,8 @@ import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class CommonProxy implements IGuiHandler {
+
+    public DWSKeyHandler keyHandler;
 
     // preInit "Run before anything else. Read your config, create blocks, items,
     // etc, and register them with the GameRegistry."
