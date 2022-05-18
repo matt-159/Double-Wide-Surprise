@@ -1,8 +1,10 @@
 package com.github.matt159.dws;
 
+import com.github.matt159.dws.events.DWSKeyHandler;
 import com.github.matt159.dws.events.PlayerGuiEvent;
 import com.github.matt159.dws.events.GuiEvents;
 import com.github.matt159.dws.gui.DWSGui;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
@@ -62,4 +64,10 @@ public class ClientProxy extends CommonProxy {
     }
 
     public void registerHandlers() {}
+
+    @Override
+    public void registerKeyBindings() {
+        keyHandler = new DWSKeyHandler();
+        FMLCommonHandler.instance().bus().register(keyHandler);
+    }
 }
