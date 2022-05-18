@@ -13,7 +13,7 @@ dependencies {
     compile('com.github.GTNewHorizons:TinkersConstruct:1.9.0.13-GTNH:dev') {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:Galacticraft:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:Galacticraft:3.0.36-GTNH:dev") {
         transitive = false
     }
 }
