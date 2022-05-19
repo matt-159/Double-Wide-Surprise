@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiChest.class)
 public abstract class GuiChestMixin extends GuiContainer implements IDWSGui {
 
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/generic_54.png");
+    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/generic_54.png");
     private static final int X_SIZE = 338;
 
     public GuiChestMixin(Container container) {
