@@ -6,7 +6,12 @@ import java.nio.file.Path;
 
 public enum TargetedMod {
 
-    VANILLA("Minecraft", "", "", true);
+    VANILLA("Minecraft", "", "", true),
+    GALACTICRAFT("Galacticraft", "", "Galacticraft", true),
+    TRAVELLERSGEAR("TravellersGear", "", "Travel", true),
+    IRONCHEST("IronChest", "", "ironchest", true),
+    BAUBLES("Baubles", "", "", true),
+    TINKERS("TConstruct", "", "", true);
 
     public final String modName;
     public final String jarNamePrefixLowercase;
