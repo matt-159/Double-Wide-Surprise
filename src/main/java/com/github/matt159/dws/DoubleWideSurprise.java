@@ -10,8 +10,9 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.7.10]",
     dependencies =  "after:Baubles; " +
                     "after:TravellersGear; " +
-                    "after:Galacticraft; " +
-                    "after:TConstruct; ")
+                    "after:GalacticraftCore; " +
+                    "after:TConstruct; " +
+                    "after:IronChest; ")
 public class DoubleWideSurprise {
 
     private static Logger LOG = LogManager.getLogger(Tags.MODID);
