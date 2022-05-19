@@ -77,7 +77,8 @@ public enum Mixin {
     GuiEventsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "baubles.GuiEventsMixin")),
 
     //Ironchest
-    GUIChestMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "ironchest.GUIChestMixin"));
+    GUIChestMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "ironchest.GUIChestMixin")),
+    ContainerIronChestMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "ironchest.ContainerIronChestMixin"));
 
     public final MixinUnit[] units;
     public final Set<TargetedMod> targetedMods;
