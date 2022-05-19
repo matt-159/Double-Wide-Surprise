@@ -19,4 +19,7 @@ dependencies {
     compile("com.github.GTNewHorizons:ironchest:6.0.70:dev") {
         transitive = false
     }
+    compile('curse.maven:travellers-gear-224440:2262113') {
+        transitive = false
+    }
 }
