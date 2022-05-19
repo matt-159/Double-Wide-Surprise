@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class GuiFurnaceMixin extends GuiContainer implements IDWSGui {
 
     @Shadow private TileEntityFurnace tileFurnace;
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/furnace.png");
+    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/furnace.png");
     private static final int X_SIZE = 338;
     private static final int Y_SIZE = 166;
 

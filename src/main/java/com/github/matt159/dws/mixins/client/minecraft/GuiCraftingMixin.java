@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiCrafting.class)
 public abstract class GuiCraftingMixin extends GuiContainer implements IDWSGui {
 
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/crafting_table.png");
+    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/crafting_table.png");
     private static final int X_SIZE = 338;
     private static final int Y_SIZE = 166;
 

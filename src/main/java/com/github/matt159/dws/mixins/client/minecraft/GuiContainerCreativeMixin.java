@@ -34,13 +34,13 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
     @Shadow @Final private static ResourceLocation field_147061_u;
     private Slot slot;
 
-    private static final String locationPrefix = "textures/minecraft/creative_inventory/tab_";
+    private static final String locationPrefix = "textures/minecraft/gui/container/creative_inventory/tab_";
     private static final int X_SIZE = 357;
     private static final int Y_SIZE = 136;
 
     static {
         field_147060_v = new InventoryBasic("tmp", true, 90);
-        field_147061_u = new ResourceLocation(Tags.MODID, "textures/minecraft/creative_inventory/tabs.png");
+        field_147061_u = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/creative_inventory/tabs.png");
     }
 
     public GuiContainerCreativeMixin(Container container) {

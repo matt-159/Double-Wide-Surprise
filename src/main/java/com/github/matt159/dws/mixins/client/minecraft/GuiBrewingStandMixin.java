@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiBrewingStand.class)
 public abstract class GuiBrewingStandMixin extends GuiContainer implements IDWSGui {
     @Shadow private TileEntityBrewingStand tileBrewingStand;
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/brewing_stand.png");
+    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/brewing_stand.png");
     private static final int X_SIZE = 338;
     private static final int Y_SIZE = 166;
 

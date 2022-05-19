@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiRepair.class)
 public abstract class GuiRepairMixin extends GuiContainer implements IDWSGui {
 
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/anvil.png");
+    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/anvil.png");
     private static final int X_SIZE = 338;
     private static final int Y_SIZE = 166;
 
