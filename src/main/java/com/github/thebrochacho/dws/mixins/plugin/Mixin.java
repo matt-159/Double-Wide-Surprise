@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.throwables.MixinException;
 
 import java.util.*;
 
-import static com.github.thebrochacho.dws.mixins.plugin.TargetedMod.VANILLA;
+import static com.github.thebrochacho.dws.mixins.plugin.TargetedMod.*;
 
 public enum Mixin {
 
@@ -103,9 +103,13 @@ public enum Mixin {
         throw new MixinException("Failed to retrieve mixin alternative for " + this.name() + " in mod " + Tags.MODID);
     }
 
-
     private static Builder builder(Side side) {
-        return new Builder(side).target(VANILLA);
+        return new Builder(side).target(VANILLA)
+                                .target(GALACTICRAFT)
+                                .target(TRAVELLERSGEAR)
+                                .target(IRONCHEST)
+                                .target(BAUBLES)
+                                .target(TINKERS);
     }
 
     private static class Builder {
