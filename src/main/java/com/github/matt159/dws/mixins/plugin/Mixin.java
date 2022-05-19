@@ -74,7 +74,10 @@ public enum Mixin {
     ClientProxyMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "travellersgear.ClientProxyMixin")),
 
     //Baubles
-    GuiEventsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "baubles.GuiEventsMixin"));
+    GuiEventsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "baubles.GuiEventsMixin")),
+
+    //Ironchest
+    GUIChestMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "ironchest.GUIChestMixin"));
 
     public final MixinUnit[] units;
     public final Set<TargetedMod> targetedMods;
