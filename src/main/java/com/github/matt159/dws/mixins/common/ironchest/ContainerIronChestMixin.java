@@ -34,7 +34,7 @@ public class ContainerIronChestMixin extends Container {
             case "COPPER":
                 xOffsetChestInventory = 89;
                 yOffsetChestInventory = 9;
-                yOffsetPlayerMainInventory = 102;
+                yOffsetPlayerMainInventory = 103;
                 break;
             case "IRON":
                 xOffsetChestInventory = 89;
