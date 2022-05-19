@@ -26,13 +26,13 @@ public class GuiEvents {
 
             if (firstDWSSlotIndex != -1) {
                 Slot topLeftSlot = gc.inventorySlots.getSlot(firstDWSSlotIndex);
-                Slot topRightSlot = gc.inventorySlots.getSlot(firstDWSSlotIndex + 8);
+                Slot topRightSlot = gc.inventorySlots.getSlot(firstDWSSlotIndex + 4);
 
                 int guiLeft = (gc.width - gc.xSize) / 2;
                 int guiTop = (gc.height - gc.ySize) / 2;
 
                 event.buttonList.add(new GuiShiftInventoryButton(GuiShiftInventoryButton.ID,
-                        guiLeft + topRightSlot.xDisplayPosition, guiTop + topRightSlot.yDisplayPosition - 14, 18, 12,
+                        guiLeft + topRightSlot.xDisplayPosition, guiTop + topRightSlot.yDisplayPosition - 7, 18, 12,
                         "Shift Inventory Right", GuiShiftInventoryButton.Facing.Right));
             }
         }
