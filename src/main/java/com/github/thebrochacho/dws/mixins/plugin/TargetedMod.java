@@ -12,7 +12,8 @@ public enum TargetedMod {
     IRONCHEST("IronChest", "", "ironchest", true),
     BAUBLES("Baubles", "", "", true),
     TINKERS("TConstruct", "", "", true),
-    FORGE("Forge", "", "forge", true);
+    FORGE("Forge", "", "forge", true),
+    CODECHICKENLIB("CodeChickenLib", "", "CodeChicken", true);
 
     public final String modName;
     public final String jarNamePrefixLowercase;
