@@ -65,7 +65,7 @@ public enum Mixin {
     GuiIngameForgeMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.GuiIngameForgeMixin")),
 
     //NEI
-    ClientUtilsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.ClientUtilsMixin")),
+    ClientUtilsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.NEIClientUtilsMixin")),
 
     //Galacticraft
 //    IGalacticWearableMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.GalacticWearableMixin")),
