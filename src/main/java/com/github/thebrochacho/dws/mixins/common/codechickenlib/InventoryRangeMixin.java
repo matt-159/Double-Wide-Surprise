@@ -12,7 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(InventoryRange.class)
 public class InventoryRangeMixin {
 
-    @Shadow public int[] slots;
+    @Shadow(remap = false)
+    public int[] slots;
 
     @Inject(method = "<init>(Lnet/minecraft/inventory/IInventory;I)V",
             at = @At("RETURN"),
