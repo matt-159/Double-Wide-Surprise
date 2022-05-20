@@ -117,4 +117,31 @@ public class InventoryDWS extends InventoryPlayer {
         return ((this.currentItem < 9 && this.currentItem >= 0) ||
                 (this.currentItem < 72 && this.currentItem >= 63)) ? this.mainInventory[this.currentItem] : null;
     }
+
+    @Override
+    public int getFirstEmptyStack() {
+
+        // Checking left half of hotbar
+        for (int i = 0; i < 9; i++) {
+            if (mainInventory[i] == null) {
+                return i;
+            }
+        }
+
+        // Checking right half of hotbar
+        for (int i = 63; i < 72; i++) {
+            if (mainInventory[i] == null) {
+                return i;
+            }
+        }
+
+        // Checking main inventory
+        for (int i = 9; i < 63; i++) {
+            if (mainInventory[i] == null) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
 }
