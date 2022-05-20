@@ -11,7 +11,8 @@ public enum TargetedMod {
     TRAVELLERSGEAR("TravellersGear", "", "Travel", true),
     IRONCHEST("IronChest", "", "ironchest", true),
     BAUBLES("Baubles", "", "", true),
-    TINKERS("TConstruct", "", "", true);
+    TINKERS("TConstruct", "", "", true),
+    FORGE("Forge", "", "forge", true);
 
     public final String modName;
     public final String jarNamePrefixLowercase;
