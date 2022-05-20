@@ -59,8 +59,10 @@ public enum Mixin {
 
     GuiBeaconMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiBeaconMixin")),
     GuiContainerBeaconMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerBeaconMixin")),
+
     //Forge
     //NetworkRegistryMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.NetworkRegistryMixin")),
+    GuiIngameForgeMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.GuiIngameForgeMixin")),
 
     //NEI
     ClientUtilsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.ClientUtilsMixin")),
@@ -110,7 +112,8 @@ public enum Mixin {
                                 .target(TRAVELLERSGEAR)
                                 .target(IRONCHEST)
                                 .target(BAUBLES)
-                                .target(TINKERS);
+                                .target(TINKERS)
+                                .target(FORGE);
     }
 
     private static class Builder {

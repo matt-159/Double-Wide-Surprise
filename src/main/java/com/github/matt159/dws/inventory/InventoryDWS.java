@@ -6,6 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
+import java.util.Arrays;
+
 public class InventoryDWS extends InventoryPlayer {
 
     public InventoryDWS(EntityPlayer p_i1750_1_) {
@@ -89,5 +91,30 @@ public class InventoryDWS extends InventoryPlayer {
         }
 
         return retval;
+    }
+
+    public static final int[] HOTBAR_SLOTS = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 63, 64, 65, 66, 67, 68, 69, 70, 71 };
+
+    @Override
+    public void changeCurrentItem(int delta) {
+        //delta is checked to be not equal to 0 before this method is called
+        delta = delta > 0 ? 1 : -1;
+
+        //grab the index of the value stored in currentItem
+        int index = Arrays.binarySearch(HOTBAR_SLOTS, this.currentItem);
+
+        if (index < 0) return;
+
+        //scrolling up -> delta = -1
+        int newIndex = (index - delta) % getHotbarSize();
+        newIndex = newIndex < 0 ? newIndex + getHotbarSize() : newIndex;
+
+        this.currentItem = HOTBAR_SLOTS[newIndex];
+    }
+
+    @Override
+    public ItemStack getCurrentItem() {
+        return ((this.currentItem < 9 && this.currentItem >= 0) ||
+                (this.currentItem < 72 && this.currentItem >= 63)) ? this.mainInventory[this.currentItem] : null;
     }
 }
