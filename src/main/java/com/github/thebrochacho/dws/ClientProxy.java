@@ -3,6 +3,7 @@ package com.github.thebrochacho.dws;
 import com.github.thebrochacho.dws.events.DWSKeyHandler;
 import com.github.thebrochacho.dws.events.PlayerGuiEvent;
 import com.github.thebrochacho.dws.events.GuiEvents;
+import com.github.thebrochacho.dws.events.RenderGameOverlayEvents;
 import com.github.thebrochacho.dws.gui.DWSGui;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;
@@ -24,6 +25,7 @@ public class ClientProxy extends CommonProxy {
     public void init(FMLInitializationEvent event) {
         super.init(event);
         MinecraftForge.EVENT_BUS.register(new GuiEvents());
+        MinecraftForge.EVENT_BUS.register(new RenderGameOverlayEvents());
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
