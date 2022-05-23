@@ -62,7 +62,6 @@ public enum Mixin {
 
     //Forge
     //NetworkRegistryMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.NetworkRegistryMixin")),
-    GuiIngameForgeMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.GuiIngameForgeMixin")),
 
     //CodeChickenLib
     InventoryRangeMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "codechickenlib.InventoryRangeMixin")),
@@ -116,7 +115,6 @@ public enum Mixin {
                                 .target(IRONCHEST)
                                 .target(BAUBLES)
                                 .target(TINKERS)
-                                .target(FORGE)
                                 .target(CODECHICKENLIB);
     }
 
