@@ -15,7 +15,8 @@ import java.util.Arrays;
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
 
-    @Shadow public EntityClientPlayerMP thePlayer;
+    @Shadow
+    public EntityClientPlayerMP thePlayer;
 
     @ModifyConstant(method="func_147112_ai",
                     constant = @Constant(intValue = 9),
