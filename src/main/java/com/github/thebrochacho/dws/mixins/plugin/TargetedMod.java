@@ -8,11 +8,10 @@ public enum TargetedMod {
 
     VANILLA("Minecraft", "", "", true),
     GALACTICRAFT("Galacticraft", "", "Galacticraft", true),
-    TRAVELLERSGEAR("TravellersGear", "", "Travel", true),
+    TRAVELLERSGEAR("TravellersGear", "", "Traveller", true),
     IRONCHEST("IronChest", "", "ironchest", true),
-    BAUBLES("Baubles", "", "", true),
-    TINKERS("TConstruct", "", "", true),
-    FORGE("Forge", "", "forge", true),
+    BAUBLES("Baubles", "", "Baubles", true),
+    TINKERS("TConstruct", "", "construct", true),
     CODECHICKENLIB("CodeChickenLib", "", "CodeChicken", true);
 
     public final String modName;
