@@ -55,6 +55,15 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
         ((GuiContainerCreative) (Object) this).ySize = Y_SIZE;
     }
 
+    @Inject(method = "initGui",
+            at = @At(   value = "INVOKE",
+                        target = "Lnet/minecraft/client/renderer/InventoryEffectRenderer;initGui()V",
+                        shift = At.Shift.AFTER  ),
+            require = 1)
+    private void resetGuiLeft(CallbackInfo ci) {
+        this.guiLeft = (this.width - this.xSize) / 2;
+    }
+
     @Inject(method = "setCurrentCreativeTab",
             at = @At(   value = "INVOKE",
                         target = "Lnet/minecraft/inventory/Slot;<init>(Lnet/minecraft/inventory/IInventory;III)V",
