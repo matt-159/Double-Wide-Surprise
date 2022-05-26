@@ -1,6 +1,7 @@
 package com.github.thebrochacho.dws.mixins.plugin;
 
 import com.github.thebrochacho.dws.Tags;
+import com.github.thebrochacho.dws.mixins.client.tinker.SmelteryGuiMixin;
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import org.spongepowered.asm.mixin.throwables.MixinException;
 
@@ -68,6 +69,10 @@ public enum Mixin {
 
     //NEI
     ClientUtilsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.NEIClientUtilsMixin")),
+
+    //Tinkers Construct
+    SmelteryGuiMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "tinker.SmelteryGuiMixin")),
+    SmelteryContainerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "tinker.SmelteryContainerMixin")),
 
     //Galacticraft
 //    IGalacticWearableMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.GalacticWearableMixin")),
