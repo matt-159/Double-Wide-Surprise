@@ -33,8 +33,8 @@ public class DWSGui extends GuiInventory implements IDWSGui {
     private static final int GUI_WIDTH = 338;
     private static final int GUI_HEIGHT = 166;
 
-    public DWSGui(EntityPlayer p_i1094_1_) {
-        super(p_i1094_1_);
+    public DWSGui(EntityPlayer player) {
+        super(player);
         this.xSize = GUI_WIDTH;
         this.ySize = GUI_HEIGHT;
     }
@@ -42,8 +42,8 @@ public class DWSGui extends GuiInventory implements IDWSGui {
     @Override
     public void initGui() {
         super.initGui();
-        this.guiLeft = (this.width-this.xSize)/2;
-        this.guiTop = (this.height-this.ySize)/2;
+        this.guiLeft = (this.width - this.xSize) / 2;
+        this.guiTop = (this.height - this.ySize) / 2;
 
         this.buttonList.clear();
     }
