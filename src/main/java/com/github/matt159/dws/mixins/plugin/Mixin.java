@@ -1,6 +1,7 @@
 package com.github.matt159.dws.mixins.plugin;
 
 import com.github.matt159.dws.Tags;
+import com.github.matt159.dws.mixins.common.gregtech.GT_ContainerMixin;
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import org.spongepowered.asm.mixin.throwables.MixinException;
 
@@ -82,7 +83,11 @@ public enum Mixin {
 
     //Ironchest
     GUIChestMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "ironchest.GUIChestMixin")),
-    ContainerIronChestMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "ironchest.ContainerIronChestMixin"));
+    ContainerIronChestMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "ironchest.ContainerIronChestMixin")),
+
+    //Gregtech
+    GT_ContainerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_ContainerMixin")),
+    ;
 
     public final MixinUnit[] units;
     public final Set<TargetedMod> targetedMods;
