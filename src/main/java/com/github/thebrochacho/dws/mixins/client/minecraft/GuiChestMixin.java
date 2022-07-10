@@ -19,7 +19,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiChest.class)
 public abstract class GuiChestMixin extends GuiContainer implements IDWSGui {
 
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/generic_54.png");
     private static final int X_SIZE = 338;
 
     public GuiChestMixin(Container container) {
@@ -30,22 +29,6 @@ public abstract class GuiChestMixin extends GuiContainer implements IDWSGui {
             at = @At(value = "RETURN"),
             require = 1)
     private void updateGuiSize(IInventory upperChest, IInventory lowerChest, CallbackInfo ci) {
-        ((GuiChest) (Object) (this)).xSize = X_SIZE;
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
-                require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
-        instance.bindTexture(location);
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/gui/inventory/GuiChest;drawTexturedModalRect(IIIIII)V"),
-                require = 1)
-    private void rerouteDrawCall(GuiChest instance, int x, int y, int u, int v, int w, int h) {
-        DWSUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
+        this.xSize = X_SIZE;
     }
 }

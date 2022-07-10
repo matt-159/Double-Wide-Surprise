@@ -18,36 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiRepair.class)
 public abstract class GuiRepairMixin extends GuiContainer implements IDWSGui {
 
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/anvil.png");
-    private static final int X_SIZE = 338;
-    private static final int Y_SIZE = 166;
-
     public GuiRepairMixin(Container container) {
         super(container);
-    }
-
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
-            require = 1)
-    private void updateGuiSize(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
-        ((GuiRepair) (Object) (this)).xSize = X_SIZE;
-        ((GuiRepair) (Object) (this)).ySize = Y_SIZE;
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
-                require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
-        instance.bindTexture(location);
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/gui/GuiRepair;drawTexturedModalRect(IIIIII)V"),
-                require = 1)
-    private void rerouteDrawCall(GuiRepair instance, int x, int y, int u, int v, int w, int h) {
-        DWSUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 
     @ModifyConstant(method = "initGui",

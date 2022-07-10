@@ -21,28 +21,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiBrewingStand.class)
 public abstract class GuiBrewingStandMixin extends GuiContainer implements IDWSGui {
     @Shadow private TileEntityBrewingStand tileBrewingStand;
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/brewing_stand.png");
-    private static final int X_SIZE = 338;
-    private static final int Y_SIZE = 166;
 
     public GuiBrewingStandMixin(Container container) {
         super(container);
-    }
-
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
-            require = 1)
-    private void updateGuiSize(InventoryPlayer inventoryPlayer, TileEntityBrewingStand tileEntityBrewingStand, CallbackInfo ci) {
-        ((GuiBrewingStand) (Object) (this)).xSize = X_SIZE;
-        ((GuiBrewingStand) (Object) (this)).ySize = Y_SIZE;
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
-            require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
-        instance.bindTexture(location);
     }
 
     @Inject(method = "drawGuiContainerBackgroundLayer",
