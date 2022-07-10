@@ -90,6 +90,7 @@ public enum Mixin {
     ContainerIronChestMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "ironchest.ContainerIronChestMixin")),
 
     //Gregtech
+    GT_GUIContainerMetaTile_MachineMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainerMetaTile_MachineMixin")),
     GT_ContainerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_ContainerMixin")),
 
     GT_Container_BasicMachineMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_BasicMachineMixin")),
