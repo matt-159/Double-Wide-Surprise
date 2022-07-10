@@ -1,21 +1,23 @@
 package com.github.thebrochacho.dws.mixins.common.gregtech;
 
+import com.github.thebrochacho.dws.util.DWSUtil;
 import gregtech.api.gui.GT_Container;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GT_Container.class)
 public abstract class GT_ContainerMixin extends Container {
-    @ModifyConstant(method = "bindPlayerInventory",
-                    constant = {
-                        @Constant(intValue = 9, ordinal = 0),
-                        @Constant(intValue = 9, ordinal = 3)
-                    },
-                    remap = false,
-                    require = 1)
-    private int modifyInventoryWidth(int constant) {
-        return 18;
+    @Inject(method = "bindPlayerInventory",
+            at = @At("HEAD"),
+            cancellable = true,
+            remap = false,
+            require = 1)
+    private void injectAddDWSSLots(InventoryPlayer aInventoryPlayer, CallbackInfo ci) {
+        DWSUtil.addDWSSlotsToContainer(this, aInventoryPlayer);
+        ci.cancel();
     }
 }

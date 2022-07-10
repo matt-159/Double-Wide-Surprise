@@ -4,7 +4,10 @@ import com.github.thebrochacho.dws.Tags;
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import org.spongepowered.asm.mixin.throwables.MixinException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static com.github.thebrochacho.dws.mixins.plugin.TargetedMod.*;
 
