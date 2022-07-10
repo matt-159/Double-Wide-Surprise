@@ -25,28 +25,9 @@ public abstract class GuiScreenHorseInventoryMixin extends GuiContainer implemen
     @Shadow private EntityHorse field_147034_x;
     @Shadow private float field_147033_y;
     @Shadow private float field_147032_z;
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/horse.png");
-    private static final int X_SIZE = 338;
-    private static final int Y_SIZE = 166;
 
     public GuiScreenHorseInventoryMixin(Container container) {
         super(container);
-    }
-
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
-            require = 1)
-    private void updateGuiSize(IInventory inventoryPlayer, IInventory inventoryHorse, EntityHorse entityHorse, CallbackInfo ci) {
-        ((GuiScreenHorseInventory) (Object) (this)).xSize = X_SIZE;
-        ((GuiScreenHorseInventory) (Object) (this)).ySize = Y_SIZE;
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
-                require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
-        instance.bindTexture(location);
     }
 
     @Inject(method = "drawGuiContainerBackgroundLayer",
