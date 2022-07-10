@@ -1,7 +1,6 @@
 package com.github.matt159.dws.mixins.plugin;
 
 import com.github.matt159.dws.Tags;
-import com.github.matt159.dws.mixins.common.gregtech.GT_ContainerMixin;
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import org.spongepowered.asm.mixin.throwables.MixinException;
 
@@ -16,7 +15,9 @@ public enum Mixin {
 
     EntityPlayerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.EntityPlayerMixin")),
 
-//    GuiMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiMixin")),
+    TextureManagerMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.TextureManagerMixin")),
+
+    GuiMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiMixin")),
     GuiContainerMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiContainerMixin")),
 
     InventoryPlayerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.InventoryPlayerMixin")),
