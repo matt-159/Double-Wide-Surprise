@@ -3,6 +3,7 @@ package com.github.thebrochacho.dws.util;
 import com.github.thebrochacho.dws.Tags;
 import net.minecraft.util.ResourceLocation;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,11 +23,17 @@ public final class TextureWhitelist {
     }
 
     public static ResourceLocation checkResourceLocation(ResourceLocation rl) {
-        useOversizedTexture = checkTextureWhitelist(rl);
+        boolean isNEIRendering = Arrays.stream(Thread.currentThread().getStackTrace())
+                .map(StackTraceElement::toString)
+                .anyMatch(string -> string.contains("codechicken"));
 
-        if (useOversizedTexture) {
-            rl = new ResourceLocation(Tags.MODID,
-                    rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
+        if (!isNEIRendering) {
+            useOversizedTexture = checkTextureWhitelist(rl);
+
+            if (useOversizedTexture) {
+                rl = new ResourceLocation(Tags.MODID,
+                        rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
+            }
         }
 
         return rl;
@@ -183,6 +190,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("gregtech:textures/gui/multimachines/DrillingRig.png");
         addTextureToWhitelist("gregtech:textures/gui/multimachines/ElectricBlastFurnace.png");
         addTextureToWhitelist("gregtech:textures/gui/multimachines/ImplosionCompressor.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/FusionComputer.png");
         addTextureToWhitelist("gregtech:textures/gui/multimachines/LargeBoiler.png");
         addTextureToWhitelist("gregtech:textures/gui/multimachines/LargeChemicalReactor.png");
         addTextureToWhitelist("gregtech:textures/gui/multimachines/LargeDieselEngine.png");
