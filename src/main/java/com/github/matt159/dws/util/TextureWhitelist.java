@@ -177,24 +177,24 @@ public final class TextureWhitelist {
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Unpackager.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Wiremill.png");
 
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/Advanced_Miner2.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/AssemblyLine.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/DistillationTower.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/DrillingRig.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/ElectricBlastFurnace.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/ImplosionCompressor.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/LargeBoiler.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/LargeChemicalReactor.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/LargeDieselEngine.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/LargeExtremeDieselEngine.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/LargeHeatExchanger.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/LargeTurbine.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/MultiblockDisplay.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/MultiFurnace.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/OilCrackingUnit.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/OreDrillingPlant.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/ProcessingArray.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/PyrolyseOven.png");
-        addTextureToWhitelist("gregtech:textures/gregtech/gui/multimachines/VacuumFreezer.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/Advanced_Miner2.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/AssemblyLine.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/DistillationTower.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/DrillingRig.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/ElectricBlastFurnace.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/ImplosionCompressor.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/LargeBoiler.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/LargeChemicalReactor.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/LargeDieselEngine.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/LargeExtremeDieselEngine.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/LargeHeatExchanger.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/LargeTurbine.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/MultiblockDisplay.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/MultiFurnace.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/OilCrackingUnit.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/OreDrillingPlant.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/ProcessingArray.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/PyrolyseOven.png");
+        addTextureToWhitelist("gregtech:textures/gui/multimachines/VacuumFreezer.png");
     }
 }
