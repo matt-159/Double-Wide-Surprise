@@ -17,15 +17,15 @@ public abstract class GT_Container_BasicMachineMixin extends GT_Container_BasicT
 
     @ModifyConstant(method = "addSlots",
                     constant = {
-                            @Constant(intValue = 8),
-                            @Constant(intValue = 17),
-                            @Constant(intValue = 26),
-                            @Constant(intValue = 35),
-                            @Constant(intValue = 53),
-                            @Constant(intValue = 80),
-                            @Constant(intValue = 107),
-                            @Constant(intValue = 125),
-                            @Constant(intValue = 143)
+                        @Constant(intValue = 8),
+                        @Constant(intValue = 17),
+                        @Constant(intValue = 26),
+                        @Constant(intValue = 35),
+                        @Constant(intValue = 53),
+                        @Constant(intValue = 80),
+                        @Constant(intValue = 107),
+                        @Constant(intValue = 125),
+                        @Constant(intValue = 143)
                     },
                     remap = false,
                     require = 1)
