@@ -22,28 +22,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class GuiFurnaceMixin extends GuiContainer implements IDWSGui {
 
     @Shadow private TileEntityFurnace tileFurnace;
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/furnace.png");
-    private static final int X_SIZE = 338;
-    private static final int Y_SIZE = 166;
 
     public GuiFurnaceMixin(Container container) {
         super(container);
-    }
-
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
-            require = 1)
-    private void updateGuiSize(InventoryPlayer inventoryPlayer, TileEntityFurnace tileEntityFurnace, CallbackInfo ci) {
-        ((GuiFurnace) (Object) (this)).xSize = X_SIZE;
-        ((GuiFurnace) (Object) (this)).ySize = Y_SIZE;
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
-                require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
-        instance.bindTexture(location);
     }
 
     @Inject(method = "drawGuiContainerBackgroundLayer",
