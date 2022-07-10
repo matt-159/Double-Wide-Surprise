@@ -12,11 +12,32 @@ public abstract class GT_GUIContainer_BasicMachineMixin {
                         @Constant(intValue = 7),
                         @Constant(intValue = 24),
                         @Constant(intValue = 25),
-                        @Constant(intValue = 42)
+                        @Constant(intValue = 42),
                     },
                     remap = false,
                     require = 1)
     private int modifyXOffset(int constant) {
         return constant + 81;
+    }
+
+    @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
+                    constant = {
+                        @Constant(intValue = 7),
+                        @Constant(intValue = 25),
+                        @Constant(intValue = 78),
+                        @Constant(intValue = 79)
+                    },
+                    remap = false,
+                    require = 1)
+    private int modifyProgressBarXOffset(int constant) {
+        return constant + 81;
+    }
+
+    @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
+                    constant = @Constant(intValue = 176),
+                    remap = false,
+                    require = 1)
+    private int modifyUVXOffset(int constant) {
+        return 338;
     }
 }
