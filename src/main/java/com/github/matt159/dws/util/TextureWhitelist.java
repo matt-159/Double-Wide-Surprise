@@ -31,6 +31,8 @@ public final class TextureWhitelist {
             useOversizedTexture = checkTextureWhitelist(rl);
 
             if (useOversizedTexture) {
+                //transforming from:    modid:textures/blahblahblah
+                //to:                   dws:textures/modid/blahblahblah
                 rl = new ResourceLocation(Tags.MODID,
                         rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
             }
