@@ -1,12 +1,38 @@
 package com.github.thebrochacho.dws.mixins.client.gregtech;
 
+import gregtech.api.gui.GT_ContainerMetaTile_Machine;
+import gregtech.api.gui.GT_GUIContainerMetaTile_Machine;
+import gregtech.api.gui.GT_GUIContainer_MultiMachine;
+import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.common.gui.GT_GUIContainer_FusionReactor;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
 
 @Mixin(GT_GUIContainer_FusionReactor.class)
-public abstract class GT_GUIContainer_FusionReactorMixin {
+public abstract class GT_GUIContainer_FusionReactorMixin extends GT_GUIContainerMetaTile_Machine {
+
+    public GT_GUIContainer_FusionReactorMixin(InventoryPlayer aInventoryPlayer, IGregTechTileEntity aTileEntity, String aGUIbackground) {
+        super(aInventoryPlayer, aTileEntity, aGUIbackground);
+    }
+
+    @Inject(method = "<init>",
+            at = @At(value = "RETURN"),
+            remap = false,
+            require = 1)
+    private void injectFixedSlotLocation(InventoryPlayer aInventoryPlayer, IGregTechTileEntity aTileEntity, String aName, String aTextureFile, String aNEI, CallbackInfo ci) {
+        Slot slot = (Slot) this.inventorySlots.inventorySlots.get(0);
+        slot.xDisplayPosition = 245;
+        slot.yDisplayPosition = 5;
+    }
+
     @ModifyConstant(method = "drawGuiContainerForegroundLayer",
                     constant = {
                         @Constant(intValue = -70),
