@@ -61,6 +61,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("minecraft:textures/gui/container/generic_54.png");
         addTextureToWhitelist("minecraft:textures/gui/container/hopper.png");
         addTextureToWhitelist("minecraft:textures/gui/container/horse.png");
+        addTextureToWhitelist("minecraft:textures/gui/container/inventory.png");
         addTextureToWhitelist("minecraft:textures/gui/container/villager.png");
 
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tab_inventory.png");
