@@ -27,19 +27,15 @@ public enum Mixin {
 
     NetHandlerPlayServerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.NetHandlerPlayServerMixin")),
 
-//    GuiChestMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiChestMixin")),
     ContainerChestMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerChestMixin")),
 
-//    GuiCraftingMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiCraftingMixin")),
     ContainerWorkbenchMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerWorkbenchMixin")),
 
     GuiFurnaceMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiFurnaceMixin")),
     ContainerFurnaceMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerFurnaceMixin")),
 
-//    GuiHopperMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiHopperMixin")),
     ContainerHopperMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerHopperMixin")),
 
-//    GuiDispenserMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiDispenserMixin")),
     ContainerDispenserMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerDispenserMixin")),
 
     GuiBrewingStandMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiBrewingStandMixin")),
@@ -64,9 +60,6 @@ public enum Mixin {
 
     GuiBeaconMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiBeaconMixin")),
     GuiContainerBeaconMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerBeaconMixin")),
-
-    //Forge
-    //NetworkRegistryMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "forge.NetworkRegistryMixin")),
 
     //CodeChickenLib
     InventoryRangeMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "codechickenlib.InventoryRangeMixin")),
