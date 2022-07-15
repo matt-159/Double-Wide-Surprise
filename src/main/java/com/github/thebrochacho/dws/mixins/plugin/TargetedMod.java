@@ -13,7 +13,8 @@ public enum TargetedMod {
     BAUBLES("Baubles", "", "Baubles", true),
     TINKERS("TConstruct", "", "construct", true),
     CODECHICKENLIB("CodeChickenLib", "", "CodeChicken", true),
-    GREGTECH("GregTech", "", "gt5u", true),
+    GREGTECH_MEGA("GregTech", "", "gregtech", true),
+    GREGTECH_GT5U("Gregtech", "", "gt5u", true),
     ;
 
     public final String modName;
