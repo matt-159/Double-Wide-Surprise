@@ -115,22 +115,30 @@ public class ContainerDWS extends Container {
             ItemStack itemStackInSlot = slot.getStack();
             itemStack = itemStackInSlot.copy();
 
-            if (slotNumber >= 0 && slotNumber < 9 || slotNumber > 80) { //Crafting Matrix + Crafting Result + Armor Slots
+            if (slotNumber >= 0 && slotNumber < 9) { //Crafting Matrix + Crafting Result + Armor Slots
                 if (!mergeItemStack(itemStackInSlot, 9, 81, false))
                     return null;
             }
-            /*=========================================================================================================
-             * Vanilla Armor
-             *========================================================================================================*/
-            else if (((itemStack.getItem() instanceof ItemArmor)) &&
-                    (!((Slot)this.inventorySlots.get(((ItemArmor)itemStack.getItem()).armorType)).getHasStack())) {
-                int armorType = ((ItemArmor)itemStack.getItem()).armorType;
-                if (!mergeItemStack(itemStackInSlot, armorType + 5, armorType + 6, false))
+            else if (((itemStack.getItem() instanceof ItemArmor)) && (!((Slot)this.inventorySlots.get(((ItemArmor)itemStack.getItem()).armorType)).getHasStack())) {
+                int armorType = 5 + ((ItemArmor)itemStack.getItem()).armorType;
+                if (!mergeItemStack(itemStackInSlot, armorType, armorType + 1, false))
                     return null;
+            } else if (slotNumber < 63) {
+                //main inventory to hotbar
+                if (!this.mergeItemStack(itemStackInSlot, 63, 81, false)) {
+                    return null;
+                }
+            } else if (slotNumber < 81) {
+                //hotbar to main inventory
+                if (!this.mergeItemStack(itemStackInSlot, 9, 63, false)) {
+                    return null;
+                }
+            } else if (!this.mergeItemStack(itemStackInSlot, 9, 81, false)) {
+                return null;
             }
 
             if (itemStackInSlot.stackSize == 0) {
-                slot.putStack((ItemStack)null);
+                slot.putStack(null);
             } else {
                 slot.onSlotChanged();
             }
