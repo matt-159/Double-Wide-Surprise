@@ -43,7 +43,7 @@ public final class TextureWhitelist {
 
     private static boolean checkTextureWhitelist(ResourceLocation resourceLocation) {
         String texturePath = resourceLocation.toString();
-        return whitelist.stream().anyMatch(t -> t.equalsIgnoreCase(texturePath));
+        return whitelist.contains(texturePath);
     }
 
     public static void useOversizedTexture(boolean value) {
@@ -140,6 +140,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/E_Furnace.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/E_Oven.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Electrolyzer.png");
+        addTextureToWhitelist("gregtech:textures/gui/basicmachines/ElectromagneticSeparator.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Extractor.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Extruder.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Fermenter.png");
@@ -171,7 +172,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/PotionBrewer.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Press.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Printer.png");
-        addTextureToWhitelist("gregtech:textures/gui/basicmachines/Recycle.png");
+        addTextureToWhitelist("gregtech:textures/gui/basicmachines/Recycler.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Replicator.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/RockBreaker.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Scanner.png");
