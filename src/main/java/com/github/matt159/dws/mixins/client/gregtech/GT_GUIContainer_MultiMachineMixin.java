@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class GT_GUIContainer_MultiMachineMixin {
     @ModifyConstant(method = "drawGuiContainerForegroundLayer",
                     constant = @Constant(intValue = 10),
-                    remap = false,
                     require = 1)
     private int modifyDrawStringXPos(int constant) {
         return constant + 81;
