@@ -1,15 +1,10 @@
 package com.github.thebrochacho.dws;
 
 import com.github.thebrochacho.dws.events.DWSKeyHandler;
-import com.github.thebrochacho.dws.events.PlayerGuiEvent;
 import com.github.thebrochacho.dws.events.GuiEvents;
 import com.github.thebrochacho.dws.events.RenderGameOverlayEvents;
-import com.github.thebrochacho.dws.gui.DWSGui;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;
-import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
@@ -18,7 +13,6 @@ public class ClientProxy extends CommonProxy {
     // etc, and register them with the GameRegistry."
     public void preInit(FMLPreInitializationEvent event) 	{
         super.preInit(event);
-        MinecraftForge.EVENT_BUS.register(new PlayerGuiEvent());
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
@@ -52,17 +46,6 @@ public class ClientProxy extends CommonProxy {
 
     public void serverStopped(FMLServerStoppedEvent event) {
         super.serverStopped(event);
-    }
-
-    @Override
-    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        if (world instanceof WorldClient) {
-            switch (ID) {
-                case 1:
-                    return new DWSGui(player);
-            }
-        }
-        return null;
     }
 
     public void registerHandlers() {}
