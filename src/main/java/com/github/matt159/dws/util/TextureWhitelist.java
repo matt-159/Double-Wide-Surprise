@@ -83,6 +83,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("gregtech:textures/gui/4by4.png");
         addTextureToWhitelist("gregtech:textures/gui/BasicTank.png");
         addTextureToWhitelist("gregtech:textures/gui/BrickedBlastFurnace.png");
+        addTextureToWhitelist("gregtech:textures/gui/BronzeBlastFurnace.png");
         addTextureToWhitelist("gregtech:textures/gui/BronzeBoiler.png");
         addTextureToWhitelist("gregtech:textures/gui/ChestBuffer.png");
         addTextureToWhitelist("gregtech:textures/gui/CropHarvester.png");
