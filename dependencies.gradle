@@ -22,4 +22,7 @@ dependencies {
     compile('curse.maven:travellers-gear-224440:2262113') {
         transitive = false
     }
+    compile("gtmega:gt5u-mc1.7.10:5.28.23-gtmega:dev") {
+        transitive = false
+    }
 }
