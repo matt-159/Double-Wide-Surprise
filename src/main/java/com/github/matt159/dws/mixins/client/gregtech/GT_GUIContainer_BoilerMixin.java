@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GT_GUIContainer_Boiler.class)
-public class GT_GUIContainer_BoilerMixin {
+public abstract class GT_GUIContainer_BoilerMixin {
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
                     constant = {
                         @Constant(intValue = 70),
