@@ -102,6 +102,7 @@ public enum Mixin {
     GT_Container_2by2Mixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_2by2Mixin")),
     GT_Container_3by3Mixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_3by3Mixin")),
     GT_Container_4by4Mixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_4by4Mixin")),
+    GT_Container_MaintenanceHatchMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_MaintenanceHatchMixin")),
     ;
 
     public final MixinUnit[] units;
