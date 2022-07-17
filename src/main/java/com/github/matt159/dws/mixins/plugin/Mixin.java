@@ -79,6 +79,7 @@ public enum Mixin {
     GT_Container_BasicTankMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_BasicTankMixin")),
     GT_Container_BoilerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_BoilerMixin")),
     GT_Container_FilterMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_FilterMixin")),
+    GT_Container_ItemDistributorMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_ItemDistributorMixin")),
     GT_Container_MaintenanceHatchMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_MaintenanceHatchMixin")),
     GT_ContainerMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_ContainerMixin")),
     GT_Container_PrimitiveBlastFurnaceMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_PrimitiveBlastFurnaceMixin")),
