@@ -27,15 +27,13 @@ public final class TextureWhitelist {
                 .map(StackTraceElement::toString)
                 .anyMatch(string -> string.contains("codechicken"));
 
-        if (!isNEIRendering) {
-            useOversizedTexture = checkTextureWhitelist(rl);
+        useOversizedTexture = checkTextureWhitelist(rl);
 
-            if (useOversizedTexture) {
-                //transforming from:    modid:textures/blahblahblah
-                //to:                   dws:textures/modid/blahblahblah
-                rl = new ResourceLocation(Tags.MODID,
-                        rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
-            }
+        if (!isNEIRendering && useOversizedTexture) {
+            //transforming from:    modid:textures/blahblahblah
+            //to:                   dws:textures/modid/blahblahblah
+            rl = new ResourceLocation(Tags.MODID,
+                    rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
         }
 
         return rl;
