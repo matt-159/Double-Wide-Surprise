@@ -91,6 +91,7 @@ public enum Mixin {
     GT_GUIContainer_MultiMachineMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_MultiMachineMixin")),
     GT_GUIContainer_FusionReactorMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_FusionReactorMixin")),
     GT_GUIContainer_BoilerMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_BoilerMixin")),
+    GT_GUIContainer_PrimitiveBlastFurnaceMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_PrimitiveBlastFurnaceMixin")),
 
     GT_RectHandlerMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_RectHandlerMixin")),
 
@@ -103,6 +104,7 @@ public enum Mixin {
     GT_Container_3by3Mixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_3by3Mixin")),
     GT_Container_4by4Mixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_4by4Mixin")),
     GT_Container_MaintenanceHatchMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_MaintenanceHatchMixin")),
+    GT_Container_PrimitiveBlastFurnaceMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_PrimitiveBlastFurnaceMixin")),
     ;
 
     public final MixinUnit[] units;
