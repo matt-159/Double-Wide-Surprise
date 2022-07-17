@@ -7,8 +7,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.inventory.Container;
 import net.minecraft.util.StatCollector;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -17,7 +19,16 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 @Mixin(GuiContainer.class)
-public abstract class GuiContainerMixin extends GuiScreen{
+public abstract class GuiContainerMixin extends GuiScreen {
+
+    @Shadow public int xSize;
+
+    @Inject(method = "<init>",
+            at = @At(value = "RETURN"),
+            require = 1)
+    private void injectNewDefaultXSize(Container container, CallbackInfo ci) {
+        this.xSize = 338;
+    }
 
     @Inject(method = "keyTyped",
             at = @At(value = "TAIL"),

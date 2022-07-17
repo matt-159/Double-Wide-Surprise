@@ -1,48 +1,23 @@
 package com.github.matt159.dws.mixins.client.minecraft;
 
-import com.github.matt159.dws.Tags;
 import com.github.matt159.dws.interfaces.IDWSGui;
-import com.github.matt159.dws.interfaces.minecraft.IGuiMixin;
 import com.github.matt159.dws.util.DWSUtil;
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntityBrewingStand;
-import net.minecraft.util.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiBrewingStand.class)
 public abstract class GuiBrewingStandMixin extends GuiContainer implements IDWSGui {
     @Shadow private TileEntityBrewingStand tileBrewingStand;
-    private static final ResourceLocation location = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/brewing_stand.png");
-    private static final int X_SIZE = 338;
-    private static final int Y_SIZE = 166;
 
     public GuiBrewingStandMixin(Container container) {
         super(container);
-    }
-
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
-            require = 1)
-    private void updateGuiSize(InventoryPlayer inventoryPlayer, TileEntityBrewingStand tileEntityBrewingStand, CallbackInfo ci) {
-        ((GuiBrewingStand) (Object) (this)).xSize = X_SIZE;
-        ((GuiBrewingStand) (Object) (this)).ySize = Y_SIZE;
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V"),
-            require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation resourceLocation) {
-        instance.bindTexture(location);
     }
 
     @Inject(method = "drawGuiContainerBackgroundLayer",

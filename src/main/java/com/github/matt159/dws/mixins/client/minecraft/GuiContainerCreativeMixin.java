@@ -1,24 +1,17 @@
 package com.github.matt159.dws.mixins.client.minecraft;
 
-import com.github.matt159.dws.Tags;
 import com.github.matt159.dws.interfaces.IDWSGui;
-import com.github.matt159.dws.interfaces.minecraft.IGuiMixin;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotCreative;
 import com.github.matt159.dws.util.DWSUtil;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
-import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -26,21 +19,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiContainerCreative.class)
 public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer implements IDWSGui {
 
-    @Shadow private static int selectedTabIndex;
-
     @Shadow public static InventoryBasic field_147060_v;
 
-    @Mutable
-    @Shadow @Final private static ResourceLocation field_147061_u;
     private Slot slot;
-
-    private static final String locationPrefix = "textures/minecraft/gui/container/creative_inventory/tab_";
-    private static final int X_SIZE = 357;
-    private static final int Y_SIZE = 136;
 
     static {
         field_147060_v = new InventoryBasic("tmp", true, 90);
-        field_147061_u = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/creative_inventory/tabs.png");
     }
 
     public GuiContainerCreativeMixin(Container container) {
@@ -51,8 +35,8 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
             at = @At(value = "RETURN"),
             require = 1)
     private void updateGuiSize(EntityPlayer entityPlayer, CallbackInfo ci) {
-        ((GuiContainerCreative) (Object) this).xSize = X_SIZE;
-        ((GuiContainerCreative) (Object) this).ySize = Y_SIZE;
+        this.xSize = 357;
+        this.ySize = 136;
     }
 
     @Inject(method = "initGui",
@@ -106,40 +90,6 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
                     require = 1)
     private int modifyTrashSlotTextureXOffset(int constant) {
         return 335;
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
-                            ordinal = 3),
-                require = 1)
-    private void rerouteBindTexture(TextureManager instance, ResourceLocation p_bindTexture_1_) {
-        CreativeTabs creativeTabs = CreativeTabs.creativeTabArray[selectedTabIndex];
-        String texturePath = locationPrefix + creativeTabs.getBackgroundImageName();
-        instance.bindTexture(new ResourceLocation(Tags.MODID, texturePath));
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/gui/inventory/GuiContainerCreative;drawTexturedModalRect(IIIIII)V",
-                            ordinal = 0),
-                require = 1)
-    private void rerouteBackgroundGuiDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
-        GuiContainerCreative gcc = (GuiContainerCreative) (Object) (this);
-
-        int x1 = (gcc.width - gcc.xSize) / 2;
-        int y1 = (gcc.height - gcc.ySize) / 2;
-
-        DWSUtil.drawTexturedModalRect(x1, y1, 0, 0, gcc.xSize, gcc.ySize, zLevel);
-    }
-
-    @Redirect(  method = "drawGuiContainerBackgroundLayer",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/gui/inventory/GuiContainerCreative;drawTexturedModalRect(IIIIII)V",
-                            ordinal = 1),
-                require = 1)
-    private void rerouteScrollBarDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
-        DWSUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
     }
 
     @ModifyConstant(method =    {  "drawGuiContainerBackgroundLayer", "drawScreen" },
