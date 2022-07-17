@@ -100,6 +100,7 @@ public enum Mixin {
     GT_GUIContainer_PrimitiveBlastFurnaceMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_PrimitiveBlastFurnaceMixin")),
     GT_GUIContainer_QuantumChestMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_QuantumChestMixin")),
     GT_GUIContainer_RegulatorMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_RegulatorMixin")),
+    GT_GUIContainerVolumetricFlaskMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainerVolumetricFlaskMixin")),
 
     GT_RectHandlerMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_RectHandlerMixin")),
     ;
