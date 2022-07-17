@@ -88,6 +88,7 @@ public enum Mixin {
     GT_Container_PrimitiveBlastFurnaceMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_PrimitiveBlastFurnaceMixin")),
     GT_Container_QuantumChestMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_QuantumChestMixin")),
     GT_Container_RegulatorMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_RegulatorMixin")),
+    GT_Container_TeleporterMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_Container_TeleporterMixin")),
 
     GT_GUIContainerMetaTile_MachineMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainerMetaTile_MachineMixin")),
     GT_GUIContainer_BasicMachine(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_BasicMachineMixin")),
@@ -100,6 +101,7 @@ public enum Mixin {
     GT_GUIContainer_PrimitiveBlastFurnaceMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_PrimitiveBlastFurnaceMixin")),
     GT_GUIContainer_QuantumChestMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_QuantumChestMixin")),
     GT_GUIContainer_RegulatorMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_RegulatorMixin")),
+    GT_GUIContainer_TeleporterMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_TeleporterMixin")),
     GT_GUIContainerVolumetricFlaskMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainerVolumetricFlaskMixin")),
 
     GT_RectHandlerMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_RectHandlerMixin")),
