@@ -24,7 +24,7 @@ public abstract class ContainerBeaconMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, TileEntityBeacon tileEntityBeacon, CallbackInfo ci) {
-        ((ContainerBeacon) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
 
         this.beaconSlot = new SlotBeacon((ContainerBeacon) (Object) (this), tileEntityBeacon, 0, 190, 110);
         this.addSlotToContainer(beaconSlot);
