@@ -2,7 +2,6 @@ package com.github.thebrochacho.dws.mixins.common.minecraft.inventory;
 
 import com.github.thebrochacho.dws.inventory.slots.minecraft.SlotBeacon;
 import com.github.thebrochacho.dws.util.DWSUtil;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerBeacon;
