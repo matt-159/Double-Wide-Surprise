@@ -19,29 +19,28 @@ public abstract class ContainerCreativeMixin extends Container {
             at = @At("RETURN"),
             require = 1)
     private void addSlotsToContainer(EntityPlayer player, CallbackInfo ci) {
-        GuiContainerCreative.ContainerCreative cc = (GuiContainerCreative.ContainerCreative) (Object) (this);
-        cc.inventorySlots.clear();
+        this.inventorySlots.clear();
         InventoryPlayer inventoryPlayer = player.inventory;
 
         int i;
         for(i = 0; i < 5; ++i) {
             for(int j = 0; j < 18; ++j) {
-                DWSUtil.addSlotToContainer(cc, new Slot(GuiContainerCreative.field_147060_v, i * 18 + j, 9 + j * 18, 18 + i * 18));
+                DWSUtil.addSlotToContainer(this, new Slot(GuiContainerCreative.field_147060_v, i * 18 + j, 9 + j * 18, 18 + i * 18));
             }
         }
 
         //left half of hotbar
         int col;
         for (col = 0; col < 9; ++col) {
-            DWSUtil.addSlotToContainer(cc, new Slot(inventoryPlayer, col, 9 + col * 18, 112));
+            DWSUtil.addSlotToContainer(this, new Slot(inventoryPlayer, col, 9 + col * 18, 112));
         }
 
         //right half of hotbar
         for (col = 0; col < 9; ++col) {
-            DWSUtil.addSlotToContainer(cc, new Slot(inventoryPlayer, col + 63, 9 + (col + 9) * 18, 112));
+            DWSUtil.addSlotToContainer(this, new Slot(inventoryPlayer, col + 63, 9 + (col + 9) * 18, 112));
         }
 
-        cc.scrollTo(0.0F);
+        ((GuiContainerCreative.ContainerCreative) (Object) this).scrollTo(0.0F);
     }
 
     @ModifyConstant(method = "scrollTo",

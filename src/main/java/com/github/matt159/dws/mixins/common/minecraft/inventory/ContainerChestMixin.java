@@ -22,7 +22,7 @@ public abstract class ContainerChestMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(IInventory inventoryPlayer, IInventory inventoryChest, CallbackInfo ci) {
-        ((ContainerChest) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
 
         int var3 = (numRows - 4) * 18;
 

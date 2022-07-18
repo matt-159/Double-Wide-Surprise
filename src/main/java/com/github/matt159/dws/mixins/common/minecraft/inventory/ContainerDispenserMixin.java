@@ -19,7 +19,7 @@ public abstract class ContainerDispenserMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(IInventory inventoryPlayer, TileEntityDispenser tileEntityDispenser, CallbackInfo ci) {
-        ((ContainerDispenser) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
 
         int row;
         int col;
@@ -29,6 +29,6 @@ public abstract class ContainerDispenserMixin extends Container {
             }
         }
 
-        DWSUtil.addDWSSlotsToContainer((ContainerDispenser) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 }

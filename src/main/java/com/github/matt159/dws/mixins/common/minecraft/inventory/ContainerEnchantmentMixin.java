@@ -23,10 +23,10 @@ public abstract class ContainerEnchantmentMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
-        ((ContainerEnchantment) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
         this.addSlotToContainer(new SlotEnchantment(tableInventory, 0, 106, 47));
 
-        DWSUtil.addDWSSlotsToContainer((ContainerEnchantment) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 
     @Override

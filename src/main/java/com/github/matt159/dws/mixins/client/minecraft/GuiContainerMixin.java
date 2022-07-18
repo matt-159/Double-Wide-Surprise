@@ -37,7 +37,7 @@ public abstract class GuiContainerMixin extends GuiScreen {
         try {
             String description = StatCollector.translateToLocal("keybind.inventoryswap");
 
-            swapKey = (KeyBinding) Arrays.stream(Minecraft.getMinecraft().gameSettings.keyBindings)
+            swapKey = Arrays.stream(Minecraft.getMinecraft().gameSettings.keyBindings)
                     .filter(keyBind -> keyBind.getKeyDescription().equals(description))
                     .findFirst()
                     .get();

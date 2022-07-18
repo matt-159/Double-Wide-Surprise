@@ -20,12 +20,12 @@ public abstract class ContainerFurnaceMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, TileEntityFurnace tileEntityFurnace, CallbackInfo ci) {
-        ((ContainerFurnace) (Object) (this)).inventorySlots.clear();
+       this.inventorySlots.clear();
 
         this.addSlotToContainer(new Slot(tileEntityFurnace, 0, 137, 17));
         this.addSlotToContainer(new Slot(tileEntityFurnace, 1, 137, 53));
         this.addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntityFurnace, 2, 197, 35));
 
-        DWSUtil.addDWSSlotsToContainer((ContainerFurnace) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 }
