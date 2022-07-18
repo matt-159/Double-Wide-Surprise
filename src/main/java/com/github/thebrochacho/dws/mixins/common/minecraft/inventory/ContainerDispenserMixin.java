@@ -1,7 +1,6 @@
 package com.github.thebrochacho.dws.mixins.common.minecraft.inventory;
 
 import com.github.thebrochacho.dws.util.DWSUtil;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerDispenser;
 import net.minecraft.inventory.IInventory;

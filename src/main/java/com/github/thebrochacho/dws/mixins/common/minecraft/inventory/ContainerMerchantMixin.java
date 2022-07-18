@@ -2,7 +2,6 @@ package com.github.thebrochacho.dws.mixins.common.minecraft.inventory;
 
 import com.github.thebrochacho.dws.util.DWSUtil;
 import net.minecraft.entity.IMerchant;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.world.World;
