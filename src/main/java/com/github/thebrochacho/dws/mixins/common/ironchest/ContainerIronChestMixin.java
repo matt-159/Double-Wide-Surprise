@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerIronChest.class)
-public class ContainerIronChestMixin extends Container {
+public abstract class ContainerIronChestMixin extends Container {
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
@@ -77,10 +77,5 @@ public class ContainerIronChestMixin extends Container {
         }
 
         DWSUtil.addDWSSlotsToContainer(this, playerInventory, 8, yOffsetPlayerMainInventory, yOffsetPlayerHotbar);
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }

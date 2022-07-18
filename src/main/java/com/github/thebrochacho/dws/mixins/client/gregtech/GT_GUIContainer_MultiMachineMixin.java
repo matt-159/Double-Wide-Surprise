@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GT_GUIContainer_MultiMachine.class)
-public class GT_GUIContainer_MultiMachineMixin {
+public abstract class GT_GUIContainer_MultiMachineMixin {
     @ModifyConstant(method = "drawGuiContainerForegroundLayer",
                     constant = @Constant(intValue = 10),
                     require = 1)

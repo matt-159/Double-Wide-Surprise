@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerFurnace.class)
-public class ContainerFurnaceMixin extends Container {
+public abstract class ContainerFurnaceMixin extends Container {
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
@@ -27,12 +27,5 @@ public class ContainerFurnaceMixin extends Container {
         this.addSlotToContainer(new SlotFurnace(inventoryPlayer.player, tileEntityFurnace, 2, 197, 35));
 
         DWSUtil.addDWSSlotsToContainer((ContainerFurnace) (Object) (this), inventoryPlayer);
-    }
-
-
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }

@@ -9,15 +9,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(Gui.class)
-public class GuiMixin implements IGuiMixin {
-    @Shadow(aliases = {"field_73735_i"})
-    protected float zLevel;
-
-    @Override
-    public float getZLevel() {
-        return zLevel;
-    }
-
+public abstract class GuiMixin {
     @ModifyConstant(method = "drawTexturedModalRect",
                     constant = @Constant(floatValue = 0.00390625F),
                     require = 1)

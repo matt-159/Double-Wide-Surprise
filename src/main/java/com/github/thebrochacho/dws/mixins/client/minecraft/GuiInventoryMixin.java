@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GuiInventory.class)
-public class GuiInventoryMixin implements IDWSGui {
+public abstract class GuiInventoryMixin implements IDWSGui {
     @ModifyConstant(method = "drawGuiContainerForegroundLayer",
                     constant = @Constant(intValue = 86),
                     require = 1)

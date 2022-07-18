@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ItemPanel.class)
-public class ItemPanelMixin {
+public abstract class ItemPanelMixin {
     @ModifyConstant(method = "getMarginLeft",
                     constant = @Constant(intValue = 176),
                     require = 1,
