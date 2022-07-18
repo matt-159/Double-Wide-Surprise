@@ -17,7 +17,7 @@ public abstract class ContainerWorkbenchMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
-        ((ContainerWorkbench) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
         InventoryCrafting craftMatrix = ((ContainerWorkbench) (Object) (this)).craftMatrix;
 
         this.addSlotToContainer(new SlotCrafting(inventoryPlayer.player, craftMatrix, ((ContainerWorkbench) (Object) (this)).craftResult, 0, 205, 35));
@@ -30,6 +30,6 @@ public abstract class ContainerWorkbenchMixin extends Container {
             }
         }
 
-        DWSUtil.addDWSSlotsToContainer((ContainerWorkbench) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 }

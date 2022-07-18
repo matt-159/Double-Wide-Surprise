@@ -21,12 +21,12 @@ public abstract class ContainerMerchantMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, IMerchant merchant, World world, CallbackInfo ci) {
-        ((ContainerMerchant) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
 
         this.addSlotToContainer(new Slot(this.merchantInventory,0, 117, 53));
         this.addSlotToContainer(new Slot(this.merchantInventory, 1, 143, 53));
         this.addSlotToContainer(new SlotMerchantResult(inventoryPlayer.player, merchant, this.merchantInventory, 2, 201, 53));
 
-        DWSUtil.addDWSSlotsToContainer((ContainerMerchant) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 }

@@ -19,13 +19,13 @@ public abstract class ContainerHopperMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, IInventory inventoryHopper, CallbackInfo ci) {
-        ((ContainerHopper) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
 
         int var4;
         for(var4 = 0; var4 < inventoryHopper.getSizeInventory(); ++var4) {
             this.addSlotToContainer(new Slot(inventoryHopper, var4, 125 + var4 * 18, 20));
         }
 
-        DWSUtil.addDWSSlotsToContainer((ContainerHopper) (Object) (this), inventoryPlayer, 8, 51, 109);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer, 8, 51, 109);
     }
 }

@@ -27,7 +27,7 @@ public abstract class ContainerBrewingStandMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, TileEntityBrewingStand tileEntityBrewingStand, CallbackInfo ci) {
-        ((ContainerBrewingStand) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
         this.addSlotToContainer(new SlotPotion(inventoryPlayer.player, tileEntityBrewingStand, 0, 137, 46));
         this.addSlotToContainer(new SlotPotion(inventoryPlayer.player, tileEntityBrewingStand, 1, 160, 53));
         this.addSlotToContainer(new SlotPotion(inventoryPlayer.player, tileEntityBrewingStand, 2, 183, 46));
