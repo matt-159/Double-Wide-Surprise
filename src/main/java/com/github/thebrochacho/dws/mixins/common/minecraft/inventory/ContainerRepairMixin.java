@@ -30,12 +30,12 @@ public abstract class ContainerRepairMixin extends Container implements IContain
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, final World world, final int x, final int y, final int z, EntityPlayer player, CallbackInfo ci) {
-        ((ContainerRepair) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
         this.addSlotToContainer(new Slot(this.inputSlots, 0, 108, 47));
         this.addSlotToContainer(new Slot(this.inputSlots, 1, 157, 47));
         this.addSlotToContainer(new SlotAnvil(this.outputSlot, world, ((ContainerRepair) (Object) (this)), 2, 215, 47));
 
-        DWSUtil.addDWSSlotsToContainer((Container) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 
     public IInventory getInputSlots() {
