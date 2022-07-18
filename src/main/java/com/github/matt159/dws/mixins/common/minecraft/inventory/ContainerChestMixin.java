@@ -1,8 +1,6 @@
 package com.github.matt159.dws.mixins.common.minecraft.inventory;
 
-import com.github.matt159.dws.interfaces.minecraft.IContainerChestMixin;
 import com.github.matt159.dws.util.DWSUtil;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;

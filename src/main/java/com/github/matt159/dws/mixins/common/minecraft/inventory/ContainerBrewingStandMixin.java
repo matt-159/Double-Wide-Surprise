@@ -3,7 +3,6 @@ package com.github.matt159.dws.mixins.common.minecraft.inventory;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotIngredient;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotPotion;
 import com.github.matt159.dws.util.DWSUtil;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerBrewingStand;

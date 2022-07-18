@@ -4,7 +4,6 @@ import com.github.matt159.dws.inventory.slots.minecraft.SlotHorseArmor;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotSaddle;
 import com.github.matt159.dws.util.DWSUtil;
 import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerHorseInventory;
 import net.minecraft.inventory.IInventory;
