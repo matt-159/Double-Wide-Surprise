@@ -1,6 +1,5 @@
 package com.github.thebrochacho.dws.mixins.client.minecraft;
 
-import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.network.DWSInventorySwapPacket;
 import com.github.thebrochacho.dws.network.PacketHandler;
 import net.minecraft.client.Minecraft;
@@ -34,9 +33,6 @@ public abstract class GuiContainerMixin extends GuiScreen {
             at = @At(value = "TAIL"),
             require = 1)
     private void injectDWSHotkey(char p_73869_1_, int key, CallbackInfo ci) {
-        if (this instanceof IDWSGui)
-            return;
-
         KeyBinding swapKey;
         try {
             String description = StatCollector.translateToLocal("keybind.inventoryswap");
