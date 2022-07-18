@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Arrays;
 
 @Mixin(NetHandlerPlayServer.class)
-public class NetHandlerPlayServerMixin {
+public abstract class NetHandlerPlayServerMixin {
 
     @ModifyConstant(method = "processCreativeInventoryAction",
                     constant = @Constant(intValue = 36),

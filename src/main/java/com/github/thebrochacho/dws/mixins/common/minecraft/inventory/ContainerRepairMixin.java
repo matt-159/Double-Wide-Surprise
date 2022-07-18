@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerRepair.class)
-public class ContainerRepairMixin extends Container implements IContainerRepairMixin {
+public abstract class ContainerRepairMixin extends Container implements IContainerRepairMixin {
 
     @Shadow private IInventory outputSlot;
     @Shadow private IInventory inputSlots;
@@ -56,10 +56,5 @@ public class ContainerRepairMixin extends Container implements IContainerRepairM
 
     public int getZPos() {
         return field_82859_k;
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }

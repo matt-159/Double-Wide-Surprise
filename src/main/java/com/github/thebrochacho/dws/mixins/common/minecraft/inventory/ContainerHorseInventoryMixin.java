@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerHorseInventory.class)
-public class ContainerHorseInventoryMixin extends Container {
+public abstract class ContainerHorseInventoryMixin extends Container {
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
@@ -38,10 +38,5 @@ public class ContainerHorseInventoryMixin extends Container {
         }
 
         DWSUtil.addDWSSlotsToContainer((ContainerHorseInventory) (Object) (this), inventoryPlayer);
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }
