@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerChest.class)
-public class ContainerChestMixin extends Container implements IContainerChestMixin {
+public abstract class ContainerChestMixin extends Container {
 
     @Shadow private int numRows;
 
@@ -24,7 +24,7 @@ public class ContainerChestMixin extends Container implements IContainerChestMix
     private void addSlotsToContainer(IInventory inventoryPlayer, IInventory inventoryChest, CallbackInfo ci) {
         ((ContainerChest) (Object) (this)).inventorySlots.clear();
 
-        int var3 = (((IContainerChestMixin) (Object) (this)).getNumRows() - 4) * 18;
+        int var3 = (numRows - 4) * 18;
 
         int row;
         int col;
@@ -35,15 +35,5 @@ public class ContainerChestMixin extends Container implements IContainerChestMix
         }
 
         DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer, 8, 103 + var3, 161 + var3);
-    }
-
-    @Override
-    public int getNumRows() {
-        return numRows;
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }

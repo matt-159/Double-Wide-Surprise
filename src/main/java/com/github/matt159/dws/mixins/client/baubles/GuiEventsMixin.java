@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiEvents.class)
-public class GuiEventsMixin {
+public abstract class GuiEventsMixin {
 
     private boolean useDWSXSize = false;
 

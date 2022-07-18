@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ContainerExtendedInventory.class)
-public class ContainerExtendedInventoryMixin {
+public abstract class ContainerExtendedInventoryMixin {
 
     @ModifyConstant(method="<init>",
                     constant = @Constant(intValue = 39),

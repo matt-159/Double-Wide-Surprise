@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerEnchantment.class)
-public class ContainerEnchantmentMixin extends Container {
+public abstract class ContainerEnchantmentMixin extends Container {
 
     @Shadow public IInventory tableInventory;
 

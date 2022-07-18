@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerMerchant.class)
-public class ContainerMerchantMixin extends Container {
+public abstract class ContainerMerchantMixin extends Container {
 
     @Shadow private InventoryMerchant merchantInventory;
 
@@ -28,10 +28,5 @@ public class ContainerMerchantMixin extends Container {
         this.addSlotToContainer(new SlotMerchantResult(inventoryPlayer.player, merchant, this.merchantInventory, 2, 201, 53));
 
         DWSUtil.addDWSSlotsToContainer((ContainerMerchant) (Object) (this), inventoryPlayer);
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }

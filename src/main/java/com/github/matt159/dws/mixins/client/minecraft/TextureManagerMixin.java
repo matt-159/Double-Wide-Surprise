@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(TextureManager.class)
-public class TextureManagerMixin {
+public abstract class TextureManagerMixin {
     @ModifyVariable(method = "bindTexture",
                     at = @At(value = "HEAD"),
                     argsOnly = true,

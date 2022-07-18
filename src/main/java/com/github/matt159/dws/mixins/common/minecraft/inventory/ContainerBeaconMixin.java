@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerBeacon.class)
-public class ContainerBeaconMixin extends Container {
+public abstract class ContainerBeaconMixin extends Container {
 
     @Mutable
     @Shadow @Final private ContainerBeacon.BeaconSlot beaconSlot;
@@ -31,11 +31,5 @@ public class ContainerBeaconMixin extends Container {
         this.addSlotToContainer(beaconSlot);
 
         DWSUtil.addDWSSlotsToContainer((ContainerBeacon) (Object) (this), inventoryPlayer, 8, 137, 195);
-    }
-
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }
