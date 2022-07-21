@@ -13,7 +13,6 @@ public abstract class GT_GUIContainer_RegulatorMixin {
                         @Constant(intValue = 137),
                         @Constant(intValue = 155)
                     },
-                    remap = false,
                     require = 1)
     private int modifyDrawStringXOffset(int constant) {
         return constant + 81;
