@@ -14,7 +14,6 @@ public abstract class GT_GUIContainer_BoilerMixin {
                         @Constant(intValue = 96),
                         @Constant(intValue = 117)
                     },
-                    remap = false,
                     require = 1)
     private int modifyXOffset(int constant) {
         return constant + 81;
@@ -27,7 +26,6 @@ public abstract class GT_GUIContainer_BoilerMixin {
                         @Constant(intValue = 204),
                         @Constant(intValue = 214)
                     },
-                    remap = false,
                     require = 1)
     private int modifyTextureXOffset(int constant) {
         return constant + 162;
