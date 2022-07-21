@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class GT_GUIContainer_QuantumChestMixin {
     @ModifyConstant(method = "drawGuiContainerForegroundLayer",
                     constant = @Constant(intValue = 10),
-                    remap = false,
                     require = 1)
     private int modifyDrawStringXOffset(int constant) {
         return constant + 81;
