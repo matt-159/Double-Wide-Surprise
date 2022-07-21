@@ -18,7 +18,7 @@ import org.lwjgl.opengl.GL12;
 
 public class DWSGui extends GuiInventory implements IDWSGui {
 
-    public static final ResourceLocation DWS_TEXTURE = new ResourceLocation(Tags.MODID, "textures/dwsinv.png");
+    public static final ResourceLocation DWS_TEXTURE = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/inventory.png");
     private static final int GUI_WIDTH = 338;
     private static final int GUI_HEIGHT = 166;
 
