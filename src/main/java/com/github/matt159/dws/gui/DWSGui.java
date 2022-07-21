@@ -94,10 +94,10 @@ public class DWSGui extends GuiInventory implements IDWSGui {
         GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
         RenderHelper.enableStandardItemLighting();
         GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
-        GL11.glRotatef(-((float) Math.atan((double) (mouseZ / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
-        playerdrawn.renderYawOffset = (float) Math.atan((double) (mouseX / 40.0F)) * 20.0F;
-        playerdrawn.rotationYaw = (float) Math.atan((double) (mouseX / 40.0F)) * 40.0F;
-        playerdrawn.rotationPitch = -((float) Math.atan((double) (mouseZ / 40.0F))) * 20.0F;
+        GL11.glRotatef(-((float) Math.atan(mouseZ / 40.0F)) * 20.0F, 1.0F, 0.0F, 0.0F);
+        playerdrawn.renderYawOffset = (float) Math.atan(mouseX / 40.0F) * 20.0F;
+        playerdrawn.rotationYaw = (float) Math.atan(mouseX / 40.0F) * 40.0F;
+        playerdrawn.rotationPitch = -((float) Math.atan(mouseZ / 40.0F)) * 20.0F;
         playerdrawn.rotationYawHead = playerdrawn.rotationYaw;
         GL11.glTranslatef(0.0F, playerdrawn.yOffset, 0.0F);
         RenderManager.instance.playerViewY = 180.0F;
