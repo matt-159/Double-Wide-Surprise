@@ -52,7 +52,7 @@ public enum Mixin {
 
     //NEI
     ClientUtilsMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.NEIClientUtilsMixin")),
-    ItemPanelMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.ItemPanelMixin")),
+//    ItemPanelMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.ItemPanelMixin")),
     LayoutMangerMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.LayoutManagerMixin")),
 
     //Galacticraft
