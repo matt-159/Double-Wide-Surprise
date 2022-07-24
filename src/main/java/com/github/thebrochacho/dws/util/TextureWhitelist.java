@@ -67,13 +67,13 @@ public final class TextureWhitelist {
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tab_items.png");
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tabs.png");
 
-        addTextureToWhitelist("ironchest:textures/ironchest/copper_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/diamond_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/dirt_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/gold_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/iron_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/silver_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/steel_chest.png");
+        addTextureToWhitelist("ironchest:textures/gui/coppercontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/diamondcontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/dirtcontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/goldcontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/ironcontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/silvercontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/steel_chest.png");
 
         addTextureToWhitelist("gregtech:textures/gui/1by1.png");
         addTextureToWhitelist("gregtech:textures/gui/2by2.png");
