@@ -15,7 +15,7 @@ import java.util.Arrays;
 @Mixin(Minecraft.class)
 public abstract class MinecraftMixin {
 
-    @Shadow
+    @Shadow(aliases = "field_71439_g")
     public EntityClientPlayerMP thePlayer;
 
     @ModifyConstant(method="func_147112_ai",
