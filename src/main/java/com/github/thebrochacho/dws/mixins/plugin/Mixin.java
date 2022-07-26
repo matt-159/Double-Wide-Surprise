@@ -99,7 +99,6 @@ public enum Mixin {
     GT_GUIContainer_BasicMachine(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_BasicMachineMixin")),
     GT_GUIContainer_BoilerMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_BoilerMixin")),
     GT_GUIContainer_FusionReactorMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_FusionReactorMixin")),
-    GT_GUIContainer_IntegratedCircuitMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_IntegratedCircuitMixin")),
     GT_GUIContainer_MicrowaveEnergyTransmitterMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_MicrowaveEnergyTransmitterMixin")),
     GT_GUIContainer_MultiMachineMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_MultiMachineMixin")),
     GT_GUIContainer_OutputHatchMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_OutputHatchMixin")),
