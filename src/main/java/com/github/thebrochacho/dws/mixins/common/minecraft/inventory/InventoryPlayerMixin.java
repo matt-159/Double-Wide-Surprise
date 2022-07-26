@@ -9,7 +9,8 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class InventoryPlayerMixin {
 
     @ModifyConstant(method="getHotbarSize",
-                    constant = @Constant(intValue = 9))
+                    constant = @Constant(intValue = 9),
+                    require = 1)
     private static int modifyHotbarSize(int constant) {
         return 18;
     }
