@@ -1,4 +1,4 @@
-package com.github.matt159.dws.mixins.client.gregtech;
+package com.github.matt159.dws.mixins.common.gregtech;
 
 import gregtech.nei.GT_NEI_DefaultHandler;
 import org.spongepowered.asm.mixin.Mixin;
