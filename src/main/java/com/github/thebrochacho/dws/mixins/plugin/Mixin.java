@@ -108,7 +108,7 @@ public enum Mixin {
     GT_GUIContainer_TeleporterMixin                 (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainer_TeleporterMixin")),
     GT_GUIContainerVolumetricFlaskMixin             (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_GUIContainerVolumetricFlaskMixin")),
 
-    GT_RectHandlerMixin                             (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "gregtech.GT_RectHandlerMixin")),
+    GT_RectHandlerMixin                             (builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_RectHandlerMixin")),
     ;
 
     public final MixinUnit[] units;
