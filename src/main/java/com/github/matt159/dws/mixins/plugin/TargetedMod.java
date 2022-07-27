@@ -15,6 +15,7 @@ public enum TargetedMod {
     CODECHICKENLIB("CodeChickenLib", "", "CodeChicken", true),
     GREGTECH_MEGA("GregTech", "", "gregtech", true),
     GREGTECH_GT5U("Gregtech", "", "gt5u", true),
+    BARTWORKS("Bartworks", "", "bartworks", true),
     ;
 
     public final String modName;
