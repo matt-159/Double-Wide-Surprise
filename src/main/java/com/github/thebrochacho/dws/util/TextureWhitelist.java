@@ -10,7 +10,7 @@ import java.util.Set;
 public final class TextureWhitelist {
     private static final Set<String> whitelist = new HashSet<>();
 
-    public static boolean useOversizedTexture = false;
+    public static boolean useDoubleWideTexture = false;
 
     private TextureWhitelist() {}
 
@@ -24,16 +24,18 @@ public final class TextureWhitelist {
 
     public static ResourceLocation checkResourceLocation(ResourceLocation rl) {
         boolean isNEIRendering = Arrays.stream(Thread.currentThread().getStackTrace())
-                .map(StackTraceElement::toString)
-                .anyMatch(string -> string.contains("codechicken"));
+                .map(ste -> ste.toString().toLowerCase())
+                .anyMatch(string -> string.contains("codechicken") || string.contains("nei"));
 
-        useOversizedTexture = checkTextureWhitelist(rl);
+        if (!isNEIRendering) {
+            useDoubleWideTexture = checkTextureWhitelist(rl);
 
-        if (!isNEIRendering && useOversizedTexture) {
             //transforming from:    modid:textures/blahblahblah
             //to:                   dws:textures/modid/blahblahblah
-            rl = new ResourceLocation(Tags.MODID,
-                    rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
+            if (useDoubleWideTexture) {
+                rl = new ResourceLocation(Tags.MODID,
+                        rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
+            }
         }
 
         return rl;
@@ -44,8 +46,8 @@ public final class TextureWhitelist {
         return whitelist.contains(texturePath);
     }
 
-    public static void useOversizedTexture(boolean value) {
-        useOversizedTexture = value;
+    public static void useDoubleWideTexture(boolean value) {
+        useDoubleWideTexture = value;
     }
 
     static {
