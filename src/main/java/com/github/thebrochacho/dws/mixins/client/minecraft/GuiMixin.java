@@ -12,6 +12,6 @@ public abstract class GuiMixin {
                     constant = @Constant(floatValue = 0.00390625F),
                     require = 1)
     private float modifyUVConstant(float constant) {
-        return TextureWhitelist.useOversizedTexture ? 0.001953125F : 0.00390625F;
+        return TextureWhitelist.useDoubleWideTexture ? 0.001953125F : 0.00390625F;
     }
 }
