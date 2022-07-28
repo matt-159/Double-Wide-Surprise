@@ -114,7 +114,11 @@ public enum Mixin {
     GT_RectHandlerMixin                             (builder(Side.COMMON).unit(CompatibilityTier.Regular, "gregtech.GT_RectHandlerMixin")),
 
     //bartworks
-    BW_NEI_HandlerMixin                             (builder(Side.COMMON).unit(CompatibilityTier.Regular, "bartworks.BW_NEI_HandlerMixin"))
+    BW_NEI_HandlerMixin                             (builder(Side.COMMON).unit(CompatibilityTier.Regular, "bartworks.BW_NEI_HandlerMixin")),
+
+    //TecTech
+    TecTech_NEI_HandlerMixin                        (builder(Side.COMMON).unit(CompatibilityTier.Regular, "tectech.TecTech_NEI_HandlerMixin")),
+    TecTech_GT_RectHandlerMixin                     (builder(Side.COMMON).unit(CompatibilityTier.Regular, "tectech.GT_RectHandlerMixin")),
     ;
 
     public final MixinUnit[] units;
