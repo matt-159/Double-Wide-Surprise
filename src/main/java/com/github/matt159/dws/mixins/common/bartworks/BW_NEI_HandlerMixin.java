@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
         BW_NEI_BioVatHandler.class,
         BW_NEI_BioLabHandler.class
 })
-public class BW_NEI_HandlerMixin {
+public abstract class BW_NEI_HandlerMixin {
     @ModifyConstant(method = "<init>",
                     constant = @Constant(intValue = 65),
                     remap = false,
