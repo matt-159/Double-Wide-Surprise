@@ -1,6 +1,7 @@
 package com.github.matt159.dws.mixins.plugin;
 
 import com.github.matt159.dws.Tags;
+import com.github.matt159.dws.mixins.common.nei.ShapedRecipeHandlerMixin;
 import cpw.mods.fml.relauncher.FMLLaunchHandler;
 import org.spongepowered.asm.mixin.throwables.MixinException;
 
@@ -57,7 +58,9 @@ public enum Mixin {
     ClientUtilsMixin                                (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.NEIClientUtilsMixin")),
 //    ItemPanelMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.ItemPanelMixin")),
     LayoutMangerMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "nei.LayoutManagerMixin")),
+    BrewingRecipeHandlerMixin                       (builder(Side.COMMON).unit(CompatibilityTier.Regular, "nei.BrewingRecipeHandlerMixin")),
     FurnaceRecipeHandlerMixin                       (builder(Side.COMMON).unit(CompatibilityTier.Regular, "nei.FurnaceRecipeHandlerMixin")),
+    ShapedRecipeHandlerMixin                        (builder(Side.COMMON).unit(CompatibilityTier.Regular, "nei.ShapedRecipeHandlerMixin")),
 
     //Galacticraft
 //    IGalacticWearableMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.GalacticWearableMixin")),
