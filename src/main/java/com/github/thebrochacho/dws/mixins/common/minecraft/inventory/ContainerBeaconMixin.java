@@ -2,7 +2,6 @@ package com.github.thebrochacho.dws.mixins.common.minecraft.inventory;
 
 import com.github.thebrochacho.dws.inventory.slots.minecraft.SlotBeacon;
 import com.github.thebrochacho.dws.util.DWSUtil;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerBeacon;
@@ -16,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerBeacon.class)
-public class ContainerBeaconMixin extends Container {
+public abstract class ContainerBeaconMixin extends Container {
 
     @Mutable
     @Shadow @Final private ContainerBeacon.BeaconSlot beaconSlot;
@@ -25,17 +24,11 @@ public class ContainerBeaconMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, TileEntityBeacon tileEntityBeacon, CallbackInfo ci) {
-        ((ContainerBeacon) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
 
         this.beaconSlot = new SlotBeacon((ContainerBeacon) (Object) (this), tileEntityBeacon, 0, 190, 110);
         this.addSlotToContainer(beaconSlot);
 
         DWSUtil.addDWSSlotsToContainer((ContainerBeacon) (Object) (this), inventoryPlayer, 8, 137, 195);
-    }
-
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }

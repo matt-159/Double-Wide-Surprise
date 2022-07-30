@@ -6,10 +6,11 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(InventoryPlayer.class)
-public class InventoryPlayerMixin {
+public abstract class InventoryPlayerMixin {
 
     @ModifyConstant(method="getHotbarSize",
-                    constant = @Constant(intValue = 9))
+                    constant = @Constant(intValue = 9),
+                    require = 1)
     private static int modifyHotbarSize(int constant) {
         return 18;
     }

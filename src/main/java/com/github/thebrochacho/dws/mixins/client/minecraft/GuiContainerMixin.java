@@ -1,17 +1,18 @@
 package com.github.thebrochacho.dws.mixins.client.minecraft;
 
+import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.network.DWSInventorySwapPacket;
 import com.github.thebrochacho.dws.network.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.inventory.Container;
 import net.minecraft.util.StatCollector;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Arrays;
@@ -20,13 +21,11 @@ import java.util.NoSuchElementException;
 @Mixin(GuiContainer.class)
 public abstract class GuiContainerMixin extends GuiScreen {
 
-    @Shadow public int xSize;
-
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
-            require = 1)
-    private void injectNewDefaultXSize(Container container, CallbackInfo ci) {
-        this.xSize = 338;
+    @ModifyConstant(method = "<init>",
+                    constant = @Constant(intValue = 176),
+                    require = 1)
+    private int modifyDefaultXSize(int constant) {
+        return (this instanceof IDWSGui) ? 338 : 176;
     }
 
     @Inject(method = "keyTyped",
@@ -37,7 +36,7 @@ public abstract class GuiContainerMixin extends GuiScreen {
         try {
             String description = StatCollector.translateToLocal("keybind.inventoryswap");
 
-            swapKey = (KeyBinding) Arrays.stream(Minecraft.getMinecraft().gameSettings.keyBindings)
+            swapKey = Arrays.stream(Minecraft.getMinecraft().gameSettings.keyBindings)
                     .filter(keyBind -> keyBind.getKeyDescription().equals(description))
                     .findFirst()
                     .get();

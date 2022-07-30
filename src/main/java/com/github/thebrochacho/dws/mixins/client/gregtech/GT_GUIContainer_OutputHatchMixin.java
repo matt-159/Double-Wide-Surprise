@@ -12,7 +12,6 @@ public abstract class GT_GUIContainer_OutputHatchMixin {
                         @Constant(intValue = 10),
                         @Constant(intValue = 101)
                     },
-                    remap = false,
                     require = 1)
     private int modifyDrawStringXOffset(int constant) {
         return constant + 81;

@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerEnchantment.class)
-public class ContainerEnchantmentMixin extends Container {
+public abstract class ContainerEnchantmentMixin extends Container {
 
     @Shadow public IInventory tableInventory;
 
@@ -23,10 +23,10 @@ public class ContainerEnchantmentMixin extends Container {
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
-        ((ContainerEnchantment) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
         this.addSlotToContainer(new SlotEnchantment(tableInventory, 0, 106, 47));
 
-        DWSUtil.addDWSSlotsToContainer((ContainerEnchantment) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 
     @Override
