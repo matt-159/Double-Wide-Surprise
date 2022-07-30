@@ -4,7 +4,6 @@ import com.github.thebrochacho.dws.Tags;
 import com.github.thebrochacho.dws.inventory.InventoryDWS;
 import com.github.thebrochacho.dws.util.DWSUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.InventoryPlayer;
