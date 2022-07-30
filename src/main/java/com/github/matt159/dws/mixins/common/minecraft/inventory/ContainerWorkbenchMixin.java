@@ -1,7 +1,6 @@
 package com.github.matt159.dws.mixins.common.minecraft.inventory;
 
 import com.github.matt159.dws.util.DWSUtil;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.world.World;
@@ -11,13 +10,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerWorkbench.class)
-public class ContainerWorkbenchMixin extends Container {
+public abstract class ContainerWorkbenchMixin extends Container {
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
-        ((ContainerWorkbench) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
         InventoryCrafting craftMatrix = ((ContainerWorkbench) (Object) (this)).craftMatrix;
 
         this.addSlotToContainer(new SlotCrafting(inventoryPlayer.player, craftMatrix, ((ContainerWorkbench) (Object) (this)).craftResult, 0, 205, 35));
@@ -30,11 +29,6 @@ public class ContainerWorkbenchMixin extends Container {
             }
         }
 
-        DWSUtil.addDWSSlotsToContainer((ContainerWorkbench) (Object) (this), inventoryPlayer);
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 }

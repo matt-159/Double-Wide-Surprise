@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import travellersgear.client.ClientProxy;
 
 @Mixin(ClientProxy.class)
-public class ClientProxyMixin {
+public abstract class ClientProxyMixin {
 
     @ModifyConstant(method = "guiPostInit",
                     constant = @Constant(intValue = 176),

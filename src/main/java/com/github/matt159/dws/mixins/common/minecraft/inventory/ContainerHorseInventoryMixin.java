@@ -4,7 +4,6 @@ import com.github.matt159.dws.inventory.slots.minecraft.SlotHorseArmor;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotSaddle;
 import com.github.matt159.dws.util.DWSUtil;
 import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerHorseInventory;
 import net.minecraft.inventory.IInventory;
@@ -15,13 +14,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerHorseInventory.class)
-public class ContainerHorseInventoryMixin extends Container {
+public abstract class ContainerHorseInventoryMixin extends Container {
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(IInventory inventoryPlayer, IInventory inventoryHorse, EntityHorse horse, CallbackInfo ci) {
-        ((ContainerHorseInventory) (Object) this).inventorySlots.clear();
+        this.inventorySlots.clear();
 
         this.addSlotToContainer(new SlotSaddle(inventoryHorse, 0, 89, 18));
         this.addSlotToContainer(new SlotHorseArmor(horse, inventoryHorse, 1, 89, 36));
@@ -37,11 +36,6 @@ public class ContainerHorseInventoryMixin extends Container {
             }
         }
 
-        DWSUtil.addDWSSlotsToContainer((ContainerHorseInventory) (Object) (this), inventoryPlayer);
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 }

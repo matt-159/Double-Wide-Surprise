@@ -43,16 +43,10 @@ public class DWSHotbar extends GuiIngameForge {
         GL11.glEnable(32826);
         RenderHelper.enableGUIStandardItemLighting();
 
-        for(int i = 0; i < 9; ++i) {
+        for(int i = 0; i < 18; ++i) {
             int x = width / 2 - 180 + i * 20 + 2;
             int z = height - 16 - 3;
-            this.renderInventorySlot(i, x, z, partialTicks);
-        }
-
-        for (int i = 0; i < 9; i++) {
-            int x = width / 2 - 180 + (i + 9) * 20 + 2;
-            int z = height - 16 - 3;
-            this.renderInventorySlot(63 + i, x, z, partialTicks);
+            this.renderInventorySlot(InventoryDWS.HOTBAR_SLOTS[i], x, z, partialTicks);
         }
 
         RenderHelper.disableStandardItemLighting();

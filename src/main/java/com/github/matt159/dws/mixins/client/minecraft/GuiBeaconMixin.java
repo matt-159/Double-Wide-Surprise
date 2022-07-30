@@ -57,8 +57,8 @@ public abstract class GuiBeaconMixin extends GuiContainer implements IDWSGui {
     }
 
     @ModifyConstant(method = "drawGuiContainerForegroundLayer",
-            constant = @Constant(intValue = 62),
-            require = 1)
+                    constant = @Constant(intValue = 62),
+                    require = 1)
     private int modifyBeaconPrimaryStringXOffset(int constant) {
         return 116;
     }

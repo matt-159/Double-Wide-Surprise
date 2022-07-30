@@ -1,9 +1,6 @@
 package com.github.matt159.dws.mixins.client.gregtech;
 
-import gregtech.api.gui.GT_GUIContainerMetaTile_Machine;
-import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.common.gui.GT_GUIContainer_Boiler;
-import net.minecraft.entity.player.InventoryPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
@@ -17,7 +14,6 @@ public abstract class GT_GUIContainer_BoilerMixin {
                         @Constant(intValue = 96),
                         @Constant(intValue = 117)
                     },
-                    remap = false,
                     require = 1)
     private int modifyXOffset(int constant) {
         return constant + 81;
@@ -30,7 +26,6 @@ public abstract class GT_GUIContainer_BoilerMixin {
                         @Constant(intValue = 204),
                         @Constant(intValue = 214)
                     },
-                    remap = false,
                     require = 1)
     private int modifyTextureXOffset(int constant) {
         return constant + 162;

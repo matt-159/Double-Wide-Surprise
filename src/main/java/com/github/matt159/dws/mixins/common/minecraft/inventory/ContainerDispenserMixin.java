@@ -1,7 +1,6 @@
 package com.github.matt159.dws.mixins.common.minecraft.inventory;
 
 import com.github.matt159.dws.util.DWSUtil;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerDispenser;
 import net.minecraft.inventory.IInventory;
@@ -13,13 +12,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerDispenser.class)
-public class ContainerDispenserMixin extends Container {
+public abstract class ContainerDispenserMixin extends Container {
 
     @Inject(method = "<init>",
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(IInventory inventoryPlayer, TileEntityDispenser tileEntityDispenser, CallbackInfo ci) {
-        ((ContainerDispenser) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
 
         int row;
         int col;
@@ -29,11 +28,6 @@ public class ContainerDispenserMixin extends Container {
             }
         }
 
-        DWSUtil.addDWSSlotsToContainer((ContainerDispenser) (Object) (this), inventoryPlayer);
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 }

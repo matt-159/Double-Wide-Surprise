@@ -1,8 +1,6 @@
 package com.github.matt159.dws.mixins.common.minecraft.inventory;
 
-import com.github.matt159.dws.interfaces.minecraft.IContainerChestMixin;
 import com.github.matt159.dws.util.DWSUtil;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
@@ -14,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerChest.class)
-public class ContainerChestMixin extends Container implements IContainerChestMixin {
+public abstract class ContainerChestMixin extends Container {
 
     @Shadow private int numRows;
 
@@ -22,9 +20,9 @@ public class ContainerChestMixin extends Container implements IContainerChestMix
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(IInventory inventoryPlayer, IInventory inventoryChest, CallbackInfo ci) {
-        ((ContainerChest) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
 
-        int var3 = (((IContainerChestMixin) (Object) (this)).getNumRows() - 4) * 18;
+        int var3 = (numRows - 4) * 18;
 
         int row;
         int col;
@@ -35,15 +33,5 @@ public class ContainerChestMixin extends Container implements IContainerChestMix
         }
 
         DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer, 8, 103 + var3, 161 + var3);
-    }
-
-    @Override
-    public int getNumRows() {
-        return numRows;
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }

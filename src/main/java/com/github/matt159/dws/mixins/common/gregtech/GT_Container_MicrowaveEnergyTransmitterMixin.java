@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GT_Container_MicrowaveEnergyTransmitter.class)
-public class GT_Container_MicrowaveEnergyTransmitterMixin {
+public abstract class GT_Container_MicrowaveEnergyTransmitterMixin {
     @ModifyConstant(method = "addSlots",
                     constant = {
                         @Constant(intValue = 8),

@@ -10,7 +10,7 @@ import java.util.Set;
 public final class TextureWhitelist {
     private static final Set<String> whitelist = new HashSet<>();
 
-    public static boolean useOversizedTexture = false;
+    public static boolean useDoubleWideTexture = false;
 
     private TextureWhitelist() {}
 
@@ -24,16 +24,18 @@ public final class TextureWhitelist {
 
     public static ResourceLocation checkResourceLocation(ResourceLocation rl) {
         boolean isNEIRendering = Arrays.stream(Thread.currentThread().getStackTrace())
-                .map(StackTraceElement::toString)
-                .anyMatch(string -> string.contains("codechicken"));
+                .map(ste -> ste.toString().toLowerCase())
+                .anyMatch(string -> string.contains("codechicken") || string.contains("nei"));
 
-        useOversizedTexture = checkTextureWhitelist(rl);
+        if (!isNEIRendering) {
+            useDoubleWideTexture = checkTextureWhitelist(rl);
 
-        if (!isNEIRendering && useOversizedTexture) {
             //transforming from:    modid:textures/blahblahblah
             //to:                   dws:textures/modid/blahblahblah
-            rl = new ResourceLocation(Tags.MODID,
-                    rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
+            if (useDoubleWideTexture) {
+                rl = new ResourceLocation(Tags.MODID,
+                        rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
+            }
         }
 
         return rl;
@@ -44,8 +46,8 @@ public final class TextureWhitelist {
         return whitelist.contains(texturePath);
     }
 
-    public static void useOversizedTexture(boolean value) {
-        useOversizedTexture = value;
+    public static void useDoubleWideTexture(boolean value) {
+        useDoubleWideTexture = value;
     }
 
     static {
@@ -67,13 +69,13 @@ public final class TextureWhitelist {
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tab_items.png");
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tabs.png");
 
-        addTextureToWhitelist("ironchest:textures/ironchest/copper_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/diamond_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/dirt_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/gold_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/iron_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/silver_chest.png");
-        addTextureToWhitelist("ironchest:textures/ironchest/steel_chest.png");
+        addTextureToWhitelist("ironchest:textures/gui/coppercontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/diamondcontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/dirtcontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/goldcontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/ironcontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/silvercontainer.png");
+        addTextureToWhitelist("ironchest:textures/gui/steel_chest.png");
 
         addTextureToWhitelist("gregtech:textures/gui/1by1.png");
         addTextureToWhitelist("gregtech:textures/gui/2by2.png");

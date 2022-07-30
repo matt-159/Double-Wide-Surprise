@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(Container.class)
-public class ContainerMixin {
+public abstract class ContainerMixin {
 
     @ModifyConstant(method = "slotClick",
                     constant = @Constant(intValue = 9))

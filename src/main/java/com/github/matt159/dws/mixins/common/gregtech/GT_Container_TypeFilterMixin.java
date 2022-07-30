@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GT_Container_TypeFilter.class)
-public class GT_Container_TypeFilterMixin {
+public abstract class GT_Container_TypeFilterMixin {
     @ModifyConstant(method = "addSlots",
                     constant = {
                         @Constant(intValue = 8, ordinal = 1),
