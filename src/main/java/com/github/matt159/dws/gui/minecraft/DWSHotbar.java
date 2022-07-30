@@ -4,7 +4,6 @@ import com.github.matt159.dws.Tags;
 import com.github.matt159.dws.inventory.InventoryDWS;
 import com.github.matt159.dws.util.DWSUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.InventoryPlayer;
