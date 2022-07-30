@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerRepair.class)
-public class ContainerRepairMixin extends Container implements IContainerRepairMixin {
+public abstract class ContainerRepairMixin extends Container implements IContainerRepairMixin {
 
     @Shadow private IInventory outputSlot;
     @Shadow private IInventory inputSlots;
@@ -30,12 +30,12 @@ public class ContainerRepairMixin extends Container implements IContainerRepairM
             at = @At(value = "RETURN"),
             require = 1)
     private void addSlotsToContainer(InventoryPlayer inventoryPlayer, final World world, final int x, final int y, final int z, EntityPlayer player, CallbackInfo ci) {
-        ((ContainerRepair) (Object) (this)).inventorySlots.clear();
+        this.inventorySlots.clear();
         this.addSlotToContainer(new Slot(this.inputSlots, 0, 108, 47));
         this.addSlotToContainer(new Slot(this.inputSlots, 1, 157, 47));
         this.addSlotToContainer(new SlotAnvil(this.outputSlot, world, ((ContainerRepair) (Object) (this)), 2, 215, 47));
 
-        DWSUtil.addDWSSlotsToContainer((Container) (Object) (this), inventoryPlayer);
+        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
     }
 
     public IInventory getInputSlots() {
@@ -56,10 +56,5 @@ public class ContainerRepairMixin extends Container implements IContainerRepairM
 
     public int getZPos() {
         return field_82859_k;
-    }
-
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
     }
 }

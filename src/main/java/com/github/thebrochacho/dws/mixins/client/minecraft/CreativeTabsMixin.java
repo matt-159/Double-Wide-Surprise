@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @SideOnly(Side.CLIENT)
 @Mixin(CreativeTabs.class)
-public class CreativeTabsMixin implements ICreativeTabsMixin {
+public abstract class CreativeTabsMixin implements ICreativeTabsMixin {
 
     @Mutable
     @Shadow @Final private int tabIndex;

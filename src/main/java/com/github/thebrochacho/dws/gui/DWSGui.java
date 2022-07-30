@@ -3,33 +3,22 @@ package com.github.thebrochacho.dws.gui;
 import com.github.thebrochacho.dws.Tags;
 import com.github.thebrochacho.dws.gui.SlotOverlays.Hints;
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
-import com.github.thebrochacho.dws.network.DWSInventorySwapPacket;
-import com.github.thebrochacho.dws.network.PacketHandler;
 import com.github.thebrochacho.dws.util.DWSUtil;
-import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import java.util.Arrays;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-
 public class DWSGui extends GuiInventory implements IDWSGui {
 
-    public static final ResourceLocation DWS_TEXTURE = new ResourceLocation(Tags.MODID, "textures/dwsinv.png");
+    public static final ResourceLocation DWS_TEXTURE = new ResourceLocation(Tags.MODID, "textures/minecraft/gui/container/inventory.png");
     private static final int GUI_WIDTH = 338;
     private static final int GUI_HEIGHT = 166;
 
@@ -105,10 +94,10 @@ public class DWSGui extends GuiInventory implements IDWSGui {
         GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
         RenderHelper.enableStandardItemLighting();
         GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
-        GL11.glRotatef(-((float) Math.atan((double) (mouseZ / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
-        playerdrawn.renderYawOffset = (float) Math.atan((double) (mouseX / 40.0F)) * 20.0F;
-        playerdrawn.rotationYaw = (float) Math.atan((double) (mouseX / 40.0F)) * 40.0F;
-        playerdrawn.rotationPitch = -((float) Math.atan((double) (mouseZ / 40.0F))) * 20.0F;
+        GL11.glRotatef(-((float) Math.atan(mouseZ / 40.0F)) * 20.0F, 1.0F, 0.0F, 0.0F);
+        playerdrawn.renderYawOffset = (float) Math.atan(mouseX / 40.0F) * 20.0F;
+        playerdrawn.rotationYaw = (float) Math.atan(mouseX / 40.0F) * 40.0F;
+        playerdrawn.rotationPitch = -((float) Math.atan(mouseZ / 40.0F)) * 20.0F;
         playerdrawn.rotationYawHead = playerdrawn.rotationYaw;
         GL11.glTranslatef(0.0F, playerdrawn.yOffset, 0.0F);
         RenderManager.instance.playerViewY = 180.0F;
