@@ -12,7 +12,6 @@ public abstract class GT_GUIContainer_BasicTankMixin {
                         @Constant(intValue = 8),
                         @Constant(intValue = 10)
                     },
-                    remap = false,
                     require = 1)
     private int modifyDrawStringXOffset(int constant) {
         return constant + 81;
