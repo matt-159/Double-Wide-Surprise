@@ -2,6 +2,7 @@ package com.github.matt159.dws;
 
 import com.github.matt159.dws.events.DWSKeyHandler;
 import com.github.matt159.dws.events.GuiEvents;
+import com.github.matt159.dws.events.PlayerOpenContainerEventHandler;
 import com.github.matt159.dws.events.RenderGameOverlayEvents;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;
@@ -20,6 +21,7 @@ public class ClientProxy extends CommonProxy {
         super.init(event);
         MinecraftForge.EVENT_BUS.register(new GuiEvents());
         MinecraftForge.EVENT_BUS.register(new RenderGameOverlayEvents());
+        MinecraftForge.EVENT_BUS.register(new PlayerOpenContainerEventHandler());
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
