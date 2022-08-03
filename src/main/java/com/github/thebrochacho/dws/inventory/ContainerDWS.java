@@ -1,5 +1,9 @@
 package com.github.thebrochacho.dws.inventory;
 
+import baubles.common.container.InventoryBaubles;
+import baubles.common.lib.PlayerHandler;
+import com.github.thebrochacho.dws.Config;
+import com.github.thebrochacho.dws.inventory.slots.SlotDWS;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,8 +13,11 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import org.apache.commons.lang3.tuple.Pair;
+import tconstruct.armor.player.TPlayerStats;
 
 import java.util.ArrayList;
+
+import static com.github.thebrochacho.dws.inventory.slots.SlotDWS.SlotType.*;
 
 public class ContainerDWS extends Container {
     //Offset so that itemslots don't get mapped to each other
@@ -18,8 +25,16 @@ public class ContainerDWS extends Container {
 
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 2, 2);
     public IInventory craftResult = new InventoryCraftResult();
+    public InventoryBaubles baubles;
+
     public boolean isLocalWorld;
     private final EntityPlayer thePlayer;
+
+    //Offset so that itemslots don't get mapped to each other
+    public static int BAUBLES_SLOT_START = -1;
+    public static int TINKERS_SLOT_START = -1;
+    public static int TG_SLOT_START = -1;
+    public static int GC_SLOT_START = -1;
 
     public static ArrayList<Pair<Integer, Integer>> nullSlots = null;
 
@@ -93,12 +108,21 @@ public class ContainerDWS extends Container {
         this.onCraftMatrixChanged(this.craftMatrix);
 
         int xOffset = 80;
+
+        baubles = null;
+        if (Config.isBaublesLoaded) {
+            addBaublesSlots(player, xOffset);
+            xOffset += 18;
+        }
     }
 
     @Override
     public void onContainerClosed(EntityPlayer player) {
         super.onContainerClosed(player);
 
+        if (!player.worldObj.isRemote) {
+            PlayerHandler.setPlayerBaubles(player, baubles);
+        }
     }
 
     @Override
@@ -155,6 +179,27 @@ public class ContainerDWS extends Container {
 
     @Override
     public void putStacksInSlots(ItemStack[] p_75131_1_) {
+        if (Config.isBaublesLoaded) {
+            baubles.blockEvents = true;
+        }
         super.putStacksInSlots(p_75131_1_);
+    }
+
+    private void addBaublesSlots(EntityPlayer player, int xOffset) {
+        if (BAUBLES_SLOT_START == -1) {
+            BAUBLES_SLOT_START = this.inventorySlots.size();
+        }
+
+        baubles = new InventoryBaubles(player);
+        baubles.setEventHandler(this);
+
+        if (!player.worldObj.isRemote) {
+            baubles.stackList = PlayerHandler.getPlayerBaubles(player).stackList;
+        }
+
+        this.addSlotToContainer(new SlotDWS(baubles, 0, xOffset,8 + 0 * 18, player, BAUBLE_AMULET));
+        this.addSlotToContainer(new SlotDWS(baubles, 1, xOffset,8 + 1 * 18, player, BAUBLE_RING));
+        this.addSlotToContainer(new SlotDWS(baubles, 2, xOffset,8 + 2 * 18, player, BAUBLE_RING));
+        this.addSlotToContainer(new SlotDWS(baubles, 3, xOffset,8 + 3 * 18, player, BAUBLE_BELT));
     }
 }
