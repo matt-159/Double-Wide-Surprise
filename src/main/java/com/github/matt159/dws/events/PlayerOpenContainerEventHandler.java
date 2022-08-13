@@ -8,6 +8,9 @@ import net.minecraft.inventory.Container;
 import net.minecraftforge.event.entity.player.PlayerOpenContainerEvent;
 
 public class PlayerOpenContainerEventHandler {
+    /*  The InventoryBaubles object inside ContainerDWS is likely to get constructed prior to the player's baubles being
+     *  loaded from file. This forces synchronization of the player's baubles
+     */
     @SubscribeEvent
     public void onPlayerOpenContainer(PlayerOpenContainerEvent event) {
         Container container = event.entityPlayer.inventoryContainer;
