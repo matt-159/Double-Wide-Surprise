@@ -1,4 +1,4 @@
-package com.github.matt159.dws.mixins.common.minecraft;
+package com.github.matt159.dws.mixins.client.minecraft;
 
 import com.github.matt159.dws.inventory.InventoryDWS;
 import net.minecraft.client.Minecraft;
