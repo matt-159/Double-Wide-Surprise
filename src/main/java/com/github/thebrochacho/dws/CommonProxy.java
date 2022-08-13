@@ -90,6 +90,7 @@ public class CommonProxy implements IGuiHandler {
 
     public void registerKeyBindings() {}
 
+    @SuppressWarnings("unchecked")
     public void disableOtherInventoryButtons() {
         try {
             Field f = MinecraftForge.EVENT_BUS.getClass().getDeclaredField("listeners");
