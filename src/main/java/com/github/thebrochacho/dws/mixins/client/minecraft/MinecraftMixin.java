@@ -1,4 +1,4 @@
-package com.github.thebrochacho.dws.mixins.common.minecraft;
+package com.github.thebrochacho.dws.mixins.client.minecraft;
 
 import com.github.thebrochacho.dws.inventory.InventoryDWS;
 import net.minecraft.client.Minecraft;
