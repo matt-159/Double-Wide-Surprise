@@ -13,6 +13,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import org.apache.commons.lang3.tuple.Pair;
+import tconstruct.armor.player.ArmorExtended;
 import tconstruct.armor.player.TPlayerStats;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class ContainerDWS extends Container {
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 2, 2);
     public IInventory craftResult = new InventoryCraftResult();
     public InventoryBaubles baubles;
+    public ArmorExtended tinkers;
 
     public boolean isLocalWorld;
     private final EntityPlayer thePlayer;
@@ -36,7 +38,7 @@ public class ContainerDWS extends Container {
     public static int TG_SLOT_START = -1;
     public static int GC_SLOT_START = -1;
 
-    public static ArrayList<Pair<Integer, Integer>> nullSlots = null;
+    public static ArrayList<Pair<Integer, Integer>> nullSlots = new ArrayList<>();
 
     public ContainerDWS(InventoryPlayer inventoryPlayer, boolean p_i1819_2_, EntityPlayer player) {
         this.isLocalWorld = p_i1819_2_;
@@ -113,6 +115,12 @@ public class ContainerDWS extends Container {
         if (Config.isBaublesLoaded) {
             addBaublesSlots(player, xOffset);
             xOffset += 18;
+        }
+
+        tinkers = null;
+        if (Config.isTinkersLoaded) {
+            addTinkersSlots(player, xOffset);
+            xOffset += 36;
         }
     }
 
@@ -201,5 +209,24 @@ public class ContainerDWS extends Container {
         this.addSlotToContainer(new SlotDWS(baubles, 1, xOffset,8 + 1 * 18, player, BAUBLE_RING));
         this.addSlotToContainer(new SlotDWS(baubles, 2, xOffset,8 + 2 * 18, player, BAUBLE_RING));
         this.addSlotToContainer(new SlotDWS(baubles, 3, xOffset,8 + 3 * 18, player, BAUBLE_BELT));
+    }
+
+    private void addTinkersSlots(EntityPlayer player, int xOffset) {
+        if (TINKERS_SLOT_START == -1) {
+            TINKERS_SLOT_START = this.inventorySlots.size();
+        }
+
+        tinkers = TPlayerStats.get(player).armor;
+
+        this.addSlotToContainer(new SlotDWS(tinkers, 0, xOffset, 8 + 0 * 18, player, TINKERS_MASK));
+        this.addSlotToContainer(new SlotDWS(tinkers, 1, xOffset, 8 + 1 * 18, player, TINKERS_GLOVE));
+        this.addSlotToContainer(new SlotDWS(tinkers, 3, xOffset, 8 + 2 * 18, player, TINKERS_BELT));
+        this.addSlotToContainer(new SlotDWS(tinkers, 2, xOffset, 8 + 3 * 18, player, TINKERS_KNAPSACK));
+        xOffset += 18;
+
+        this.addSlotToContainer(new SlotDWS(tinkers, 6, xOffset, 8 + 0 * 18, player, TINKERS_HEART_RED));
+        this.addSlotToContainer(new SlotDWS(tinkers, 5, xOffset, 8 + 1 * 18, player, TINKERS_HEART_YELLOW));
+        this.addSlotToContainer(new SlotDWS(tinkers, 4, xOffset, 8 + 2 * 18, player, TINKERS_HEART_GREEN));
+        nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
     }
 }
