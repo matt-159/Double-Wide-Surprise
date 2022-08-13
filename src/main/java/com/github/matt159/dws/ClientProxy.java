@@ -21,7 +21,6 @@ public class ClientProxy extends CommonProxy {
         super.init(event);
         MinecraftForge.EVENT_BUS.register(new GuiEvents());
         MinecraftForge.EVENT_BUS.register(new RenderGameOverlayEvents());
-        MinecraftForge.EVENT_BUS.register(new PlayerOpenContainerEventHandler());
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."

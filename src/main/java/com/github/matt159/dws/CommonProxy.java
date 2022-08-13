@@ -2,6 +2,7 @@ package com.github.matt159.dws;
 
 import baubles.client.gui.GuiEvents;
 import com.github.matt159.dws.events.DWSKeyHandler;
+import com.github.matt159.dws.events.PlayerOpenContainerEventHandler;
 import com.github.matt159.dws.inventory.ContainerDWS;
 import com.github.matt159.dws.network.PacketHandler;
 import cpw.mods.fml.common.Loader;
@@ -39,6 +40,8 @@ public class CommonProxy implements IGuiHandler {
         Config.isTravellersGearLoaded = Loader.isModLoaded("TravellersGear");
         Config.isTinkersLoaded = Loader.isModLoaded("TConstruct");
         Config.isGalacticraftLoaded = Loader.isModLoaded("GalacticraftCore");
+
+        MinecraftForge.EVENT_BUS.register(new PlayerOpenContainerEventHandler());
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
