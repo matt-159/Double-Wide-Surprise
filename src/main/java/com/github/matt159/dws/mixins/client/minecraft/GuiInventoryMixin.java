@@ -49,12 +49,12 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
             this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TINKERS_SLOT_START + 6), Hints.GREEN_CANISTER);
         }
 
-//        if (Config.isTravellersGearLoaded) {
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 0), Hints.CLOAK);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 1), Hints.PAULDRON);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 2), Hints.VAMBRACE);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 3), Hints.TITLE);
-//        }
+        if (Config.isTravellersGearLoaded) {
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 0), Hints.CLOAK);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 1), Hints.PAULDRON);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 2), Hints.VAMBRACE);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 3), Hints.TITLE);
+        }
 
 //        if (Config.isGalacticraftLoaded) {
 //            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 0), Hints.THERMAL_HELMET);
