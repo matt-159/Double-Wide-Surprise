@@ -15,6 +15,8 @@ import net.minecraft.util.IIcon;
 import org.apache.commons.lang3.tuple.Pair;
 import tconstruct.armor.player.ArmorExtended;
 import tconstruct.armor.player.TPlayerStats;
+import travellersgear.api.TravellersGearAPI;
+import travellersgear.common.inventory.InventoryTG;
 
 import java.util.ArrayList;
 
@@ -28,6 +30,7 @@ public class ContainerDWS extends Container {
     public IInventory craftResult = new InventoryCraftResult();
     public InventoryBaubles baubles;
     public ArmorExtended tinkers;
+    public InventoryTG travellers;
 
     public boolean isLocalWorld;
     private final EntityPlayer thePlayer;
@@ -122,6 +125,12 @@ public class ContainerDWS extends Container {
             addTinkersSlots(player, xOffset);
             xOffset += 36;
         }
+
+        travellers = null;
+        if (Config.isTravellersGearLoaded) {
+            addTravellersGearSlots(player, xOffset);
+            xOffset += 18;
+        }
     }
 
     @Override
@@ -129,7 +138,13 @@ public class ContainerDWS extends Container {
         super.onContainerClosed(player);
 
         if (!player.worldObj.isRemote) {
-            PlayerHandler.setPlayerBaubles(player, baubles);
+            if (Config.isBaublesLoaded) {
+                PlayerHandler.setPlayerBaubles(player, baubles);
+            }
+
+            if (Config.isTravellersGearLoaded) {
+                TravellersGearAPI.setExtendedInventory(player, travellers.stackList);
+            }
         }
     }
 
@@ -228,5 +243,21 @@ public class ContainerDWS extends Container {
         this.addSlotToContainer(new SlotDWS(tinkers, 5, xOffset, 8 + 1 * 18, player, TINKERS_HEART_YELLOW));
         this.addSlotToContainer(new SlotDWS(tinkers, 4, xOffset, 8 + 2 * 18, player, TINKERS_HEART_GREEN));
         nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+    }
+
+    private void addTravellersGearSlots(EntityPlayer player, int xOffset) {
+        if (TG_SLOT_START == -1) {
+            TG_SLOT_START = this.inventorySlots.size();
+        }
+
+        travellers = new InventoryTG(this, player);
+        if(!player.worldObj.isRemote) {
+            travellers.stackList = TravellersGearAPI.getExtendedInventory(player);
+        }
+
+        this.addSlotToContainer(new SlotDWS(travellers, 0, xOffset, 8 + 0 * 18, player, TRAVEL_CLOAK));
+        this.addSlotToContainer(new SlotDWS(travellers, 1, xOffset, 8 + 1 * 18, player, TRAVEL_PAULDRON));
+        this.addSlotToContainer(new SlotDWS(travellers, 2, xOffset, 8 + 2 * 18, player, TRAVEL_VAMBRACE));
+        this.addSlotToContainer(new SlotDWS(travellers, 3, xOffset, 8 + 3 * 18, player, TRAVEL_TITLE));
     }
 }
