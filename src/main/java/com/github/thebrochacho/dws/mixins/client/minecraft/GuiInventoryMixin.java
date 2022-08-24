@@ -56,18 +56,18 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
             this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 3), Hints.TITLE);
         }
 
-//        if (Config.isGalacticraftLoaded) {
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 0), Hints.THERMAL_HELMET);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 1), Hints.THERMAL_CHEST);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 2), Hints.THERMAL_PANTS);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 3), Hints.THERMAL_BOOTS);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 4), Hints.PARACHUTE);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 5), Hints.OXYGEN_MASK);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 6), Hints.OXYGEN_TANK);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 7), Hints.FREQUENCY_MODULE);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 8), Hints.OXYGEN_GEAR);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 9), Hints.OXYGEN_TANK);
-//        }
+        if (Config.isGalacticraftLoaded) {
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 0), Hints.THERMAL_HELMET);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 1), Hints.THERMAL_CHEST);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 2), Hints.THERMAL_PANTS);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 3), Hints.THERMAL_BOOTS);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 4), Hints.PARACHUTE);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 5), Hints.OXYGEN_MASK);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 6), Hints.OXYGEN_TANK);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 7), Hints.FREQUENCY_MODULE);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 8), Hints.OXYGEN_GEAR);
+            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 9), Hints.OXYGEN_TANK);
+        }
 
         ContainerDWS.nullSlots.forEach(nullSlotXY -> {
             this.drawTexturedModalRect( guiLeft + nullSlotXY.getLeft() - 1,

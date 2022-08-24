@@ -6,7 +6,12 @@ import com.github.thebrochacho.dws.Config;
 import com.github.thebrochacho.dws.inventory.slots.SlotDWS;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStats;
+import micdoodle8.mods.galacticraft.core.inventory.InventoryExtended;
+import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
+import micdoodle8.mods.galacticraft.core.util.PlayerUtil;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemArmor;
@@ -31,6 +36,7 @@ public class ContainerDWS extends Container {
     public InventoryBaubles baubles;
     public ArmorExtended tinkers;
     public InventoryTG travellers;
+    public InventoryExtended gc;
 
     public boolean isLocalWorld;
     private final EntityPlayer thePlayer;
@@ -130,6 +136,11 @@ public class ContainerDWS extends Container {
         if (Config.isTravellersGearLoaded) {
             addTravellersGearSlots(player, xOffset);
             xOffset += 18;
+        }
+
+        if (Config.isGalacticraftLoaded) {
+            addGalacticraftSlots(player, xOffset);
+            xOffset += 54;
         }
     }
 
@@ -259,5 +270,37 @@ public class ContainerDWS extends Container {
         this.addSlotToContainer(new SlotDWS(travellers, 1, xOffset, 8 + 1 * 18, player, TRAVEL_PAULDRON));
         this.addSlotToContainer(new SlotDWS(travellers, 2, xOffset, 8 + 2 * 18, player, TRAVEL_VAMBRACE));
         this.addSlotToContainer(new SlotDWS(travellers, 3, xOffset, 8 + 3 * 18, player, TRAVEL_TITLE));
+    }
+
+    private void addGalacticraftSlots(EntityPlayer player, int xOffset) {
+        if (GC_SLOT_START == -1) {
+            GC_SLOT_START = this.inventorySlots.size();
+        }
+
+        if (!player.worldObj.isRemote) {
+            EntityPlayerMP playerMP = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
+            gc = GCPlayerStats.get(playerMP).extendedInventory;
+        } else {
+            gc = ClientProxyCore.dummyInventory;
+        }
+
+        if (gc != null) {
+            this.addSlotToContainer(new SlotDWS(gc, 6, xOffset, 8 + 0 * 18, player, GC_THERMAL_HELM));
+            this.addSlotToContainer(new SlotDWS(gc, 7, xOffset, 8 + 1 * 18, player, GC_THERMAL_CHEST));
+            this.addSlotToContainer(new SlotDWS(gc, 8, xOffset, 8 + 2 * 18, player, GC_THERMAL_LEGS));
+            this.addSlotToContainer(new SlotDWS(gc, 9, xOffset, 8 + 3 * 18, player, GC_THERMAL_BOOTS));
+            xOffset += 18;
+
+            this.addSlotToContainer(new SlotDWS(gc, 4, xOffset, 8 + 0 * 18, player, GC_PARACHUTE));
+            this.addSlotToContainer(new SlotDWS(gc, 0, xOffset, 8 + 1 * 18, player, GC_OXYGEN_MASK));
+            this.addSlotToContainer(new SlotDWS(gc, 2, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
+            nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+            xOffset += 18;
+
+            this.addSlotToContainer(new SlotDWS(gc, 5, xOffset, 8 + 0 * 18, player, GC_FREQUENCY_MODULE));
+            this.addSlotToContainer(new SlotDWS(gc, 1, xOffset, 8 + 1 * 18, player, GC_OXYGEN_GEAR));
+            this.addSlotToContainer(new SlotDWS(gc, 3, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
+            nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+        }
     }
 }
