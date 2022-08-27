@@ -64,7 +64,7 @@ public enum Mixin {
     ShapedRecipeHandlerMixin                        (builder(Side.COMMON).unit(CompatibilityTier.Regular, "nei.ShapedRecipeHandlerMixin")),
 
     //Galacticraft
-//    IGalacticWearableMixin(builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.GalacticWearableMixin")),
+    IGalacticWearableMixin                          (builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.GalacticWearableMixin")),
     ContainerExtendedInventoryMixin                 (builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.ContainerExtendedInventoryMixin")),
 
     //TravellersGear
