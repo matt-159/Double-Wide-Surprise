@@ -47,7 +47,7 @@ public class CommonProxy implements IGuiHandler {
     // postInit "Handle interaction with other mods, complete your setup based on this."
     @SuppressWarnings("unchecked")
     public void postInit(FMLPostInitializationEvent event) {
-//        disableOtherInventoryButtons();
+        disableOtherInventoryButtons();
     }
 
     public void serverAboutToStart(FMLServerAboutToStartEvent event) {
