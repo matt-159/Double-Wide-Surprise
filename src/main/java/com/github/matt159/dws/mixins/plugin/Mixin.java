@@ -68,7 +68,7 @@ public enum Mixin {
     ContainerExtendedInventoryMixin                 (builder(Side.COMMON).unit(CompatibilityTier.Regular, "galacticraft.ContainerExtendedInventoryMixin")),
 
     //TravellersGear
-//    GuiButtonGearMixin(builder(Side.CLIENT).unit(CompatibilityTier.Regular, "travellersgear.GuiButtonGearMixin"));
+    GuiButtonGearMixin                              (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "travellersgear.GuiButtonGearMixin")),
     ClientProxyMixin                                (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "travellersgear.ClientProxyMixin")),
 
     //Baubles
