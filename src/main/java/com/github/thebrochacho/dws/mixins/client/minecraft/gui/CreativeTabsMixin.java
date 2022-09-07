@@ -1,4 +1,4 @@
-package com.github.thebrochacho.dws.mixins.client.minecraft;
+package com.github.thebrochacho.dws.mixins.client.minecraft.gui;
 
 import com.github.thebrochacho.dws.interfaces.minecraft.ICreativeTabsMixin;
 import cpw.mods.fml.relauncher.Side;

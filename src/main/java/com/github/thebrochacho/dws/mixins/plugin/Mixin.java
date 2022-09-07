@@ -15,7 +15,7 @@ import static com.github.thebrochacho.dws.mixins.plugin.TargetedMod.*;
 public enum Mixin {
 
     // Vanilla
-    CreativeTabsMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.CreativeTabsMixin")),
+    CreativeTabsMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.CreativeTabsMixin")),
     EntityPlayerMixin                               (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.EntityPlayerMixin")),
     InventoryPlayerMixin                            (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.InventoryPlayerMixin")),
     MinecraftMixin                                  (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.MinecraftMixin")),
@@ -36,21 +36,21 @@ public enum Mixin {
     ContainerRepairMixin                            (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerRepairMixin")),
     ContainerWorkbenchMixin                         (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerWorkbenchMixin")),
 
-    GuiContainerMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiContainerMixin")),
-    GuiContainerCreativeMixin                       (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiContainerCreativeMixin")),
-    GuiMixin                                        (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiMixin")),
+    GuiContainerMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiContainerMixin")),
+    GuiContainerCreativeMixin                       (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiContainerCreativeMixin")),
+    GuiMixin                                        (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiMixin")),
 
-    GuiBeaconMixin                                  (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiBeaconMixin")),
-    GuiBrewingStandMixin                            (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiBrewingStandMixin")),
-    GuiChestMixin                                   (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiChestMixin")),
-    GuiCraftingMixin                                (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiCraftingMixin")),
-    GuiDispenserMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiDispenserMixin")),
-    GuiEnchantmentMixin                             (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiEnchantmentMixin")),
-    GuiFurnaceMixin                                 (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiFurnaceMixin")),
-    GuiInventoryMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiInventoryMixin")),
-    GuiMerchantMixin                                (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiMerchantMixin")),
-    GuiRepairMixin                                  (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiRepairMixin")),
-    GuiScreenHorseInventoryMixin                    (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.GuiScreenHorseInventoryMixin")),
+    GuiBeaconMixin                                  (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiBeaconMixin")),
+    GuiBrewingStandMixin                            (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiBrewingStandMixin")),
+    GuiChestMixin                                   (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiChestMixin")),
+    GuiCraftingMixin                                (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiCraftingMixin")),
+    GuiDispenserMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiDispenserMixin")),
+    GuiEnchantmentMixin                             (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiEnchantmentMixin")),
+    GuiFurnaceMixin                                 (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiFurnaceMixin")),
+    GuiInventoryMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiInventoryMixin")),
+    GuiMerchantMixin                                (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiMerchantMixin")),
+    GuiRepairMixin                                  (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiRepairMixin")),
+    GuiScreenHorseInventoryMixin                    (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiScreenHorseInventoryMixin")),
 
     //CodeChickenLib
     InventoryRangeMixin                             (builder(Side.COMMON).unit(CompatibilityTier.Regular, "codechickenlib.InventoryRangeMixin")),
