@@ -1,16 +1,32 @@
 package com.github.thebrochacho.dws.mixins.client.travellersgear;
 
+import net.minecraftforge.client.event.GuiScreenEvent;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import travellersgear.client.ClientProxy;
 
 @Mixin(ClientProxy.class)
 public abstract class ClientProxyMixin {
 
-    @ModifyConstant(method = "guiPostInit",
+    @Inject(method = "guiPostInit",
+            at = @At("HEAD"),
+            cancellable = true,
+            remap = false,
+            require = 1)
+    private void injectGuiPostInitEarlyReturn(GuiScreenEvent.InitGuiEvent.Post event, CallbackInfo ci) {
+        ci.cancel();
+    }
+
+    @Inject(method = "guiDrawScreen",
+            at = @At("HEAD"),
+            cancellable = true,
+            remap = false,
+            require = 1)
+    private void injectGuiDrawScreenEarlyReturn(GuiScreenEvent.DrawScreenEvent.Post event, CallbackInfo ci) {
+        ci.cancel();
+    }
+    /*@ModifyConstant(method = "guiPostInit",
                     constant = @Constant(intValue = 176),
                     remap = false,
                     require = 1)
@@ -26,5 +42,5 @@ public abstract class ClientProxyMixin {
                 require = 1)
     private boolean redirectIsHidden() {
         return false;
-    }
+    }*/
 }
