@@ -1,4 +1,4 @@
-package com.github.matt159.dws.mixins.client.minecraft;
+package com.github.matt159.dws.mixins.client.minecraft.gui;
 
 import com.github.matt159.dws.Config;
 import com.github.matt159.dws.gui.SlotOverlays;
