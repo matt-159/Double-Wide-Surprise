@@ -79,6 +79,17 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
             });
     }
 
+    @Inject(method = "drawGuiContainerForegroundLayer",
+            at = @At("HEAD"),
+            require = 1)
+    private void injectDebugStringDrawCalls(int p_146979_1_, int p_146979_2_, CallbackInfo ci) {
+        for (int i = 0; i < this.inventorySlots.inventorySlots.size(); ++i) {
+            Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i);
+            String value = slot.getStack() != null ? Integer.toString(slot.getStack().stackSize) : "";
+            this.fontRendererObj.drawString(value, slot.xDisplayPosition, slot.yDisplayPosition, 4210752);
+        }
+    }
+
     @ModifyConstant(method = "drawGuiContainerForegroundLayer",
                     constant = @Constant(intValue = 86),
                     require = 1)
