@@ -1,52 +1,30 @@
 package com.github.matt159.dws.mixins.plugin;
 
-import com.google.common.io.Files;
+import com.falsepattern.lib.mixin.ITargetedMod;
+import lombok.*;
 
-import java.nio.file.Path;
+import java.util.function.Predicate;
 
-public enum TargetedMod {
+import static com.falsepattern.lib.mixin.ITargetedMod.PredicateHelpers.startsWith;
 
-    VANILLA("Minecraft", "", "", true),
-    GALACTICRAFT("Galacticraft", "", "Galacticraft", true),
-    TRAVELLERSGEAR("TravellersGear", "", "Traveller", true),
-    IRONCHEST("IronChest", "", "ironchest", true),
-    BAUBLES("Baubles", "", "Baubles", true),
-    TINKERS("TConstruct", "", "construct", true),
-    CODECHICKENLIB("CodeChickenLib", "", "CodeChicken", true),
-    GREGTECH_MEGA("GregTech", "", "gregtech", true),
-    GREGTECH_GT5U("Gregtech", "", "gt5u", true),
-    BARTWORKS("Bartworks", "", "bartworks", true),
-    TECTECH("TecTech", "", "tectech", true),
-    TECTECH_ALT("TecTech", "", "tec-tech", true),
-    ;
+/**
+ * List of targeted mods used for mixing loading logic.
+ */
+@Getter
+@RequiredArgsConstructor
+public enum TargetedMod implements ITargetedMod {
+    GALACTICRAFT("Galacticraft", false, startsWith("galacticraft")),
+    TRAVELLERSGEAR("TravellersGear", false, startsWith("traveller")),
+    IRONCHEST("IronChest", false, startsWith("ironchest")),
+    BAUBLES("Baubles", false, startsWith("baubles")),
+    TINKERSCONSTRUCT("TConstruct", false, startsWith("construct")),
+    CODECHICKENLIB("CodeChickenLib", false, startsWith("codechicken")),
+    NOTENOUGHITEMS("NotEnoughItems", false, startsWith("notenoughitems")),
+    GREGTECH("GregTech", false, startsWith("gregtech").or(startsWith("gt5u"))),
+    BARTWORKS("Bartworks", false, startsWith("bartworks")),
+    TECTECH("TecTech", false, startsWith("tectech").or(startsWith("tec-tech")));
 
-    public final String modName;
-    public final String jarNamePrefixLowercase;
-    public final String jarNameContainsLowercase;
-
-    public final boolean loadInDevelopment;
-
-    TargetedMod(String modName, String jarNamePrefix, String jarNameContains, boolean loadInDevelopment) {
-        this.modName = modName;
-        this.jarNamePrefixLowercase = jarNamePrefix.toLowerCase();
-        this.jarNameContainsLowercase = jarNameContains.toLowerCase();
-        this.loadInDevelopment = loadInDevelopment;
-    }
-
-    @SuppressWarnings("UnstableApiUsage")
-    public boolean isMatchingJar(Path path) {
-        final String pathString = path.toString();
-        final String nameLowerCase = Files.getNameWithoutExtension(pathString).toLowerCase();
-        final String fileExtension = Files.getFileExtension(pathString);
-
-        return "jar".equals(fileExtension) && nameLowerCase.startsWith(jarNamePrefixLowercase) && nameLowerCase.contains(jarNameContainsLowercase);
-    }
-
-    @Override
-    public String toString() {
-        return "TargetedMod{" +
-                "modName='" + modName + '\'' +
-                ", jarNamePrefixLowercase='" + jarNamePrefixLowercase + '\'' +
-                '}';
-    }
+    private final String modName;
+    private final boolean loadInDevelopment;
+    private final Predicate<String> condition;
 }
