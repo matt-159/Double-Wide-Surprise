@@ -1,38 +1,62 @@
 // Add your dependencies here
 
 dependencies {
+    // Lombok
     compileOnly("org.projectlombok:lombok:1.18.22")
     annotationProcessor("org.projectlombok:lombok:1.18.22")
-    compile("com.falsepattern:falsepatternlib-mc1.7.10:0.10.10:dev") {
-        transitive = false
-    }
-    compileOnly("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
+
+    // FalsePattern Lib
+    compile("com.falsepattern:falsepatternlib-mc1.7.10:0.10.10:dev")
+
+    // MixinASM
+    compile(name:"mixingasm-1.7.10-0.2.1-deobf", ext:"jar")
+
+    // Baubles
+    compile("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
         transitive = true
     }
-    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.2.6-GTNH:dev") {
-        transitive = true
-    }
-    compileOnly("com.github.GTNewHorizons:Mantle:0.3.4:dev") {
+
+    // Not Enough Items
+    compile("com.github.GTNewHorizons:NotEnoughItems:2.2.6-GTNH:dev")
+
+    // Tinkers Construct
+    compile("com.github.GTNewHorizons:Mantle:0.3.4:dev") {
         transitive = false
     }
-    compileOnly('com.github.GTNewHorizons:TinkersConstruct:1.9.0.13-GTNH:dev') {
+    compile('com.github.GTNewHorizons:TinkersConstruct:1.9.0.13-GTNH:dev') {
         transitive = false
     }
+
+    // Galacticraft TODO: The @Mod annotation doesn't seem to be found when running as compile, however the core mod/mixins does load?
     compileOnly("com.github.GTNewHorizons:Galacticraft:3.0.36-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ironchest:6.0.70:dev") {
+
+    // Iron Chests
+    compile("com.github.GTNewHorizons:ironchest:6.0.70:dev") {
         transitive = false
     }
-    compileOnly('curse.maven:travellers-gear-224440:2262113') {
+
+    // Travellers Gear
+    compile('curse.maven:travellers-gear-224440:2262113') {
         transitive = false
     }
-    compileOnly("gtmega:gt5u-mc1.7.10:5.28.23-gtmega:dev") {
+
+    // GregTech
+    compile("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
         transitive = false
     }
-    runtimeOnly("com.github.makamys:Mixingasm:v0.2.2:dev") {
+    compile("eu.usrv:YAMCore:1.7.10-0.5.79:deobf") {
         transitive = false
     }
-    compileOnly(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")
-    compileOnly(name:"TecTech-1.7.10-4.10.4-023479da", ext:"jar")
+    compile("com.github.GTMEGA:StructureLib:0237ab2549:deobf") {
+        transitive = false
+    }
+    compile("gtmega:gt5u-mc1.7.10:5.28.23-gtmega:dev") {
+        transitive = false
+    }
+
+    // GregTech Addons
+    compile(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")
+    compile(name:"TecTech-1.7.10-4.10.4-023479da", ext:"jar")
 }
