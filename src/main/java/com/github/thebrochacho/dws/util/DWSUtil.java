@@ -1,7 +1,5 @@
 package com.github.thebrochacho.dws.util;
 
-import com.github.thebrochacho.dws.inventory.ContainerDWS;
-import com.github.thebrochacho.dws.inventory.InventoryDWS;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
@@ -58,41 +56,41 @@ public final class DWSUtil {
         Tessellator.instance.draw();
     }
 
-    public static void shiftMainInventory(EntityPlayer player) {
-        if (player.inventoryContainer instanceof ContainerDWS) {
-            InventoryDWS inventory = (InventoryDWS) player.inventory;
-
-            int size = inventory.mainInventory.length;
-            List<ItemStack> items = new ArrayList<>(size);
-            //Right Half
-            Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 36, 63));
-
-            //Left Half
-            Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 9, 36));
-
-            //Right Hotbar
-            Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 63, 72));
-
-            //Left Hotbar
-            Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 0, 9));
-
-            ItemStack[] itemStacks = items.toArray(new ItemStack[0]);
-
-            for (int i = 0; i < size; ++i) {
-                //i + 9 gets past the armor and crafting slots
-                player.inventoryContainer.putStackInSlot(i + 9, itemStacks[i]);
-            }
-        }
-    }
-
-    public static int getFirstPlayerSlotIndex(Container container) {
-        for (int i = 0; i < container.inventorySlots.size(); ++i) {
-            if (container.getSlot(i).inventory instanceof InventoryDWS) {
-                return i;
-            }
-        }
-        return -1;
-    }
+//    public static void shiftMainInventory(EntityPlayer player) {
+//        if (player.inventoryContainer instanceof ContainerDWS) {
+//            InventoryDWS inventory = (InventoryDWS) player.inventory;
+//
+//            int size = inventory.mainInventory.length;
+//            List<ItemStack> items = new ArrayList<>(size);
+//            //Right Half
+//            Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 36, 63));
+//
+//            //Left Half
+//            Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 9, 36));
+//
+//            //Right Hotbar
+//            Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 63, 72));
+//
+//            //Left Hotbar
+//            Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 0, 9));
+//
+//            ItemStack[] itemStacks = items.toArray(new ItemStack[0]);
+//
+//            for (int i = 0; i < size; ++i) {
+//                //i + 9 gets past the armor and crafting slots
+//                player.inventoryContainer.putStackInSlot(i + 9, itemStacks[i]);
+//            }
+//        }
+//    }
+//
+//    public static int getFirstPlayerSlotIndex(Container container) {
+//        for (int i = 0; i < container.inventorySlots.size(); ++i) {
+//            if (container.getSlot(i).inventory instanceof InventoryDWS) {
+//                return i;
+//            }
+//        }
+//        return -1;
+//    }
 
     public static void addDWSSlotsToContainer(Container container, IInventory inventoryPlayer) {
         addDWSSlotsToContainer(container, inventoryPlayer, 8, 84, 142);

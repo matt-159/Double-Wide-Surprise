@@ -1,6 +1,5 @@
 package com.github.thebrochacho.dws.mixins.client.minecraft;
 
-import com.github.thebrochacho.dws.inventory.InventoryDWS;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,13 +24,13 @@ public abstract class MinecraftMixin {
         return 18;
     }
 
-    @ModifyVariable(method = "func_147112_ai",
-                    at = @At(   value = "LOAD",
-                                ordinal = 0 ),
-                    ordinal = 0,
-                    require = 1)
-    private int modifyJ(int value) {
-        int index = Arrays.binarySearch(InventoryDWS.HOTBAR_SLOTS, this.thePlayer.inventory.currentItem);
-        return this.thePlayer.inventoryContainer.inventorySlots.size() - 18 + index;
-    }
+//    @ModifyVariable(method = "func_147112_ai",
+//                    at = @At(   value = "LOAD",
+//                                ordinal = 0 ),
+//                    ordinal = 0,
+//                    require = 1)
+//    private int modifyJ(int value) {
+//        int index = Arrays.binarySearch(InventoryDWS.HOTBAR_SLOTS, this.thePlayer.inventory.currentItem);
+//        return this.thePlayer.inventoryContainer.inventorySlots.size() - 18 + index;
+//    }
 }
