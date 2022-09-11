@@ -3,7 +3,6 @@ package com.github.thebrochacho.dws;
 import baubles.client.gui.GuiEvents;
 import com.github.thebrochacho.dws.events.DWSKeyHandler;
 import com.github.thebrochacho.dws.events.PlayerOpenContainerEventHandler;
-import com.github.thebrochacho.dws.inventory.ContainerDWS;
 import com.github.thebrochacho.dws.network.PacketHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.*;
@@ -79,8 +78,8 @@ public class CommonProxy implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID) {
-            case 1:
-                return new ContainerDWS(player.inventory, !world.isRemote, player);
+//            case 1:
+//                return new ContainerDWS(player.inventory, !world.isRemote, player);
             default:
                 return null;
         }

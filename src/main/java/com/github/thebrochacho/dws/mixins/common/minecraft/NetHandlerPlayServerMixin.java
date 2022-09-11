@@ -1,6 +1,5 @@
 package com.github.thebrochacho.dws.mixins.common.minecraft;
 
-import com.github.thebrochacho.dws.inventory.InventoryDWS;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,13 +20,13 @@ public abstract class NetHandlerPlayServerMixin {
         return 63;
     }
 
-    @Redirect(  method = "processHeldItemChange",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/network/play/client/C09PacketHeldItemChange;func_149614_c()I",
-                            ordinal = 1),
-                require = 1)
-    private int redirectGetHotbarSlotIndex(C09PacketHeldItemChange instance) {
-
-        return Arrays.binarySearch(InventoryDWS.HOTBAR_SLOTS, instance.func_149614_c());
-    }
+//    @Redirect(  method = "processHeldItemChange",
+//                at = @At(   value = "INVOKE",
+//                            target = "Lnet/minecraft/network/play/client/C09PacketHeldItemChange;func_149614_c()I",
+//                            ordinal = 1),
+//                require = 1)
+//    private int redirectGetHotbarSlotIndex(C09PacketHeldItemChange instance) {
+//
+//        return Arrays.binarySearch(InventoryDWS.HOTBAR_SLOTS, instance.func_149614_c());
+//    }
 }

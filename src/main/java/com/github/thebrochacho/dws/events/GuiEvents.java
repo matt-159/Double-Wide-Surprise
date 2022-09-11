@@ -22,7 +22,7 @@ public class GuiEvents {
         if (event.gui instanceof GuiContainer && !(event.gui instanceof IDWSGui)) {
             GuiContainer gc = (GuiContainer) event.gui;
 
-            int firstDWSSlotIndex = DWSUtil.getFirstPlayerSlotIndex(gc.inventorySlots);
+            int firstDWSSlotIndex = -1; //DWSUtil.getFirstPlayerSlotIndex(gc.inventorySlots);
 
             if (firstDWSSlotIndex != -1) {
                 Slot topLeftSlot = gc.inventorySlots.getSlot(firstDWSSlotIndex);
