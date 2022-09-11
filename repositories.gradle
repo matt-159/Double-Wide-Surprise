@@ -18,6 +18,10 @@ repositories {
         url = "http://jenkins.usrv.eu:8081/nexus/content/groups/public/"
     }
     maven {
+        name = "FalsePattern Maven"
+        url = "https://mvn.falsepattern.com/releases"
+    }
+    maven {
         name = "FalsePattern GTMEGA Maven"
         url = "https://gtmega.falsepattern.com/releases/"
     }
