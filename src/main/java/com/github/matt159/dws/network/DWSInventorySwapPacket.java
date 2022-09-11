@@ -22,7 +22,7 @@ public class DWSInventorySwapPacket implements IMessage, IMessageHandler<DWSInve
     @Override
     public IMessage onMessage(DWSInventorySwapPacket packet, MessageContext context) {
         //handle incoming packets here. context.side is CLIENT if this packet was RECEIVED by the client, and SERVER if the packet was RECEIVED by the server
-        DWSUtil.shiftMainInventory(context.getServerHandler().playerEntity);
+//        DWSUtil.shiftMainInventory(context.getServerHandler().playerEntity);
         return null;
     }
 }
