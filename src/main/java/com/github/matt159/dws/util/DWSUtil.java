@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class DWSUtil {
+public final class DWSUtil {
     //Need to override because this function in Gui.java only allows for 256x256 textures at max
     public static void drawTexturedModalRect(int x, int y, int u, int v, int width, int height, float zLevel)
     {
