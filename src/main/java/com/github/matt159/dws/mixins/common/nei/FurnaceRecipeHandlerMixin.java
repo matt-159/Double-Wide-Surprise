@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(FurnaceRecipeHandler.class)
-public class FurnaceRecipeHandlerMixin {
+public abstract class FurnaceRecipeHandlerMixin {
     @ModifyConstant(method = "loadTransferRects",
                     constant = {
                         @Constant(intValue = 50),
