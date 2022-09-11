@@ -3,6 +3,7 @@ package com.github.thebrochacho.dws.mixin.mixins.client.minecraft.gui;
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.inventory.slots.minecraft.SlotCreative;
 import com.github.thebrochacho.dws.util.DWSUtil;
+import lombok.*;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.creativetab.CreativeTabs;
@@ -65,10 +66,8 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
             SlotCreative slot = new SlotCreative(gcc, (Slot) container.inventorySlots.get(slotIndex), slotIndex);
 
             int offset;
-            if (slotIndex < 5) { // crafting slots are stored in indices 0 - 4
-                slot.xDisplayPosition = -2000;
-                slot.yDisplayPosition = -2000;
-                //vanilla does this to render them offscreen
+            if (slotIndex < 5 || slotIndex > 80) { // crafting slots are stored in indices 0 - 4, extra dws stuff is anything over 80
+                setSlotOffScreen(slot);
             } else if (slotIndex < 9) { // armor slots are stored in indices 5 - 8
                 offset = slotIndex - 5;
 
@@ -83,6 +82,12 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
 
             containerCreative.inventorySlots.add(slot);
         }
+    }
+
+    //vanilla does this to render them offscreen
+    private static void setSlotOffScreen(@NonNull Slot slot) {
+        slot.xDisplayPosition = -2000;
+        slot.yDisplayPosition = -2000;
     }
 
     @ModifyConstant(method = "setCurrentCreativeTab",
