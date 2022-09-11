@@ -26,9 +26,11 @@ import org.apache.commons.lang3.tuple.Pair;
 import tconstruct.armor.player.ArmorExtended;
 import tconstruct.armor.player.TPlayerStats;
 import tconstruct.library.accessory.IAccessory;
+import travellersgear.TravellersGear;
 import travellersgear.api.ITravellersGear;
 import travellersgear.api.TravellersGearAPI;
 import travellersgear.common.inventory.InventoryTG;
+import travellersgear.common.network.MessageNBTSync;
 
 import java.util.ArrayList;
 
@@ -162,6 +164,7 @@ public class ContainerDWS extends Container {
 
             if (Config.isTravellersGearLoaded) {
                 TravellersGearAPI.setExtendedInventory(player, travellers.stackList);
+                TravellersGear.packetHandler.sendToAll(new MessageNBTSync(player));
             }
         }
     }
@@ -205,6 +208,7 @@ public class ContainerDWS extends Container {
             }
 
             if (itemStackInSlot.stackSize == 0) {
+                System.out.println("Setting slot with " + itemStackInSlot.getDisplayName() + " to null");
                 slot.putStack(null);
             } else {
                 slot.onSlotChanged();
