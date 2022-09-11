@@ -2,13 +2,16 @@ package com.github.matt159.dws.util;
 
 import com.github.matt159.dws.inventory.ContainerDWS;
 import com.github.matt159.dws.inventory.InventoryDWS;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,6 +29,33 @@ public class DWSUtil {
         tessellator.addVertexWithUV((x + width),(y + 0),        zLevel,(u + width) * f,(v + 0) * f);
         tessellator.addVertexWithUV((x + 0),    (y + 0),        zLevel,(u + 0) * f,    (v + 0) * f);
         tessellator.draw();
+    }
+
+    //allow for drawing of NxM textures
+    public static void drawTexturedRect(@Nonnull ResourceLocation textureResourceLocation,
+                                        int x,
+                                        int y,
+                                        int width,
+                                        int height,
+                                        float zLevel) {
+        Minecraft.getMinecraft().getTextureManager().bindTexture(textureResourceLocation);
+        drawTexturedRect(x, y, width, height, zLevel);
+    }
+
+    public static void drawTexturedRect(int xPos,
+                                        int yPos,
+                                        int width,
+                                        int height,
+                                        float zLevel) {
+        int xPosMax = xPos + width;
+        int yPosMax = yPos + height;
+
+        Tessellator.instance.startDrawingQuads();
+        Tessellator.instance.addVertexWithUV(xPos, yPosMax, zLevel, 0F, 1F);
+        Tessellator.instance.addVertexWithUV(xPosMax, yPosMax, zLevel, 0F, 1F);
+        Tessellator.instance.addVertexWithUV(xPosMax, yPos, zLevel, 0F, 1F);
+        Tessellator.instance.addVertexWithUV(xPos, yPos, zLevel, 0F, 1F);
+        Tessellator.instance.draw();
     }
 
     public static void shiftMainInventory(EntityPlayer player) {
