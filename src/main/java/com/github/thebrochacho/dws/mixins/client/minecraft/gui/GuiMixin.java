@@ -8,10 +8,13 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(Gui.class)
 public abstract class GuiMixin {
+    private static final float fraction256th = 0.00390625F;
+    private static final float fraction512th = 0.001953125F;
+
     @ModifyConstant(method = "drawTexturedModalRect",
                     constant = @Constant(floatValue = 0.00390625F),
                     require = 1)
     private float modifyUVConstant(float constant) {
-        return TextureWhitelist.useDoubleWideTexture ? 0.001953125F : 0.00390625F;
+        return TextureWhitelist.useDoubleWideTexture ? fraction512th : fraction256th;
     }
 }
