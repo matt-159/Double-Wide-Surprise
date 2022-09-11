@@ -1,28 +1,33 @@
 // Add your dependencies here
 
 dependencies {
-    compile("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
+    compileOnly("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
         transitive = true
     }
-    compile("com.github.GTNewHorizons:NotEnoughItems:2.2.6-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.2.6-GTNH:dev") {
         transitive = true
     }
-    compile("com.github.GTNewHorizons:Mantle:0.3.4:dev") {
+    compileOnly("com.github.GTNewHorizons:Mantle:0.3.4:dev") {
         transitive = false
     }
-    compile('com.github.GTNewHorizons:TinkersConstruct:1.9.0.13-GTNH:dev') {
+    compileOnly('com.github.GTNewHorizons:TinkersConstruct:1.9.0.13-GTNH:dev') {
         transitive = false
     }
     compileOnly("com.github.GTNewHorizons:Galacticraft:3.0.36-GTNH:dev") {
         transitive = false
     }
-    compile("com.github.GTNewHorizons:ironchest:6.0.70:dev") {
+    compileOnly("com.github.GTNewHorizons:ironchest:6.0.70:dev") {
         transitive = false
     }
-    compile('curse.maven:travellers-gear-224440:2262113') {
+    compileOnly('curse.maven:travellers-gear-224440:2262113') {
         transitive = false
     }
-    compile("gtmega:gt5u-mc1.7.10:5.28.23-gtmega:dev") {
+    compileOnly("gtmega:gt5u-mc1.7.10:5.28.23-gtmega:dev") {
         transitive = false
     }
+    runtimeOnly("com.github.makamys:Mixingasm:v0.2.2:dev") {
+        transitive = false
+    }
+    compileOnly(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")
+    compileOnly(name:"TecTech-1.7.10-4.10.4-023479da", ext:"jar")
 }

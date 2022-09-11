@@ -21,4 +21,12 @@ repositories {
         name = "FalsePattern GTMEGA Maven"
         url = "https://gtmega.falsepattern.com/releases/"
     }
+    maven {
+        name = "JitPack Maven"
+        url = "https://jitpack.io"
+    }
+    //TODO: Figure out what loads the libraries in the libs dir, since they are always loaded as `compile`
+    flatDir {
+        dirs "libz"
+    }
 }
