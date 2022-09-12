@@ -24,6 +24,9 @@ public enum Mixin {
     NetHandlerPlayServerMixin                       (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.NetHandlerPlayServerMixin")),
     TextureManagerMixin                             (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.TextureManagerMixin")),
 
+    ContainerPlayerMixin                            (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerPlayerMixin")),
+    InventoryPlayerMixin                            (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.InventoryPlayerMixin")),
+
     ContainerBeaconMixin                            (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerBeaconMixin")),
     ContainerBrewingStandMixin                      (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerBrewingStandMixin")),
     ContainerChestMixin                             (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.ContainerChestMixin")),
