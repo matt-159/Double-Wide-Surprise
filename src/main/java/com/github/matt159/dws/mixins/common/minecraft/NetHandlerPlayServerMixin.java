@@ -20,14 +20,4 @@ public abstract class NetHandlerPlayServerMixin {
         // 9 (crafting + armor slots) + 54 (3x18 main inventory)
         return 9 + 54;
     }
-
-//    @Redirect(  method = "processHeldItemChange",
-//                at = @At(   value = "INVOKE",
-//                            target = "Lnet/minecraft/network/play/client/C09PacketHeldItemChange;func_149614_c()I",
-//                            ordinal = 1),
-//                require = 1)
-//    private int redirectGetHotbarSlotIndex(C09PacketHeldItemChange instance) {
-//
-//        return Arrays.binarySearch(InventoryDWS.HOTBAR_SLOTS, instance.func_149614_c());
-//    }
 }
