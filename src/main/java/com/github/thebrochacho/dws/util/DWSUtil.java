@@ -98,18 +98,12 @@ public final class DWSUtil {
         //main inventory
         for (row = 0; row < 3; ++row) {
             for (col = 0; col < 18; ++col) {
-                DWSUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col + row * 18 + 9, xOffset + col * 18, yOffset1 + row * 18));
+                DWSUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col + (row + 1) * 18, 8 + col * 18, yOffset1 + row * 18));
             }
         }
 
-        //left half of hotbar
-        for (col = 0; col < 9; ++col) {
-            DWSUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col, xOffset + col * 18, yOffset2));
-        }
-
-        //right half of hotbar
-        for (col = 0; col < 9; ++col) {
-            DWSUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col + 63, xOffset + (col+ 9) * 18 , yOffset2));
+        for (col = 0; col < 18; ++col) {
+            DWSUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col, 8 + col * 18 , yOffset2));
         }
     }
 
@@ -117,7 +111,7 @@ public final class DWSUtil {
     public static Slot addSlotToContainer(Container container, Slot slot) {
         slot.slotNumber = container.inventorySlots.size();
         container.inventorySlots.add(slot);
-        container.inventoryItemStacks.add((Object)null);
+        container.inventoryItemStacks.add(null);
         return slot;
     }
 }
