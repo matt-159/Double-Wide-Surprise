@@ -16,8 +16,6 @@ public enum Mixin {
 
     // Vanilla
     CreativeTabsMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.CreativeTabsMixin")),
-    EntityPlayerMixin                               (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.EntityPlayerMixin")),
-    InventoryPlayerMixin                            (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.inventory.InventoryPlayerMixin")),
     MinecraftMixin                                  (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.MinecraftMixin")),
     RenderItemMixin                                 (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.renderer.RenderItemMixin")),
 //    MinecraftCommonMixin                            (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.MinecraftMixin")),
