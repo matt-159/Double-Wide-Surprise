@@ -17,7 +17,8 @@ public abstract class NetHandlerPlayServerMixin {
                     constant = @Constant(intValue = 36),
                     require = 1)
     private int modifyHardcodedInventorySize(int constant) {
-        return 63;
+        // 9 (crafting + armor slots) + 54 (3x18 main inventory)
+        return 9 + 54;
     }
 
 //    @Redirect(  method = "processHeldItemChange",
