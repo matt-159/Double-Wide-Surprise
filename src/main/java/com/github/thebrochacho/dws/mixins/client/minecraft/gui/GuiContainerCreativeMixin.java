@@ -65,7 +65,9 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
             SlotCreative slot = new SlotCreative(gcc, (Slot) container.inventorySlots.get(slotIndex), slotIndex);
 
             int offset;
-            if (slotIndex < 5) { // crafting slots are stored in indices 0 - 4
+            if (slotIndex < 5 || slotIndex > 80) {
+                // crafting slots are stored in indices 0 - 4
+                // slots > 80 are added by DWS for accessories
                 slot.xDisplayPosition = -2000;
                 slot.yDisplayPosition = -2000;
                 //vanilla does this to render them offscreen
