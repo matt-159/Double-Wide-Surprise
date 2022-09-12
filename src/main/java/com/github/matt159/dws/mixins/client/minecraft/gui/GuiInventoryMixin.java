@@ -3,7 +3,6 @@ package com.github.matt159.dws.mixins.client.minecraft.gui;
 import com.github.matt159.dws.Config;
 import com.github.matt159.dws.gui.SlotOverlays;
 import com.github.matt159.dws.interfaces.IDWSGui;
-import com.github.matt159.dws.inventory.ContainerDWS;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.inventory.Container;
