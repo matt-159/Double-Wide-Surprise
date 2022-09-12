@@ -16,6 +16,7 @@ public enum Mixin {
 
     // Vanilla
     CreativeTabsMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.CreativeTabsMixin")),
+    ForgeHooksMixin                                        (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.ForgeHooksMixin")),
     MinecraftMixin                                  (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.MinecraftMixin")),
     RenderItemMixin                                 (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.renderer.RenderItemMixin")),
 //    MinecraftCommonMixin                            (builder(Side.COMMON).unit(CompatibilityTier.Regular, "minecraft.MinecraftMixin")),
