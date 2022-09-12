@@ -24,14 +24,15 @@ import java.util.NoSuchElementException;
 @Mixin(GuiContainer.class)
 public abstract class GuiContainerMixin extends GuiScreen {
 
+    @Shadow
+    public Container inventorySlots;
+
     @ModifyConstant(method = "<init>",
                     constant = @Constant(intValue = 176),
                     require = 1)
     private int modifyDefaultXSize(int constant) {
         return (this instanceof IDWSGui) ? 338 : 176;
     }
-    @Shadow
-    public Container inventorySlots;
 
     @Inject(method = "keyTyped",
             at = @At(value = "TAIL"),
