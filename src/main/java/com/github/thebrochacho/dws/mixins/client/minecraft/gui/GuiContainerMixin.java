@@ -7,8 +7,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Slot;
 import net.minecraft.util.StatCollector;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -27,6 +30,8 @@ public abstract class GuiContainerMixin extends GuiScreen {
     private int modifyDefaultXSize(int constant) {
         return (this instanceof IDWSGui) ? 338 : 176;
     }
+    @Shadow
+    public Container inventorySlots;
 
     @Inject(method = "keyTyped",
             at = @At(value = "TAIL"),
@@ -47,5 +52,24 @@ public abstract class GuiContainerMixin extends GuiScreen {
         if (swapKey != null && swapKey.getKeyCode() == key) {
             PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(this.mc.thePlayer));
         }
+    }
+
+    @Inject(method = "drawScreen",
+            at = @At(   value = "INVOKE",
+                        target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawGuiContainerForegroundLayer(II)V",
+                        shift = At.Shift.AFTER  ),
+            require = 1)
+    private void injectDebugStringDrawCalls(int p_73863_1_, int p_73863_2_, float p_73863_3_, CallbackInfo ci) {
+        for (int i = 0; i < this.inventorySlots.inventorySlots.size(); ++i) {
+            Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i);
+            String slotNumber = Integer.toString(slot.slotNumber);
+            String slotIndex = Integer.toString(slot.getSlotIndex());
+            this.fontRendererObj.drawString(slotNumber, slot.xDisplayPosition, slot.yDisplayPosition, getColor());
+            this.fontRendererObj.drawString(slotIndex, slot.xDisplayPosition, slot.yDisplayPosition + 9, getColor());
+        }
+    }
+
+    private int getColor() {
+        return 0;
     }
 }
