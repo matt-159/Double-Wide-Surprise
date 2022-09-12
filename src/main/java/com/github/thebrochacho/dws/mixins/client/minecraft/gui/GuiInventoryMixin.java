@@ -3,7 +3,6 @@ package com.github.thebrochacho.dws.mixins.client.minecraft.gui;
 import com.github.thebrochacho.dws.Config;
 import com.github.thebrochacho.dws.gui.SlotOverlays;
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
-import com.github.thebrochacho.dws.inventory.ContainerDWS;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.inventory.Container;
