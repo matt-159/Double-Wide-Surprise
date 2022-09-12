@@ -21,7 +21,8 @@ public abstract class InventoryPlayerMixin {
         return 72;
     }
 
-    @ModifyConstant(method = "getHotbarSize",
+    @ModifyConstant(method = {  "getHotbarSize",
+                                "getCurrentItem"    },
                     constant = @Constant(intValue = 9),
                     require = 1)
     private static int modifyHotbarSize(int constant) {
