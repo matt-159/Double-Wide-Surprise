@@ -42,6 +42,7 @@ public enum Mixin {
 
     GuiContainerMixin                               (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiContainerMixin")),
     GuiContainerCreativeMixin                       (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiContainerCreativeMixin")),
+    GuiIngameForgeMixin                             (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiIngameForgeMixin")),
     GuiMixin                                        (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiMixin")),
 
     GuiBeaconMixin                                  (builder(Side.CLIENT).unit(CompatibilityTier.Regular, "minecraft.gui.GuiBeaconMixin")),
