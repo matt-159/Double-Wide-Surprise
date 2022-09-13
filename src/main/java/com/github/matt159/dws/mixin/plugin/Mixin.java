@@ -36,6 +36,7 @@ public enum Mixin implements IMixin {
     ContainerHopperMixin                              (COMMON, always(), "minecraft.inventory.ContainerHopperMixin"),
     ContainerHorseInventoryMixin                      (COMMON, always(), "minecraft.inventory.ContainerHorseInventoryMixin"),
     ContainerMerchantMixin                            (COMMON, always(), "minecraft.inventory.ContainerMerchantMixin"),
+    ContainerPlayerMixin                              (COMMON, always(), "minecraft.inventory.ContainerPlayerMixin"),
     ContainerRepairMixin                              (COMMON, always(), "minecraft.inventory.ContainerRepairMixin"),
     ContainerWorkbenchMixin                           (COMMON, always(), "minecraft.inventory.ContainerWorkbenchMixin"),
 
