@@ -23,8 +23,6 @@ public enum Mixin implements IMixin {
     ForgeHooksMixin                                   (COMMON, always(), "minecraft.ForgeHooksMixin"),
     InventoryPlayerMixin                              (COMMON, always(), "minecraft.inventory.InventoryPlayerMixin"),
     MinecraftMixin                                    (CLIENT, always(), "minecraft.MinecraftMixin"),
-    RenderItemMixin                                   (CLIENT, always(), "minecraft.renderer.RenderItemMixin"),
-    //    MinecraftCommonMixin                          (COMMON, always(), "minecraft.MinecraftMixin"),
     NetHandlerPlayServerMixin                         (COMMON, always(), "minecraft.NetHandlerPlayServerMixin"),
     TextureManagerMixin                               (CLIENT, always(), "minecraft.TextureManagerMixin"),
 
@@ -62,7 +60,6 @@ public enum Mixin implements IMixin {
 
     //NotEnoughItems
     ClientUtilsMixin                                  (CLIENT, require(NOTENOUGHITEMS),"nei.NEIClientUtilsMixin"),
-//    ItemPanelMixin                                    (CLIENT, require(NOTENOUGHITEMS), "nei.ItemPanelMixin"),
     LayoutMangerMixin                                 (CLIENT, require(NOTENOUGHITEMS), "nei.LayoutManagerMixin"),
     BrewingRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.BrewingRecipeHandlerMixin"),
     FurnaceRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.FurnaceRecipeHandlerMixin"),
@@ -73,7 +70,6 @@ public enum Mixin implements IMixin {
     ContainerExtendedInventoryMixin                   (COMMON, require(GALACTICRAFT), "galacticraft.ContainerExtendedInventoryMixin"),
 
     //TravellersGear
-//    GuiButtonGearMixin                                (CLIENT, require(TRAVELLERSGEAR), "travellersgear.GuiButtonGearMixin"),
     ClientProxyMixin                                  (CLIENT, require(TRAVELLERSGEAR), "travellersgear.ClientProxyMixin"),
 
     //Baubles
