@@ -13,14 +13,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GT_Container.class)
 public abstract class GT_ContainerMixin extends Container {
-    @Inject(method = "bindPlayerInventory",
-            at = @At("HEAD"),
-            cancellable = true,
-            remap = false,
-            require = 1)
-    private void injectAddDWSSLots(InventoryPlayer aInventoryPlayer, CallbackInfo ci) {
-        DWSUtil.addDWSSlotsToContainer(this, aInventoryPlayer);
-        ci.cancel();
+    @ModifyConstant(method = "bindPlayerInventory",
+                    constant = @Constant(intValue = 9),
+                    remap = false,
+                    require = 4)
+    private int modifyPlayerInventorySize(int constant) {
+        return 18;
     }
 
     @ModifyConstant(method = {
@@ -30,7 +28,7 @@ public abstract class GT_ContainerMixin extends Container {
                     constant = @Constant(intValue = 36),
                     remap = false,
                     require = 1)
-    private int modifyPlayerInventorySize(int constant) {
+    private int modifyPlayerInventorySize_(int constant) {
         return 72;
     }
 }
