@@ -13,16 +13,17 @@ import static com.falsepattern.lib.mixin.ITargetedMod.PredicateHelpers.startsWit
 @Getter
 @RequiredArgsConstructor
 public enum TargetedMod implements ITargetedMod {
-    GALACTICRAFT("Galacticraft", false, startsWith("galacticraft")),
-    TRAVELLERSGEAR("TravellersGear", false, startsWith("traveller")),
-    IRONCHEST("IronChest", false, startsWith("ironchest")),
-    BAUBLES("Baubles", false, startsWith("baubles")),
-    TINKERSCONSTRUCT("TConstruct", false, startsWith("construct")),
-    CODECHICKENLIB("CodeChickenLib", false, startsWith("codechicken")),
-    NOTENOUGHITEMS("NotEnoughItems", false, startsWith("notenoughitems")),
-    GREGTECH("GregTech", false, startsWith("gregtech").or(startsWith("gt5u"))),
-    BARTWORKS("Bartworks", false, startsWith("bartworks")),
-    TECTECH("TecTech", false, startsWith("tectech").or(startsWith("tec-tech")));
+    GALACTICRAFT      ("Galacticraft"    , false, startsWith("galacticraft")),
+    TRAVELLERSGEAR    ("TravellersGear"  , true, startsWith("traveller")),
+    IRONCHEST         ("IronChest"       , true, startsWith("ironchest")),
+    BAUBLES           ("Baubles"         , true, startsWith("baubles")),
+    TINKERSCONSTRUCT  ("TConstruct"      , true, startsWith("construct")),
+    CODECHICKENLIB    ("CodeChickenLib"  , true, startsWith("codechicken")),
+    NOTENOUGHITEMS    ("NotEnoughItems"  , true, startsWith("notenoughitems")),
+    GREGTECH          ("GregTech"        , true, startsWith("gregtech").or(startsWith("gt5u"))),
+    BARTWORKS         ("Bartworks"       , true, startsWith("bartworks")),
+    TECTECH           ("TecTech"         , true, startsWith("tectech").or(startsWith("tec-tech")));
+
 
     private final String modName;
     private final boolean loadInDevelopment;
