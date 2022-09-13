@@ -18,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
@@ -65,12 +66,8 @@ public abstract class GuiContainerMixin extends GuiScreen {
             Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i);
             String slotNumber = Integer.toString(slot.slotNumber);
             String slotIndex = Integer.toString(slot.getSlotIndex());
-            this.fontRendererObj.drawString(slotNumber, slot.xDisplayPosition, slot.yDisplayPosition, getColor());
-            this.fontRendererObj.drawString(slotIndex, slot.xDisplayPosition, slot.yDisplayPosition + 9, getColor());
+            this.fontRendererObj.drawString(slotNumber, slot.xDisplayPosition, slot.yDisplayPosition, Color.CYAN.getRGB());
+            this.fontRendererObj.drawString(slotIndex, slot.xDisplayPosition, slot.yDisplayPosition + 8, Color.MAGENTA.getRGB());
         }
-    }
-
-    private int getColor() {
-        return 0;
     }
 }
