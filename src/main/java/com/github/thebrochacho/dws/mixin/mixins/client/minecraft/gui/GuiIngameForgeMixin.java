@@ -1,4 +1,4 @@
-package com.github.thebrochacho.dws.mixins.client.minecraft.gui;
+package com.github.thebrochacho.dws.mixin.mixins.client.minecraft.gui;
 
 import net.minecraftforge.client.GuiIngameForge;
 import org.spongepowered.asm.mixin.Mixin;
