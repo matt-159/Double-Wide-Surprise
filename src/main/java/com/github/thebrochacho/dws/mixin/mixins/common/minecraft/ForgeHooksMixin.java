@@ -1,4 +1,4 @@
-package com.github.thebrochacho.dws.mixins.common.minecraft;
+package com.github.thebrochacho.dws.mixin.mixins.common.minecraft;
 
 import net.minecraftforge.common.ForgeHooks;
 import org.spongepowered.asm.mixin.Mixin;
