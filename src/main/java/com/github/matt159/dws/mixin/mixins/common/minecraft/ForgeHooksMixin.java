@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ForgeHooks.class)
-public class ForgeHooksMixin {
+public abstract class ForgeHooksMixin {
     @ModifyConstant(method = "onPickBlock",
                     constant = @Constant(intValue = 9),
                     remap = false,
