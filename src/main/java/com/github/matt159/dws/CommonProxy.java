@@ -18,15 +18,18 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static com.github.matt159.dws.util.ModCompat.isBaublesPresent;
+import static com.github.matt159.dws.util.ModCompat.isTinkersConstructPresent;
+
 public class CommonProxy implements IGuiHandler {
 
     public DWSKeyHandler keyHandler;
 
     // preInit "Run before anything else. Read your config, create blocks, items,
     // etc, and register them with the GameRegistry."
-    public void preInit(FMLPreInitializationEvent event) 	{
+    public void preInit(FMLPreInitializationEvent event) {
         Config.syncronizeConfiguration(event.getSuggestedConfigurationFile());
-        
+
         DoubleWideSurprise.info(Config.greeting);
         DoubleWideSurprise.info("I am " + Tags.MODNAME + " at version " + Tags.VERSION + " and group name " + Tags.GROUPNAME);
 
@@ -85,9 +88,11 @@ public class CommonProxy implements IGuiHandler {
         }
     }
 
-    public void registerHandlers() {}
+    public void registerHandlers() {
+    }
 
-    public void registerKeyBindings() {}
+    public void registerKeyBindings() {
+    }
 
     @SuppressWarnings("unchecked")
     public void disableOtherInventoryButtons() {
@@ -101,17 +106,16 @@ public class CommonProxy implements IGuiHandler {
             while (keys.hasMoreElements()) {
                 Object key = keys.nextElement();
                 // Stop baubles ring button from rendering
-                if (key instanceof GuiEvents) {
+                if (isBaublesPresent() && key instanceof GuiEvents)
                     MinecraftForge.EVENT_BUS.unregister(key);
-                }
-
                 // Stop tinker's tabs from rendering
-                if (key instanceof TabRegistry) {
+                if (isTinkersConstructPresent() && key instanceof TabRegistry)
                     MinecraftForge.EVENT_BUS.unregister(key);
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    static boolean test = false;
 }
