@@ -22,4 +22,18 @@ public abstract class ContainerPlayerMixin {
     private int modifyColumnCount(int constant) {
         return 18;
     }
+
+    @ModifyConstant(method = "transferStackInSlot",
+                    constant = @Constant(intValue = 36),
+                    require = 4)
+    private int modifyHotbarSlotStart(int constant) {
+        return 63;
+    }
+
+    @ModifyConstant(method = "transferStackInSlot",
+                    constant = @Constant(intValue = 45),
+                    require = 6)
+    private int modifyHotbarSlotEnd(int constant) {
+        return 81;
+    }
 }
