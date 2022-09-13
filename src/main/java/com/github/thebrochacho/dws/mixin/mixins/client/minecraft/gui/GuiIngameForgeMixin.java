@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GuiIngameForge.class)
-public class GuiIngameForgeMixin {
+public abstract class GuiIngameForgeMixin {
 
     @ModifyConstant(method = "renderHotbar",
                     constant = @Constant(intValue = 9),
