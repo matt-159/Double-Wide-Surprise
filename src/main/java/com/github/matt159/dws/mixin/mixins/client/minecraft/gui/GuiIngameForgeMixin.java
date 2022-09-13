@@ -1,4 +1,4 @@
-package com.github.matt159.dws.mixins.client.minecraft.gui;
+package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 
 import net.minecraftforge.client.GuiIngameForge;
 import org.spongepowered.asm.mixin.Mixin;

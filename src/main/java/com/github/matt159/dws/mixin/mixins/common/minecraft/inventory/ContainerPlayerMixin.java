@@ -1,4 +1,4 @@
-package com.github.matt159.dws.mixins.common.minecraft.inventory;
+package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
 import net.minecraft.inventory.ContainerPlayer;
 import org.spongepowered.asm.mixin.Mixin;

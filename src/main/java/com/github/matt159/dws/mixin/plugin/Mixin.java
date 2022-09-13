@@ -20,7 +20,7 @@ public enum Mixin implements IMixin {
 
     // Vanilla
     CreativeTabsMixin                                 (CLIENT, always(), "minecraft.gui.CreativeTabsMixin"),
-    EntityPlayerMixin                                 (COMMON, always(), "minecraft.EntityPlayerMixin"),
+    ForgeHooksMixin                                   (COMMON, always(), "minecraft.ForgeHooksMixin"),
     InventoryPlayerMixin                              (COMMON, always(), "minecraft.inventory.InventoryPlayerMixin"),
     MinecraftMixin                                    (CLIENT, always(), "minecraft.MinecraftMixin"),
     RenderItemMixin                                   (CLIENT, always(), "minecraft.renderer.RenderItemMixin"),
