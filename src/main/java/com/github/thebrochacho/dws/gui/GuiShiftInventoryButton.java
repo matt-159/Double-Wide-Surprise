@@ -1,12 +1,17 @@
 package com.github.thebrochacho.dws.gui;
 
+import com.github.thebrochacho.dws.Tags;
 import com.github.thebrochacho.dws.util.DWSUtil;
+import com.github.thebrochacho.dws.util.TextureWhitelist;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 public class GuiShiftInventoryButton extends GuiButton {
+
+    private static final ResourceLocation SPRITE_SHEET = new ResourceLocation(Tags.MODID, "textures/spritesheet.png");
 
     public static final int ID = 78846;
 
@@ -20,6 +25,7 @@ public class GuiShiftInventoryButton extends GuiButton {
 
     public GuiShiftInventoryButton(int id, int xPos, int yPos, int width, int height, String displayString, Facing facing) {
         super(id, xPos, yPos, width, height, displayString);
+        this.zLevel = 10;
         this.facing = facing;
     }
 
@@ -27,9 +33,10 @@ public class GuiShiftInventoryButton extends GuiButton {
     public void drawButton(Minecraft mc, int x, int y) {
         if (this.visible) {
             FontRenderer fontRenderer = mc.fontRenderer;
-            mc.getTextureManager().bindTexture(DWSGui.DWS_TEXTURE);
+            mc.getTextureManager().bindTexture(SPRITE_SHEET);
 
-            DWSUtil.drawTexturedModalRect(this.xPosition, this.yPosition, 128, 176 + facing.ordinal() * 16, 18, 12, 10);
+//            DWSUtil.drawTexturedModalRect(this.xPosition, this.yPosition, 82 + facing.ordinal() * 18, 0, 18, 12, this.zLevel);
+            this.drawTexturedModalRect(this.xPosition, this.yPosition, 164 + facing.ordinal() * 36, 0, 36, 24);
         }
     }
 
