@@ -1,80 +1,88 @@
 package com.github.thebrochacho.dws.mixin.mixins.common.ironchest;
 
-import com.github.thebrochacho.dws.util.DWSUtil;
 import cpw.mods.ironchest.ContainerIronChest;
 import cpw.mods.ironchest.IronChestType;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerIronChest.class)
 public abstract class ContainerIronChestMixin extends Container {
+    private int xSize;
 
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
+    @Inject(method = "layoutContainer",
+            at = @At("HEAD"),
+            remap = false,
             require = 1)
-    private void injectDWSSlots(IInventory playerInventory, IInventory chestInventory, IronChestType type, int xSize, int ySize, CallbackInfo ci) {
-        this.inventorySlots.clear();
+    private void injectLocalCapture(IInventory playerInventory, IInventory chestInventory, IronChestType type, int xSize, int ySize, CallbackInfo ci) {
+        this.xSize = xSize;
+    }
 
-        int xOffsetChestInventory = 0;
-        int yOffsetChestInventory = 0;
-        int yOffsetPlayerMainInventory = 0;
+    @ModifyConstant(method = "layoutContainer",
+                    constant = @Constant(intValue = 84),
+                    remap = false,
+                    require = 1)
+    private int modifyDirtChestSlotXOffset(int constant) {
+        return 161;
+    }
 
+    @Redirect(  method = "layoutContainer",
+                at = @At(   value = "INVOKE",
+                            target = "Lcpw/mods/ironchest/IronChestType;makeSlot(Lnet/minecraft/inventory/IInventory;III)Lnet/minecraft/inventory/Slot;",
+                            ordinal = 1),
+                remap = false,
+                require = 1)
+    private Slot redirectAddChestSlot(IronChestType instance, IInventory chestInventory, int index, int x, int y) {
+        //adjust x and y offsets of chest slots
+        x = x - 12 + getXOffset(instance);
+        y += 1;
+
+        return instance.makeSlot(chestInventory, index, x, y);
+    }
+
+    @Redirect(  method = "layoutContainer",
+                at = @At(   value = "INVOKE",
+                            target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;"),
+                slice = @Slice( from = @At( value = "INVOKE",
+                                            target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
+                                            ordinal = 2),
+                                to = @At(   value = "INVOKE",
+                                            target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
+                                            ordinal = 3)),
+                remap = false,
+                require = 2)
+    private Slot redirectSlotConstructor(ContainerIronChest instance, Slot slot) {
+        int oldXOffset = (this.xSize - 162) / 2 + 1;
+
+        return this.addSlotToContainer(new Slot(slot.inventory, slot.getSlotIndex(), slot.xDisplayPosition - oldXOffset + 8, slot.yDisplayPosition + 1));
+    }
+
+    @ModifyConstant(method = "layoutContainer",
+                    constant = @Constant(intValue = 9),
+                    remap = false,
+                    require = 4)
+    private int modifyPlayerInventorySize(int constant) {
+        return 18;
+    }
+    private int getXOffset(IronChestType type) {
         switch (type.name()) {
             case "DIRTCHEST9000":
-                xOffsetChestInventory = 161;
-                yOffsetChestInventory = 44;
-                yOffsetPlayerMainInventory = 102;
-                break;
+                return  161;
             case "COPPER":
-                xOffsetChestInventory = 89;
-                yOffsetChestInventory = 9;
-                yOffsetPlayerMainInventory = 103;
-                break;
             case "IRON":
-                xOffsetChestInventory = 89;
-                yOffsetChestInventory = 9;
-                yOffsetPlayerMainInventory = 121;
-                break;
             case "SILVER":
             case "STEEL":
-                xOffsetChestInventory = 89;
-                yOffsetChestInventory = 9;
-                yOffsetPlayerMainInventory = 157;
-                break;
             case "GOLD":
-                xOffsetChestInventory = 89;
-                yOffsetChestInventory = 9;
-                yOffsetPlayerMainInventory = 175;
-                break;
+                return  89;
             case "DIAMOND":
             case "CRYSTAL":
             case "OBSIDIAN":
-                xOffsetChestInventory = 62;
-                yOffsetChestInventory = 9;
-                yOffsetPlayerMainInventory = 175;
-                break;
+                return  62;
         }
 
-        int yOffsetPlayerHotbar = yOffsetPlayerMainInventory + 58;
-
-        if (type == IronChestType.DIRTCHEST9000) {
-            this.addSlotToContainer(new Slot(chestInventory, 0, 161, 44));
-        } else {
-            for (int y = 0; y < type.getRowCount(); y++) {
-                for (int x = 0; x < type.getRowLength(); x++) {
-                    this.addSlotToContainer(new Slot(chestInventory,
-                                            x + y * type.getRowLength(),
-                                            xOffsetChestInventory + x * 18,
-                                            yOffsetChestInventory + y * 18));
-                }
-            }
-        }
-
-        DWSUtil.addDWSSlotsToContainer(this, playerInventory, 8, yOffsetPlayerMainInventory, yOffsetPlayerHotbar);
+        return -1;
     }
 }
