@@ -16,16 +16,10 @@ public abstract class GuiEnchantmentMixin extends GuiContainer implements IDWSGu
     }
 
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
-                    constant = @Constant(intValue = 60),
+                    constant = {    @Constant(intValue = 60),
+                                    @Constant(intValue = 62)    },
                     require = 1)
     private int modifyXOffset(int constant) {
-        return 141;
-    }
-
-    @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
-            constant = @Constant(intValue = 62),
-            require = 1)
-    private int modifyXOffset2(int constant) {
-        return 143;
+        return constant + 81;
     }
 }
