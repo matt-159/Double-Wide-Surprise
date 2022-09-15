@@ -7,6 +7,7 @@ import net.minecraft.inventory.Container;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.transformer.meta.MixinInner;
 
 @Mixin(GuiMerchant.class)
 public abstract class GuiMerchantMixin extends GuiContainer implements IDWSGui {
@@ -15,46 +16,16 @@ public abstract class GuiMerchantMixin extends GuiContainer implements IDWSGui {
         super(container);
     }
 
-    @ModifyConstant(method = "initGui",
-                    constant = @Constant(intValue = 120),
+    @ModifyConstant(method = {  "initGui",
+                                "drawScreen",
+                                "drawGuiContainerBackgroundLayer"   },
+                    constant = {    @Constant(intValue = 36),
+                                    @Constant(intValue = 62),
+                                    @Constant(intValue = 83),
+                                    @Constant(intValue = 120)   },
                     require = 1)
-    private int modifyLeftButtonXOffset(int constant) {
-        return 201;
-    }
-
-    @ModifyConstant(method = "initGui",
-                    constant = @Constant(intValue = 36),
-                    require = 1)
-    private int modifyRightButtonXOffset(int constant) {
-        return 117;
-    }
-
-    @ModifyConstant(method = "drawScreen",
-                    constant = @Constant(intValue = 36),
-                    require = 1)
-    private int modifyLeftItemXOffset(int constant) {
-        return 117;
-    }
-
-    @ModifyConstant(method = "drawScreen",
-                    constant = @Constant(intValue = 62),
-                    require = 1)
-    private int modifyRightItemXOffset(int constant) {
-        return 143;
-    }
-
-    @ModifyConstant(method = "drawScreen",
-                    constant = @Constant(intValue = 120),
-                    require = 1)
-    private int modifyResultItemXOffset(int constant) {
-        return 201;
-    }
-
-    @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
-                    constant = @Constant(intValue = 83),
-                    require = 1)
-    private int modifyArrowXOffset(int constant) {
-        return 164;
+    private int modifyXOffset(int constant) {
+        return constant + 81;
     }
 
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
