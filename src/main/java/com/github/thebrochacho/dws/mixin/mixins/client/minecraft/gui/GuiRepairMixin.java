@@ -15,31 +15,15 @@ public abstract class GuiRepairMixin extends GuiContainer implements IDWSGui {
         super(container);
     }
 
-    @ModifyConstant(method = "initGui",
-                    constant = @Constant(intValue = 62),
-                    require = 1)
-    private int modifyTextXOffset(int constant) {
-        return 143;
-    }
-
-    @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
-                    constant = @Constant(intValue = 59),
-                    require = 1)
-    private int modifyTextFieldXOffset(int constant) {
-        return 140;
-    }
-
-    @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
-                    constant = @Constant(intValue = 99),
-                    require = 1)
-    private int modifyArrowXOffset(int constant) {
-        return 180;
-    }
-
-    @ModifyConstant(method = "drawGuiContainerForegroundLayer",
-                    constant = @Constant(intValue = 60),
-                    require = 1)
-    private int modifyDisplayTextXOffset(int constant) {
-        return 141;
+    @ModifyConstant(method = {  "initGui",
+                                "drawGuiContainerForegroundLayer",
+                                "drawGuiContainerBackgroundLayer"   },
+                    constant = {    @Constant(intValue = 59),
+                                    @Constant(intValue = 60),
+                                    @Constant(intValue = 62),
+                                    @Constant(intValue = 99)    },
+                    require = 4)
+    private int modifyXOffset(int constant) {
+        return constant + 81;
     }
 }
