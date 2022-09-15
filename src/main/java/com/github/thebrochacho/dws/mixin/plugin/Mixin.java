@@ -3,6 +3,7 @@ package com.github.thebrochacho.dws.mixin.plugin;
 import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
 import lombok.*;
+import org.lwjgl.opencl.CL;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -53,7 +54,10 @@ public enum Mixin implements IMixin {
     GuiEnchantmentMixin                               (CLIENT, always(), "minecraft.gui.GuiEnchantmentMixin"),
     GuiFurnaceMixin                                   (CLIENT, always(), "minecraft.gui.GuiFurnaceMixin"),
     GuiInventoryMixin                                 (CLIENT, always(), "minecraft.gui.GuiInventoryMixin"),
+
     GuiMerchantMixin                                  (CLIENT, always(), "minecraft.gui.GuiMerchantMixin"),
+    MerchantButtonMixin                               (CLIENT, always(), "minecraft.gui.MerchantButtonMixin"),
+
     GuiRepairMixin                                    (CLIENT, always(), "minecraft.gui.GuiRepairMixin"),
     GuiScreenHorseInventoryMixin                      (CLIENT, always(), "minecraft.gui.GuiScreenHorseInventoryMixin"),
 
