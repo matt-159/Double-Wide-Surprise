@@ -28,52 +28,19 @@ public abstract class GuiBeaconMixin extends GuiContainer implements IDWSGui {
         this.ySize = 219;
     }
 
-    @ModifyConstant(method = "initGui",
-                    constant = @Constant(intValue = 164),
+    @ModifyConstant(method = {  "initGui",
+                                "updateScreen",
+                                "drawGuiContainerBackgroundLayer",
+                                "drawGuiContainerForegroundLayer"   },
+                    constant = {    @Constant(intValue = 42),
+                                    @Constant(intValue = 62),
+                                    @Constant(intValue = 76),
+                                    @Constant(intValue = 164),
+                                    @Constant(intValue = 167),
+                                    @Constant(intValue = 169),
+                                    @Constant(intValue = 190)   },
                     require = 1)
-    private int modifyConfirmButtonXOffset(int constant) {
-        return 219;
-    }
-
-    @ModifyConstant(method = "initGui",
-                    constant = @Constant(intValue = 190),
-                    require = 1)
-    private int modifyCancelButtonXOffset(int constant) {
-        return 244;
-    }
-
-    @ModifyConstant(method = "updateScreen",
-                    constant = @Constant(intValue = 76),
-                    require = 1)
-    private int modifyPrimaryButtonXOffset(int constant) {
-        return 130;
-    }
-
-    @ModifyConstant(method = "updateScreen",
-                    constant = @Constant(intValue = 167),
-                    require = 1)
-    private int modifySecondaryButtonXOffset(int constant) {
-        return 221;
-    }
-
-    @ModifyConstant(method = "drawGuiContainerForegroundLayer",
-                    constant = @Constant(intValue = 62),
-                    require = 1)
-    private int modifyBeaconPrimaryStringXOffset(int constant) {
-        return 116;
-    }
-
-    @ModifyConstant(method = "drawGuiContainerForegroundLayer",
-                    constant = @Constant(intValue = 169),
-                    require = 1)
-    private int modifyBeaconSecondaryStringXOffset(int constant) {
-        return 223;
-    }
-
-    @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
-                    constant = @Constant(intValue = 42),
-                    require = 1)
-    private int modifyItemRenderXOffset(int constant) {
-        return 96;
+    private int modifyXOffset(int constant) {
+        return constant + 54;
     }
 }
