@@ -5,7 +5,6 @@ import com.github.matt159.dws.gui.GuiShiftInventoryButton.Facing;
 import com.github.matt159.dws.interfaces.IDWSGui;
 import com.github.matt159.dws.network.DWSInventorySwapPacket;
 import com.github.matt159.dws.network.PacketHandler;
-import com.github.matt159.dws.util.DWSUtil;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

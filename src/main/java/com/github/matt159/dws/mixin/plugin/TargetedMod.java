@@ -1,7 +1,8 @@
 package com.github.matt159.dws.mixin.plugin;
 
 import com.falsepattern.lib.mixin.ITargetedMod;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.function.Predicate;
 

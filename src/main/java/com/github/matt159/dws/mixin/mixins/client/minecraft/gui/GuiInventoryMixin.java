@@ -1,6 +1,5 @@
 package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 
-import com.github.matt159.dws.Config;
 import com.github.matt159.dws.gui.SlotOverlays;
 import com.github.matt159.dws.interfaces.IDWSGui;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -9,13 +8,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import static com.github.matt159.dws.gui.SlotOverlays.*;
 
 @Mixin(GuiInventory.class)
 public abstract class GuiInventoryMixin extends InventoryEffectRenderer implements IDWSGui {

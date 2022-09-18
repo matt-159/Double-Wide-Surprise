@@ -2,7 +2,6 @@ package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 
 import com.github.matt159.dws.interfaces.IDWSGui;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotCreative;
-import com.github.matt159.dws.util.DWSUtil;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.creativetab.CreativeTabs;

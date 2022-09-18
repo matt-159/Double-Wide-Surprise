@@ -1,8 +1,6 @@
 package com.github.matt159.dws.gui;
 
 import com.github.matt159.dws.Tags;
-import com.github.matt159.dws.util.DWSUtil;
-import com.github.matt159.dws.util.TextureWhitelist;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;

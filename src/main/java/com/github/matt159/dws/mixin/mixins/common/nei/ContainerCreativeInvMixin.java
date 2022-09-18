@@ -4,7 +4,10 @@ import codechicken.nei.ContainerCreativeInv;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ContainerCreativeInv.class)
 public abstract class ContainerCreativeInvMixin extends Container {

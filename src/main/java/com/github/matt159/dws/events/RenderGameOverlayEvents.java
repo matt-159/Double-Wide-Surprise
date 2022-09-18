@@ -1,12 +1,5 @@
 package com.github.matt159.dws.events;
 
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.common.MinecraftForge;
-
 public class RenderGameOverlayEvents {
 
 //    @SideOnly(Side.CLIENT)

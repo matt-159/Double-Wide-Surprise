@@ -2,7 +2,6 @@ package com.github.matt159.dws;
 
 import com.github.matt159.dws.events.DWSKeyHandler;
 import com.github.matt159.dws.events.GuiEvents;
-import com.github.matt159.dws.events.PlayerOpenContainerEventHandler;
 import com.github.matt159.dws.events.RenderGameOverlayEvents;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;

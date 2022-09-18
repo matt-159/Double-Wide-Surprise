@@ -7,7 +7,6 @@ import net.minecraft.inventory.Container;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.transformer.meta.MixinInner;
 
 @Mixin(GuiMerchant.class)
 public abstract class GuiMerchantMixin extends GuiContainer implements IDWSGui {
