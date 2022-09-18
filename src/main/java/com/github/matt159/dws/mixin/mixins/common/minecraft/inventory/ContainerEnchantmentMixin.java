@@ -11,26 +11,25 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerEnchantment.class)
 public abstract class ContainerEnchantmentMixin extends Container {
 
-    @Shadow public IInventory tableInventory;
-
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
-            require = 1)
-    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, World world, int x, int y, int z, CallbackInfo ci) {
-        this.inventorySlots.clear();
-        this.addSlotToContainer(new SlotEnchantment(tableInventory, 0, 106, 47));
-
-        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
+    @ModifyConstant(method = "<init>",
+                    constant = @Constant(intValue = 25),
+                    require = 1)
+    private int modifyXOffset(int constant) {
+        return constant + 81;
     }
 
-    @Override
-    public boolean canInteractWith(EntityPlayer entityPlayer) {
-        return true;
+    @ModifyConstant(method = "<init>",
+                    constant = @Constant(intValue = 9),
+                    require = 4)
+    private int modifyPlayerInventorySize(int constant) {
+        return 18;
     }
 }
