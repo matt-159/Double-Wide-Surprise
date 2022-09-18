@@ -71,6 +71,8 @@ public final class TextureWhitelist {
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tab_items.png");
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tabs.png");
 
+        addTextureToWhitelist("nei:textures/gui/inv.png");
+
         addTextureToWhitelist("ironchest:textures/gui/coppercontainer.png");
         addTextureToWhitelist("ironchest:textures/gui/diamondcontainer.png");
         addTextureToWhitelist("ironchest:textures/gui/dirtcontainer.png");
