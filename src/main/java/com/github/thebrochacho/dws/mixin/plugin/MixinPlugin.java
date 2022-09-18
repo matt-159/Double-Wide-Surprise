@@ -3,9 +3,9 @@ package com.github.thebrochacho.dws.mixin.plugin;
 import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.IMixinPlugin;
 import com.falsepattern.lib.mixin.ITargetedMod;
-import lombok.*;
+import lombok.Getter;
 import org.apache.logging.log4j.Logger;
-import org.spongepowered.asm.mixin.extensibility.*;
+import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 
 import static com.github.thebrochacho.dws.Tags.MODNAME;
 

@@ -1,12 +1,9 @@
 package com.github.thebrochacho.dws.mixin.mixins.common.gregtech;
 
 import codechicken.lib.gui.GuiDraw;
-import com.github.thebrochacho.dws.util.DWSUtil;
 import gregtech.nei.GT_NEI_DefaultHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(GT_NEI_DefaultHandler.class)
