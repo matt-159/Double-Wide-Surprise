@@ -8,23 +8,25 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ContainerHopper.class)
 public abstract class ContainerHopperMixin extends Container {
 
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
-            require = 1)
-    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, IInventory inventoryHopper, CallbackInfo ci) {
-        this.inventorySlots.clear();
+    @ModifyConstant(method = "<init>",
+                    constant = @Constant(intValue = 44),
+                    require = 1)
+    private int modifyXOffset(int constant) {
+        return constant + 81;
+    }
 
-        int var4;
-        for(var4 = 0; var4 < inventoryHopper.getSizeInventory(); ++var4) {
-            this.addSlotToContainer(new Slot(inventoryHopper, var4, 125 + var4 * 18, 20));
-        }
-
-        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer, 8, 51, 109);
+    @ModifyConstant(method = "<init>",
+                    constant = @Constant(intValue = 9),
+                    require = 4)
+    private int modifyPlayerInventorySize(int constant) {
+        return 18;
     }
 }
