@@ -1,49 +1,60 @@
 package com.github.thebrochacho.dws.mixin.mixins.common.minecraft.inventory;
 
 import com.github.thebrochacho.dws.interfaces.minecraft.IContainerRepairMixin;
-import com.github.thebrochacho.dws.inventory.slots.minecraft.SlotAnvil;
-import com.github.thebrochacho.dws.util.DWSUtil;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerRepair;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
+import com.github.thebrochacho.dws.inventory.slots.minecraft.SlotAnvilOutput;
+import net.minecraft.client.Minecraft;
+import net.minecraft.inventory.*;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.*;
 
 @Mixin(ContainerRepair.class)
 public abstract class ContainerRepairMixin extends Container implements IContainerRepairMixin {
 
-    @Shadow private IInventory outputSlot;
-    @Shadow private IInventory inputSlots;
+    @Shadow
+    private IInventory outputSlot;
+    @Shadow
+    private IInventory inputSlots;
 
-    @Shadow private int field_82861_i;
-    @Shadow private int field_82858_j;
-    @Shadow private int field_82859_k;
+    @Shadow
+    private int field_82861_i;
+    @Shadow
+    private int field_82858_j;
+    @Shadow
+    private int field_82859_k;
 
-    @Inject(method = "<init>",
-            at = @At(value = "RETURN"),
-            require = 1)
-    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, final World world, final int x, final int y, final int z, EntityPlayer player, CallbackInfo ci) {
-        this.inventorySlots.clear();
-        this.addSlotToContainer(new Slot(this.inputSlots, 0, 108, 47));
-        this.addSlotToContainer(new Slot(this.inputSlots, 1, 157, 47));
-        this.addSlotToContainer(new SlotAnvil(this.outputSlot, world, ((ContainerRepair) (Object) (this)), 2, 215, 47));
+    @ModifyConstant(method = "<init>",
+                    constant = {    @Constant(intValue = 27),
+                                    @Constant(intValue = 76)    },
+                    require = 2)
+    private int modifyXOffset(int constant) {
+        return constant + 81;
+    }
 
-        DWSUtil.addDWSSlotsToContainer(this, inventoryPlayer);
+    @Redirect(  method = "<init>",
+                at = @At(   value = "INVOKE",
+                            target = "Lnet/minecraft/inventory/ContainerRepair;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
+                            ordinal = 2),
+                require = 1)
+    private Slot redirectAddSlotAnvilOutput(ContainerRepair instance, Slot slot) {
+        return this.addSlotToContainer(new SlotAnvilOutput( this.outputSlot,
+                                                            Minecraft.getMinecraft().theWorld,
+                                                            (ContainerRepair) (Object) this,
+                                                            2,
+                                                            134 + 81,
+                                                            47));
+    }
+
+    @ModifyConstant(method = "<init>",
+                    constant = @Constant(intValue = 9),
+                    require = 4)
+    private int modifyPlayerInventorySize(int constant) {
+        return 18;
     }
 
     public IInventory getInputSlots() {
         return inputSlots;
-    }
-
-    public IInventory getOutputSlot() {
-        return outputSlot;
     }
 
     public int getXPos() {
