@@ -1,5 +1,6 @@
 package com.github.matt159.dws.util;
 
+import codechicken.lib.gui.GuiDraw;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
@@ -74,31 +75,4 @@ public final class DWSUtil {
 //        }
 //        return -1;
 //    }
-
-    public static void addDWSSlotsToContainer(Container container, IInventory inventoryPlayer) {
-        addDWSSlotsToContainer(container, inventoryPlayer, 8, 84, 142);
-    }
-
-    public static void addDWSSlotsToContainer(Container container, IInventory inventoryPlayer, int xOffset, int yOffset1, int yOffset2) {
-
-        int row, col;
-        //main inventory
-        for (row = 0; row < 3; ++row) {
-            for (col = 0; col < 18; ++col) {
-                DWSUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col + (row + 1) * 18, 8 + col * 18, yOffset1 + row * 18));
-            }
-        }
-
-        for (col = 0; col < 18; ++col) {
-            DWSUtil.addSlotToContainer(container, new Slot(inventoryPlayer, col, 8 + col * 18 , yOffset2));
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    public static Slot addSlotToContainer(Container container, Slot slot) {
-        slot.slotNumber = container.inventorySlots.size();
-        container.inventorySlots.add(slot);
-        container.inventoryItemStacks.add(null);
-        return slot;
-    }
 }
