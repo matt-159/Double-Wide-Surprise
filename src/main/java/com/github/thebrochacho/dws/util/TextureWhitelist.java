@@ -23,19 +23,13 @@ public final class TextureWhitelist {
     }
 
     public static ResourceLocation checkResourceLocation(ResourceLocation rl) {
-        boolean isNEIRendering = Arrays.stream(Thread.currentThread().getStackTrace())
-                .map(ste -> ste.toString().toLowerCase())
-                .anyMatch(string -> string.contains("codechicken") || string.contains("nei"));
+        useDoubleWideTexture = checkTextureWhitelist(rl);
 
-        if (!isNEIRendering) {
-            useDoubleWideTexture = checkTextureWhitelist(rl);
-
-            //transforming from:    modid:textures/blahblahblah
-            //to:                   dws:textures/modid/blahblahblah
-            if (useDoubleWideTexture) {
-                rl = new ResourceLocation(Tags.MODID,
-                        rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
-            }
+        //transforming from:    modid:textures/blahblahblah
+        //to:                   dws:textures/modid/blahblahblah
+        if (useDoubleWideTexture) {
+            rl = new ResourceLocation(Tags.MODID,
+                    rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
         }
 
         return rl;
