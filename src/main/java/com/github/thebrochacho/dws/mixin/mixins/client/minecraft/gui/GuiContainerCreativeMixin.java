@@ -119,15 +119,6 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
         return 20;
     }
 
-    @Redirect(  method = "func_147051_a",
-                at = @At(   value = "INVOKE",
-                            target = "Lnet/minecraft/client/gui/inventory/GuiContainerCreative;drawTexturedModalRect(IIIIII)V",
-                            ordinal = 0),
-                require = 1)
-    private void rerouteDrawCall(GuiContainerCreative instance, int x, int y, int u, int v, int w, int h) {
-        DWSUtil.drawTexturedModalRect(x, y, u, v, w, h, zLevel);
-    }
-
     @Inject(method = "handleMouseClick",
             at = @At(value = "HEAD"),
             require = 1)
