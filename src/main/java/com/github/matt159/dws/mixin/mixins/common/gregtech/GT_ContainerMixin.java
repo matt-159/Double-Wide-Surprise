@@ -13,22 +13,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GT_Container.class)
 public abstract class GT_ContainerMixin extends Container {
-    @ModifyConstant(method = "bindPlayerInventory",
-                    constant = @Constant(intValue = 9),
+    @ModifyConstant(method = {  "bindPlayerInventory",
+                                "getAllSlotCount",
+                                "transferStackInSlot"   },
+                    constant = {    @Constant(intValue = 9),
+                                    @Constant(intValue = 36)    },
                     remap = false,
-                    require = 4)
+                    require = 6)
     private int modifyPlayerInventorySize(int constant) {
-        return 18;
-    }
-
-    @ModifyConstant(method = {
-                        "getAllSlotCount",
-                        "transferStackInSlot"
-                    },
-                    constant = @Constant(intValue = 36),
-                    remap = false,
-                    require = 1)
-    private int modifyPlayerInventorySize_(int constant) {
-        return 72;
+        return constant * 2;
     }
 }
