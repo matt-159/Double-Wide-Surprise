@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(TemplateRecipeHandler.class)
-public class TemplateRecipeHandlerMixin {
+public abstract class TemplateRecipeHandlerMixin {
     @ModifyConstant(method = "drawBackground",
                     constant = @Constant(intValue = 5),
                     remap = false,

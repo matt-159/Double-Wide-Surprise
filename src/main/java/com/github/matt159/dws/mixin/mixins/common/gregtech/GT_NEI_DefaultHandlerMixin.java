@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(GT_NEI_DefaultHandler.class)
-public class GT_NEI_DefaultHandlerMixin {
+public abstract class GT_NEI_DefaultHandlerMixin {
     @Redirect(  method = "drawBackground",
                 at = @At(   value = "INVOKE",
                             target = "Lcodechicken/lib/gui/GuiDraw;drawTexturedModalRect(IIIIII)V"),
