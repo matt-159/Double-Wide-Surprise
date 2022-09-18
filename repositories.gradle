@@ -11,7 +11,7 @@ repositories {
     }
     maven {
         name = "cursemaven"
-        url = "https://cursemaven.falsepattern.com/"
+        url = "https://mvn.falsepattern.com/cursemaven/"
     }
     maven {
         name = "GTNH Maven"
@@ -22,8 +22,7 @@ repositories {
         url = "https://mvn.falsepattern.com/releases"
     }
     maven {
-        name = "FalsePattern GTMEGA Maven"
-        url = "https://gtmega.falsepattern.com/releases/"
+        url = "https://mvn.falsepattern.com/gtmega_releases/"
     }
     maven {
         name = "JitPack Maven"
