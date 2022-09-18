@@ -66,7 +66,13 @@ public enum Mixin implements IMixin {
 
     //NotEnoughItems
     ClientUtilsMixin                                  (CLIENT, require(NOTENOUGHITEMS),"nei.NEIClientUtilsMixin"),
-    LayoutMangerMixin                                 (CLIENT, require(NOTENOUGHITEMS), "nei.LayoutManagerMixin"),
+    ContainerCreativeInvMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.ContainerCreativeInvMixin"),
+    ExtendedCreativeInvMixin                          (COMMON, require(NOTENOUGHITEMS), "nei.ExtendedCreativeInvMixin"),
+    GuiExtendedCreativeInvMixin                       (CLIENT, require(NOTENOUGHITEMS), "nei.GuiExtendedCreativeInvMixin"),
+    LayoutManagerMixin                                (CLIENT, require(NOTENOUGHITEMS), "nei.LayoutManagerMixin"),
+    NEIClientConfigMixin                              (CLIENT, require(NOTENOUGHITEMS), "nei.NEIClientConfigMixin"),
+    PlayerSaveMixin                                   (COMMON, require(NOTENOUGHITEMS), "nei.PlayerSaveMixin"),
+
     BrewingRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.BrewingRecipeHandlerMixin"),
     FurnaceRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.FurnaceRecipeHandlerMixin"),
     ShapedRecipeHandlerMixin                          (COMMON, require(NOTENOUGHITEMS), "nei.ShapedRecipeHandlerMixin"),
