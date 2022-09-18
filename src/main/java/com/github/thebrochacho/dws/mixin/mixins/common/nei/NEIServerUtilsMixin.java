@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Slice;
 
 @Mixin(NEIServerUtils.class)
-public class NEIServerUtilsMixin {
+public abstract class NEIServerUtilsMixin {
     @ModifyConstant(method = "cycleCreativeInv",
                     constant = {    @Constant(  intValue = 9,
                                                 slice = "Kill"),
