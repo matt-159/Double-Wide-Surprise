@@ -1,8 +1,6 @@
 package com.github.thebrochacho.dws.gui;
 
 import com.github.thebrochacho.dws.Tags;
-import com.github.thebrochacho.dws.util.DWSUtil;
-import com.github.thebrochacho.dws.util.TextureWhitelist;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;

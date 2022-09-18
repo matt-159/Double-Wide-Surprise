@@ -5,7 +5,6 @@ import com.github.thebrochacho.dws.gui.GuiShiftInventoryButton.Facing;
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.network.DWSInventorySwapPacket;
 import com.github.thebrochacho.dws.network.PacketHandler;
-import com.github.thebrochacho.dws.util.DWSUtil;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

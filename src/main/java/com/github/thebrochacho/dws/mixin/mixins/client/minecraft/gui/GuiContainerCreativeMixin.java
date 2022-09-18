@@ -2,7 +2,6 @@ package com.github.thebrochacho.dws.mixin.mixins.client.minecraft.gui;
 
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.inventory.slots.minecraft.SlotCreative;
-import com.github.thebrochacho.dws.util.DWSUtil;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.creativetab.CreativeTabs;

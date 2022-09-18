@@ -2,7 +2,6 @@ package com.github.thebrochacho.dws;
 
 import com.github.thebrochacho.dws.events.DWSKeyHandler;
 import com.github.thebrochacho.dws.events.GuiEvents;
-import com.github.thebrochacho.dws.events.PlayerOpenContainerEventHandler;
 import com.github.thebrochacho.dws.events.RenderGameOverlayEvents;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;

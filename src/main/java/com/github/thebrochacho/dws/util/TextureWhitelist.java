@@ -3,7 +3,6 @@ package com.github.thebrochacho.dws.util;
 import com.github.thebrochacho.dws.Tags;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 

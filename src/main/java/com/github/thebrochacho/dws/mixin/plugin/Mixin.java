@@ -2,8 +2,8 @@ package com.github.thebrochacho.dws.mixin.plugin;
 
 import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
-import lombok.*;
-import org.lwjgl.opencl.CL;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.function.Predicate;
