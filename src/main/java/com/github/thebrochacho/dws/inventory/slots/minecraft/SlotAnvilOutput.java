@@ -10,13 +10,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
-public class SlotAnvil extends Slot {
+public class SlotAnvilOutput extends Slot {
     private static final String __OBFID = "CL_00001734";
     
     private final World world;
     private final ContainerRepair container;
 
-    public SlotAnvil(IInventory outputSlot, World world, ContainerRepair container, int slotIndex, int xDisplayPosition, int yDisplayPosition) {
+    public SlotAnvilOutput(IInventory outputSlot, World world, ContainerRepair container, int slotIndex, int xDisplayPosition, int yDisplayPosition) {
         super(outputSlot, slotIndex, xDisplayPosition, yDisplayPosition);
         
         this.world = world;
