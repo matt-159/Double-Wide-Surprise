@@ -1,5 +1,7 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.InventoryPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,6 +31,7 @@ public abstract class InventoryPlayerMixin {
         return 18;
     }
 
+    @SideOnly(Side.CLIENT)
     @Inject(method = "changeCurrentItem",
             at = @At("HEAD"),
             cancellable = true,
