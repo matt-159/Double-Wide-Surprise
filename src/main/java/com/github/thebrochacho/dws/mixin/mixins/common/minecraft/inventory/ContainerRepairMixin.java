@@ -2,7 +2,6 @@ package com.github.thebrochacho.dws.mixin.mixins.common.minecraft.inventory;
 
 import com.github.thebrochacho.dws.interfaces.minecraft.IContainerRepairMixin;
 import com.github.thebrochacho.dws.inventory.slots.minecraft.SlotAnvilOutput;
-import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.*;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,6 +15,9 @@ public abstract class ContainerRepairMixin extends Container implements IContain
     private IInventory outputSlot;
     @Shadow
     private IInventory inputSlots;
+
+    @Shadow
+    private World theWorld;
 
     @Shadow
     private int field_82861_i;
@@ -39,7 +41,7 @@ public abstract class ContainerRepairMixin extends Container implements IContain
                 require = 1)
     private Slot redirectAddSlotAnvilOutput(ContainerRepair instance, Slot slot) {
         return this.addSlotToContainer(new SlotAnvilOutput( this.outputSlot,
-                                                            Minecraft.getMinecraft().theWorld,
+                                                            this.theWorld,
                                                             (ContainerRepair) (Object) this,
                                                             2,
                                                             134 + 81,
