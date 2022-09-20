@@ -83,24 +83,24 @@ public class SlotDWS extends Slot {
                 return itemStack.getItem() instanceof IAccessory &&
                         ((IAccessory)itemStack.getItem()).canEquipAccessory(itemStack, 4);
 
-            case GC_THERMAL_HELM:
-            case GC_THERMAL_CHEST:
-            case GC_THERMAL_LEGS:
-            case GC_THERMAL_BOOTS:
-                return itemStack.getItem() instanceof IItemThermal &&
-                        ((IItemThermal)itemStack.getItem()).isValidForSlot(itemStack, this.type.ordinal() - 18);
-
-            case GC_FREQUENCY_MODULE:
-                return itemStack.getItem() == GCItems.basicItem &&
-                        itemStack.getItemDamage() == 19;
-            case GC_OXYGEN_MASK:
-                return itemStack.getItem() instanceof ItemOxygenMask;
-            case GC_OXYGEN_GEAR:
-                return itemStack.getItem() instanceof ItemOxygenGear;
-            case GC_OXYGEN_TANK:
-                return itemStack.getItem() instanceof ItemOxygenTank;
-            case GC_PARACHUTE:
-                return itemStack.getItem() instanceof ItemParaChute;
+//            case GC_THERMAL_HELM:
+//            case GC_THERMAL_CHEST:
+//            case GC_THERMAL_LEGS:
+//            case GC_THERMAL_BOOTS:
+//                return itemStack.getItem() instanceof IItemThermal &&
+//                        ((IItemThermal)itemStack.getItem()).isValidForSlot(itemStack, this.type.ordinal() - 18);
+//
+//            case GC_FREQUENCY_MODULE:
+//                return itemStack.getItem() == GCItems.basicItem &&
+//                        itemStack.getItemDamage() == 19;
+//            case GC_OXYGEN_MASK:
+//                return itemStack.getItem() instanceof ItemOxygenMask;
+//            case GC_OXYGEN_GEAR:
+//                return itemStack.getItem() instanceof ItemOxygenGear;
+//            case GC_OXYGEN_TANK:
+//                return itemStack.getItem() instanceof ItemOxygenTank;
+//            case GC_PARACHUTE:
+//                return itemStack.getItem() instanceof ItemParaChute;
 
             default:
                 return false;
