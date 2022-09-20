@@ -137,38 +137,51 @@ public class SlotDWS extends Slot {
         }
     }
 
-    public enum SlotType
-    {
-        VANILLA_HELM,
-        VANILLA_CHEST,
-        VANILLA_LEGS,
-        VANILLA_BOOTS,
+    public enum SlotType {
+        /* Tinkers Construct */
+        TINKERS_MASK(0, 0),
+        TINKERS_GLOVE(0, 1),
+        TINKERS_BELT(0, 2),
+        TINKERS_KNAPSACK(0, 3),
+        TINKERS_HEART_RED(1, 0),
+        TINKERS_HEART_YELLOW(1, 1),
+        TINKERS_HEART_GREEN(1, 2),
 
-        TRAVEL_CLOAK,
-        TRAVEL_PAULDRON,
-        TRAVEL_VAMBRACE,
-        TRAVEL_TITLE,
+        /* Baubles */
+        BAUBLE_AMULET(2, 0),
+        BAUBLE_RING(2, 1),
+        BAUBLE_BELT(2, 2),
 
-        BAUBLE_AMULET,
-        BAUBLE_RING,
-        BAUBLE_BELT,
+        /* Traveller's Gear */
+        TRAVEL_CLOAK(3, 0),
+        TRAVEL_PAULDRON(3, 1),
+        TRAVEL_VAMBRACE(3, 2),
+        TRAVEL_TITLE(3, 3),
+        ;
 
-        TINKERS_GLOVE,
-        TINKERS_KNAPSACK,
-        TINKERS_BELT,
-        TINKERS_MASK,
-        TINKERS_HEART_RED,
-        TINKERS_HEART_YELLOW,
-        TINKERS_HEART_GREEN,
+        /* Galacticraft */
+//        GC_THERMAL_HELM,
+//        GC_THERMAL_CHEST,
+//        GC_THERMAL_LEGS,
+//        GC_THERMAL_BOOTS,
+//        GC_FREQUENCY_MODULE,
+//        GC_OXYGEN_MASK,
+//        GC_OXYGEN_GEAR,
+//        GC_OXYGEN_TANK,
+//        GC_PARACHUTE;
 
-        GC_THERMAL_HELM,
-        GC_THERMAL_CHEST,
-        GC_THERMAL_LEGS,
-        GC_THERMAL_BOOTS,
-        GC_FREQUENCY_MODULE,
-        GC_OXYGEN_MASK,
-        GC_OXYGEN_GEAR,
-        GC_OXYGEN_TANK,
-        GC_PARACHUTE;
+        /**
+         * X and Y location in the sprite grid within dws:textures/minecraft/gui/container/inventory.png
+         */
+        private int x, y;
+
+        public int getX() { return x; }
+
+        public int getY() { return y; }
+
+        SlotType(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }
