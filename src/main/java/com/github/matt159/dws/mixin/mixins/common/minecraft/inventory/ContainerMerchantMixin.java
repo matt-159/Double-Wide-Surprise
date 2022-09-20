@@ -1,15 +1,10 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
-import com.github.matt159.dws.util.DWSUtil;
-import cpw.mods.fml.common.Mod;
-import net.minecraft.entity.IMerchant;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
-import net.minecraft.world.World;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerMerchant;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.*;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ContainerMerchant.class)
 public abstract class ContainerMerchantMixin extends Container {

@@ -2,16 +2,16 @@ package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
 import com.github.matt159.dws.inventory.slots.minecraft.SlotHorseArmor;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotSaddle;
-import com.github.matt159.dws.util.DWSUtil;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerHorseInventory;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.*;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ContainerHorseInventory.class)
 public abstract class ContainerHorseInventoryMixin extends Container {
