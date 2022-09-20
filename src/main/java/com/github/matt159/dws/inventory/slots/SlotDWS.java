@@ -34,12 +34,6 @@ public class SlotDWS extends Slot {
             return false;
 
         switch (this.type) {
-            case VANILLA_HELM:
-            case VANILLA_CHEST:
-            case VANILLA_LEGS:
-            case VANILLA_BOOTS:
-                return itemStack.getItem().isValidArmor(itemStack, this.type.ordinal(), player);
-
             case TRAVEL_CLOAK:
             case TRAVEL_PAULDRON:
             case TRAVEL_VAMBRACE:
