@@ -2,11 +2,11 @@ package com.github.matt159.dws.events;
 
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
+import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.matt159.dws.util.ModCompat;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.inventory.Container;
 import net.minecraftforge.event.entity.player.PlayerOpenContainerEvent;
-
-import static com.github.matt159.dws.util.ModCompat.isBaublesPresent;
 
 public class PlayerOpenContainerEventHandler {
     /*  The InventoryBaubles object inside ContainerDWS is likely to get constructed prior to the player's baubles being
@@ -14,13 +14,17 @@ public class PlayerOpenContainerEventHandler {
      */
     @SubscribeEvent
     public void onPlayerOpenContainer(PlayerOpenContainerEvent event) {
-        if (!isBaublesPresent())
+        if (!ModCompat.isBaublesPresent())
             return;
-        Container container = event.entityPlayer.inventoryContainer;
-        InventoryBaubles baubles = PlayerHandler.getPlayerBaubles(event.entityPlayer);
 
-//        if (container instanceof ContainerDWS) {
-//            ((ContainerDWS) container).baubles.stackList = baubles.stackList;
-//        }
+        if (!event.entityPlayer.worldObj.isRemote) {
+            Container container = event.entityPlayer.inventoryContainer;
+            InventoryBaubles baubles = PlayerHandler.getPlayerBaubles(event.entityPlayer);
+
+            ((IAddsBaubleSlots) container).setBaublesAccessories(baubles);
+
+            container.detectAndSendChanges();
+        }
+
     }
 }

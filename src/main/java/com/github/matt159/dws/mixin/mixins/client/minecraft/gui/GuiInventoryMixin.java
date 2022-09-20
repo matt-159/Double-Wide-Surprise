@@ -1,15 +1,23 @@
 package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 
-import com.github.matt159.dws.gui.SlotOverlays;
+import baubles.common.container.InventoryBaubles;
+import baubles.common.lib.PlayerHandler;
 import com.github.matt159.dws.interfaces.IDWSGui;
+import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsNullSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
+import com.github.matt159.dws.inventory.slots.SlotDWS;
+import com.github.matt159.dws.util.ModCompat;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.Slot;
-import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiInventory.class)
 public abstract class GuiInventoryMixin extends InventoryEffectRenderer implements IDWSGui {
@@ -17,59 +25,55 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
         super(container);
     }
 
-//    @Inject(method = "drawGuiContainerBackgroundLayer",
-//            at = @At(   value = "INVOKE",
-//                        target = "Lnet/minecraft/client/gui/inventory/GuiInventory;drawTexturedModalRect(IIIIII)V",
-//                        shift = At.Shift.AFTER),
-//            require = 1)
-//    private void injectDrawExtraSlots(float f, int i, int j, CallbackInfo ci) {
-//        if (Config.isBaublesLoaded) {
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.BAUBLES_SLOT_START + 0), Hints.AMULET);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.BAUBLES_SLOT_START + 1), Hints.RING);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.BAUBLES_SLOT_START + 2), Hints.RING);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.BAUBLES_SLOT_START + 3), Hints.BAUBLE_BELT);
-//        }
-//
-//        if (Config.isTinkersLoaded) {
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TINKERS_SLOT_START + 0), Hints.MASK);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TINKERS_SLOT_START + 1), Hints.GLOVE);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TINKERS_SLOT_START + 2), Hints.TINKERS_BELT);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TINKERS_SLOT_START + 3), Hints.KNAPSACK);
-//
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TINKERS_SLOT_START + 4), Hints.RED_CANISTER);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TINKERS_SLOT_START + 5), Hints.YELLOW_CANISTER);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TINKERS_SLOT_START + 6), Hints.GREEN_CANISTER);
-//        }
-//
-//        if (Config.isTravellersGearLoaded) {
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 0), Hints.CLOAK);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 1), Hints.PAULDRON);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 2), Hints.VAMBRACE);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.TG_SLOT_START + 3), Hints.TITLE);
-//        }
-//
-//        if (Config.isGalacticraftLoaded) {
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 0), Hints.THERMAL_HELMET);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 1), Hints.THERMAL_CHEST);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 2), Hints.THERMAL_PANTS);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 3), Hints.THERMAL_BOOTS);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 4), Hints.PARACHUTE);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 5), Hints.OXYGEN_MASK);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 6), Hints.OXYGEN_TANK);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 7), Hints.FREQUENCY_MODULE);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 8), Hints.OXYGEN_GEAR);
-//            this.drawSlotAndOverlay(this.inventorySlots.getSlot(ContainerDWS.GC_SLOT_START + 9), Hints.OXYGEN_TANK);
-//        }
-//
-//        ContainerDWS.nullSlots.forEach(nullSlotXY -> {
-//            this.drawTexturedModalRect( guiLeft + nullSlotXY.getLeft() - 1,
-//                                        guiTop + nullSlotXY.getRight() - 1,
-//                                        96,
-//                                        208,
-//                                        18,
-//                                        18);
-//            });
-//    }
+    @Inject(method = "<init>",
+            at = @At("RETURN"),
+            require = 1)
+    private void injectSyncBaublesStackList(EntityPlayer player, CallbackInfo ci) {
+        if (ModCompat.isBaublesPresent()) {
+            InventoryBaubles baubles = PlayerHandler.getPlayerBaubles(player);
+
+            ((IAddsBaubleSlots) (player.inventoryContainer)).setBaublesAccessories(baubles);
+        }
+    }
+
+    @Inject(method = "drawGuiContainerBackgroundLayer",
+            at = @At(   value = "INVOKE",
+                        target = "Lnet/minecraft/client/gui/inventory/GuiInventory;drawTexturedModalRect(IIIIII)V",
+                        shift = At.Shift.AFTER),
+            require = 1)
+    private void injectDrawAccessorySlots(float p_146976_1_, int p_146976_2_, int p_146976_3_, CallbackInfo ci) {
+        int tinkersSlotStart = Integer.MAX_VALUE;
+        int baublesSlotStart = Integer.MAX_VALUE;
+        int tgSlotStart = Integer.MAX_VALUE;
+        int gcSlotStart = Integer.MAX_VALUE;
+
+        if (ModCompat.isTinkersConstructPresent() && this.inventorySlots instanceof IAddsTinkersSlots) {
+            tinkersSlotStart = ((IAddsTinkersSlots) this.inventorySlots).getTinkersSlotStart();
+        }
+
+        if (ModCompat.isBaublesPresent() && this.inventorySlots instanceof IAddsBaubleSlots) {
+            baublesSlotStart = ((IAddsBaubleSlots) this.inventorySlots).getBaublesSlotStart();
+        }
+
+        int accessorySlotStart = getMinValueFromList(tinkersSlotStart, baublesSlotStart);
+
+        for (int i = accessorySlotStart; i < this.inventorySlots.inventorySlots.size(); i++) {
+            SlotDWS slot = (SlotDWS) this.inventorySlots.getSlot(i);
+
+            drawSlotAndOverlay(slot);
+        }
+
+        if (this.inventorySlots instanceof IAddsNullSlots) {
+            ((IAddsNullSlots) this.inventorySlots).getNullSlots().forEach(nullSlotXY -> {
+                this.drawTexturedModalRect( guiLeft + nullSlotXY.getLeft() - 1,
+                                            guiTop + nullSlotXY.getRight() - 1,
+                                            144,
+                                            216,
+                                            18,
+                                            18);
+            });
+        }
+    }
 
     @ModifyConstant(method = "drawGuiContainerForegroundLayer",
                     constant = @Constant(intValue = 86),
@@ -78,18 +82,32 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
         return constant + 162;
     }
 
-    private void drawSlotAndOverlay(Slot slot, SlotOverlays.Hints hint) {
-        int x = this.guiLeft + slot.xDisplayPosition - 1;
-        int y = this.guiTop + slot.yDisplayPosition - 1;
+    private void drawSlotAndOverlay(SlotDWS slot) {
+        int x = this.guiLeft + slot.xDisplayPosition;
+        int y = this.guiTop + slot.yDisplayPosition;
 
         //draw empty slot
-        GL11.glColor3f(1.0F, 1.0F, 1.0F);
-        GL11.glEnable(3042);
-        this.drawTexturedModalRect(x, y, 96,176, 18,18);
+//        GL11.glColor3f(1.0F, 1.0F, 1.0F);
+//        GL11.glEnable(3042);
+        this.drawTexturedModalRect(x - 1, y - 1, 144,198, 18,18);
 
-        if(!slot.getHasStack())
-        {
-            this.drawTexturedModalRect(x + 1, y + 1, hint.getX(), hint.getY(), 16,16);
+        if(!slot.getHasStack()) {
+            this.drawTexturedModalRect( x,
+                                        y,
+                                        162 + 18 * slot.type.getX() + 1,
+                                        180 + 18 * slot.type.getY() + 1,
+                                        16,
+                                        16);
         }
+    }
+
+    private int getMinValueFromList(int value, int ... values) {
+        int min = value;
+
+        for (int i : values) {
+            min = Math.min(min, i);
+        }
+
+        return min;
     }
 }
