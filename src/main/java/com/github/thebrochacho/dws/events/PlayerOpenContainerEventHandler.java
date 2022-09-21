@@ -3,10 +3,14 @@ package com.github.thebrochacho.dws.events;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.thebrochacho.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.thebrochacho.dws.interfaces.dws.IAddsTGSlots;
 import com.github.thebrochacho.dws.util.ModCompat;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerOpenContainerEvent;
+import travellersgear.api.TravellersGearAPI;
+import travellersgear.common.inventory.InventoryTG;
 
 public class PlayerOpenContainerEventHandler {
     /*  The InventoryBaubles object inside ContainerDWS is likely to get constructed prior to the player's baubles being
@@ -14,17 +18,22 @@ public class PlayerOpenContainerEventHandler {
      */
     @SubscribeEvent
     public void onPlayerOpenContainer(PlayerOpenContainerEvent event) {
-        if (!ModCompat.isBaublesPresent())
-            return;
-
         if (!event.entityPlayer.worldObj.isRemote) {
-            Container container = event.entityPlayer.inventoryContainer;
-            InventoryBaubles baubles = PlayerHandler.getPlayerBaubles(event.entityPlayer);
+            if (ModCompat.isBaublesPresent()) {
+                Container container = event.entityPlayer.inventoryContainer;
+                InventoryBaubles baubles = PlayerHandler.getPlayerBaubles(event.entityPlayer);
 
-            ((IAddsBaubleSlots) container).setBaublesAccessories(baubles);
+                ((IAddsBaubleSlots) container).setBaublesAccessories(baubles);
 
-            container.detectAndSendChanges();
+                container.detectAndSendChanges();
+            }
+
+//            if (ModCompat.isTravellersGearPresent()) {
+//                Container container = event.entityPlayer.inventoryContainer;
+//                ItemStack[] playerTGAccessories = TravellersGearAPI.getExtendedInventory(event.entityPlayer);
+//
+//                ((IAddsTGSlots) container).setTravellersGearAccessories(playerTGAccessories);
+//            }
         }
-
     }
 }

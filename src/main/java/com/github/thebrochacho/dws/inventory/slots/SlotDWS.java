@@ -39,7 +39,7 @@ public class SlotDWS extends Slot {
             case TRAVEL_VAMBRACE:
             case TRAVEL_TITLE:
                 return (itemStack.getItem() instanceof ITravellersGear) &&
-                        ((ITravellersGear)itemStack.getItem()).getSlot(itemStack) == this.type.ordinal() - 4;
+                        ((ITravellersGear)itemStack.getItem()).getSlot(itemStack) == this.type.ordinal() - SlotType.TRAVEL_CLOAK.ordinal();
 
             case BAUBLE_AMULET:
                 return itemStack.getItem() instanceof IBauble &&
