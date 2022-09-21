@@ -11,14 +11,25 @@ repositories {
     }
     maven {
         name = "cursemaven"
-        url = "https://cursemaven.falsepattern.com/"
+        url = "https://mvn.falsepattern.com/cursemaven/"
     }
     maven {
         name = "GTNH Maven"
         url = "http://jenkins.usrv.eu:8081/nexus/content/groups/public/"
     }
     maven {
-        name = "FalsePattern GTMEGA Maven"
-        url = "https://gtmega.falsepattern.com/releases/"
+        name = "FalsePattern Maven"
+        url = "https://mvn.falsepattern.com/releases"
+    }
+    maven {
+        url = "https://mvn.falsepattern.com/gtmega_releases/"
+    }
+    maven {
+        name = "JitPack Maven"
+        url = "https://jitpack.io"
+    }
+    //TODO: Figure out what loads the libraries in the libs dir, since they are always loaded as `compile`
+    flatDir {
+        dirs "libz"
     }
 }
