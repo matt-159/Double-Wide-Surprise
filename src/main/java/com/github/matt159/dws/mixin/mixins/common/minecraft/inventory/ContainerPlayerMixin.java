@@ -2,10 +2,7 @@ package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
-import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
-import com.github.matt159.dws.interfaces.dws.IAddsGCSlots;
-import com.github.matt159.dws.interfaces.dws.IAddsNullSlots;
-import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
+import com.github.matt159.dws.interfaces.dws.*;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.util.ModCompat;
 import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStats;
@@ -28,6 +25,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import tconstruct.armor.player.TPlayerStats;
+import travellersgear.TravellersGear;
+import travellersgear.api.TravellersGearAPI;
+import travellersgear.common.inventory.InventoryTG;
+import travellersgear.common.network.MessageNBTSync;
 
 import java.util.ArrayList;
 
@@ -37,11 +38,14 @@ import static com.github.matt159.dws.inventory.slots.SlotDWS.SlotType.*;
 public abstract class ContainerPlayerMixin extends Container implements IAddsTinkersSlots,
                                                                         IAddsBaubleSlots,
                                                                         IAddsGCSlots,
+                                                                        IAddsTGSlots,
                                                                         IAddsNullSlots {
     private IInventory tinkersAccessories = null;
     private IInventory baublesAccessories = null;
 
     private IInventory galacticraftAccessories = null;
+
+    private IInventory travellersGearAccessories = null;
 
     private static int BAUBLES_SLOT_START = -1;
     private static int TINKERS_SLOT_START = -1;
@@ -160,7 +164,24 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
                 this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 1, xOffset, 8 + 1 * 18, player, GC_OXYGEN_GEAR));
                 this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 3, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
                 nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+                xOffset += 18;
             }
+        }
+
+        if (ModCompat.isTravellersGearPresent()) {
+            if (TG_SLOT_START == -1) {
+                TG_SLOT_START = this.inventorySlots.size();
+            }
+
+            travellersGearAccessories = new InventoryTG(this, player);
+            if(!player.worldObj.isRemote) {
+                ((InventoryTG) (travellersGearAccessories)).stackList = TravellersGearAPI.getExtendedInventory(player);
+            }
+
+            this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 0, xOffset, 8 + 0 * 18, player, TRAVEL_CLOAK));
+            this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 1, xOffset, 8 + 1 * 18, player, TRAVEL_PAULDRON));
+            this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 2, xOffset, 8 + 2 * 18, player, TRAVEL_VAMBRACE));
+            this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 3, xOffset, 8 + 3 * 18, player, TRAVEL_TITLE));
         }
     }
 
@@ -197,7 +218,6 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
             if (!this.thePlayer.worldObj.isRemote) {
                 ((InventoryBaubles) (this.baublesAccessories)).stackList = actualPlayerBaubles;
             } else {
-//                System.arraycopy(actualPlayerBaubles, 0, playerBaubles, 0, playerBaubles.length);
                 for (int i = 0; i < playerBaubles.length; i++) {
                     if (playerBaubles[i] == null && actualPlayerBaubles[i] != null) {
                         playerBaubles[i] = actualPlayerBaubles[i].copy();
@@ -216,7 +236,7 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
             at = @At("RETURN"),
             require = 1)
     private void injectBaublesOnContainerClosed(EntityPlayer player, CallbackInfo ci) {
-        if (!player.worldObj.isRemote) {
+        if (ModCompat.isBaublesPresent() && !player.worldObj.isRemote) {
             PlayerHandler.setPlayerBaubles(player, (InventoryBaubles) this.baublesAccessories);
         }
     }
@@ -224,6 +244,47 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
     @Override
     public int getGCSlotStart() {
         return GC_SLOT_START;
+    }
+
+    @Override
+    public int getTGSlotStart() {
+        return TG_SLOT_START;
+    }
+
+    @Override
+    public ItemStack[] getTravellersAccessoriesItemStacks() {
+        return ((InventoryTG) (this.travellersGearAccessories)).stackList;
+    }
+
+    @Override
+    public void setTravellersGearAccessories(ItemStack[] actualPlayerTGAccessories) {
+        if (ModCompat.isTravellersGearPresent()) {
+            ItemStack[] playerTGAccessories = ((InventoryTG) (this.travellersGearAccessories)).stackList;
+
+            if (((InventoryTG) (this.travellersGearAccessories)).stackList.length != actualPlayerTGAccessories.length) {
+                throw new RuntimeException("What the actual fuck? How?");
+            }
+
+            if (!this.thePlayer.worldObj.isRemote) {
+                ((InventoryTG) (this.travellersGearAccessories)).stackList = actualPlayerTGAccessories;
+            } else {
+                for (int i = 0; i < playerTGAccessories.length; i++) {
+                    if (playerTGAccessories[i] == null && actualPlayerTGAccessories[i] != null) {
+                        ((InventoryTG) (this.travellersGearAccessories)).stackList[i] = actualPlayerTGAccessories[i].copy();
+                    }
+                }
+            }
+        }
+    }
+
+    @Inject(method = "onContainerClosed",
+            at = @At("RETURN"),
+            require = 1)
+    private void injectTravellersGearOnContainerClosed(EntityPlayer player, CallbackInfo ci) {
+        if (ModCompat.isTravellersGearPresent() && !player.worldObj.isRemote) {
+            TravellersGearAPI.setExtendedInventory(player, ((InventoryTG) (this.travellersGearAccessories)).stackList);
+            TravellersGear.packetHandler.sendToAll(new MessageNBTSync(player));
+        }
     }
 
     @Override

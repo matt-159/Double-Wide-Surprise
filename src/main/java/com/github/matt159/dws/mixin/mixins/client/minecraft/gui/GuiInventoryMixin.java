@@ -3,10 +3,7 @@ package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.matt159.dws.interfaces.IDWSGui;
-import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
-import com.github.matt159.dws.interfaces.dws.IAddsGCSlots;
-import com.github.matt159.dws.interfaces.dws.IAddsNullSlots;
-import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
+import com.github.matt159.dws.interfaces.dws.*;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.util.ModCompat;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -60,7 +57,11 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
             gcSlotStart = ((IAddsGCSlots) this.inventorySlots).getGCSlotStart();
         }
 
-        int accessorySlotStart = getMinValueFromList(tinkersSlotStart, baublesSlotStart, gcSlotStart);
+        if (ModCompat.isTravellersGearPresent() && this.inventorySlots instanceof IAddsTGSlots) {
+            tgSlotStart = ((IAddsTGSlots) this.inventorySlots).getTGSlotStart();
+        }
+
+        int accessorySlotStart = getMinValueFromList(tinkersSlotStart, baublesSlotStart, gcSlotStart, tgSlotStart);
 
         for (int i = accessorySlotStart; i < this.inventorySlots.inventorySlots.size(); i++) {
             SlotDWS slot = (SlotDWS) this.inventorySlots.getSlot(i);
