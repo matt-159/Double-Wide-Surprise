@@ -4,6 +4,7 @@ import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.thebrochacho.dws.interfaces.dws.IAddsGCSlots;
 import com.github.thebrochacho.dws.interfaces.dws.IAddsNullSlots;
 import com.github.thebrochacho.dws.interfaces.dws.IAddsTinkersSlots;
 import com.github.thebrochacho.dws.inventory.slots.SlotDWS;
@@ -55,7 +56,11 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
             baublesSlotStart = ((IAddsBaubleSlots) this.inventorySlots).getBaublesSlotStart();
         }
 
-        int accessorySlotStart = getMinValueFromList(tinkersSlotStart, baublesSlotStart);
+        if (ModCompat.isGalacticraftPresent() && this.inventorySlots instanceof IAddsGCSlots) {
+            gcSlotStart = ((IAddsGCSlots) this.inventorySlots).getGCSlotStart();
+        }
+
+        int accessorySlotStart = getMinValueFromList(tinkersSlotStart, baublesSlotStart, gcSlotStart);
 
         for (int i = accessorySlotStart; i < this.inventorySlots.inventorySlots.size(); i++) {
             SlotDWS slot = (SlotDWS) this.inventorySlots.getSlot(i);
