@@ -26,7 +26,6 @@ public abstract class GuiExtendedCreativeInvMixin extends GuiContainer {
     @Redirect(  method = "drawGuiContainerBackgroundLayer",
             at = @At(   value = "INVOKE",
                     target = "Lcodechicken/nei/GuiExtendedCreativeInv;drawTexturedModalRect(IIIIII)V"),
-            remap = false,
             require = 1)
     private void redirectDrawBackground(GuiExtendedCreativeInv instance, int x, int y, int u, int v, int w, int h) {
         x = (this.width - this.xSize) / 2;
@@ -34,7 +33,7 @@ public abstract class GuiExtendedCreativeInvMixin extends GuiContainer {
     }
 
     @ModifyConstant(method = {  "getItemSpawnSlots",
-            "getInventoryAreas" },
+                                "getInventoryAreas" },
             constant = @Constant(intValue = 54),
             remap = false,
             require = 2)

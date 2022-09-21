@@ -22,7 +22,6 @@ public abstract class ContainerCreativeInvMixin extends Container {
     @Redirect(  method = "<init>",
                 at = @At(   value = "INVOKE",
                             target = "Lcodechicken/nei/ContainerCreativeInv;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;"),
-                remap = false,
                 require = 3)
     private Slot redirectAddSlotsToContainer(ContainerCreativeInv instance, Slot slot) {
         slot.xDisplayPosition += 23;
@@ -33,7 +32,6 @@ public abstract class ContainerCreativeInvMixin extends Container {
     @ModifyConstant(method = "transferStackInSlot",
                     constant = {    @Constant(intValue = 54),
                                     @Constant(intValue = 90)    },
-                    remap = false,
                     require = 6)
     private int modifySlotRangeChecks(int constant) {
         return constant * 2;
