@@ -1,28 +1,72 @@
 // Add your dependencies here
 
 dependencies {
+    // Lombok
+    compileOnly("org.projectlombok:lombok:1.18.22")
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
+
+    // FalsePattern Lib
+    compile("com.falsepattern:falsepatternlib-mc1.7.10:0.10.10:dev")
+
+    // MixinASM
+    compile(name:"mixingasm-1.7.10-0.2.1-deobf", ext:"jar")
+
+    // Baubles
     compile("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
         transitive = true
     }
-    compile("com.github.GTNewHorizons:NotEnoughItems:2.2.6-GTNH:dev") {
-        transitive = true
+
+    // Not Enough Items
+    compile("codechicken:codechickencore-mc1.7.10:1.0.9-gtmega:dev") {
+        transitive = false;
     }
+
+    compile("codechicken:codechickenlib-mc1.7.10:1.1.4-gtmega:dev"){
+        transitive = false;
+    }
+
+    compile("codechicken:notenoughitems-mc1.7.10:2.1.5-gtmega:dev"){
+        transitive = false;
+    }
+
+    // Tinkers Construct
     compile("com.github.GTNewHorizons:Mantle:0.3.4:dev") {
         transitive = false
     }
     compile('com.github.GTNewHorizons:TinkersConstruct:1.9.0.13-GTNH:dev') {
         transitive = false
     }
+
+    // Galacticraft TODO: The @Mod annotation doesn't seem to be found when running as compile, however the core mod/mixins does load?
     compileOnly("com.github.GTNewHorizons:Galacticraft:3.0.36-GTNH:dev") {
         transitive = false
     }
+
+    // Iron Chests
     compile("com.github.GTNewHorizons:ironchest:6.0.70:dev") {
         transitive = false
     }
+
+    // Travellers Gear
     compile('curse.maven:travellers-gear-224440:2262113') {
+        transitive = false
+    }
+
+    // GregTech
+    compile("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
+        transitive = false
+    }
+    compile("eu.usrv:YAMCore:1.7.10-0.5.79:deobf") {
+        transitive = false
+    }
+    compile("com.github.GTMEGA:StructureLib:0237ab2549:deobf") {
         transitive = false
     }
     compile("gtmega:gt5u-mc1.7.10:5.28.23-gtmega:dev") {
         transitive = false
     }
+
+    // GregTech Addons
+    compile(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")
+    compile(name:"TecTech-1.7.10-4.10.4-023479da", ext:"jar")
 }

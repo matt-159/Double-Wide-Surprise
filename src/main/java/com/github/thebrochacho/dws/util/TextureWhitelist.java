@@ -3,7 +3,6 @@ package com.github.thebrochacho.dws.util;
 import com.github.thebrochacho.dws.Tags;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,19 +22,13 @@ public final class TextureWhitelist {
     }
 
     public static ResourceLocation checkResourceLocation(ResourceLocation rl) {
-        boolean isNEIRendering = Arrays.stream(Thread.currentThread().getStackTrace())
-                .map(ste -> ste.toString().toLowerCase())
-                .anyMatch(string -> string.contains("codechicken") || string.contains("nei"));
+        useDoubleWideTexture = checkTextureWhitelist(rl);
 
-        if (!isNEIRendering) {
-            useDoubleWideTexture = checkTextureWhitelist(rl);
-
-            //transforming from:    modid:textures/blahblahblah
-            //to:                   dws:textures/modid/blahblahblah
-            if (useDoubleWideTexture) {
-                rl = new ResourceLocation(Tags.MODID,
-                        rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
-            }
+        //transforming from:    modid:textures/blahblahblah
+        //to:                   dws:textures/modid/blahblahblah
+        if (useDoubleWideTexture) {
+            rl = new ResourceLocation(Tags.MODID,
+                    rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
         }
 
         return rl;
@@ -64,10 +57,14 @@ public final class TextureWhitelist {
         addTextureToWhitelist("minecraft:textures/gui/container/inventory.png");
         addTextureToWhitelist("minecraft:textures/gui/container/villager.png");
 
+        addTextureToWhitelist("minecraft:textures/gui/widgets.png");
+
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tab_inventory.png");
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tab_item_search.png");
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tab_items.png");
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tabs.png");
+
+        addTextureToWhitelist("nei:textures/gui/inv.png");
 
         addTextureToWhitelist("ironchest:textures/gui/coppercontainer.png");
         addTextureToWhitelist("ironchest:textures/gui/diamondcontainer.png");

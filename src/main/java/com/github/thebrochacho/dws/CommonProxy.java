@@ -2,7 +2,7 @@ package com.github.thebrochacho.dws;
 
 import baubles.client.gui.GuiEvents;
 import com.github.thebrochacho.dws.events.DWSKeyHandler;
-import com.github.thebrochacho.dws.inventory.ContainerDWS;
+import com.github.thebrochacho.dws.events.PlayerOpenContainerEventHandler;
 import com.github.thebrochacho.dws.network.PacketHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.*;
@@ -18,15 +18,18 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static com.github.thebrochacho.dws.util.ModCompat.isBaublesPresent;
+import static com.github.thebrochacho.dws.util.ModCompat.isTinkersConstructPresent;
+
 public class CommonProxy implements IGuiHandler {
 
     public DWSKeyHandler keyHandler;
 
     // preInit "Run before anything else. Read your config, create blocks, items,
     // etc, and register them with the GameRegistry."
-    public void preInit(FMLPreInitializationEvent event) 	{
+    public void preInit(FMLPreInitializationEvent event) {
         Config.syncronizeConfiguration(event.getSuggestedConfigurationFile());
-        
+
         DoubleWideSurprise.info(Config.greeting);
         DoubleWideSurprise.info("I am " + Tags.MODNAME + " at version " + Tags.VERSION + " and group name " + Tags.GROUPNAME);
 
@@ -39,12 +42,14 @@ public class CommonProxy implements IGuiHandler {
         Config.isTravellersGearLoaded = Loader.isModLoaded("TravellersGear");
         Config.isTinkersLoaded = Loader.isModLoaded("TConstruct");
         Config.isGalacticraftLoaded = Loader.isModLoaded("GalacticraftCore");
+
+        MinecraftForge.EVENT_BUS.register(new PlayerOpenContainerEventHandler());
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
     @SuppressWarnings("unchecked")
     public void postInit(FMLPostInitializationEvent event) {
-//        disableOtherInventoryButtons();
+        disableOtherInventoryButtons();
     }
 
     public void serverAboutToStart(FMLServerAboutToStartEvent event) {
@@ -76,17 +81,20 @@ public class CommonProxy implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         switch (ID) {
-            case 1:
-                return new ContainerDWS(player.inventory, !world.isRemote, player);
+//            case 1:
+//                return new ContainerDWS(player.inventory, !world.isRemote, player);
             default:
                 return null;
         }
     }
 
-    public void registerHandlers() {}
+    public void registerHandlers() {
+    }
 
-    public void registerKeyBindings() {}
+    public void registerKeyBindings() {
+    }
 
+    @SuppressWarnings("unchecked")
     public void disableOtherInventoryButtons() {
         try {
             Field f = MinecraftForge.EVENT_BUS.getClass().getDeclaredField("listeners");
@@ -98,17 +106,16 @@ public class CommonProxy implements IGuiHandler {
             while (keys.hasMoreElements()) {
                 Object key = keys.nextElement();
                 // Stop baubles ring button from rendering
-                if (key instanceof GuiEvents) {
+                if (isBaublesPresent() && key instanceof GuiEvents)
                     MinecraftForge.EVENT_BUS.unregister(key);
-                }
-
                 // Stop tinker's tabs from rendering
-                if (key instanceof TabRegistry) {
+                if (isTinkersConstructPresent() && key instanceof TabRegistry)
                     MinecraftForge.EVENT_BUS.unregister(key);
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    static boolean test = false;
 }
