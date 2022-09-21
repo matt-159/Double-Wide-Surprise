@@ -4,7 +4,6 @@ import net.minecraft.inventory.IInventory;
 
 public interface IContainerRepairMixin {
     IInventory getInputSlots();
-    IInventory getOutputSlot();
 
     int getXPos();
     int getYPos();

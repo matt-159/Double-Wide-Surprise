@@ -5,7 +5,6 @@ import com.github.matt159.dws.gui.GuiShiftInventoryButton.Facing;
 import com.github.matt159.dws.interfaces.IDWSGui;
 import com.github.matt159.dws.network.DWSInventorySwapPacket;
 import com.github.matt159.dws.network.PacketHandler;
-import com.github.matt159.dws.util.DWSUtil;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,7 +21,7 @@ public class GuiEvents {
         if (event.gui instanceof GuiContainer && !(event.gui instanceof IDWSGui)) {
             GuiContainer gc = (GuiContainer) event.gui;
 
-            int firstDWSSlotIndex = DWSUtil.getFirstPlayerSlotIndex(gc.inventorySlots);
+            int firstDWSSlotIndex = -1; //DWSUtil.getFirstPlayerSlotIndex(gc.inventorySlots);
 
             if (firstDWSSlotIndex != -1) {
                 Slot topLeftSlot = gc.inventorySlots.getSlot(firstDWSSlotIndex);

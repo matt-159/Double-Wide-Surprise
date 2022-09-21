@@ -13,8 +13,8 @@ import travellersgear.api.ITravellersGear;
 
 public class SlotDWS extends Slot {
     public int slotLimit = 1;
-    public SlotType type;
-    private EntityPlayer player;
+    public final SlotType type;
+    private final EntityPlayer player;
 
     public SlotDWS(IInventory iinv, int id, int x, int y, EntityPlayer player, SlotType type) {
         super(iinv, id, x, y);
@@ -34,18 +34,12 @@ public class SlotDWS extends Slot {
             return false;
 
         switch (this.type) {
-            case VANILLA_HELM:
-            case VANILLA_CHEST:
-            case VANILLA_LEGS:
-            case VANILLA_BOOTS:
-                return itemStack.getItem().isValidArmor(itemStack, this.type.ordinal(), player);
-
             case TRAVEL_CLOAK:
             case TRAVEL_PAULDRON:
             case TRAVEL_VAMBRACE:
             case TRAVEL_TITLE:
                 return (itemStack.getItem() instanceof ITravellersGear) &&
-                        ((ITravellersGear)itemStack.getItem()).getSlot(itemStack) == this.type.ordinal() - 4;
+                        ((ITravellersGear)itemStack.getItem()).getSlot(itemStack) == this.type.ordinal() - SlotType.TRAVEL_CLOAK.ordinal();
 
             case BAUBLE_AMULET:
                 return itemStack.getItem() instanceof IBauble &&
@@ -88,7 +82,7 @@ public class SlotDWS extends Slot {
             case GC_THERMAL_LEGS:
             case GC_THERMAL_BOOTS:
                 return itemStack.getItem() instanceof IItemThermal &&
-                        ((IItemThermal)itemStack.getItem()).isValidForSlot(itemStack, this.type.ordinal() - 18);
+                        ((IItemThermal)itemStack.getItem()).isValidForSlot(itemStack, this.type.ordinal() - SlotType.GC_THERMAL_HELM.ordinal());
 
             case GC_FREQUENCY_MODULE:
                 return itemStack.getItem() == GCItems.basicItem &&
@@ -137,38 +131,51 @@ public class SlotDWS extends Slot {
         }
     }
 
-    public enum SlotType
-    {
-        VANILLA_HELM,
-        VANILLA_CHEST,
-        VANILLA_LEGS,
-        VANILLA_BOOTS,
+    public enum SlotType {
+        /* Tinkers Construct */
+        TINKERS_MASK(0, 0),
+        TINKERS_GLOVE(0, 1),
+        TINKERS_BELT(0, 2),
+        TINKERS_KNAPSACK(0, 3),
+        TINKERS_HEART_RED(1, 0),
+        TINKERS_HEART_YELLOW(1, 1),
+        TINKERS_HEART_GREEN(1, 2),
 
-        TRAVEL_CLOAK,
-        TRAVEL_PAULDRON,
-        TRAVEL_VAMBRACE,
-        TRAVEL_TITLE,
+        /* Baubles */
+        BAUBLE_AMULET(2, 0),
+        BAUBLE_RING(2, 1),
+        BAUBLE_BELT(2, 2),
 
-        BAUBLE_AMULET,
-        BAUBLE_RING,
-        BAUBLE_BELT,
+        /* Traveller's Gear */
+        TRAVEL_CLOAK(3, 0),
+        TRAVEL_PAULDRON(3, 1),
+        TRAVEL_VAMBRACE(3, 2),
+        TRAVEL_TITLE(3, 3),
 
-        TINKERS_GLOVE,
-        TINKERS_KNAPSACK,
-        TINKERS_BELT,
-        TINKERS_MASK,
-        TINKERS_HEART_RED,
-        TINKERS_HEART_YELLOW,
-        TINKERS_HEART_GREEN,
+        /* Galacticraft */
+        GC_THERMAL_HELM(6, 0),
+        GC_THERMAL_CHEST(6, 1),
+        GC_THERMAL_LEGS(6, 2),
+        GC_THERMAL_BOOTS(6, 3),
+        GC_FREQUENCY_MODULE(4, 0),
+        GC_OXYGEN_MASK(5, 0),
+        GC_OXYGEN_GEAR(5, 1),
+        GC_OXYGEN_TANK(4, 1),
+        GC_PARACHUTE(5, 2),
+        ;
 
-        GC_THERMAL_HELM,
-        GC_THERMAL_CHEST,
-        GC_THERMAL_LEGS,
-        GC_THERMAL_BOOTS,
-        GC_FREQUENCY_MODULE,
-        GC_OXYGEN_MASK,
-        GC_OXYGEN_GEAR,
-        GC_OXYGEN_TANK,
-        GC_PARACHUTE;
+        /**
+         * X and Y location in the sprite grid within dws:textures/minecraft/gui/container/inventory.png
+         */
+        private final int x, y;
+
+        public int getX() { return x; }
+
+        public int getY() { return y; }
+
+        SlotType(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }
