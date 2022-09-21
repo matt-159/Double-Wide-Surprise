@@ -2,6 +2,8 @@ package com.github.matt159.dws.inventory.slots;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import micdoodle8.mods.galacticraft.api.item.IItemThermal;
+import micdoodle8.mods.galacticraft.core.items.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -75,24 +77,24 @@ public class SlotDWS extends Slot {
                 return itemStack.getItem() instanceof IAccessory &&
                         ((IAccessory)itemStack.getItem()).canEquipAccessory(itemStack, 4);
 
-//            case GC_THERMAL_HELM:
-//            case GC_THERMAL_CHEST:
-//            case GC_THERMAL_LEGS:
-//            case GC_THERMAL_BOOTS:
-//                return itemStack.getItem() instanceof IItemThermal &&
-//                        ((IItemThermal)itemStack.getItem()).isValidForSlot(itemStack, this.type.ordinal() - 18);
-//
-//            case GC_FREQUENCY_MODULE:
-//                return itemStack.getItem() == GCItems.basicItem &&
-//                        itemStack.getItemDamage() == 19;
-//            case GC_OXYGEN_MASK:
-//                return itemStack.getItem() instanceof ItemOxygenMask;
-//            case GC_OXYGEN_GEAR:
-//                return itemStack.getItem() instanceof ItemOxygenGear;
-//            case GC_OXYGEN_TANK:
-//                return itemStack.getItem() instanceof ItemOxygenTank;
-//            case GC_PARACHUTE:
-//                return itemStack.getItem() instanceof ItemParaChute;
+            case GC_THERMAL_HELM:
+            case GC_THERMAL_CHEST:
+            case GC_THERMAL_LEGS:
+            case GC_THERMAL_BOOTS:
+                return itemStack.getItem() instanceof IItemThermal &&
+                        ((IItemThermal)itemStack.getItem()).isValidForSlot(itemStack, this.type.ordinal() - SlotType.GC_THERMAL_HELM.ordinal());
+
+            case GC_FREQUENCY_MODULE:
+                return itemStack.getItem() == GCItems.basicItem &&
+                        itemStack.getItemDamage() == 19;
+            case GC_OXYGEN_MASK:
+                return itemStack.getItem() instanceof ItemOxygenMask;
+            case GC_OXYGEN_GEAR:
+                return itemStack.getItem() instanceof ItemOxygenGear;
+            case GC_OXYGEN_TANK:
+                return itemStack.getItem() instanceof ItemOxygenTank;
+            case GC_PARACHUTE:
+                return itemStack.getItem() instanceof ItemParaChute;
 
             default:
                 return false;
@@ -149,18 +151,18 @@ public class SlotDWS extends Slot {
         TRAVEL_PAULDRON(3, 1),
         TRAVEL_VAMBRACE(3, 2),
         TRAVEL_TITLE(3, 3),
-        ;
 
         /* Galacticraft */
-//        GC_THERMAL_HELM,
-//        GC_THERMAL_CHEST,
-//        GC_THERMAL_LEGS,
-//        GC_THERMAL_BOOTS,
-//        GC_FREQUENCY_MODULE,
-//        GC_OXYGEN_MASK,
-//        GC_OXYGEN_GEAR,
-//        GC_OXYGEN_TANK,
-//        GC_PARACHUTE;
+        GC_THERMAL_HELM(6, 0),
+        GC_THERMAL_CHEST(6, 1),
+        GC_THERMAL_LEGS(6, 2),
+        GC_THERMAL_BOOTS(6, 3),
+        GC_FREQUENCY_MODULE(4, 0),
+        GC_OXYGEN_MASK(5, 0),
+        GC_OXYGEN_GEAR(5, 1),
+        GC_OXYGEN_TANK(4, 1),
+        GC_PARACHUTE(5, 2),
+        ;
 
         /**
          * X and Y location in the sprite grid within dws:textures/minecraft/gui/container/inventory.png
