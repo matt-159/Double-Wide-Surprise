@@ -13,8 +13,8 @@ import travellersgear.api.ITravellersGear;
 
 public class SlotDWS extends Slot {
     public int slotLimit = 1;
-    public SlotType type;
-    private EntityPlayer player;
+    public final SlotType type;
+    private final EntityPlayer player;
 
     public SlotDWS(IInventory iinv, int id, int x, int y, EntityPlayer player, SlotType type) {
         super(iinv, id, x, y);
@@ -167,7 +167,7 @@ public class SlotDWS extends Slot {
         /**
          * X and Y location in the sprite grid within dws:textures/minecraft/gui/container/inventory.png
          */
-        private int x, y;
+        private final int x, y;
 
         public int getX() { return x; }
 
