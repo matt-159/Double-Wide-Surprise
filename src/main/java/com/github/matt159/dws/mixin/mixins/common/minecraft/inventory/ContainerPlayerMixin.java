@@ -3,6 +3,7 @@ package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsGCSlots;
 import com.github.matt159.dws.interfaces.dws.IAddsNullSlots;
 import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
@@ -35,6 +36,7 @@ import static com.github.matt159.dws.inventory.slots.SlotDWS.SlotType.*;
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container implements IAddsTinkersSlots,
                                                                         IAddsBaubleSlots,
+                                                                        IAddsGCSlots,
                                                                         IAddsNullSlots {
     private IInventory tinkersAccessories = null;
     private IInventory baublesAccessories = null;
@@ -217,6 +219,11 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
         if (!player.worldObj.isRemote) {
             PlayerHandler.setPlayerBaubles(player, (InventoryBaubles) this.baublesAccessories);
         }
+    }
+
+    @Override
+    public int getGCSlotStart() {
+        return GC_SLOT_START;
     }
 
     @Override
