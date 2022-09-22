@@ -93,104 +93,24 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
         int xOffset = 80;
 
         if (ModCompat.isBaublesPresent()) {
-            if (BAUBLES_SLOT_START == -1) {
-                BAUBLES_SLOT_START = this.inventorySlots.size();
-            }
-
-            baublesAccessories = new InventoryBaubles(player);
-            ((InventoryBaubles) baublesAccessories).setEventHandler(this);
-
-            if (!player.worldObj.isRemote) {
-                ((InventoryBaubles) baublesAccessories).stackList = PlayerHandler.getPlayerBaubles(player).stackList;
-            }
-
-            this.addSlotToContainer(new SlotDWS(baublesAccessories, 0, xOffset, 8 + 0 * 18, player, BAUBLE_AMULET));
-            this.addSlotToContainer(new SlotDWS(baublesAccessories, 1, xOffset, 8 + 1 * 18, player, BAUBLE_RING));
-            this.addSlotToContainer(new SlotDWS(baublesAccessories, 2, xOffset, 8 + 2 * 18, player, BAUBLE_RING));
-            this.addSlotToContainer(new SlotDWS(baublesAccessories, 3, xOffset, 8 + 3 * 18, player, BAUBLE_BELT));
-            xOffset += 18;
+            xOffset = addBaubleSlots(xOffset, player);
         }
 
         if (ModCompat.isTinkersConstructPresent()) {
-            if (TINKERS_SLOT_START == -1) {
-                TINKERS_SLOT_START = this.inventorySlots.size();
-            }
-
-            if (tinkersAccessories == null) {
-                this.tinkersAccessories = TPlayerStats.get(player).armor;
-            }
-
-            this.addSlotToContainer(new SlotDWS(tinkersAccessories, 0, xOffset, 8 + 0 * 18, player, TINKERS_MASK));
-            this.addSlotToContainer(new SlotDWS(tinkersAccessories, 1, xOffset, 8 + 1 * 18, player, TINKERS_GLOVE));
-            this.addSlotToContainer(new SlotDWS(tinkersAccessories, 3, xOffset, 8 + 2 * 18, player, TINKERS_BELT));
-            this.addSlotToContainer(new SlotDWS(tinkersAccessories, 2, xOffset, 8 + 3 * 18, player, TINKERS_KNAPSACK));
-            xOffset += 18;
-
-            this.addSlotToContainer(new SlotDWS(tinkersAccessories, 6, xOffset, 8 + 0 * 18, player, TINKERS_HEART_RED));
-            this.addSlotToContainer(new SlotDWS(tinkersAccessories, 5, xOffset, 8 + 1 * 18, player, TINKERS_HEART_YELLOW));
-            this.addSlotToContainer(new SlotDWS(tinkersAccessories, 4, xOffset, 8 + 2 * 18, player, TINKERS_HEART_GREEN));
-            nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
-            xOffset += 18;
-        }
-
-        if (ModCompat.isGalacticraftPresent()) {
-            if (GC_SLOT_START == -1) {
-                GC_SLOT_START = this.inventorySlots.size();
-            }
-
-            if (galacticraftAccessories == null) {
-                if (!player.worldObj.isRemote) {
-                    EntityPlayerMP playerMP = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
-                    this.galacticraftAccessories = GCPlayerStats.get(playerMP).extendedInventory;
-                } else {
-                    this.galacticraftAccessories = ClientProxyCore.dummyInventory;
-                }
-            }
-
-            if (galacticraftAccessories != null) {
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 6, xOffset, 8 + 0 * 18, player, GC_THERMAL_HELM));
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 7, xOffset, 8 + 1 * 18, player, GC_THERMAL_CHEST));
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 8, xOffset, 8 + 2 * 18, player, GC_THERMAL_LEGS));
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 9, xOffset, 8 + 3 * 18, player, GC_THERMAL_BOOTS));
-                xOffset += 18;
-
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 4, xOffset, 8 + 0 * 18, player, GC_PARACHUTE));
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 0, xOffset, 8 + 1 * 18, player, GC_OXYGEN_MASK));
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 2, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
-                nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
-                xOffset += 18;
-
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 5, xOffset, 8 + 0 * 18, player, GC_FREQUENCY_MODULE));
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 1, xOffset, 8 + 1 * 18, player, GC_OXYGEN_GEAR));
-                this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 3, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
-                nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
-                xOffset += 18;
-            }
+            xOffset = addTinkersSlots(xOffset, player);
         }
 
         if (ModCompat.isTravellersGearPresent()) {
-            if (TG_SLOT_START == -1) {
-                TG_SLOT_START = this.inventorySlots.size();
-            }
+            xOffset = addTravellersGearSlots(xOffset, player);
+        }
 
-            travellersGearAccessories = new InventoryTG(this, player);
-            if(!player.worldObj.isRemote) {
-                ((InventoryTG) (travellersGearAccessories)).stackList = TravellersGearAPI.getExtendedInventory(player);
-            }
-
-            this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 0, xOffset, 8 + 0 * 18, player, TRAVEL_CLOAK));
-            this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 1, xOffset, 8 + 1 * 18, player, TRAVEL_PAULDRON));
-            this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 2, xOffset, 8 + 2 * 18, player, TRAVEL_VAMBRACE));
-            this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 3, xOffset, 8 + 3 * 18, player, TRAVEL_TITLE));
+        if (ModCompat.isGalacticraftPresent()) {
+            xOffset = addGalacticraftSlots(xOffset, player);
         }
     }
 
     @Override
     public IInventory getTinkersAccessories() {
-        if (ModCompat.isTinkersConstructPresent() && this.tinkersAccessories == null) {
-
-        }
-
         return this.tinkersAccessories;
     }
 
@@ -290,5 +210,102 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
     @Override
     public ArrayList<Pair<Integer, Integer>> getNullSlots() {
         return this.nullSlots;
+    }
+
+    private int addBaubleSlots(int xOffset, EntityPlayer player) {
+        if (BAUBLES_SLOT_START == -1) {
+            BAUBLES_SLOT_START = this.inventorySlots.size();
+        }
+
+        baublesAccessories = new InventoryBaubles(player);
+        ((InventoryBaubles) baublesAccessories).setEventHandler(this);
+
+        if (!player.worldObj.isRemote) {
+            ((InventoryBaubles) baublesAccessories).stackList = PlayerHandler.getPlayerBaubles(player).stackList;
+        }
+
+        this.addSlotToContainer(new SlotDWS(baublesAccessories, 0, xOffset, 8 + 0 * 18, player, BAUBLE_AMULET));
+        this.addSlotToContainer(new SlotDWS(baublesAccessories, 1, xOffset, 8 + 1 * 18, player, BAUBLE_RING));
+        this.addSlotToContainer(new SlotDWS(baublesAccessories, 2, xOffset, 8 + 2 * 18, player, BAUBLE_RING));
+        this.addSlotToContainer(new SlotDWS(baublesAccessories, 3, xOffset, 8 + 3 * 18, player, BAUBLE_BELT));
+
+        return xOffset + 18;
+    }
+
+    private int addTinkersSlots(int xOffset, EntityPlayer player) {
+        if (TINKERS_SLOT_START == -1) {
+            TINKERS_SLOT_START = this.inventorySlots.size();
+        }
+
+        if (tinkersAccessories == null) {
+            this.tinkersAccessories = TPlayerStats.get(player).armor;
+        }
+
+        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 0, xOffset, 8 + 0 * 18, player, TINKERS_MASK));
+        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 1, xOffset, 8 + 1 * 18, player, TINKERS_GLOVE));
+        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 3, xOffset, 8 + 2 * 18, player, TINKERS_BELT));
+        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 2, xOffset, 8 + 3 * 18, player, TINKERS_KNAPSACK));
+        xOffset += 18;
+
+        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 6, xOffset, 8 + 0 * 18, player, TINKERS_HEART_RED));
+        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 5, xOffset, 8 + 1 * 18, player, TINKERS_HEART_YELLOW));
+        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 4, xOffset, 8 + 2 * 18, player, TINKERS_HEART_GREEN));
+        nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+
+        return xOffset + 18;
+    }
+
+    private int addTravellersGearSlots(int xOffset, EntityPlayer player) {
+        if (TG_SLOT_START == -1) {
+            TG_SLOT_START = this.inventorySlots.size();
+        }
+
+        travellersGearAccessories = new InventoryTG(this, player);
+        if(!player.worldObj.isRemote) {
+            ((InventoryTG) (travellersGearAccessories)).stackList = TravellersGearAPI.getExtendedInventory(player);
+        }
+
+        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 0, xOffset, 8 + 0 * 18, player, TRAVEL_CLOAK));
+        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 1, xOffset, 8 + 1 * 18, player, TRAVEL_PAULDRON));
+        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 2, xOffset, 8 + 2 * 18, player, TRAVEL_VAMBRACE));
+        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 3, xOffset, 8 + 3 * 18, player, TRAVEL_TITLE));
+
+        return xOffset + 18;
+    }
+
+    private int addGalacticraftSlots(int xOffset, EntityPlayer player) {
+        if (GC_SLOT_START == -1) {
+            GC_SLOT_START = this.inventorySlots.size();
+        }
+
+        if (galacticraftAccessories == null) {
+            if (!player.worldObj.isRemote) {
+                EntityPlayerMP playerMP = PlayerUtil.getPlayerBaseServerFromPlayer(player, false);
+                this.galacticraftAccessories = GCPlayerStats.get(playerMP).extendedInventory;
+            } else {
+                this.galacticraftAccessories = ClientProxyCore.dummyInventory;
+            }
+        }
+
+//        if (galacticraftAccessories != null) {
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 6, xOffset, 8 + 0 * 18, player, GC_THERMAL_HELM));
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 7, xOffset, 8 + 1 * 18, player, GC_THERMAL_CHEST));
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 8, xOffset, 8 + 2 * 18, player, GC_THERMAL_LEGS));
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 9, xOffset, 8 + 3 * 18, player, GC_THERMAL_BOOTS));
+            xOffset += 18;
+
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 4, xOffset, 8 + 0 * 18, player, GC_PARACHUTE));
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 0, xOffset, 8 + 1 * 18, player, GC_OXYGEN_MASK));
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 2, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
+            nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+            xOffset += 18;
+
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 5, xOffset, 8 + 0 * 18, player, GC_FREQUENCY_MODULE));
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 1, xOffset, 8 + 1 * 18, player, GC_OXYGEN_GEAR));
+            this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 3, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
+            nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
+
+            return xOffset + 18;
+//        }
     }
 }
