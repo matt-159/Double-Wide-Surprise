@@ -4,7 +4,7 @@ import net.minecraft.inventory.IInventory;
 
 public interface IAddsTinkersSlots {
 
-    public IInventory getTinkersAccessories();
+    IInventory getTinkersAccessories();
 
-    public int getTinkersSlotStart();
+    int getTinkersSlotStart();
 }

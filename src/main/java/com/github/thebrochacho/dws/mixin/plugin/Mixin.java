@@ -19,6 +19,13 @@ import static com.github.thebrochacho.dws.mixin.plugin.TargetedMod.*;
 public enum Mixin implements IMixin {
     // @formatter:off
 
+    // Double Wide Surprise Slots
+    BaublesSlotSyncMixin                              (CLIENT, require(BAUBLES), "dws.baubles.GuiInventoryMixin"),
+    BaublesSlotInjectMixin                            (COMMON, require(BAUBLES), "dws.baubles.ContainerPlayerMixin"),
+    TinkersSlotInjectMixin                            (COMMON, require(TINKERSCONSTRUCT), "dws.tinkersconstruct.ContainerPlayerMixin"),
+    TravellersGearSlotInjectMixin                     (COMMON, require(TRAVELLERSGEAR), "dws.travellersgear.ContainerPlayerMixin"),
+    GalacticraftSlotInjectMixin                       (COMMON, require(GALACTICRAFT), "dws.galacticraft.ContainerPlayerMixin"),
+
     // Vanilla
     CreativeTabsMixin                                 (CLIENT, always(), "minecraft.gui.CreativeTabsMixin"),
     ForgeHooksMixin                                   (COMMON, always(), "minecraft.ForgeHooksMixin"),
