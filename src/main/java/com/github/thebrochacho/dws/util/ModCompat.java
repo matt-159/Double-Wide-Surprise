@@ -2,7 +2,6 @@ package com.github.thebrochacho.dws.util;
 
 import baubles.common.Baubles;
 import micdoodle8.mods.galacticraft.core.Constants;
-import micdoodle8.mods.galacticraft.core.GalacticraftCore;
 import tconstruct.TConstruct;
 import travellersgear.TravellersGear;
 
