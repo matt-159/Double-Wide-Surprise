@@ -1,7 +1,10 @@
 package com.github.thebrochacho.dws.mixin.mixins.client.minecraft.gui;
 
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
-import com.github.thebrochacho.dws.interfaces.dws.*;
+import com.github.thebrochacho.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.thebrochacho.dws.interfaces.dws.IAddsGCSlots;
+import com.github.thebrochacho.dws.interfaces.dws.IAddsTGSlots;
+import com.github.thebrochacho.dws.interfaces.dws.IAddsTinkersSlots;
 import com.github.thebrochacho.dws.inventory.slots.SlotDWS;
 import com.github.thebrochacho.dws.util.ModCompat;
 import net.minecraft.client.gui.inventory.GuiInventory;

@@ -4,12 +4,8 @@ import baubles.client.gui.GuiEvents;
 import com.github.thebrochacho.dws.events.DWSKeyHandler;
 import com.github.thebrochacho.dws.events.PlayerOpenContainerEventHandler;
 import com.github.thebrochacho.dws.network.PacketHandler;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.eventhandler.IEventListener;
-import cpw.mods.fml.common.network.IGuiHandler;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.client.tabs.TabRegistry;
 
