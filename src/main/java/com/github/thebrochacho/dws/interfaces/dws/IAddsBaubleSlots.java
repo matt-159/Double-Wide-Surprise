@@ -4,9 +4,9 @@ import net.minecraft.inventory.IInventory;
 
 public interface IAddsBaubleSlots {
 
-    public IInventory getBaublesAccessories();
+    IInventory getBaublesAccessories();
 
-    public void setBaublesAccessories(IInventory baublesAccessories);
+    void setBaublesAccessories(IInventory baublesAccessories);
 
-    public int getBaublesSlotStart();
+    int getBaublesSlotStart();
 }
