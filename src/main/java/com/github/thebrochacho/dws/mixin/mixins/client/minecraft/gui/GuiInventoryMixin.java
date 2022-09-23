@@ -23,17 +23,6 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
         super(container);
     }
 
-    @Inject(method = "<init>",
-            at = @At("RETURN"),
-            require = 1)
-    private void injectSyncBaublesStackList(EntityPlayer player, CallbackInfo ci) {
-        if (ModCompat.isBaublesPresent()) {
-            InventoryBaubles baubles = PlayerHandler.getPlayerBaubles(player);
-
-            ((IAddsBaubleSlots) (player.inventoryContainer)).setBaublesAccessories(baubles);
-        }
-    }
-
     @Inject(method = "drawGuiContainerBackgroundLayer",
             at = @At(   value = "INVOKE",
                         target = "Lnet/minecraft/client/gui/inventory/GuiInventory;drawTexturedModalRect(IIIIII)V",
