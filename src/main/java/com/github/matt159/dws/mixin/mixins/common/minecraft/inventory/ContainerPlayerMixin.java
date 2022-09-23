@@ -1,38 +1,14 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
-import baubles.common.container.InventoryBaubles;
-import baubles.common.lib.PlayerHandler;
 import com.github.matt159.dws.interfaces.dws.*;
-import com.github.matt159.dws.inventory.slots.SlotDWS;
-import com.github.matt159.dws.util.ModCompat;
-import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStats;
-import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
-import micdoodle8.mods.galacticraft.core.util.PlayerUtil;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.tuple.Pair;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import tconstruct.armor.player.TPlayerStats;
-import travellersgear.TravellersGear;
-import travellersgear.api.TravellersGearAPI;
-import travellersgear.common.inventory.InventoryTG;
-import travellersgear.common.network.MessageNBTSync;
 
 import java.util.ArrayList;
-
-import static com.github.matt159.dws.inventory.slots.SlotDWS.SlotType.*;
 
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container implements IAddsBaubleSlots,

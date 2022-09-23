@@ -22,7 +22,6 @@ import travellersgear.common.inventory.InventoryTG;
 import travellersgear.common.network.MessageNBTSync;
 
 import static com.github.matt159.dws.inventory.slots.SlotDWS.SlotType.*;
-import static com.github.matt159.dws.inventory.slots.SlotDWS.SlotType.TRAVEL_TITLE;
 
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container implements IAddsTGSlots {
