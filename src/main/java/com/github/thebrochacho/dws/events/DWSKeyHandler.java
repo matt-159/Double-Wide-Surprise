@@ -17,12 +17,12 @@ public class DWSKeyHandler {
     @SideOnly(Side.CLIENT)
     private static int swapCooldown = 0;
 
-    public KeyBinding key = new KeyBinding(StatCollector.translateToLocal("keybind.inventoryswap"),
-                                            Keyboard.KEY_H,
-                                            "key.categories.inventory");
+    public KeyBinding swapKey = new KeyBinding(StatCollector.translateToLocal("keybind.inventoryswap"),
+                                               Keyboard.KEY_H,
+                                               "key.categories.inventory");
 
     public DWSKeyHandler() {
-        ClientRegistry.registerKeyBinding(key);
+        ClientRegistry.registerKeyBinding(swapKey);
     }
 
     @SideOnly(Side.CLIENT)
@@ -32,7 +32,7 @@ public class DWSKeyHandler {
         if (event.phase == TickEvent.Phase.START) {
             if (swapCooldown > 0) { swapCooldown--; }
 
-            if (key.getIsKeyPressed() &&
+            if (swapKey.getIsKeyPressed() &&
                     FMLClientHandler.instance().getClient().inGameHasFocus &&
                     swapCooldown == 0) {
                 PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(event.player));
