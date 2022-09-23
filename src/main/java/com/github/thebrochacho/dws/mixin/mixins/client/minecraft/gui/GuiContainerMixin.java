@@ -35,6 +35,7 @@ public abstract class GuiContainerMixin extends GuiScreen {
         return (this instanceof IDWSGui) ? 338 : 176;
     }
 
+    // Doing this goofy-aah shit because normal hotkeys don't work inside guis
     @Inject(method = "keyTyped",
             at = @At(value = "TAIL"),
             require = 1)
