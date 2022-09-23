@@ -36,7 +36,6 @@ public class DoubleWideSurprise {
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
-        NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, proxy);
         proxy.registerKeyBindings();
     }
 

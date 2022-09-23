@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import static com.github.thebrochacho.dws.util.ModCompat.isBaublesPresent;
 import static com.github.thebrochacho.dws.util.ModCompat.isTinkersConstructPresent;
 
-public class CommonProxy implements IGuiHandler {
+public class CommonProxy {
 
     public DWSKeyHandler keyHandler;
 
@@ -66,21 +66,6 @@ public class CommonProxy implements IGuiHandler {
 
     public void serverStopped(FMLServerStoppedEvent event) {
 
-    }
-
-    @Override
-    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        return null;
-    }
-
-    @Override
-    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        switch (ID) {
-//            case 1:
-//                return new ContainerDWS(player.inventory, !world.isRemote, player);
-            default:
-                return null;
-        }
     }
 
     public void registerHandlers() {
