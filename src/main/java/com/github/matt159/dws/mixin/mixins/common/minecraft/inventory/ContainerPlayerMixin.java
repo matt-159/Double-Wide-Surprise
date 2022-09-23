@@ -1,14 +1,14 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
-import com.github.matt159.dws.interfaces.dws.*;
+import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsGCSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
-import org.apache.commons.lang3.tuple.Pair;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-
-import java.util.ArrayList;
 
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container implements IAddsBaubleSlots,

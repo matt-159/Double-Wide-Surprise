@@ -1,7 +1,10 @@
 package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 
 import com.github.matt159.dws.interfaces.IDWSGui;
-import com.github.matt159.dws.interfaces.dws.*;
+import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsGCSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.util.ModCompat;
 import net.minecraft.client.gui.inventory.GuiInventory;
