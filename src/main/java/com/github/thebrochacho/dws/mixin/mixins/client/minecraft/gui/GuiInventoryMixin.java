@@ -54,17 +54,6 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
 
             drawSlotAndOverlay(slot);
         }
-
-        if (this.inventorySlots instanceof IAddsNullSlots) {
-            ((IAddsNullSlots) this.inventorySlots).getNullSlots().forEach(nullSlotXY -> {
-                this.drawTexturedModalRect( guiLeft + nullSlotXY.getLeft() - 1,
-                                            guiTop + nullSlotXY.getRight() - 1,
-                                            144,
-                                            216,
-                                            18,
-                                            18);
-            });
-        }
     }
 
     @ModifyConstant(method = "drawGuiContainerForegroundLayer",
@@ -84,12 +73,10 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
         this.drawTexturedModalRect(x - 1, y - 1, 144,198, 18,18);
 
         if(!slot.getHasStack()) {
-            this.drawTexturedModalRect( x,
-                                        y,
-                                        162 + 18 * slot.type.getX() + 1,
-                                        180 + 18 * slot.type.getY() + 1,
-                                        16,
-                                        16);
+            int u = 162 + 18 * slot.type.getX() + 1;
+            int v = 180 + 18 * slot.type.getY() + 1;
+
+            this.drawTexturedModalRect( x, y, u, v, 16, 16);
         }
     }
 
