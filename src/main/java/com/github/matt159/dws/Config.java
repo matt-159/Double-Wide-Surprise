@@ -7,11 +7,6 @@ import java.io.File;
 
 public class Config {
 
-    public static boolean isBaublesLoaded;
-    public static boolean isTravellersGearLoaded;
-    public static boolean isTinkersLoaded;
-    public static boolean isGalacticraftLoaded;
-
     private static class Defaults {
         public static final String greeting = "Hello World";
     }

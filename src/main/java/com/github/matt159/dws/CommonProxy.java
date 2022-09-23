@@ -38,11 +38,6 @@ public class CommonProxy implements IGuiHandler {
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
     public void init(FMLInitializationEvent event) {
-        Config.isBaublesLoaded = Loader.isModLoaded("Baubles");
-        Config.isTravellersGearLoaded = Loader.isModLoaded("TravellersGear");
-        Config.isTinkersLoaded = Loader.isModLoaded("TConstruct");
-        Config.isGalacticraftLoaded = Loader.isModLoaded("GalacticraftCore");
-
         MinecraftForge.EVENT_BUS.register(new PlayerOpenContainerEventHandler());
     }
 
