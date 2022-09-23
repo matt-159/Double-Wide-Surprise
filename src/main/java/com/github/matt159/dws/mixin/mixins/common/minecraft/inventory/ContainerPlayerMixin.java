@@ -14,11 +14,7 @@ import java.util.ArrayList;
 public abstract class ContainerPlayerMixin extends Container implements IAddsBaubleSlots,
                                                                         IAddsTinkersSlots,
                                                                         IAddsGCSlots,
-                                                                        IAddsTGSlots,
-                                                                        IAddsNullSlots {
-
-
-    private final ArrayList<Pair<Integer, Integer>> nullSlots = new ArrayList<>();
+                                                                        IAddsTGSlots {
 
     @ModifyConstant(method = "<init>",
                     constant = {    @Constant(intValue = 88),
@@ -48,13 +44,4 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsBau
     private int modifyHotbarSlotEnd(int constant) {
         return 81;
     }
-
-
-
-    @Override
-    public ArrayList<Pair<Integer, Integer>> getNullSlots() {
-        return this.nullSlots;
-    }
-
-
 }
