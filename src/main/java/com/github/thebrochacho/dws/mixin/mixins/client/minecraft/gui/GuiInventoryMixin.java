@@ -1,14 +1,11 @@
 package com.github.thebrochacho.dws.mixin.mixins.client.minecraft.gui;
 
-import baubles.common.container.InventoryBaubles;
-import baubles.common.lib.PlayerHandler;
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.interfaces.dws.*;
 import com.github.thebrochacho.dws.inventory.slots.SlotDWS;
 import com.github.thebrochacho.dws.util.ModCompat;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

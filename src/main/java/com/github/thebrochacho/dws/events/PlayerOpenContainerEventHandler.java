@@ -3,14 +3,10 @@ package com.github.thebrochacho.dws.events;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.thebrochacho.dws.interfaces.dws.IAddsBaubleSlots;
-import com.github.thebrochacho.dws.interfaces.dws.IAddsTGSlots;
 import com.github.thebrochacho.dws.util.ModCompat;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.inventory.Container;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerOpenContainerEvent;
-import travellersgear.api.TravellersGearAPI;
-import travellersgear.common.inventory.InventoryTG;
 
 public class PlayerOpenContainerEventHandler {
     /*  The InventoryBaubles object inside ContainerDWS is likely to get constructed prior to the player's baubles being
