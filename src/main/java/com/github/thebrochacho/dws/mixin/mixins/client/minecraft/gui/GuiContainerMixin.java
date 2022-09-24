@@ -1,5 +1,6 @@
 package com.github.thebrochacho.dws.mixin.mixins.client.minecraft.gui;
 
+import com.github.thebrochacho.dws.Config;
 import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import com.github.thebrochacho.dws.network.DWSInventorySwapPacket;
 import com.github.thebrochacho.dws.network.PacketHandler;
@@ -63,12 +64,14 @@ public abstract class GuiContainerMixin extends GuiScreen {
                         shift = At.Shift.AFTER  ),
             require = 1)
     private void injectDebugStringDrawCalls(int p_73863_1_, int p_73863_2_, float p_73863_3_, CallbackInfo ci) {
-        for (int i = 0; i < this.inventorySlots.inventorySlots.size(); ++i) {
-            Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i);
-            String slotNumber = Integer.toString(slot.slotNumber);
-            String slotIndex = Integer.toString(slot.getSlotIndex());
-            this.fontRendererObj.drawString(slotNumber, slot.xDisplayPosition, slot.yDisplayPosition, Color.CYAN.getRGB());
-            this.fontRendererObj.drawString(slotIndex, slot.xDisplayPosition, slot.yDisplayPosition + 8, Color.MAGENTA.getRGB());
+        if (Config.showDebugSlotInfo) {
+            for (int i = 0; i < this.inventorySlots.inventorySlots.size(); ++i) {
+                Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i);
+                String slotNumber = Integer.toString(slot.slotNumber);
+                String slotIndex = Integer.toString(slot.getSlotIndex());
+                this.fontRendererObj.drawString(slotNumber, slot.xDisplayPosition, slot.yDisplayPosition, Color.CYAN.getRGB());
+                this.fontRendererObj.drawString(slotIndex, slot.xDisplayPosition, slot.yDisplayPosition + 8, Color.MAGENTA.getRGB());
+            }
         }
     }
 }
