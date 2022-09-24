@@ -44,6 +44,7 @@ public final class TextureWhitelist {
     }
 
     static {
+        // region Minecraft Vanilla Textures
         addTextureToWhitelist("minecraft:textures/gui/container/anvil.png");
         addTextureToWhitelist("minecraft:textures/gui/container/beacon.png");
         addTextureToWhitelist("minecraft:textures/gui/container/brewing_stand.png");
@@ -63,9 +64,13 @@ public final class TextureWhitelist {
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tab_item_search.png");
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tab_items.png");
         addTextureToWhitelist("minecraft:textures/gui/container/creative_inventory/tabs.png");
+        //endregion
 
+        // region NEI Textures
         addTextureToWhitelist("nei:textures/gui/inv.png");
+        //endregion
 
+        // region Ironchest Textures
         addTextureToWhitelist("ironchest:textures/gui/coppercontainer.png");
         addTextureToWhitelist("ironchest:textures/gui/diamondcontainer.png");
         addTextureToWhitelist("ironchest:textures/gui/dirtcontainer.png");
@@ -73,7 +78,9 @@ public final class TextureWhitelist {
         addTextureToWhitelist("ironchest:textures/gui/ironcontainer.png");
         addTextureToWhitelist("ironchest:textures/gui/silvercontainer.png");
         addTextureToWhitelist("ironchest:textures/gui/steel_chest.png");
+        //endregion
 
+        //region Gregtech Textures
         addTextureToWhitelist("gregtech:textures/gui/1by1.png");
         addTextureToWhitelist("gregtech:textures/gui/2by2.png");
         addTextureToWhitelist("gregtech:textures/gui/3by3.png");
@@ -206,5 +213,6 @@ public final class TextureWhitelist {
         addTextureToWhitelist("gregtech:textures/gui/multimachines/ProcessingArray.png");
         addTextureToWhitelist("gregtech:textures/gui/multimachines/PyrolyseOven.png");
         addTextureToWhitelist("gregtech:textures/gui/multimachines/VacuumFreezer.png");
+        //endregion
     }
 }
