@@ -17,7 +17,7 @@ public class Config {
     
     public static String greeting = Defaults.greeting;
 
-    public static void syncronizeConfiguration(File configFile) {
+    public static void synchronizeConfiguration(File configFile) {
         Configuration configuration = new Configuration(configFile);
         configuration.load();
         
