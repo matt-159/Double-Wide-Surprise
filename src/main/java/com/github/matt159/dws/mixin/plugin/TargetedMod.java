@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.function.Predicate;
 
+import static com.falsepattern.lib.mixin.ITargetedMod.PredicateHelpers.contains;
 import static com.falsepattern.lib.mixin.ITargetedMod.PredicateHelpers.startsWith;
 
 /**
@@ -23,7 +24,9 @@ public enum TargetedMod implements ITargetedMod {
     NOTENOUGHITEMS    ("NotEnoughItems"  , true, startsWith("notenoughitems")),
     GREGTECH          ("GregTech"        , true, startsWith("gregtech").or(startsWith("gt5u"))),
     BARTWORKS         ("Bartworks"       , true, startsWith("bartworks")),
-    TECTECH           ("TecTech"         , true, startsWith("tectech").or(startsWith("tec-tech")));
+    TECTECH           ("TecTech"         , true, startsWith("tectech").or(startsWith("tec-tech"))),
+    APPLIEDENERGISTICS2("AppliedEnergistics2", true, startsWith("appliedenergistics2").or(contains("ae2"))),
+    ;
 
 
     private final String modName;
