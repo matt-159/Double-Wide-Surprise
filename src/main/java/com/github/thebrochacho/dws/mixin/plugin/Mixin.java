@@ -4,6 +4,7 @@ import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.lwjgl.opencl.CL;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -160,9 +161,11 @@ public enum Mixin implements IMixin {
 
     // region Applied Energistics 2 Mixins
     AEBaseContainerMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseContainerMixin"),
+    ContainerCellWorkbenchMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCellWorkbenchMixin"),
     ContainerIOPortMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerIOPortMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
 
+    GuiCellWorkbenchMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCellWorkbenchMixin"),
     GuiIOPortMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiIOPortMixin"),
     GuiUpgradeableMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
     //endregion
