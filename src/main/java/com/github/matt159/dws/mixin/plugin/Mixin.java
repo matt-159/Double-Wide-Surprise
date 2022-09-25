@@ -158,6 +158,10 @@ public enum Mixin implements IMixin {
     TecTech_GT_RectHandlerMixin                       (COMMON, require(TECTECH), "tectech.GT_RectHandlerMixin"),
     //endregion
 
+    // region Applied Energistics 2 Mixins
+    AEBaseContainerMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseContainerMixin"),
+    //endregion
+
     // @formatter:on
     ;
 
