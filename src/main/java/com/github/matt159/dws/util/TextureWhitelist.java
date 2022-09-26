@@ -236,6 +236,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("appliedenergistics2:textures/guis/pattern2.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/pattern3.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/pattern4.png");
+        addTextureToWhitelist("appliedenergistics2:textures/guis/priority.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/quartzknife.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/security.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/skychest.png");
