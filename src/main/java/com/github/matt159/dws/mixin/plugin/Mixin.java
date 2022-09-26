@@ -61,6 +61,7 @@ public enum Mixin implements IMixin {
     GuiCraftingMixin                                  (CLIENT, always(), "minecraft.gui.GuiCraftingMixin"),
     GuiDispenserMixin                                 (CLIENT, always(), "minecraft.gui.GuiDispenserMixin"),
     GuiEnchantmentMixin                               (CLIENT, always(), "minecraft.gui.GuiEnchantmentMixin"),
+    GuiHopperMixin                                    (CLIENT, always(), "minecraft.gui.GuiHopperMixin"),
     GuiFurnaceMixin                                   (CLIENT, always(), "minecraft.gui.GuiFurnaceMixin"),
     GuiInventoryMixin                                 (CLIENT, always(), "minecraft.gui.GuiInventoryMixin"),
 
