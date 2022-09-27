@@ -220,6 +220,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("appliedenergistics2:textures/guis/cellworkbench.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/chest.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/condenser.png");
+        addTextureToWhitelist("appliedenergistics2:textures/guis/craftAmt.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/crafting.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/drive.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/grinder.png");
