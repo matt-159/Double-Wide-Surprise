@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GuiScrollbar.class)
-public class GuiScrollbarMixin {
+public abstract class GuiScrollbarMixin {
     @ModifyConstant(method = "draw",
                     constant = @Constant(intValue = 232),
                     remap = false,
