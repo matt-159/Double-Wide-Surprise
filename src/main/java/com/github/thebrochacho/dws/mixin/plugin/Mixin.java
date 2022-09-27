@@ -174,6 +174,7 @@ public enum Mixin implements IMixin {
     GuiCondenserMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCondenserMixin"),
     GuiIOPortMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiIOPortMixin"),
     GuiPriorityMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPriorityMixin"),
+    GuiScrollbarMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiScrollbarMixin"),
     GuiUpgradeableMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
     //endregion
 
