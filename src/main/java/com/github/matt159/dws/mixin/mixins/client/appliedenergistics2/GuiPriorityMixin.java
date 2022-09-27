@@ -54,7 +54,7 @@ public abstract class GuiPriorityMixin extends AEBaseGui {
                        opcode = Opcodes.PUTFIELD),
               remap = false,
               require = 1)
-    private void injectNewPosition(GuiPriority instance, GuiNumberBox value) {
+    private void redirectNewTextboxPosition(GuiPriority instance, GuiNumberBox value) {
         value.xPosition += 78;
         value.yPosition -= 8;
         this.priority = value;
