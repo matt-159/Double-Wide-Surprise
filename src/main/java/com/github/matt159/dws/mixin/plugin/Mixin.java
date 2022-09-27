@@ -169,6 +169,7 @@ public enum Mixin implements IMixin {
     ContainerCraftingTermMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCraftingTermMixin"),
     ContainerFormationPlaneMixin                      (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerFormationPlaneMixin"),
     ContainerDriveMixin                               (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerDriveMixin"),
+    ContainerGrinderMixin                             (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerGrinderMixin"),
     ContainerMEMonitorableMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMEMonitorableMixin"),
     ContainerIOPortMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerIOPortMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
