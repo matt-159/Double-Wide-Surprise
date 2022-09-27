@@ -165,6 +165,8 @@ public enum Mixin implements IMixin {
     ContainerCellWorkbenchMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCellWorkbenchMixin"),
     ContainerChestMixin_AE                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerChestMixin"),
     ContainerCondenserMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCondenserMixin"),
+    ContainerCraftingTermMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCraftingTermMixin"),
+    ContainerMEMonitorableMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMEMonitorableMixin"),
     ContainerIOPortMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerIOPortMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
 
@@ -172,7 +174,9 @@ public enum Mixin implements IMixin {
     GuiCellWorkbenchMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCellWorkbenchMixin"),
     GuiChestMixin_AE                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiChestMixin"),
     GuiCondenserMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCondenserMixin"),
+    GuiCraftingTermMixin                              (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCraftingTermMixin"),
     GuiIOPortMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiIOPortMixin"),
+    GuiMEMonitorableMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiMEMonitorableMixin"),
     GuiPriorityMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPriorityMixin"),
     GuiScrollbarMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiScrollbarMixin"),
     GuiUpgradeableMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
