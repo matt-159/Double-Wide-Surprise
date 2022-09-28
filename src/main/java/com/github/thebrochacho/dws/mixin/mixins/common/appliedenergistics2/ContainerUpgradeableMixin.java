@@ -7,8 +7,10 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ContainerUpgradeable.class)
 public abstract class ContainerUpgradeableMixin {
-    @ModifyConstant(method = "<init>",
-                    constant = @Constant(intValue = 186),
+    @ModifyConstant(method = { "<init>",
+                               "setupUpgrades" },
+                    constant = { @Constant(intValue = 186),
+                                 @Constant(intValue = 187) },
                     remap = false,
                     require = 1)
     private int modifyUpgradeSlotXOffset(int constant) {
