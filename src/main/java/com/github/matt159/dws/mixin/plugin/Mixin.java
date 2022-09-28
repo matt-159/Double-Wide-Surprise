@@ -172,6 +172,7 @@ public enum Mixin implements IMixin {
     ContainerGrinderMixin                             (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerGrinderMixin"),
     ContainerMEMonitorableMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMEMonitorableMixin"),
     ContainerInscriberMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerInscriberMixin"),
+    ContainerInterfaceMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerInterfaceMixin"),
     ContainerIOPortMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerIOPortMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
 
@@ -184,6 +185,7 @@ public enum Mixin implements IMixin {
     GuiFormationPlaneMixin                            (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiFormationPlaneMixin"),
     GuiDriveMixin                                     (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiDriveMixin"),
     GuiInscriberMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInscriberMixin"),
+    GuiInterfaceMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInterfaceMixin"),
     GuiIOPortMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiIOPortMixin"),
     GuiMEMonitorableMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiMEMonitorableMixin"),
     GuiPriorityMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPriorityMixin"),
