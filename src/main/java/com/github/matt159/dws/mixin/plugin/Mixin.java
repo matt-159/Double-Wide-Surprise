@@ -173,6 +173,7 @@ public enum Mixin implements IMixin {
     ContainerInscriberMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerInscriberMixin"),
     ContainerInterfaceMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerInterfaceMixin"),
     ContainerIOPortMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerIOPortMixin"),
+    ContainerLevelEmitterMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerLevelEmitterMixin"),
     ContainerMEMonitorableMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMEMonitorableMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
 
@@ -188,6 +189,7 @@ public enum Mixin implements IMixin {
     GuiInterfaceMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInterfaceMixin"),
     GuiInterfaceTerminalMixin                         (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInterfaceTerminalMixin"),
     GuiIOPortMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiIOPortMixin"),
+    GuiLevelEmitterMixin                              (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiLevelEmitterMixin"),
     GuiMEMonitorableMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiMEMonitorableMixin"),
     GuiPriorityMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPriorityMixin"),
     GuiScrollbarMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiScrollbarMixin"),
