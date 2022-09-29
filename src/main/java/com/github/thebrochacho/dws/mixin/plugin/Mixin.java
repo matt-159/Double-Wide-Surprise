@@ -176,6 +176,7 @@ public enum Mixin implements IMixin {
     ContainerLevelEmitterMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerLevelEmitterMixin"),
     ContainerMACMixin                                 (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMACMixin"),
     ContainerMEMonitorableMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMEMonitorableMixin"),
+    ContainerNetworkToolMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerNetworkToolMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
 
     AEBaseGuiMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseGuiMixin"),
