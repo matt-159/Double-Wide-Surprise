@@ -177,6 +177,7 @@ public enum Mixin implements IMixin {
     ContainerMACMixin                                 (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMACMixin"),
     ContainerMEMonitorableMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMEMonitorableMixin"),
     ContainerNetworkToolMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerNetworkToolMixin"),
+    ContainerPatternTermMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerPatternTermMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
 
     AEBaseGuiMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseGuiMixin"),
@@ -194,6 +195,7 @@ public enum Mixin implements IMixin {
     GuiLevelEmitterMixin                              (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiLevelEmitterMixin"),
     GuiMACMixin                                       (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiMACMixin"),
     GuiMEMonitorableMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiMEMonitorableMixin"),
+    GuiPatternTermMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPatternTermMixin"),
     GuiPriorityMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPriorityMixin"),
     GuiScrollbarMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiScrollbarMixin"),
     GuiUpgradeableMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
