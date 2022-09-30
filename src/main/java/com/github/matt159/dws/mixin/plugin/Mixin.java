@@ -179,6 +179,7 @@ public enum Mixin implements IMixin {
     ContainerNetworkToolMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerNetworkToolMixin"),
     ContainerPatternTermMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerPatternTermMixin"),
     ContainerPatternTermExMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerPatternTermExMixin"),
+    ContainerQuartzKnifeMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerQuartzKnifeMixin"),
     ContainerQNBMixin                                 (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerQNBMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
 
@@ -200,6 +201,7 @@ public enum Mixin implements IMixin {
     GuiPatternTermMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPatternTermMixin"),
     GuiPatternTermExMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPatternTermExMixin"),
     GuiPriorityMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPriorityMixin"),
+    GuiQuartzKnifeMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiQuartzKnifeMixin"),
     GuiScrollbarMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiScrollbarMixin"),
     GuiUpgradeableMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
     //endregion
