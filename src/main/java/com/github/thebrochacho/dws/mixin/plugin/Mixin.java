@@ -186,6 +186,7 @@ public enum Mixin implements IMixin {
     ContainerSpatialIOPortMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSpatialIOPortMixin"),
     ContainerStorageBusMixin                          (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerStorageBusMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
+    ContainerVibrationChamberMixin                    (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerVibrationChamberMixin"),
 
     AEBaseGuiMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseGuiMixin"),
     GuiCellWorkbenchMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCellWorkbenchMixin"),
@@ -210,6 +211,7 @@ public enum Mixin implements IMixin {
     GuiScrollbarMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiScrollbarMixin"),
     GuiStorageBusMixin                                (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiStorageBusMixin"),
     GuiUpgradeableMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
+    GuiVibrationChamberMixin                          (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiVibrationChamberMixin"),
     //endregion
 
     // @formatter:on
