@@ -1,11 +1,9 @@
 package com.github.thebrochacho.dws.mixin.mixins.client.appliedenergistics2;
 
 import appeng.api.implementations.IUpgradeableHost;
-import appeng.client.gui.implementations.GuiDrive;
 import appeng.client.gui.implementations.GuiFormationPlane;
 import appeng.client.gui.implementations.GuiUpgradeable;
 import appeng.client.gui.widgets.GuiTabButton;
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import org.spongepowered.asm.lib.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;

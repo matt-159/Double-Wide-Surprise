@@ -2,7 +2,10 @@ package com.github.thebrochacho.dws.mixin.mixins.client.appliedenergistics2;
 
 import appeng.client.gui.implementations.GuiLevelEmitter;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GuiLevelEmitter.class)
 public abstract class GuiLevelEmitterMixin {
