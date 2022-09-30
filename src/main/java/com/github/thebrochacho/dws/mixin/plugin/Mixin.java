@@ -183,6 +183,7 @@ public enum Mixin implements IMixin {
     ContainerQNBMixin                                 (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerQNBMixin"),
     ContainerSecurityMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSecurityMixin"),
     ContainerSkyChestMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSkyChestMixin"),
+    ContainerSpatialIOPortMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSpatialIOPortMixin"),
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
 
     AEBaseGuiMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseGuiMixin"),
