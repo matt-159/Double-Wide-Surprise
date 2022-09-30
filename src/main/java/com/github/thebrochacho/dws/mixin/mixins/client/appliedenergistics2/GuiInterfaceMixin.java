@@ -27,7 +27,7 @@ public abstract class GuiInterfaceMixin extends GuiUpgradeable {
               remap = false,
               require = 1)
     private void redirectPriorityButtonAssignment(GuiInterface instance, GuiTabButton value) {
-        value.xPosition = this.guiLeft + this.xSize - 22;
+        value.xPosition = this.guiLeft + this.xSize - 22 - (35 * (this.hasToolbox() ? 2 : 1));
         this.priority = value;
     }
 }
