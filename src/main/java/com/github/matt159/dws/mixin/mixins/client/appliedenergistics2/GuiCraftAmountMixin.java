@@ -2,7 +2,6 @@ package com.github.matt159.dws.mixin.mixins.client.appliedenergistics2;
 
 import appeng.client.gui.AEBaseGui;
 import appeng.client.gui.implementations.GuiCraftAmount;
-import appeng.client.gui.implementations.GuiPriority;
 import appeng.client.gui.widgets.GuiNumberBox;
 import appeng.client.gui.widgets.GuiTabButton;
 import net.minecraft.inventory.Container;
