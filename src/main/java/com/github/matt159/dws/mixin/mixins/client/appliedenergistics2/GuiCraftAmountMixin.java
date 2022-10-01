@@ -28,7 +28,6 @@ public abstract class GuiCraftAmountMixin extends AEBaseGui {
     @ModifyArgs(method = "initGui",
                 at = @At(value = "INVOKE",
                          target = "Lnet/minecraft/client/gui/GuiButton;<init>(IIIIILjava/lang/String;)V"),
-                remap = false,
                 require = 9)
     private void modifyGuiButtonArgs(Args args) {
         args.set(1, (int) args.get(1) + 78);
@@ -36,11 +35,10 @@ public abstract class GuiCraftAmountMixin extends AEBaseGui {
     }
 
     @Redirect(method = "initGui",
-            at = @At(value = "FIELD",
+             at = @At(value = "FIELD",
                      target = "Lappeng/client/gui/implementations/GuiCraftAmount;originalGuiBtn:Lappeng/client/gui/widgets/GuiTabButton;",
                      opcode = Opcodes.PUTFIELD),
-            remap = false,
-            require = 1)
+             require = 1)
     private void redirectOriginalGuiBtnInstantiation(GuiCraftAmount instance, GuiTabButton value) {
         value.xPosition = this.guiLeft + this.xSize - 22;
         this.originalGuiBtn = value;
@@ -50,7 +48,6 @@ public abstract class GuiCraftAmountMixin extends AEBaseGui {
             at = @At(value = "FIELD",
                      target = "Lappeng/client/gui/implementations/GuiCraftAmount;amountToCraft:Lappeng/client/gui/widgets/GuiNumberBox;",
                      opcode = Opcodes.PUTFIELD),
-            remap = false,
             require = 1)
     private void redirectNewTextboxPosition(GuiCraftAmount instance, GuiNumberBox value) {
         value.xPosition += 78;

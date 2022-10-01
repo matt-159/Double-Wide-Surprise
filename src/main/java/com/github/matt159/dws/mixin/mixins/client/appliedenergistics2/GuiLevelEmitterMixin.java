@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class GuiLevelEmitterMixin {
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 24),
-                    remap = false,
                     require = 1)
     private int modifyTextboxXOffset(int constant) {
         return constant + 81;

@@ -11,7 +11,6 @@ public abstract class GuiSecurityMixin {
                at = @At(value = "INVOKE",
                         target = "Lappeng/client/gui/widgets/GuiToggleButton;<init>(IIIILjava/lang/String;Ljava/lang/String;)V"),
                index = 0,
-               remap = false,
                require = 5)
     private int modifyGuiButtonXOffset(int constant) {
         return constant + 81;

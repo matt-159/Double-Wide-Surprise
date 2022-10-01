@@ -24,7 +24,6 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
     @Inject(method = "initGui",
             at = @At(value = "INVOKE",
                      target = "Lappeng/integration/IntegrationRegistry;isEnabled(Lappeng/integration/IntegrationType;)Z"),
-            remap = false,
             require = 1)
     private void injectPerRowValue(CallbackInfo ci) {
         this.perRow = 13;
@@ -33,20 +32,25 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 9,
                                          ordinal = 2),
-                    remap = false,
                     require = 1)
     private int modifySlotXOffset(int constant) {
         return constant + 45;
     }
 
     @ModifyConstant(method = { "<init>(Lnet/minecraft/entity/player/InventoryPlayer;Lappeng/api/storage/ITerminalHost;Lappeng/container/implementations/ContainerMEMonitorable;)V",
-                               "initGui",
                                "drawBG" },
                     constant = { @Constant(intValue = 185),
                                  @Constant(intValue = 197) },
                     remap = false,
-                    require = 8)
+                    require = 7)
     private int modifyXSize(int constant) {
+        return 340;
+    }
+
+    @ModifyConstant(method = "initGui",
+                    constant = @Constant(intValue = 197),
+                    require = 1)
+    private int modifyXSizeCheck(int constant) {
         return 340;
     }
 
@@ -54,7 +58,6 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiMEMonitorable;xSize:I",
                        opcode = Opcodes.PUTFIELD),
-              remap = false,
               require = 1)
     private void redirectXSizeAssignment(GuiMEMonitorable instance, int value) {
         this.xSize = this.standardSize;
@@ -70,7 +73,6 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
 
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 80),
-                    remap = false,
                     require = 1)
     private int modifySearchBarXOffset(int constant) {
         return constant + 45;
@@ -78,7 +80,6 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
 
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 90),
-                    remap = false,
                     require = 1)
     private int modifySearchBarWidth(int constant) {
         return 162;
@@ -86,7 +87,6 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
 
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 25),
-                    remap = false,
                     require = 1)
     private int modifyMaxSearchBarStringLength(int constant) {
         return 26;

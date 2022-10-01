@@ -30,7 +30,6 @@ public abstract class ContainerCellWorkbenchMixin extends ContainerUpgradeable {
               at = @At(value = "INVOKE",
                        target = "Lappeng/container/implementations/ContainerCellWorkbench;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
                        ordinal = 1),
-              remap = false,
               require = 1)
     private Slot redirectFakeSlotConstructor(ContainerCellWorkbench instance, Slot slot) {
         slot.xDisplayPosition += 81;

@@ -10,7 +10,6 @@ public abstract class GuiCondenserMixin {
     @ModifyConstant(method = "initGui",
                     constant = { @Constant(intValue = 120),
                                  @Constant(intValue = 128) },
-                    remap = false,
                     require = 1)
     private int modifyButtonXOffset(int constant) {
         return constant + 81;
@@ -18,7 +17,6 @@ public abstract class GuiCondenserMixin {
 
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 178),
-                    remap = false,
                     require = 1)
     private int modifyProgressBarUVXOffset(int constant) {
         return 340;
