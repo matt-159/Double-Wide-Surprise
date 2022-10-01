@@ -4,7 +4,9 @@ import appeng.client.gui.AEBaseMEGui;
 import appeng.client.gui.implementations.GuiMEMonitorable;
 import net.minecraft.inventory.Container;
 import org.spongepowered.asm.lib.Opcodes;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -29,12 +31,13 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
         this.perRow = 13;
     }
 
-    @ModifyConstant(method = "initGui",
-                    constant = @Constant(intValue = 9,
-                                         ordinal = 2),
-                    require = 1)
-    private int modifySlotXOffset(int constant) {
-        return constant + 45;
+    @ModifyArg(method = "initGui",
+               at = @At(value = "INVOKE",
+                        target = "Lappeng/client/me/InternalSlotME;<init>(Lappeng/client/me/ItemRepo;III)V"),
+               index = 2,
+               require = 1)
+    private int modifyInternalMESlotXOffset(int xOffset) {
+        return xOffset + 45;
     }
 
     @ModifyConstant(method = { "<init>(Lnet/minecraft/entity/player/InventoryPlayer;Lappeng/api/storage/ITerminalHost;Lappeng/container/implementations/ContainerMEMonitorable;)V",
