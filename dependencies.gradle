@@ -70,7 +70,7 @@ dependencies {
     compile(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")
     compile(name:"TecTech-1.7.10-4.10.4-023479da", ext:"jar")
 
-    compile("gtmega:ae2-mc1.7.10:rv3-beta.57-gtmega:dev") {
+    compile("gtmega:ae2-mc1.7.10:rv3-beta.58-gtmega:dev") {
         transitive = false
     }
     compile("curse.maven:cofh-core-69162:2388751") {
