@@ -11,7 +11,6 @@ public abstract class GuiPatternTermExMixin {
                     constant = { @Constant(intValue = 87),
                                  @Constant(intValue = 97),
                                  @Constant(intValue = 147) },
-                    remap = false,
                     require = 1)
     private int modifyGuiButtonXOffset(int constant) {
         return constant + 81;

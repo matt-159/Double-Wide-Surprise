@@ -11,7 +11,6 @@ public abstract class GuiPatternTermMixin {
                at = @At(value = "INVOKE",
                         target = "Lappeng/client/gui/widgets/GuiImgButton;<init>(IILjava/lang/Enum;Ljava/lang/Enum;)V"),
                index = 0,
-               remap = false,
                require = 1)
     private int modifyGuiImgButtonXOffsets(int arg) {
         return arg + 81;
@@ -21,7 +20,6 @@ public abstract class GuiPatternTermMixin {
                at = @At(value = "INVOKE",
                         target = "Lappeng/client/gui/widgets/GuiTabButton;<init>(IILnet/minecraft/item/ItemStack;Ljava/lang/String;Lnet/minecraft/client/renderer/entity/RenderItem;)V"),
                index = 0,
-               remap = false,
                require = 1)
     private int modifyGuiTabButtonXOffset(int arg) {
         return arg + 81;

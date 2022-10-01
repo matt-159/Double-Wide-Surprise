@@ -19,21 +19,18 @@ public abstract class GuiInscriberMixin {
         return constant + 162;
     }
 
-    @ModifyConstant(method = { "initGui",
-                               "drawBG" },
+    @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 135),
-                    remap = false,
-                    require = 3)
-    private int modifyProgressBarUVXOffset(int constant) {
+                    require = 2)
+    private int modifyProgressBarXOffset(int constant) {
         return constant + 81;
     }
 
-//    @ModifyConstant(method = "drawBG",
-//            constant =  {   @Constant(intValue = 177),
-//                    @Constant(intValue = 178)   },
-//            remap = false,
-//            require = 23)
-//    private int modifyGuiXSize(int constant) {
-//        return constant + 162;
-//    }
+    @ModifyConstant(method = "drawBG",
+            constant = @Constant(intValue = 135),
+            remap = false,
+            require = 1)
+    private int modifyProgressBarUVXOffset(int constant) {
+        return constant + 81;
+    }
 }

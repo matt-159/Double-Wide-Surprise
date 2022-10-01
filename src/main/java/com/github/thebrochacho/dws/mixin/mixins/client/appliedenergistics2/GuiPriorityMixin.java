@@ -28,7 +28,6 @@ public abstract class GuiPriorityMixin extends AEBaseGui {
     @ModifyArgs(method = "initGui",
                 at = @At(value = "INVOKE",
                          target = "Lnet/minecraft/client/gui/GuiButton;<init>(IIIIILjava/lang/String;)V"),
-                remap = false,
                 require = 8)
     private void modifyGuiButtonArgs(Args args) {
         args.set(1, (int) args.get(1) + 78);
@@ -39,7 +38,6 @@ public abstract class GuiPriorityMixin extends AEBaseGui {
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiPriority;originalGuiBtn:Lappeng/client/gui/widgets/GuiTabButton;",
                        opcode = Opcodes.PUTFIELD),
-              remap = false,
               require = 1)
     private void redirectOriginalGuiBtnInstantiation(GuiPriority instance, GuiTabButton value) {
         value.xPosition = this.guiLeft + this.xSize - 22;
@@ -50,7 +48,6 @@ public abstract class GuiPriorityMixin extends AEBaseGui {
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiPriority;priority:Lappeng/client/gui/widgets/GuiNumberBox;",
                        opcode = Opcodes.PUTFIELD),
-              remap = false,
               require = 1)
     private void redirectNewTextboxPosition(GuiPriority instance, GuiNumberBox value) {
         value.xPosition += 78;

@@ -23,7 +23,6 @@ public abstract class GuiDriveMixin extends AEBaseGui {
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiDrive;priority:Lappeng/client/gui/widgets/GuiTabButton;",
                        opcode = Opcodes.PUTFIELD),
-              remap = false,
               require = 1)
     private void redirectPriorityLocation(GuiDrive instance, GuiTabButton value) {
         value.xPosition = this.guiLeft + this.xSize - 22;

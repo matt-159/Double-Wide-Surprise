@@ -23,7 +23,6 @@ public abstract class GuiInterfaceTerminalMixin extends AEBaseGui {
 
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 175),
-                    remap = false,
                     require = 1)
     private int modifyScrollbarXOffset(int constant) {
         return constant + 81;
@@ -44,7 +43,6 @@ public abstract class GuiInterfaceTerminalMixin extends AEBaseGui {
 
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 104),
-                    remap = false,
                     require = 1)
     private int modifySearchBarXOffset(int constant) {
         return 128;
@@ -52,7 +50,6 @@ public abstract class GuiInterfaceTerminalMixin extends AEBaseGui {
 
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 65),
-                    remap = false,
                     require = 1)
     private int modifySearchBarWidth(int constant) {
         return 122;

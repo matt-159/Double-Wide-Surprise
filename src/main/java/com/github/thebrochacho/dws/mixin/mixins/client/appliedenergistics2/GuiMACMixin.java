@@ -7,12 +7,18 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GuiMAC.class)
 public abstract class GuiMACMixin {
-    @ModifyConstant(method = { "initGui",
-                               "drawBG" },
+    @ModifyConstant(method = "initGui",
                     constant = { @Constant(intValue = 139),
                                  @Constant(intValue = 148) },
-                    remap = false,
-                    require = 3)
+                    require = 2)
+    private int modifyProgressBarXOffsets(int constant) {
+        return constant + 81;
+    }
+
+    @ModifyConstant(method = "drawBG",
+            constant = @Constant(intValue = 148),
+            remap = false,
+            require = 1)
     private int modifyXOffsets(int constant) {
         return constant + 81;
     }

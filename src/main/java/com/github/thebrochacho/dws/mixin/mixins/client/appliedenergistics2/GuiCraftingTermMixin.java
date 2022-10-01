@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class GuiCraftingTermMixin {
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 92),
-                    remap = false,
                     require = 1)
     private int modifyButtonXOffset(int constant) {
         return constant + 81;
