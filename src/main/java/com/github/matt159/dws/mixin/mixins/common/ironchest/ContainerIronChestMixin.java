@@ -43,21 +43,46 @@ public abstract class ContainerIronChestMixin extends Container {
         return instance.makeSlot(chestInventory, index, x, y);
     }
 
-    @Redirect(  method = "layoutContainer",
-                at = @At(   value = "INVOKE",
-                            target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;"),
-                slice = @Slice( from = @At( value = "INVOKE",
-                                            target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
-                                            ordinal = 2),
-                                to = @At(   value = "INVOKE",
-                                            target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
-                                            ordinal = 3)),
-                remap = false,
-                require = 2)
-    private Slot redirectSlotConstructor(ContainerIronChest instance, Slot slot) {
+//    @Redirect(  method = "layoutContainer",
+//                at = @At(   value = "INVOKE",
+//                            target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;"),
+//                slice = @Slice( from = @At( value = "INVOKE",
+//                                            target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
+//                                            ordinal = 2,
+//                                            shift = At.Shift.BEFORE),
+//                                to = @At(   value = "INVOKE",
+//                                            target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
+//                                            ordinal = 3,
+//                                            shift = At.Shift.AFTER)),
+//                remap = false,
+//                require = 2)
+//    private Slot redirectSlotConstructor(ContainerIronChest instance, Slot slot) {
+//        int oldXOffset = (this.xSize - 162) / 2 + 1;
+//
+//        return this.addSlotToContainer(new Slot(slot.inventory, slot.getSlotIndex(), slot.xDisplayPosition - oldXOffset + 8, slot.yDisplayPosition + 1));
+//    }
+
+    @ModifyArg(method = "layoutContainer",
+               at = @At(value = "INVOKE",
+                        target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;"/*,
+                        ordinal = 2*/),
+               slice = @Slice(from = @At(value = "INVOKE",
+                                         target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
+                                         ordinal = 2,
+                                         shift = At.Shift.BEFORE),
+                              to = @At(value = "INVOKE",
+                                       target = "Lcpw/mods/ironchest/ContainerIronChest;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
+                                       ordinal = 3,
+                                       shift = At.Shift.AFTER)),
+//               remap = false,
+               require = 2)
+    private Slot modifySlotXOffset(Slot slot) {
         int oldXOffset = (this.xSize - 162) / 2 + 1;
 
-        return this.addSlotToContainer(new Slot(slot.inventory, slot.getSlotIndex(), slot.xDisplayPosition - oldXOffset + 8, slot.yDisplayPosition + 1));
+        slot.xDisplayPosition = slot.xDisplayPosition - oldXOffset + 8;
+        slot.yDisplayPosition = slot.yDisplayPosition + 1;
+
+        return slot;
     }
 
     @ModifyConstant(method = "layoutContainer",
