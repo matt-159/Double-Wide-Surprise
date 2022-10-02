@@ -19,14 +19,15 @@ import static com.github.thebrochacho.dws.mixin.plugin.TargetedMod.*;
 public enum Mixin implements IMixin {
     // @formatter:off
 
-    // Double Wide Surprise Slots
+    // region Double Wide Surprise Slot Injections
     BaublesSlotSyncMixin                              (CLIENT, require(BAUBLES), "dws.baubles.GuiInventoryMixin"),
     BaublesSlotInjectMixin                            (COMMON, require(BAUBLES), "dws.baubles.ContainerPlayerMixin"),
     TinkersSlotInjectMixin                            (COMMON, require(TINKERSCONSTRUCT), "dws.tinkersconstruct.ContainerPlayerMixin"),
     TravellersGearSlotInjectMixin                     (COMMON, require(TRAVELLERSGEAR), "dws.travellersgear.ContainerPlayerMixin"),
     GalacticraftSlotInjectMixin                       (COMMON, require(GALACTICRAFT), "dws.galacticraft.ContainerPlayerMixin"),
+    //endregion
 
-    // Vanilla
+    // region Vanilla Mixins
     CreativeTabsMixin                                 (CLIENT, always(), "minecraft.gui.CreativeTabsMixin"),
     ForgeHooksMixin                                   (COMMON, always(), "minecraft.ForgeHooksMixin"),
     InventoryPlayerMixin                              (COMMON, always(), "minecraft.inventory.InventoryPlayerMixin"),
@@ -59,6 +60,7 @@ public enum Mixin implements IMixin {
     GuiCraftingMixin                                  (CLIENT, always(), "minecraft.gui.GuiCraftingMixin"),
     GuiDispenserMixin                                 (CLIENT, always(), "minecraft.gui.GuiDispenserMixin"),
     GuiEnchantmentMixin                               (CLIENT, always(), "minecraft.gui.GuiEnchantmentMixin"),
+    GuiHopperMixin                                    (CLIENT, always(), "minecraft.gui.GuiHopperMixin"),
     GuiFurnaceMixin                                   (CLIENT, always(), "minecraft.gui.GuiFurnaceMixin"),
     GuiInventoryMixin                                 (CLIENT, always(), "minecraft.gui.GuiInventoryMixin"),
 
@@ -67,11 +69,13 @@ public enum Mixin implements IMixin {
 
     GuiRepairMixin                                    (CLIENT, always(), "minecraft.gui.GuiRepairMixin"),
     GuiScreenHorseInventoryMixin                      (CLIENT, always(), "minecraft.gui.GuiScreenHorseInventoryMixin"),
+    //endregion
 
-    //CodeChickenLib
+    // region CodeChickenLib Mixins
     InventoryRangeMixin                               (COMMON, require(CODECHICKENLIB),"codechickenlib.InventoryRangeMixin"),
+    //endregion
 
-    //NotEnoughItems
+    //region NEI Mixins
     ClientUtilsMixin                                  (CLIENT, require(NOTENOUGHITEMS),"nei.NEIClientUtilsMixin"),
     ContainerCreativeInvMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.ContainerCreativeInvMixin"),
     ExtendedCreativeInvMixin                          (COMMON, require(NOTENOUGHITEMS), "nei.ExtendedCreativeInvMixin"),
@@ -85,22 +89,27 @@ public enum Mixin implements IMixin {
     FurnaceRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.FurnaceRecipeHandlerMixin"),
     ShapedRecipeHandlerMixin                          (COMMON, require(NOTENOUGHITEMS), "nei.ShapedRecipeHandlerMixin"),
     TemplateRecipeHandlerMixin                        (COMMON, require(NOTENOUGHITEMS), "nei.TemplateRecipeHandlerMixin"),
+    //endregion
 
-    //Galacticraft
+    // region Galacticraft Mixins
     IGalacticWearableMixin                            (COMMON, require(GALACTICRAFT), "galacticraft.GalacticWearableMixin"),
     ContainerExtendedInventoryMixin                   (COMMON, require(GALACTICRAFT), "galacticraft.ContainerExtendedInventoryMixin"),
+    //endregion
 
-    //TravellersGear
+    // region TravellersGear
     ClientProxyMixin                                  (CLIENT, require(TRAVELLERSGEAR), "travellersgear.ClientProxyMixin"),
+    //endregion
 
-    //Baubles
+    // region Baubles Mixins
     GuiEventsMixin                                    (CLIENT, require(BAUBLES), "baubles.GuiEventsMixin"),
+    //endregion
 
-    //Ironchest
+    // region Ironchest Mixins
     ContainerIronChestMixin                           (COMMON, require(IRONCHEST), "ironchest.ContainerIronChestMixin"),
     GUIChestMixin                                     (CLIENT, require(IRONCHEST), "ironchest.GUIChestMixin"),
+    //endregion
 
-    //Gregtech
+    // region Gregtech Mixins
     GT_ContainerMixin                                 (COMMON, require(GREGTECH), "gregtech.GT_ContainerMixin"),
     GT_Container_1by1Mixin                            (COMMON, require(GREGTECH), "gregtech.GT_Container_1by1Mixin"),
     GT_Container_2by2Mixin                            (COMMON, require(GREGTECH), "gregtech.GT_Container_2by2Mixin"),
@@ -139,13 +148,72 @@ public enum Mixin implements IMixin {
 
     GT_NEI_DefaultHandlerMixin                        (COMMON, require(GREGTECH), "gregtech.GT_NEI_DefaultHandlerMixin"),
     GT_RectHandlerMixin                               (COMMON, require(GREGTECH), "gregtech.GT_RectHandlerMixin"),
+    //endregion
 
-    //bartworks
+    // region Bartworks Mixins
     BW_NEI_HandlerMixin                               (COMMON, require(BARTWORKS), "bartworks.BW_NEI_HandlerMixin"),
+    //endregion
 
-    //TecTech
+    // region TecTech Mixins
     TecTech_NEI_HandlerMixin                          (COMMON, require(TECTECH), "tectech.TecTech_NEI_HandlerMixin"),
     TecTech_GT_RectHandlerMixin                       (COMMON, require(TECTECH), "tectech.GT_RectHandlerMixin"),
+    //endregion
+
+    // region Applied Energistics 2 Mixins
+    AEBaseContainerMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseContainerMixin"),
+    ContainerCellWorkbenchMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCellWorkbenchMixin"),
+    ContainerChestMixin_AE                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerChestMixin"),
+    ContainerCondenserMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCondenserMixin"),
+    ContainerCraftAmountMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCraftAmountMixin"),
+    ContainerCraftingTermMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCraftingTermMixin"),
+    ContainerFormationPlaneMixin                      (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerFormationPlaneMixin"),
+    ContainerDriveMixin                               (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerDriveMixin"),
+    ContainerGrinderMixin                             (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerGrinderMixin"),
+    ContainerInscriberMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerInscriberMixin"),
+    ContainerInterfaceMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerInterfaceMixin"),
+    ContainerIOPortMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerIOPortMixin"),
+    ContainerLevelEmitterMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerLevelEmitterMixin"),
+    ContainerMACMixin                                 (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMACMixin"),
+    ContainerMEMonitorableMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMEMonitorableMixin"),
+    ContainerNetworkToolMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerNetworkToolMixin"),
+    ContainerPatternTermMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerPatternTermMixin"),
+    ContainerPatternTermExMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerPatternTermExMixin"),
+    ContainerQuartzKnifeMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerQuartzKnifeMixin"),
+    ContainerQNBMixin                                 (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerQNBMixin"),
+    ContainerSecurityMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSecurityMixin"),
+    ContainerSkyChestMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSkyChestMixin"),
+    ContainerSpatialIOPortMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSpatialIOPortMixin"),
+    ContainerStorageBusMixin                          (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerStorageBusMixin"),
+    ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
+    ContainerVibrationChamberMixin                    (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerVibrationChamberMixin"),
+    ContainerWirelessMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerWirelessMixin"),
+    NEIAERecipeHandlerMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.NEIAERecipeHandlerMixin"),
+
+    AEBaseGuiMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseGuiMixin"),
+    GuiCellWorkbenchMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCellWorkbenchMixin"),
+    GuiChestMixin_AE                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiChestMixin"),
+    GuiCondenserMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCondenserMixin"),
+    GuiCraftAmountMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCraftAmountMixin"),
+    GuiCraftingTermMixin                              (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCraftingTermMixin"),
+    GuiFormationPlaneMixin                            (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiFormationPlaneMixin"),
+    GuiDriveMixin                                     (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiDriveMixin"),
+    GuiInscriberMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInscriberMixin"),
+    GuiInterfaceMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInterfaceMixin"),
+    GuiInterfaceTerminalMixin                         (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInterfaceTerminalMixin"),
+    GuiIOPortMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiIOPortMixin"),
+    GuiLevelEmitterMixin                              (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiLevelEmitterMixin"),
+    GuiMACMixin                                       (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiMACMixin"),
+    GuiMEMonitorableMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiMEMonitorableMixin"),
+    GuiPatternTermMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPatternTermMixin"),
+    GuiPatternTermExMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPatternTermExMixin"),
+    GuiPriorityMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPriorityMixin"),
+    GuiQuartzKnifeMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiQuartzKnifeMixin"),
+    GuiSecurityMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiSecurityMixin"),
+    GuiScrollbarMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiScrollbarMixin"),
+    GuiStorageBusMixin                                (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiStorageBusMixin"),
+    GuiUpgradeableMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
+    GuiVibrationChamberMixin                          (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiVibrationChamberMixin"),
+    //endregion
 
     // @formatter:on
     ;
