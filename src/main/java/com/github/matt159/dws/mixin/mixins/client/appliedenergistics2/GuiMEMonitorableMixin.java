@@ -2,11 +2,11 @@ package com.github.matt159.dws.mixin.mixins.client.appliedenergistics2;
 
 import appeng.client.gui.AEBaseMEGui;
 import appeng.client.gui.implementations.GuiMEMonitorable;
+import appeng.integration.IntegrationRegistry;
+import appeng.integration.IntegrationType;
 import net.minecraft.inventory.Container;
 import org.spongepowered.asm.lib.Opcodes;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -93,5 +93,20 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
                     require = 1)
     private int modifyMaxSearchBarStringLength(int constant) {
         return 26;
+    }
+
+    @ModifyConstant(method = "initGui",
+                    constant = @Constant(intValue = 170),
+                    require = 1)
+    private int modifyCraftingStatusButtonXOffset(int constant) {
+        return this.xSize - 22 - 38;
+    }
+
+    @Redirect(method = "initGui",
+              at = @At(value = "INVOKE",
+                       target = "Lappeng/integration/IntegrationRegistry;isEnabled(Lappeng/integration/IntegrationType;)Z"),
+              require = 1)
+    private boolean redirectNEIIsEnabled(IntegrationRegistry instance, IntegrationType type) {
+        return true;
     }
 }
