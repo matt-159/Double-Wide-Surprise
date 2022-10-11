@@ -15,7 +15,7 @@ public abstract class NEIAERecipeHandlerMixin extends TemplateRecipeHandler {
     @ModifyConstant(method = "loadTransferRects",
                     constant = @Constant(intValue = 84),
                     remap = false,
-                    require = 5)
+                    require = 1)
     private int modifyTransferRectXOffset(int constant) {
         return constant + 81;
     }
