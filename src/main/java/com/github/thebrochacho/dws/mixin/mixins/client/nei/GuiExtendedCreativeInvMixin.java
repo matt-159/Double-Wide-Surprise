@@ -1,6 +1,7 @@
 package com.github.thebrochacho.dws.mixin.mixins.client.nei;
 
 import codechicken.nei.GuiExtendedCreativeInv;
+import com.github.thebrochacho.dws.interfaces.IDWSGui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 import org.spongepowered.asm.mixin.Mixin;
@@ -8,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiExtendedCreativeInv.class)
-public abstract class GuiExtendedCreativeInvMixin extends GuiContainer {
+public abstract class GuiExtendedCreativeInvMixin extends GuiContainer implements IDWSGui {
 
     public GuiExtendedCreativeInvMixin(Container container) {
         super(container);
