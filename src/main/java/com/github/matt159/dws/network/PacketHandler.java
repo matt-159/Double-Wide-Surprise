@@ -9,7 +9,10 @@ public class PacketHandler {
     public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Tags.MODID);
 
     public static void init() {
-        INSTANCE.registerMessage(DWSInventorySwapPacket.class, DWSInventorySwapPacket.class, 0, Side.SERVER);
         INSTANCE.registerMessage(DWSInventorySwapPacket.class, DWSInventorySwapPacket.class, 0, Side.CLIENT);
+        INSTANCE.registerMessage(DWSInventorySwapPacket.class, DWSInventorySwapPacket.class, 1, Side.SERVER);
+
+        INSTANCE.registerMessage(DWSRearrangePlayerInventoryPacket.class, DWSRearrangePlayerInventoryPacket.class, 2, Side.CLIENT);
+        INSTANCE.registerMessage(DWSRearrangePlayerInventoryPacket.class, DWSRearrangePlayerInventoryPacket.class, 3, Side.SERVER);
     }
 }
