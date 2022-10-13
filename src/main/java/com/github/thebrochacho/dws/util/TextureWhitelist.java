@@ -1,13 +1,14 @@
 package com.github.thebrochacho.dws.util;
 
+import codechicken.nei.recipe.TemplateRecipeHandler;
 import com.github.thebrochacho.dws.Tags;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public final class TextureWhitelist {
     private static final Set<String> whitelist = new HashSet<>();
+    private static final Map<String, Class<?>> cachedClass = new HashMap<>();
 
     public static boolean useDoubleWideTexture = false;
 
@@ -22,7 +23,17 @@ public final class TextureWhitelist {
     }
 
     public static ResourceLocation checkResourceLocation(ResourceLocation rl) {
-        useDoubleWideTexture = checkTextureWhitelist(rl);
+        boolean isNEIShowingShit = false;
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+
+        for (int i = 3; i < 8 && i < stackTraceElements.length; ++i) {
+            if (TemplateRecipeHandler.class.isAssignableFrom(cachedClass.computeIfAbsent(stackTraceElements[i].getClassName(), TextureWhitelist::newClass))) {
+                isNEIShowingShit = true;
+                break;
+            }
+        }
+
+        useDoubleWideTexture = checkTextureWhitelist(rl) && !isNEIShowingShit;
 
         //transforming from:    modid:textures/blahblahblah
         //to:                   dws:textures/modid/blahblahblah
@@ -32,6 +43,14 @@ public final class TextureWhitelist {
         }
 
         return rl;
+    }
+
+    private static Class<?> newClass(String name) {
+        try {
+            return Class.forName(name);
+        } catch (ClassNotFoundException ignored) {
+            return null;
+        }
     }
 
     private static boolean checkTextureWhitelist(ResourceLocation resourceLocation) {
