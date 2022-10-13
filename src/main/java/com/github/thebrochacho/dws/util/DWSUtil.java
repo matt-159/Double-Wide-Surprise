@@ -41,7 +41,11 @@ public final class DWSUtil {
         Tessellator.instance.draw();
     }
 
-    public static void shiftMainInventory(EntityPlayer player) {
+    public static void RearrangeInventoryForFallback(EntityPlayer player) {
+
+    }
+
+    public static void shiftMainInventory(EntityPlayer player, boolean needsFallbackSupport) {
         InventoryPlayer inventory = player.inventory;
 
         int size = inventory.mainInventory.length;
