@@ -5,6 +5,7 @@ import com.github.thebrochacho.dws.Tags;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.*;
+import java.util.function.Function;
 
 public final class TextureWhitelist {
     private static final Set<String> whitelist = new HashSet<>();
@@ -27,10 +28,14 @@ public final class TextureWhitelist {
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
 
         for (int i = 3; i < 8 && i < stackTraceElements.length; ++i) {
-            if (TemplateRecipeHandler.class.isAssignableFrom(cachedClass.computeIfAbsent(stackTraceElements[i].getClassName(), TextureWhitelist::newClass))) {
-                isNEIShowingShit = true;
-                break;
-            }
+            try {
+                Function<String, Class<?>> method = TextureWhitelist::newClass;
+                Class<?> clazz = cachedClass.computeIfAbsent(stackTraceElements[i].getClassName(), method);
+                if (clazz != null && TemplateRecipeHandler.class.isAssignableFrom(clazz)) {
+                    isNEIShowingShit = true;
+                    break;
+                }
+            } catch (Exception ignored) {}
         }
 
         useDoubleWideTexture = checkTextureWhitelist(rl) && !isNEIShowingShit;
