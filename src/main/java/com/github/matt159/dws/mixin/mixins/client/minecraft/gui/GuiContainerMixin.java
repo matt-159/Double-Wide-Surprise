@@ -54,7 +54,7 @@ public abstract class GuiContainerMixin extends GuiScreen {
         }
 
         if (swapKey != null && swapKey.getKeyCode() == key) {
-            PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(this.mc.thePlayer));
+            PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(this instanceof IDWSGui == false));
         }
     }
 

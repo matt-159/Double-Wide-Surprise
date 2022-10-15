@@ -35,7 +35,7 @@ public class DWSKeyHandler {
             if (swapKey.getIsKeyPressed() &&
                     FMLClientHandler.instance().getClient().inGameHasFocus &&
                     swapCooldown == 0) {
-                PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(event.player));
+                PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(false));
 
                 swapCooldown += 5; //ticks
             }

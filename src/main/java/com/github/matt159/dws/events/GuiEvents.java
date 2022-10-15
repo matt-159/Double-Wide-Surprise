@@ -46,7 +46,7 @@ public class GuiEvents {
 
                 button.setFacing(button.getFacing() == Facing.Left ? Facing.Right : Facing.Left);
 
-                PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(event.gui.mc.thePlayer));
+                PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(true));
             }
         }
     }
