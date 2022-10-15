@@ -4,7 +4,10 @@ import codechicken.nei.recipe.TemplateRecipeHandler;
 import com.github.thebrochacho.dws.Tags;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 
 public final class TextureWhitelist {
