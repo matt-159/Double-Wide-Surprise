@@ -36,6 +36,7 @@ public enum Mixin implements IMixin {
     NetHandlerPlayServerMixin                         (COMMON, always(), "minecraft.NetHandlerPlayServerMixin"),
     TextureManagerMixin                               (CLIENT, always(), "minecraft.TextureManagerMixin"),
 
+    ContainerMixin                                    (COMMON, always(), "minecraft.inventory.ContainerMixin"),
     ContainerBeaconMixin                              (COMMON, always(), "minecraft.inventory.ContainerBeaconMixin"),
     ContainerBrewingStandMixin                        (COMMON, always(), "minecraft.inventory.ContainerBrewingStandMixin"),
     ContainerChestMixin                               (COMMON, always(), "minecraft.inventory.ContainerChestMixin"),
