@@ -19,7 +19,7 @@ public class DWSRearrangePlayerInventoryPacket implements IMessage, IMessageHand
 
     @Override
     public IMessage onMessage(DWSRearrangePlayerInventoryPacket message, MessageContext ctx) {
-        DWSUtil.RearrangeInventoryForFallback(ctx.getServerHandler().playerEntity);
+        DWSUtil.ReorganizeInventoryForFallbackSupport(ctx.getServerHandler().playerEntity, DWSUtil.Reorganization.Do);
         return null;
     }
 }
