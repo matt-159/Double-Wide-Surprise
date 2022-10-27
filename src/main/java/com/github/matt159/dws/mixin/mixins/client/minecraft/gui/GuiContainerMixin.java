@@ -37,26 +37,26 @@ public abstract class GuiContainerMixin extends GuiScreen {
     }
 
     // Doing this goofy-aah shit because normal hotkeys don't work inside guis
-    @Inject(method = "keyTyped",
-            at = @At(value = "TAIL"),
-            require = 1)
-    private void injectDWSHotkey(char p_73869_1_, int key, CallbackInfo ci) {
-        KeyBinding swapKey;
-        try {
-            String description = StatCollector.translateToLocal("keybind.inventoryswap");
-
-            swapKey = Arrays.stream(Minecraft.getMinecraft().gameSettings.keyBindings)
-                    .filter(keyBind -> keyBind.getKeyDescription().equals(description))
-                    .findFirst()
-                    .get();
-        } catch (NoSuchElementException e) {
-            swapKey = null;
-        }
-
-        if (swapKey != null && swapKey.getKeyCode() == key) {
-            PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(this instanceof IDWSGui == false));
-        }
-    }
+//    @Inject(method = "keyTyped",
+//            at = @At(value = "TAIL"),
+//            require = 1)
+//    private void injectDWSHotkey(char p_73869_1_, int key, CallbackInfo ci) {
+//        KeyBinding swapKey;
+//        try {
+//            String description = StatCollector.translateToLocal("keybind.inventoryswap");
+//
+//            swapKey = Arrays.stream(Minecraft.getMinecraft().gameSettings.keyBindings)
+//                    .filter(keyBind -> keyBind.getKeyDescription().equals(description))
+//                    .findFirst()
+//                    .get();
+//        } catch (NoSuchElementException e) {
+//            swapKey = null;
+//        }
+//
+//        if (swapKey != null && swapKey.getKeyCode() == key) {
+//            PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(this instanceof IDWSGui == false));
+//        }
+//    }
 
     @Inject(method = "drawScreen",
             at = @At(   value = "INVOKE",
