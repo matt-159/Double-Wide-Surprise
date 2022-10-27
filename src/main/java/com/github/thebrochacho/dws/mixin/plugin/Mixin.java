@@ -4,6 +4,7 @@ import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.lwjgl.opencl.CL;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -33,6 +34,7 @@ public enum Mixin implements IMixin {
     ForgeHooksMixin                                   (COMMON, always(), "minecraft.ForgeHooksMixin"),
     InventoryPlayerMixin                              (COMMON, always(), "minecraft.inventory.InventoryPlayerMixin"),
     MinecraftMixin                                    (CLIENT, always(), "minecraft.MinecraftMixin"),
+    NetHandlerPlayClientMixin                         (CLIENT, always(), "minecraft.NetHandlerPlayClientMixin"),
     NetHandlerPlayServerMixin                         (COMMON, always(), "minecraft.NetHandlerPlayServerMixin"),
     TextureManagerMixin                               (CLIENT, always(), "minecraft.TextureManagerMixin"),
 
