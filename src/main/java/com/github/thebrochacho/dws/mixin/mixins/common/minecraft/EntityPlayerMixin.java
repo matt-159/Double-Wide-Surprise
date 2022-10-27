@@ -3,6 +3,7 @@ package com.github.thebrochacho.dws.mixin.mixins.common.minecraft;
 import com.github.thebrochacho.dws.interfaces.minecraft.IEntityPlayerMixin;
 import com.github.thebrochacho.dws.mixin.plugin.TargetedMod;
 import com.github.thebrochacho.dws.util.DWSUtil;
+import com.github.thebrochacho.dws.util.ModCompat;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.ModContainer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,10 +31,7 @@ public abstract class EntityPlayerMixin implements IEntityPlayerMixin {
         }
 
         ModContainer mc = FMLCommonHandler.instance().findContainerFor(mod);
-        this.isReorganizedForFallbackSupport = Arrays.stream(TargetedMod.values()).noneMatch(targetedMod -> {
-            return targetedMod.getModName().equalsIgnoreCase(mc.getName()) ||
-                   targetedMod.getModName().equalsIgnoreCase(mc.getModId());
-        });
+        this.isReorganizedForFallbackSupport = !ModCompat.hasDWSCompat(mc);
 
         if (this.isReorganizedForFallbackSupport) {
             DWSUtil.ReorganizeInventoryForFallbackSupport((EntityPlayer) (Object) this, DWSUtil.Reorganization.Do);
