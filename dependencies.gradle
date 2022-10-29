@@ -65,6 +65,9 @@ dependencies {
     compile("gtmega:gt5u-mc1.7.10:5.28.23-gtmega:dev") {
         transitive = false
     }
+    compile("com.github.GTNewHorizons:ForestryMC:4.4.0:dev") {
+        transitive = false
+    }
 
     // GregTech Addons
     compile(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")

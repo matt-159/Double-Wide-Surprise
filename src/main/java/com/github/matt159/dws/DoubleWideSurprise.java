@@ -13,7 +13,8 @@ import org.apache.logging.log4j.Logger;
                     "after:TConstruct; " +
                     "after:IronChest; " +
                     "after:gregtech; " +
-                    "after:appliedenergistics2-core; ")
+                    "after:appliedenergistics2-core; " +
+                    "after:Forestry; ")
 public class DoubleWideSurprise {
 
     private static Logger LOG = LogManager.getLogger(Tags.MODID);
