@@ -17,6 +17,7 @@ public final class ModCompat {
         VANILLA("minecraft"),
         AE2("appliedenergistics2"),
         AE2_CORE("appliedenergistics2-core"),
+        FORESTRY("Forestry"),
         GREGTECH("gregtech"),
         IRONCHEST("IronChest"),
         NEI("NotEnoughItems");
