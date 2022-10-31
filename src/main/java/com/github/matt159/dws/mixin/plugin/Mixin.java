@@ -219,6 +219,10 @@ public enum Mixin implements IMixin {
     GuiVibrationChamberMixin                          (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiVibrationChamberMixin"),
     //endregion
 
+    //region Forestry
+    ContainerForestryMixin                            (COMMON, require(FORESTRY), "forestry.ContainerForestryMixin"),
+    //endregion
+
     // @formatter:on
     ;
 
