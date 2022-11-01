@@ -221,6 +221,7 @@ public enum Mixin implements IMixin {
 
     //region Forestry
     ContainerForestryMixin                            (COMMON, require(FORESTRY), "forestry.ContainerForestryMixin"),
+    ForestryGuiMixins                                 (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins")
     //endregion
 
     // @formatter:on
