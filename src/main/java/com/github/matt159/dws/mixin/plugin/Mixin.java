@@ -220,8 +220,15 @@ public enum Mixin implements IMixin {
     //endregion
 
     //region Forestry
+    ContainerAlvearyHygroregulatorMixin               (COMMON, require(FORESTRY), "forestry.apiculture.ContainerAlvearyHygroregulatorMixin"),
+    ContainerAlvearySieveMixin                        (COMMON, require(FORESTRY), "forestry.apiculture.ContainerAlvearySieveMixin"),
+    ContainerAlvearySwarmerMixin                      (COMMON, require(FORESTRY), "forestry.apiculture.ContainerAlvearySwarmerMixin"),
     ContainerBeeHelperMixin                           (COMMON, require(FORESTRY), "forestry.apiculture.ContainerBeeHelperMixin"),
+    ContainerHabitatLocatorMixin                      (COMMON, require(FORESTRY), "forestry.apiculture.ContainerHabitatLocatorMixin"),
+    ContainerImprinterMixin                           (COMMON, require(FORESTRY), "forestry.apiculture.ContainerImprinterMixin"),
+
     ContainerForestryMixin                            (COMMON, require(FORESTRY), "forestry.ContainerForestryMixin"),
+
     ForestryGuiMixins                                 (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins"),
     SlotUtilMixin                                     (COMMON, require(FORESTRY), "forestry.SlotUtilMixin"),
     //endregion
