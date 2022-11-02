@@ -1,4 +1,4 @@
-package com.github.thebrochacho.dws.mixin.mixins.common.forestry;
+package com.github.thebrochacho.dws.mixin.mixins.common.forestry.apiculture;
 
 import forestry.apiculture.gui.ContainerBeeHelper;
 import org.spongepowered.asm.mixin.Mixin;
