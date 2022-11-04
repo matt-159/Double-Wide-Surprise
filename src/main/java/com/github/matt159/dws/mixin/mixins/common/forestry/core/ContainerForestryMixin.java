@@ -1,4 +1,4 @@
-package com.github.matt159.dws.mixin.mixins.common.forestry;
+package com.github.matt159.dws.mixin.mixins.common.forestry.core;
 
 import forestry.core.gui.ContainerForestry;
 import org.spongepowered.asm.mixin.Mixin;
