@@ -233,8 +233,13 @@ public enum Mixin implements IMixin {
     GuiImprinterMixin                                 (CLIENT, require(FORESTRY), "forestry.apiculture.GuiImprinterMixin"),
 
     GuiTreealyzerMixin                                (CLIENT, require(FORESTRY), "forestry.arboriculture.GuiTreealyzerMixin"),
-    
-    ContainerForestryMixin                            (COMMON, require(FORESTRY), "forestry.ContainerForestryMixin"),
+
+    ContainerAlyzerMixin                              (COMMON, require(FORESTRY), "forestry.core.ContainerAlyzerMixin"),
+    ContainerAnalyzerMixin                            (COMMON, require(FORESTRY), "forestry.core.ContainerAnalyzerMixin"),
+    ContainerEscritoireMixin                          (COMMON, require(FORESTRY), "forestry.core.ContainerEscritoireMixin"),
+    ContainerForestryMixin                            (COMMON, require(FORESTRY), "forestry.core.ContainerForestryMixin"),
+    ContainerNaturalistInventoryMixin                 (COMMON, require(FORESTRY), "forestry.core.ContainerNaturalistInventoryMixin"),
+
     ForestryGuiMixins                                 (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins"),
     SlotUtilMixin                                     (COMMON, require(FORESTRY), "forestry.SlotUtilMixin"),
     //endregion
