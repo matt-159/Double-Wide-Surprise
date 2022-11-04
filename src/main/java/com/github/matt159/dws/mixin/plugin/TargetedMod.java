@@ -18,7 +18,7 @@ public enum TargetedMod implements ITargetedMod {
     GALACTICRAFT         ("Galacticraft"         , false , startsWith("galacticraft")),
     TRAVELLERSGEAR       ("TravellersGear"       , true  , startsWith("traveller")),
     IRONCHEST            ("IronChest"            , true  , startsWith("ironchest")),
-    BAUBLES              ("Baubles"              , true  , startsWith("baubles")),
+    BAUBLES              ("Baubles"              , true  , startsWith("baubles-")),
     TINKERSCONSTRUCT     ("TConstruct"           , true  , startsWith("tconstruct")),
     CODECHICKENLIB       ("CodeChickenLib"       , true  , startsWith("codechicken")),
     NOTENOUGHITEMS       ("NotEnoughItems"       , true  , startsWith("notenoughitems")),
