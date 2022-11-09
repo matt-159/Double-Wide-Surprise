@@ -4,7 +4,6 @@ import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.lwjgl.opencl.CL;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -150,7 +149,7 @@ public enum Mixin implements IMixin {
     GT_GUIContainer_TeleporterMixin                   (CLIENT, require(GREGTECH), "gregtech.GT_GUIContainer_TeleporterMixin"),
     GT_GUIContainerVolumetricFlaskMixin               (CLIENT, require(GREGTECH), "gregtech.GT_GUIContainerVolumetricFlaskMixin"),
 
-    GT_NEI_DefaultHandlerMixin                        (COMMON, require(GREGTECH), "gregtech.GT_NEI_DefaultHandlerMixin"),
+//    GT_NEI_DefaultHandlerMixin                        (COMMON, require(GREGTECH), "gregtech.GT_NEI_DefaultHandlerMixin"),
     GT_RectHandlerMixin                               (COMMON, require(GREGTECH), "gregtech.GT_RectHandlerMixin"),
     //endregion
 
