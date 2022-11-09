@@ -219,6 +219,7 @@ public enum Mixin implements IMixin {
     //endregion
 
     //region Forestry
+    //region Apiculture
     ContainerAlvearyHygroregulatorMixin               (COMMON, require(FORESTRY), "forestry.apiculture.ContainerAlvearyHygroregulatorMixin"),
     ContainerAlvearySieveMixin                        (COMMON, require(FORESTRY), "forestry.apiculture.ContainerAlvearySieveMixin"),
     ContainerAlvearySwarmerMixin                      (COMMON, require(FORESTRY), "forestry.apiculture.ContainerAlvearySwarmerMixin"),
@@ -230,9 +231,11 @@ public enum Mixin implements IMixin {
     GuiBeealyzerMixin                                 (CLIENT, require(FORESTRY), "forestry.apiculture.GuiBeealyzerMixin"),
     GuiHabitatLocatorMixin                            (CLIENT, require(FORESTRY), "forestry.apiculture.GuiHabitatLocatorMixin"),
     GuiImprinterMixin                                 (CLIENT, require(FORESTRY), "forestry.apiculture.GuiImprinterMixin"),
-
+    //endregion
+    //region Arboriculture
     GuiTreealyzerMixin                                (CLIENT, require(FORESTRY), "forestry.arboriculture.GuiTreealyzerMixin"),
-
+    //endregion
+    //region Core
     ContainerAlyzerMixin                              (COMMON, require(FORESTRY), "forestry.core.ContainerAlyzerMixin"),
     ContainerAnalyzerMixin                            (COMMON, require(FORESTRY), "forestry.core.ContainerAnalyzerMixin"),
     ContainerEscritoireMixin                          (COMMON, require(FORESTRY), "forestry.core.ContainerEscritoireMixin"),
@@ -246,7 +249,8 @@ public enum Mixin implements IMixin {
 
     GuiWidgetsMixin                                   (CLIENT, require(FORESTRY), "forestry.core.widgets.WidgetsMixin"),
     TankWidgetMixin                                   (CLIENT, require(FORESTRY), "forestry.core.widgets.TankWidgetMixin"),
-
+    //endregion
+    //region Energy
     ContainerEngineBiogasMixin                        (COMMON, require(FORESTRY), "forestry.energy.ContainerEngineBiogasMixin"),
     ContainerEngineElectricMixin                      (COMMON, require(FORESTRY), "forestry.energy.ContainerEngineElectricMixin"),
     ContainerEnginePeatMixin                          (COMMON, require(FORESTRY), "forestry.energy.ContainerEnginePeatMixin"),
@@ -256,7 +260,20 @@ public enum Mixin implements IMixin {
     GuiEngineElectricMixin                            (CLIENT, require(FORESTRY), "forestry.energy.GuiEngineElectricMixin"),
     GuiEnginePeatMixin                                (CLIENT, require(FORESTRY), "forestry.energy.GuiEnginePeatMixin"),
     GuiGeneratorMixin                                 (CLIENT, require(FORESTRY), "forestry.energy.GuiGeneratorMixin"),
+    //endregion
+    //region Factory
+    ContainerBottlerMixin                             (COMMON, require(FORESTRY), "forestry.factory.ContainerBottlerMixin"),
+    ContainerCarpenterMixin                           (COMMON, require(FORESTRY), "forestry.factory.ContainerCarpenterMixin"),
+    ContainerCentrifugeMixin                          (COMMON, require(FORESTRY), "forestry.factory.ContainerCentrifugeMixin"),
+    ContainerFabricatorMixin                          (COMMON, require(FORESTRY), "forestry.factory.ContainerFabricatorMixin"),
+    ContainerFermenterMixin                           (COMMON, require(FORESTRY), "forestry.factory.ContainerFermenterMixin"),
+    ContainerMoistenerMixin                           (COMMON, require(FORESTRY), "forestry.factory.ContainerMoistenerMixin"),
+    ContainerRaintankMixin                            (COMMON, require(FORESTRY), "forestry.factory.ContainerRaintankMixin"),
+    ContainerStillMixin                               (COMMON, require(FORESTRY), "forestry.factory.ContainerStillMixin"),
+    ContainerSqueezerMixin                            (COMMON, require(FORESTRY), "forestry.factory.ContainerSqueezerMixin"),
+    ContainerWorktableMixin                           (COMMON, require(FORESTRY), "forestry.factory.ContainerWorktableMixin"),
 
+    //endregion
     ForestryGuiMixins                                 (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins"),
     SlotUtilMixin                                     (COMMON, require(FORESTRY), "forestry.SlotUtilMixin"),
     //endregion
