@@ -284,6 +284,9 @@ public enum Mixin implements IMixin {
     GuiStillMixin                                     (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiStillMixin"),
     GuiWorktableMixin                                 (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiWorktableMixin"),
 
+    NEIHandlerBottlerMixin                            (CLIENT, require(FORESTRY), "forestry.factory.nei.NEIHandlerBottlerMixin"),
+    CachedBottlerRecipeMixin                          (CLIENT, require(FORESTRY), "forestry.factory.nei.CachedBottlerRecipeMixin"),
+
     //endregion
     ForestryGuiMixins                                 (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins"),
     SlotUtilMixin                                     (COMMON, require(FORESTRY), "forestry.SlotUtilMixin"),
