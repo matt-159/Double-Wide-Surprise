@@ -4,6 +4,7 @@ import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.lwjgl.opencl.CL;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -284,9 +285,12 @@ public enum Mixin implements IMixin {
     GuiStillMixin                                     (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiStillMixin"),
     GuiWorktableMixin                                 (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiWorktableMixin"),
 
-    NEIHandlerBottlerMixin                            (CLIENT, require(FORESTRY), "forestry.factory.nei.NEIHandlerBottlerMixin"),
     CachedBottlerRecipeMixin                          (CLIENT, require(FORESTRY), "forestry.factory.nei.CachedBottlerRecipeMixin"),
+    //endregion
+    //region Farming
+    ContainerFarmMixin                                (COMMON, require(FORESTRY), "forestry.farming.gui.ContainerFarmMixin"),
 
+    GuiFarmMixin                                      (CLIENT, require(FORESTRY), "forestry.farming.gui.GuiFarmMixin"),
     //endregion
     ForestryGuiMixins                                 (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins"),
     SlotUtilMixin                                     (COMMON, require(FORESTRY), "forestry.SlotUtilMixin"),
