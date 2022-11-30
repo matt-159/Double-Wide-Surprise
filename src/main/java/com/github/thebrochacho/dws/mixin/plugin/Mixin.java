@@ -4,7 +4,6 @@ import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.lwjgl.opencl.CL;
 
 import java.util.List;
 import java.util.function.Predicate;

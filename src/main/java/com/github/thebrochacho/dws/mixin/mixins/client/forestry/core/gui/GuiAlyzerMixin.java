@@ -1,7 +1,6 @@
 package com.github.thebrochacho.dws.mixin.mixins.client.forestry.core.gui;
 
 import forestry.core.gui.GuiAlyzer;
-import org.spongepowered.asm.lib.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
