@@ -6,7 +6,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Slice;
-import sun.security.pkcs11.wrapper.CK_INFO;
 
 @Mixin(GuiNaturalistInventory.class)
 public abstract class GuiNaturalistInventoryMixin {

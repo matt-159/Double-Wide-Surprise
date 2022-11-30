@@ -1,7 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft;
 
 import com.github.matt159.dws.interfaces.minecraft.IEntityPlayerMixin;
-import com.github.matt159.dws.mixin.plugin.TargetedMod;
 import com.github.matt159.dws.util.DWSUtil;
 import com.github.matt159.dws.util.ModCompat;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -12,8 +11,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.Arrays;
 
 @Mixin(EntityPlayer.class)
 public abstract class EntityPlayerMixin implements IEntityPlayerMixin {
