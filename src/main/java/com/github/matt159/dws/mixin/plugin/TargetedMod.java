@@ -18,7 +18,7 @@ public enum TargetedMod implements ITargetedMod {
     GALACTICRAFT         ("Galacticraft"         , false , startsWith("galacticraft")),
     TRAVELLERSGEAR       ("TravellersGear"       , true  , startsWith("traveller")),
     IRONCHEST            ("IronChest"            , true  , startsWith("ironchest")),
-    BAUBLES              ("Baubles"              , true  , startsWith("baubles")),
+    BAUBLES              ("Baubles"              , true  , startsWith("baubles-")),
     TINKERSCONSTRUCT     ("TConstruct"           , true  , startsWith("tconstruct")),
     CODECHICKENLIB       ("CodeChickenLib"       , true  , startsWith("codechicken")),
     NOTENOUGHITEMS       ("NotEnoughItems"       , true  , startsWith("notenoughitems")),
@@ -26,7 +26,7 @@ public enum TargetedMod implements ITargetedMod {
     BARTWORKS            ("Bartworks"            , true  , startsWith("bartworks")),
     TECTECH              ("TecTech"              , true  , startsWith("tectech").or(startsWith("tec-tech"))),
     APPLIEDENERGISTICS2  ("AppliedEnergistics2"  , true  , startsWith("appliedenergistics2").or(contains("ae2"))),
-
+    FORESTRY             ("Forestry"             , true  , startsWith("forestry")),
 
     ;
 
