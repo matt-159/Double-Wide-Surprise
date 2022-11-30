@@ -11,7 +11,7 @@ public abstract class GuiEngineElectricMixin {
                                "drawGuiContainerBackgroundLayer" },
                     constant = { @Constant(intValue = 30),
                                  @Constant(intValue = 74) },
-                    require = 1)
+                    require = 2)
     private int modifyXOffsets(int constant) {
         return constant + 81;
     }
