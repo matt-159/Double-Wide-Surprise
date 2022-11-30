@@ -8,9 +8,6 @@ dependencies {
     // FalsePattern Lib
     compile("com.falsepattern:falsepatternlib-mc1.7.10:0.10.10:dev")
 
-    // MixinASM
-    compile(name:"mixingasm-1.7.10-0.2.1-deobf", ext:"jar")
-
     // Baubles
     compile("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
         transitive = true
