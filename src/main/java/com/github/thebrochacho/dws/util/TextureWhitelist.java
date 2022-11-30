@@ -275,5 +275,43 @@ public final class TextureWhitelist {
         addTextureToWhitelist("appliedenergistics2:textures/guis/vibchamber.png");
         addTextureToWhitelist("appliedenergistics2:textures/guis/wireless.png");
         //endregion
+
+        //region Forestry Textures
+        addTextureToWhitelist("forestry:textures/gui/alveary.png");
+        addTextureToWhitelist("forestry:textures/gui/alyzer.png");
+        addTextureToWhitelist("forestry:textures/gui/analyzer.png");
+        addTextureToWhitelist("forestry:textures/gui/apiaristinventory.png");
+        addTextureToWhitelist("forestry:textures/gui/apiary.png");
+        addTextureToWhitelist("forestry:textures/gui/backpack.png");
+        addTextureToWhitelist("forestry:textures/gui/backpackT2.png");
+        addTextureToWhitelist("forestry:textures/gui/beealyzer2.png");
+        addTextureToWhitelist("forestry:textures/gui/bioengine.png");
+        addTextureToWhitelist("forestry:textures/gui/biomefinder.png");
+        addTextureToWhitelist("forestry:textures/gui/bottler.png");
+        addTextureToWhitelist("forestry:textures/gui/carpenter.png");
+        addTextureToWhitelist("forestry:textures/gui/centrifugesocket.png");
+        addTextureToWhitelist("forestry:textures/gui/electricalengine.png");
+        addTextureToWhitelist("forestry:textures/gui/escritoire.png");
+        addTextureToWhitelist("forestry:textures/gui/fabricator.png");
+        addTextureToWhitelist("forestry:textures/gui/fermenter.png");
+        addTextureToWhitelist("forestry:textures/gui/generator.png");
+        addTextureToWhitelist("forestry:textures/gui/hygroregulator.png");
+        addTextureToWhitelist("forestry:textures/gui/imprinter.png");
+        addTextureToWhitelist("forestry:textures/gui/infuser.png");
+        addTextureToWhitelist("forestry:textures/gui/letter.png");
+        addTextureToWhitelist("forestry:textures/gui/mailbox.png");
+        addTextureToWhitelist("forestry:textures/gui/mailtrader2.png");
+        addTextureToWhitelist("forestry:textures/gui/mfarm.png");
+        addTextureToWhitelist("forestry:textures/gui/moistener.png");
+        addTextureToWhitelist("forestry:textures/gui/peatengine.png");
+        addTextureToWhitelist("forestry:textures/gui/philatelist.png");
+        addTextureToWhitelist("forestry:textures/gui/raintank.png");
+        addTextureToWhitelist("forestry:textures/gui/sieve.png");
+        addTextureToWhitelist("forestry:textures/gui/solder.png");
+        addTextureToWhitelist("forestry:textures/gui/squeezersocket.png");
+        addTextureToWhitelist("forestry:textures/gui/swarmer.png");
+        addTextureToWhitelist("forestry:textures/gui/still.png");
+        addTextureToWhitelist("forestry:textures/gui/worktable2.png");
+        //endregion
     }
 }

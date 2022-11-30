@@ -4,7 +4,6 @@ import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.lwjgl.opencl.CL;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -150,7 +149,7 @@ public enum Mixin implements IMixin {
     GT_GUIContainer_TeleporterMixin                   (CLIENT, require(GREGTECH), "gregtech.GT_GUIContainer_TeleporterMixin"),
     GT_GUIContainerVolumetricFlaskMixin               (CLIENT, require(GREGTECH), "gregtech.GT_GUIContainerVolumetricFlaskMixin"),
 
-    GT_NEI_DefaultHandlerMixin                        (COMMON, require(GREGTECH), "gregtech.GT_NEI_DefaultHandlerMixin"),
+//    GT_NEI_DefaultHandlerMixin                        (COMMON, require(GREGTECH), "gregtech.GT_NEI_DefaultHandlerMixin"),
     GT_RectHandlerMixin                               (COMMON, require(GREGTECH), "gregtech.GT_RectHandlerMixin"),
     //endregion
 
@@ -217,6 +216,90 @@ public enum Mixin implements IMixin {
     GuiStorageBusMixin                                (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiStorageBusMixin"),
     GuiUpgradeableMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
     GuiVibrationChamberMixin                          (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiVibrationChamberMixin"),
+    //endregion
+
+    //region Forestry
+    //region Apiculture
+    ContainerAlvearyHygroregulatorMixin               (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerAlvearyHygroregulatorMixin"),
+    ContainerAlvearySieveMixin                        (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerAlvearySieveMixin"),
+    ContainerAlvearySwarmerMixin                      (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerAlvearySwarmerMixin"),
+    ContainerBeeHelperMixin                           (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerBeeHelperMixin"),
+    ContainerHabitatLocatorMixin                      (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerHabitatLocatorMixin"),
+    ContainerImprinterMixin                           (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerImprinterMixin"),
+
+    GuiAlvearyMixin                                   (CLIENT, require(FORESTRY), "forestry.apiculture.gui.GuiAlvearyMixin"),
+    GuiBeealyzerMixin                                 (CLIENT, require(FORESTRY), "forestry.apiculture.gui.GuiBeealyzerMixin"),
+    GuiHabitatLocatorMixin                            (CLIENT, require(FORESTRY), "forestry.apiculture.gui.GuiHabitatLocatorMixin"),
+    GuiImprinterMixin                                 (CLIENT, require(FORESTRY), "forestry.apiculture.gui.GuiImprinterMixin"),
+    //endregion
+    //region Arboriculture
+    GuiTreealyzerMixin                                (CLIENT, require(FORESTRY), "forestry.arboriculture.gui.GuiTreealyzerMixin"),
+    //endregion
+    //region Core
+    ContainerAlyzerMixin                              (COMMON, require(FORESTRY), "forestry.core.gui.ContainerAlyzerMixin"),
+    ContainerAnalyzerMixin                            (COMMON, require(FORESTRY), "forestry.core.gui.ContainerAnalyzerMixin"),
+    ContainerEscritoireMixin                          (COMMON, require(FORESTRY), "forestry.core.gui.ContainerEscritoireMixin"),
+    ContainerForestryMixin                            (COMMON, require(FORESTRY), "forestry.core.gui.ContainerForestryMixin"),
+    ContainerNaturalistInventoryMixin                 (COMMON, require(FORESTRY), "forestry.core.gui.ContainerNaturalistInventoryMixin"),
+
+    GuiAlyzerMixin                                    (CLIENT, require(FORESTRY), "forestry.core.gui.GuiAlyzerMixin"),
+    GuiAnalyzerMixin                                  (CLIENT, require(FORESTRY), "forestry.core.gui.GuiAnalyzerMixin"),
+    GuiEscritoireMixin                                (CLIENT, require(FORESTRY), "forestry.core.gui.GuiEscritoireMixin"),
+    GuiNaturalistInventoryMixin                       (CLIENT, require(FORESTRY), "forestry.core.gui.GuiNaturalistInventoryMixin"),
+
+    ContainerSolderingIronMixin                       (COMMON, require(FORESTRY), "forestry.core.circuits.ContainerSolderingIronMixin"),
+
+    GuiSolderingIronMixin                             (CLIENT, require(FORESTRY), "forestry.core.circuits.GuiSolderingIronMixin"),
+
+    GuiWidgetsMixin                                   (CLIENT, require(FORESTRY), "forestry.core.widgets.WidgetsMixin"),
+    TankWidgetMixin                                   (CLIENT, require(FORESTRY), "forestry.core.widgets.TankWidgetMixin"),
+    //endregion
+    //region Energy
+    ContainerEngineBiogasMixin                        (COMMON, require(FORESTRY), "forestry.energy.gui.ContainerEngineBiogasMixin"),
+    ContainerEngineElectricMixin                      (COMMON, require(FORESTRY), "forestry.energy.gui.ContainerEngineElectricMixin"),
+    ContainerEnginePeatMixin                          (COMMON, require(FORESTRY), "forestry.energy.gui.ContainerEnginePeatMixin"),
+    ContainerGeneratorMixin                           (COMMON, require(FORESTRY), "forestry.energy.gui.ContainerGeneratorMixin"),
+
+    GuiEngineBiogasMixin                              (CLIENT, require(FORESTRY), "forestry.energy.gui.GuiEngineBiogasMixin"),
+    GuiEngineElectricMixin                            (CLIENT, require(FORESTRY), "forestry.energy.gui.GuiEngineElectricMixin"),
+    GuiEnginePeatMixin                                (CLIENT, require(FORESTRY), "forestry.energy.gui.GuiEnginePeatMixin"),
+    GuiGeneratorMixin                                 (CLIENT, require(FORESTRY), "forestry.energy.gui.GuiGeneratorMixin"),
+    //endregion
+    //region Factory
+    ContainerBottlerMixin                             (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerBottlerMixin"),
+    ContainerCarpenterMixin                           (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerCarpenterMixin"),
+    ContainerCentrifugeMixin                          (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerCentrifugeMixin"),
+    ContainerFabricatorMixin                          (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerFabricatorMixin"),
+    ContainerFermenterMixin                           (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerFermenterMixin"),
+    ContainerMoistenerMixin                           (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerMoistenerMixin"),
+    ContainerRaintankMixin                            (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerRaintankMixin"),
+    ContainerStillMixin                               (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerStillMixin"),
+    ContainerSqueezerMixin                            (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerSqueezerMixin"),
+    ContainerWorktableMixin                           (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerWorktableMixin"),
+
+    GuiBottlerMixin                                   (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiBottlerMixin"),
+    GuiCarpenterMixin                                 (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiCarpenterMixin"),
+    GuiCentrifugeMixin                                (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiCentrifugeMixin"),
+    GuiFabricatorMixin                                (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiFabricatorMixin"),
+    GuiFermenterMixin                                 (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiFermenterMixin"),
+    GuiMoistenerMixin                                 (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiMoistenerMixin"),
+    GuiRaintankMixin                                  (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiRaintankMixin"),
+    GuiSqueezerMixin                                  (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiSqueezerMixin"),
+    GuiStillMixin                                     (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiStillMixin"),
+    GuiWorktableMixin                                 (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiWorktableMixin"),
+
+    CachedBottlerRecipeMixin                          (CLIENT, require(FORESTRY), "forestry.factory.nei.CachedBottlerRecipeMixin"),
+    //endregion
+    //region Farming
+    ContainerFarmMixin                                (COMMON, require(FORESTRY), "forestry.farming.gui.ContainerFarmMixin"),
+
+    GuiFarmMixin                                      (CLIENT, require(FORESTRY), "forestry.farming.gui.GuiFarmMixin"),
+    //endregion
+    //region Storage
+    ContainerBackpackMixin                            (COMMON, require(FORESTRY), "forestry.storage.gui.ContainerBackpackMixin"),
+    //endregion
+    ForestryGuiMixins                                 (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins"),
+    SlotUtilMixin                                     (COMMON, require(FORESTRY), "forestry.SlotUtilMixin"),
     //endregion
 
     // @formatter:on
