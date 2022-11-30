@@ -17,7 +17,6 @@ public abstract class GuiEscritoireMixin {
                                  @Constant(intValue = 115),
                                  @Constant(intValue = 136),
                                  @Constant(intValue = 170) },
-                    remap = false,
                     require = 1)
     private int modifyXOffsets(int constant) {
         return constant + 64;

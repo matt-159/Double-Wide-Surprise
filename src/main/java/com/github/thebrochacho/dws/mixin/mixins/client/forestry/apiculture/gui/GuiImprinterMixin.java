@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class GuiImprinterMixin {
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
                     constant = @Constant(intValue = 138),
-                    remap = false,
                     require = 1)
     private int modifyTextXOffset(int constant) {
         return constant + 162;

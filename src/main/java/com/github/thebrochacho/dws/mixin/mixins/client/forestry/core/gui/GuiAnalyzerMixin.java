@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class GuiAnalyzerMixin {
     @ModifyConstant(method = "<init>",
                     constant = @Constant(intValue = 95),
-                    remap = false,
                     require = 1)
     private int modifyTankXOffset(int constant) {
         return constant + 81;
@@ -17,7 +16,6 @@ public abstract class GuiAnalyzerMixin {
 
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
                     constant = @Constant(intValue = 64),
-                    remap = false,
                     require = 1)
     private int modifyProgressBarXOffset(int constant) {
         return constant + 81;
