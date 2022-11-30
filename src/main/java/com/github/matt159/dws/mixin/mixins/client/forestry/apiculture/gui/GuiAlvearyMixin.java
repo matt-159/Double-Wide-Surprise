@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class GuiAlvearyMixin {
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
                     constant = @Constant(intValue = 20),
-                    remap = false,
                     require = 1)
     private int modifyXOffset(int constant) {
         return constant + 81;
