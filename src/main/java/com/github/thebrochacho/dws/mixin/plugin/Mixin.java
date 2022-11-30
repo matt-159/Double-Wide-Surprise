@@ -296,6 +296,9 @@ public enum Mixin implements IMixin {
 
     GuiFarmMixin                                      (CLIENT, require(FORESTRY), "forestry.farming.gui.GuiFarmMixin"),
     //endregion
+    //region Storage
+    ContainerBackpackMixin                            (COMMON, require(FORESTRY), "forestry.storage.gui.ContainerBackpackMixin"),
+    //endregion
     ForestryGuiMixins                                 (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins"),
     SlotUtilMixin                                     (COMMON, require(FORESTRY), "forestry.SlotUtilMixin"),
     //endregion
