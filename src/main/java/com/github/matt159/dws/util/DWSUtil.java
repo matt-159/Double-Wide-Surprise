@@ -168,7 +168,7 @@ public final class DWSUtil {
         player.inventoryContainer.detectAndSendChanges();
     }
 
-    public static void shiftMainInventory(EntityPlayer player, boolean needsFallbackSupport) {
+    public static void shiftMainInventory(EntityPlayer player, boolean isSmallGui) {
         InventoryPlayer inventory = new InventoryPlayer(player);
         inventory.copyInventory(player.inventory);
 
