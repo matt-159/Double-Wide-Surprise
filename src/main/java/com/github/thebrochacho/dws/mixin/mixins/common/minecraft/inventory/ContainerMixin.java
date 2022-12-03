@@ -1,5 +1,6 @@
 package com.github.thebrochacho.dws.mixin.mixins.common.minecraft.inventory;
 
+import codechicken.nei.ContainerCreativeInv;
 import com.github.thebrochacho.dws.interfaces.minecraft.IEntityPlayerMixin;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -24,7 +25,8 @@ public abstract class ContainerMixin {
             at = @At("RETURN"),
             require = 1)
     private void injectPlayerInventoryReorganization(EntityPlayer player, CallbackInfo ci) {
-        if (((Container) (Object) this) instanceof ContainerPlayer) {
+        Container c = ((Container) (Object) this);
+        if (c instanceof ContainerPlayer || c instanceof ContainerCreativeInv) {
             return;
         }
 
