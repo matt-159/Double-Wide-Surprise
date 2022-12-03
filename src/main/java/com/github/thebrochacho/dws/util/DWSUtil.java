@@ -142,8 +142,6 @@ public final class DWSUtil {
                  *  └────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
                  */
 
-                //TODO acquire more braincells and fix issue with desync inside third row
-
                 Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 9, 18));
                 Collections.addAll(items, Arrays.copyOfRange(inventory.mainInventory, 45, 54));
 
