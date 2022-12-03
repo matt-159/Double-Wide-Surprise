@@ -2,15 +2,16 @@
 
 ![dws](https://user-images.githubusercontent.com/50430417/170623813-d82b2b7d-7dfd-47d5-94a4-afcc46f986c7.png)
 ----
-A 1.7.10 Minecraft mod that doubles the size of the minecraft player inventory and hotbar.
-All inventories are supported, but explicit support has been completed for:
+A 1.7.10 Minecraft mod that doubles the size of the minecraft player inventory and hotbar. Baubles, Tinkers, Traveller's Gear, and Galacticraft Accessories are all able to equipped from inside one comprehensive GUI.
+Most modded inventories should work, but explicit support has been completed for:
 - Vanilla
 - Gregtech
 - Ironchests
+- AE2
+- Forestry
 
 Future plans for the mod:
 - Support more and more modded inventories
-- Incorporate Baubles, Tinkers accessories, Traveller's Gear, and Galacticraft slots into normal player inventory gui as depicted above
 
 FAQ:
 - Will you need to use an item to unlock these extra slots?
