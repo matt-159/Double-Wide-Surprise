@@ -11,7 +11,6 @@ public abstract class GuiRaintankMixin {
                                "drawGuiContainerBackgroundLayer" },
                     constant = { @Constant(intValue = 53),
                                  @Constant(intValue = 80) },
-                    remap = false,
                     require = 2)
     private int modifyXOffsets(int constant) {
         return constant + 81;
@@ -19,7 +18,6 @@ public abstract class GuiRaintankMixin {
 
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
             constant = @Constant(intValue = 176),
-            remap = false,
             require = 1)
     private int modifyTextureUVXOffset(int constant) {
         return 338;
