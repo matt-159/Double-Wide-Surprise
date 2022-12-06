@@ -88,10 +88,10 @@ public enum Mixin implements IMixin {
     NEIServerUtilsMixin                               (COMMON, require(NOTENOUGHITEMS), "nei.NEIServerUtilsMixin"),
     PlayerSaveMixin                                   (COMMON, require(NOTENOUGHITEMS), "nei.PlayerSaveMixin"),
 
-    BrewingRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.BrewingRecipeHandlerMixin"),
-    FurnaceRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.FurnaceRecipeHandlerMixin"),
-    ShapedRecipeHandlerMixin                          (COMMON, require(NOTENOUGHITEMS), "nei.ShapedRecipeHandlerMixin"),
-//    TemplateRecipeHandlerMixin                        (COMMON, require(NOTENOUGHITEMS), "nei.TemplateRecipeHandlerMixin"),
+//    BrewingRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.BrewingRecipeHandlerMixin"),
+//    FurnaceRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.FurnaceRecipeHandlerMixin"),
+//    ShapedRecipeHandlerMixin                          (COMMON, require(NOTENOUGHITEMS), "nei.ShapedRecipeHandlerMixin"),
+    TemplateRecipeHandlerMixin                        (COMMON, require(NOTENOUGHITEMS), "nei.TemplateRecipeHandlerMixin"),
     //endregion
 
     // region Galacticraft Mixins
@@ -190,7 +190,7 @@ public enum Mixin implements IMixin {
     ContainerUpgradeableMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
     ContainerVibrationChamberMixin                    (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerVibrationChamberMixin"),
     ContainerWirelessMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerWirelessMixin"),
-    NEIAERecipeHandlerMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.NEIAERecipeHandlerMixin"),
+//    NEIAERecipeHandlerMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.NEIAERecipeHandlerMixin"),
 
     AEBaseGuiMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseGuiMixin"),
     GuiCellWorkbenchMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCellWorkbenchMixin"),
