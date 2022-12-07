@@ -45,5 +45,7 @@ public abstract class EntityPlayerMixin implements IEntityPlayerMixin {
         if (this.isReorganizedForFallbackSupport) {
             DWSUtil.ReorganizeInventoryForFallbackSupport((EntityPlayer) (Object) this, DWSUtil.Reorganization.Undo);
         }
+
+        this.isReorganizedForFallbackSupport = false;
     }
 }
