@@ -1,6 +1,8 @@
+
+
+![image](https://user-images.githubusercontent.com/16054364/208403173-a0c88d33-687c-4d63-bace-51af8e79eaf9.png)
 # Double Wide Surprise
 
-![dws](https://user-images.githubusercontent.com/50430417/170623813-d82b2b7d-7dfd-47d5-94a4-afcc46f986c7.png)
 ----
 A 1.7.10 Minecraft mod that doubles the size of the minecraft player inventory and hotbar. Baubles, Tinkers, Traveller's Gear, and Galacticraft Accessories are all able to equipped from inside one comprehensive GUI.
 Most modded inventories should work, but explicit support has been completed for:
