@@ -15,7 +15,11 @@ Most modded inventories should work, but explicit support has been completed for
 Future plans for the mod:
 - Support more and more modded inventories
 
-FAQ:
+## Dependencies
+- [GasStation](https://github.com/FalsePattern/GasStation)
+- [FalsePatternLib](https://github.com/FalsePattern/FalsePatternLib)
+
+## FAQ:
 - Will you need to use an item to unlock these extra slots?
   - No. You get it for free
   
