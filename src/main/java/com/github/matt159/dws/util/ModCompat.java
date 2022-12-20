@@ -20,7 +20,9 @@ public final class ModCompat {
         FORESTRY("Forestry"),
         GREGTECH("gregtech"),
         IRONCHEST("IronChest"),
-        NEI("NotEnoughItems");
+        NEI("NotEnoughItems"),
+        STORAGEDRAWERS("StorageDrawers"),
+        ;
 
         private final String modID;
 
