@@ -313,5 +313,13 @@ public final class TextureWhitelist {
         addTextureToWhitelist("forestry:textures/gui/still.png");
         addTextureToWhitelist("forestry:textures/gui/worktable2.png");
         //endregion
+
+        //region Storage Drawers
+        addTextureToWhitelist("storagedrawers:textures/gui/drawers_1.png");
+        addTextureToWhitelist("storagedrawers:textures/gui/drawers_2.png");
+        addTextureToWhitelist("storagedrawers:textures/gui/drawers_4.png");
+        addTextureToWhitelist("storagedrawers:textures/gui/drawers_comp.png");
+        addTextureToWhitelist("storagedrawers:textures/gui/framing.png");
+        //endregion
     }
 }
