@@ -28,6 +28,7 @@ public enum TargetedMod implements ITargetedMod {
     APPLIEDENERGISTICS2  ("AppliedEnergistics2"  , true  , startsWith("appliedenergistics2").or(contains("ae2"))),
     FORESTRY             ("Forestry"             , true  , startsWith("forestry")),
 
+    STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers")),
     ;
 
 
