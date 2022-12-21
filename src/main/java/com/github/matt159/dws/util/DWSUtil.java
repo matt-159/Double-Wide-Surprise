@@ -219,6 +219,13 @@ public final class DWSUtil {
         }
         player.inventoryContainer.detectAndSendChanges();
     }
+
+    public static int getAccessorySlotCount() {
+        return  (ModCompat.isBaublesPresent()           ?  4 : 0) +
+                (ModCompat.isTinkersConstructPresent()  ?  7 : 0) +
+                (ModCompat.isTravellersGearPresent()    ?  4 : 0) +
+                (ModCompat.isGalacticraftPresent()      ? 10 : 0);
+    }
 //
 //    public static int getFirstPlayerSlotIndex(Container container) {
 //        for (int i = 0; i < container.inventorySlots.size(); ++i) {
