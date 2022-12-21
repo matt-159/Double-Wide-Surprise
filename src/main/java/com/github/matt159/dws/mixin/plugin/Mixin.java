@@ -287,8 +287,10 @@ public enum Mixin implements IMixin {
     //endregion
     //region Storage Drawers
     ContainerDrawersMixin                             (COMMON, require(STORAGEDRAWERS), "storagedrawers.ContainerDrawersMixin"),
+    ContainerFramingTableMixin                        (COMMON, require(STORAGEDRAWERS), "storagedrawers.ContainerFramingTableMixin"),
 
     GuiDrawersMixin                                   (CLIENT, require(STORAGEDRAWERS), "storagedrawers.GuiDrawersMixin"),
+    GuiFramingMixin                                   (CLIENT, require(STORAGEDRAWERS), "storagedrawers.GuiFramingMixin"),
     //endregion
     // @formatter:on
     ;
