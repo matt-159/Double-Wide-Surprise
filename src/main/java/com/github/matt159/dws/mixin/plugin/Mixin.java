@@ -26,7 +26,6 @@ public enum Mixin implements IMixin {
     TravellersGearSlotInjectMixin                     (COMMON, require(TRAVELLERSGEAR), "dws.travellersgear.ContainerPlayerMixin"),
     GalacticraftSlotInjectMixin                       (COMMON, require(GALACTICRAFT), "dws.galacticraft.ContainerPlayerMixin"),
     //endregion
-
     // region Vanilla Mixins
     CreativeTabsMixin                                 (CLIENT, always(), "minecraft.gui.CreativeTabsMixin"),
     EntityPlayerMixin                                 (COMMON, always(), "minecraft.EntityPlayerMixin"),
@@ -73,11 +72,9 @@ public enum Mixin implements IMixin {
     GuiRepairMixin                                    (CLIENT, always(), "minecraft.gui.GuiRepairMixin"),
     GuiScreenHorseInventoryMixin                      (CLIENT, always(), "minecraft.gui.GuiScreenHorseInventoryMixin"),
     //endregion
-
     // region CodeChickenLib Mixins
     InventoryRangeMixin                               (COMMON, require(CODECHICKENLIB),"codechickenlib.InventoryRangeMixin"),
     //endregion
-
     //region NEI Mixins
     ClientUtilsMixin                                  (CLIENT, require(NOTENOUGHITEMS),"nei.NEIClientUtilsMixin"),
     ContainerCreativeInvMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.ContainerCreativeInvMixin"),
@@ -90,25 +87,20 @@ public enum Mixin implements IMixin {
 
     TemplateRecipeHandlerMixin                        (COMMON, require(NOTENOUGHITEMS), "nei.TemplateRecipeHandlerMixin"),
     //endregion
-
     // region Galacticraft Mixins
     IGalacticWearableMixin                            (COMMON, require(GALACTICRAFT), "galacticraft.GalacticWearableMixin"),
     ContainerExtendedInventoryMixin                   (COMMON, require(GALACTICRAFT), "galacticraft.ContainerExtendedInventoryMixin"),
     //endregion
-
     // region TravellersGear
     ClientProxyMixin                                  (CLIENT, require(TRAVELLERSGEAR), "travellersgear.ClientProxyMixin"),
     //endregion
-
     // region Baubles Mixins
     GuiEventsMixin                                    (CLIENT, require(BAUBLES), "baubles.GuiEventsMixin"),
     //endregion
-
     // region Ironchest Mixins
     ContainerIronChestMixin                           (COMMON, require(IRONCHEST), "ironchest.ContainerIronChestMixin"),
     GUIChestMixin                                     (CLIENT, require(IRONCHEST), "ironchest.GUIChestMixin"),
     //endregion
-
     // region Gregtech Mixins
     GT_ContainerMixin                                 (COMMON, require(GREGTECH), "gregtech.GT_ContainerMixin"),
     GT_Container_1by1Mixin                            (COMMON, require(GREGTECH), "gregtech.GT_Container_1by1Mixin"),
@@ -149,16 +141,13 @@ public enum Mixin implements IMixin {
 //    GT_NEI_DefaultHandlerMixin                        (COMMON, require(GREGTECH), "gregtech.GT_NEI_DefaultHandlerMixin"),
     GT_RectHandlerMixin                               (COMMON, require(GREGTECH), "gregtech.GT_RectHandlerMixin"),
     //endregion
-
     // region Bartworks Mixins
     BW_NEI_HandlerMixin                               (COMMON, require(BARTWORKS), "bartworks.BW_NEI_HandlerMixin"),
     //endregion
-
     // region TecTech Mixins
     TecTech_NEI_HandlerMixin                          (COMMON, require(TECTECH), "tectech.TecTech_NEI_HandlerMixin"),
     TecTech_GT_RectHandlerMixin                       (COMMON, require(TECTECH), "tectech.GT_RectHandlerMixin"),
     //endregion
-
     // region Applied Energistics 2 Mixins
     AEBaseContainerMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseContainerMixin"),
     ContainerCellWorkbenchMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCellWorkbenchMixin"),
@@ -213,7 +202,6 @@ public enum Mixin implements IMixin {
     GuiUpgradeableMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
     GuiVibrationChamberMixin                          (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiVibrationChamberMixin"),
     //endregion
-
     //region Forestry
     //region Apiculture
     ContainerAlvearyHygroregulatorMixin               (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerAlvearyHygroregulatorMixin"),
@@ -297,7 +285,13 @@ public enum Mixin implements IMixin {
     ForestryGuiMixins                                 (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins"),
     SlotUtilMixin                                     (COMMON, require(FORESTRY), "forestry.SlotUtilMixin"),
     //endregion
+    //region Storage Drawers
+    ContainerDrawersMixin                             (COMMON, require(STORAGEDRAWERS), "storagedrawers.ContainerDrawersMixin"),
+    ContainerFramingTableMixin                        (COMMON, require(STORAGEDRAWERS), "storagedrawers.ContainerFramingTableMixin"),
 
+    GuiDrawersMixin                                   (CLIENT, require(STORAGEDRAWERS), "storagedrawers.GuiDrawersMixin"),
+    GuiFramingMixin                                   (CLIENT, require(STORAGEDRAWERS), "storagedrawers.GuiFramingMixin"),
+    //endregion
     // @formatter:on
     ;
 
