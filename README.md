@@ -11,6 +11,7 @@ Most modded inventories should work, but explicit support has been completed for
 - Ironchests
 - AE2
 - Forestry
+- Storage Drawers
 
 Future plans for the mod:
 - Support more and more modded inventories
