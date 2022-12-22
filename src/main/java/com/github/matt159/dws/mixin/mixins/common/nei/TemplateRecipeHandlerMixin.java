@@ -4,7 +4,9 @@ import codechicken.nei.recipe.TemplateRecipeHandler;
 import com.github.matt159.dws.util.ListOfGUIsWithTransferRects;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.awt.*;
