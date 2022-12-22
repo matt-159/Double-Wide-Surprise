@@ -15,7 +15,8 @@ import org.apache.logging.log4j.Logger;
                     "after:gregtech; " +
                     "after:appliedenergistics2-core; " +
                     "after:Forestry; " +
-                    "after:StorageDrawers; ")
+                    "after:StorageDrawers; " +
+                    "after:inventorytweaks")
 public class DoubleWideSurprise {
 
     private static Logger LOG = LogManager.getLogger(Tags.MODID);

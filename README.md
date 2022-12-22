@@ -12,6 +12,7 @@ Most modded inventories should work, but explicit support has been completed for
 - AE2
 - Forestry
 - Storage Drawers
+- Inventory Tweaks
 
 Future plans for the mod:
 - Support more and more modded inventories
