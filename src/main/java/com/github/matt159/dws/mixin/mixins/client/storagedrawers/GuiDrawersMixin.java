@@ -1,6 +1,7 @@
 package com.github.matt159.dws.mixin.mixins.client.storagedrawers;
 
 import com.github.matt159.dws.interfaces.IDWSGui;
+import com.github.matt159.dws.util.Constants;
 import com.jaquadro.minecraft.storagedrawers.block.tile.TileEntityDrawers;
 import com.jaquadro.minecraft.storagedrawers.client.gui.GuiDrawers;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -30,6 +31,6 @@ public abstract class GuiDrawersMixin extends GuiContainer implements IDWSGui {
                     constant = @Constant(intValue = 176),
                     require = 2)
     private int modifyTextureUVXOffset(int constant) {
-        return 338;
+        return Constants.GENERAL_DWS_GUI_WIDTH;
     }
 }

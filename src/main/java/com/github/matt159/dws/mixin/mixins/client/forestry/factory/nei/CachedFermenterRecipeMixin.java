@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.forestry.factory.nei;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.factory.recipes.nei.NEIHandlerFermenter;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -12,6 +13,6 @@ public abstract class CachedFermenterRecipeMixin {
                     remap = false,
                     require = 1)
     private int modifyTextureUVXOffset(int constant) {
-        return 338;
+        return Constants.GENERAL_DWS_GUI_WIDTH;
     }
 }

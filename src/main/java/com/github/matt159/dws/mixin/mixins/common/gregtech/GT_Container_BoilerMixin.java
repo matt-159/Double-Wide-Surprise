@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.gregtech;
 
+import com.github.matt159.dws.util.Constants;
 import gregtech.api.gui.GT_ContainerMetaTile_Machine;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.common.gui.GT_Container_Boiler;
@@ -23,6 +24,6 @@ public abstract class GT_Container_BoilerMixin extends GT_ContainerMetaTile_Mach
                     remap = false,
                     require = 1)
     private int modifySlotXOffsets(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

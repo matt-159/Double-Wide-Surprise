@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
+import com.github.matt159.dws.util.Constants;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerMerchant;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +16,7 @@ public abstract class ContainerMerchantMixin extends Container {
                                     @Constant(intValue = 120)   },
                     require = 3)
     private int modifyXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "<init>",

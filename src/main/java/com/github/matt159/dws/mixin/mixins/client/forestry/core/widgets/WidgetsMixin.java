@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.forestry.core.widgets;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.core.gui.widgets.GameTokenWidget;
 import forestry.core.gui.widgets.ProbeButton;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,6 +15,6 @@ public abstract class WidgetsMixin {
                     remap = false,
                     require = 1)
     private int modifyTextureUVXOffset(int constant) {
-        return 338;
+        return Constants.GENERAL_DWS_GUI_WIDTH;
     }
 }

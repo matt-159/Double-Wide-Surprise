@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.tectech;
 
+import com.github.matt159.dws.util.Constants;
 import com.github.technus.tectech.nei.TT_NEI_ResearchHandler;
 import com.github.technus.tectech.nei.TT_NEI_ScannerHandler;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,6 +17,6 @@ public abstract class TecTech_NEI_HandlerMixin {
             remap = false,
             require = 1)
     private int modifyXPos(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

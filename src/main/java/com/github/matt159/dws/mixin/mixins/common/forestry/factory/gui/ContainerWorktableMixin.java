@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.forestry.factory.gui;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.factory.gui.ContainerWorktable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -15,6 +16,6 @@ public abstract class ContainerWorktableMixin {
                     remap = false,
                     require = 3)
     private int modifySlotXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

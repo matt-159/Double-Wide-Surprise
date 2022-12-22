@@ -1,6 +1,7 @@
 package com.github.matt159.dws.mixin.mixins.common.gregtech;
 
 import codechicken.lib.gui.GuiDraw;
+import com.github.matt159.dws.util.Constants;
 import gregtech.nei.GT_NEI_DefaultHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,7 +16,7 @@ public abstract class GT_NEI_DefaultHandlerMixin {
                 require = 1)
     private void redirectDrawCall(int x, int y, int tx, int ty, int w, int h) {
         int xOffset = 3;
-        GuiDraw.drawTexturedModalRect(x + xOffset, y, tx + 81 + xOffset, ty, w - 2 * xOffset, h);
+        GuiDraw.drawTexturedModalRect(x + xOffset, y, tx + Constants.GENERAL_X_OFFSET + xOffset, ty, w - 2 * xOffset, h);
     }
 
 
