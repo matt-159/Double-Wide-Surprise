@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.storagedrawers;
 
+import com.github.matt159.dws.util.Constants;
 import com.jaquadro.minecraft.storagedrawers.inventory.ContainerDrawers;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -26,13 +27,13 @@ public abstract class ContainerDrawersMixin {
               remap = false,
               require = 1)
     private int redirectAddSlot(ContainerDrawers instance, int slot) {
-        return getStorageSlotX(slot) + 81;
+        return getStorageSlotX(slot) + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "<init>",
                     constant = @Constant(intValue = 44),
                     require = 1)
     private int modifySlotXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

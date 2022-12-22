@@ -1,6 +1,7 @@
 package com.github.matt159.dws.mixin.mixins.common.nei;
 
 import codechicken.nei.recipe.TemplateRecipeHandler;
+import com.github.matt159.dws.util.Constants;
 import com.github.matt159.dws.util.ListOfGUIsWithTransferRects;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -62,7 +63,7 @@ public abstract class TemplateRecipeHandlerMixin {
         if (ListOfGUIsWithTransferRects.contains(clazz)) {
             Rectangle rect = new Rectangle(instance);
 
-            rect.x += 81;
+            rect.x += Constants.GENERAL_X_OFFSET;
 
             return rect.contains(point);
         }

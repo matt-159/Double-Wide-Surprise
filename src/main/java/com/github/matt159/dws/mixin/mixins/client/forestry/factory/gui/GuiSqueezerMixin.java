@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.forestry.factory.gui;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.factory.gui.GuiSqueezer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -12,7 +13,7 @@ public abstract class GuiSqueezerMixin {
                                  @Constant(intValue = 122) },
                     require = 2)
     private int modifyXOffsetInit(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "drawWidgets",
@@ -20,7 +21,7 @@ public abstract class GuiSqueezerMixin {
                     remap = false,
                     require = 1)
     private int modifyTextureXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "drawWidgets",
@@ -28,6 +29,6 @@ public abstract class GuiSqueezerMixin {
                     remap = false,
                     require = 1)
     private int modifyTextureUVXOffset(int constant) {
-        return 338;
+        return Constants.GENERAL_DWS_GUI_WIDTH;
     }
 }

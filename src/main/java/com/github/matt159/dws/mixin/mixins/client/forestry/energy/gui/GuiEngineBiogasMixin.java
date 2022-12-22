@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.forestry.energy.gui;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.energy.gui.GuiEngineBiogas;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -15,13 +16,13 @@ public abstract class GuiEngineBiogasMixin {
                                  @Constant(intValue = 107) },
                     require = 1)
     private int modifyXOffsets(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
                     constant = @Constant(intValue = 176),
                     require = 1)
     private int modifyUVXOffset(int constant) {
-        return 338;
+        return Constants.GENERAL_DWS_GUI_WIDTH;
     }
 }

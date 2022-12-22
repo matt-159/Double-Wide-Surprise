@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.forestry.factory.gui;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.factory.gui.GuiFabricator;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -15,7 +16,7 @@ public abstract class GuiFabricatorMixin {
                                  @Constant(intValue = 55) },
                     require = 3)
     private int modifyXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",

@@ -2,6 +2,7 @@ package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
 import com.github.matt159.dws.inventory.slots.minecraft.SlotHorseArmor;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotSaddle;
+import com.github.matt159.dws.util.Constants;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerHorseInventory;
@@ -24,7 +25,7 @@ public abstract class ContainerHorseInventoryMixin extends Container {
                             ordinal = 0),
                 require = 1)
     private Slot redirectAddSlotSaddle(ContainerHorseInventory instance, Slot slot) {
-        return this.addSlotToContainer(new SlotSaddle(slot.inventory, 0, 8 + 81, 18));
+        return this.addSlotToContainer(new SlotSaddle(slot.inventory, 0, 8 + Constants.GENERAL_X_OFFSET, 18));
     }
 
     @Redirect(  method = "<init>",
@@ -33,14 +34,14 @@ public abstract class ContainerHorseInventoryMixin extends Container {
                             ordinal = 1),
                 require = 1)
     private Slot redirectAddSlotHorseArmor(ContainerHorseInventory instance, Slot slot) {
-        return this.addSlotToContainer(new SlotHorseArmor(this.theHorse, slot.inventory, 1, 8 + 81, 36));
+        return this.addSlotToContainer(new SlotHorseArmor(this.theHorse, slot.inventory, 1, 8 + Constants.GENERAL_X_OFFSET, 36));
     }
 
     @ModifyConstant(method = "<init>",
                     constant = @Constant(intValue = 80),
                     require = 1)
     private int modifyXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "<init>",

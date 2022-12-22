@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.forestry.apiculture.gui;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.apiculture.gui.GuiImprinter;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -24,7 +25,7 @@ public abstract class GuiImprinterMixin {
                     remap = false,
                     require = 1)
     private int modifySlotXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "getHabitatSlotAtPosition",
@@ -32,6 +33,6 @@ public abstract class GuiImprinterMixin {
                     remap = false,
                     require = 1)
     private static int modifyBoundsXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

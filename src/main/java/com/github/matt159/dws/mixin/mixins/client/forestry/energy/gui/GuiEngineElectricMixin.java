@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.forestry.energy.gui;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.energy.gui.GuiEngineElectric;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -13,7 +14,7 @@ public abstract class GuiEngineElectricMixin {
                                  @Constant(intValue = 74) },
                     require = 2)
     private int modifyXOffsets(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "drawHealthMeter",
@@ -21,6 +22,6 @@ public abstract class GuiEngineElectricMixin {
                     remap = false,
                     require = 1)
     private int modifyTextureUVXOffset(int constant) {
-        return 338;
+        return Constants.GENERAL_DWS_GUI_WIDTH;
     }
 }

@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
+import com.github.matt159.dws.util.Constants;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +17,7 @@ public abstract class ContainerChestMixin extends Container {
                                             ordinal = 0),
                     require = 1)
     private int modifyChestSlotsXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "<init>",
