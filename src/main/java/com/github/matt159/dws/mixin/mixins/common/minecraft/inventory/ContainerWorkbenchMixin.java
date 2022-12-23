@@ -24,4 +24,18 @@ public abstract class ContainerWorkbenchMixin extends Container {
     private int modifyPlayerInventorySize(int constant) {
         return 18;
     }
+
+    @ModifyConstant(method = "transferStackInSlot",
+                    constant = @Constant(intValue = 37),
+                    require = 4)
+    private int modifyHotbarStartIndex(int constant) {
+        return 64;
+    }
+
+    @ModifyConstant(method = "transferStackInSlot",
+                    constant = @Constant(intValue = 46),
+                    require = 4)
+    private int modifyHotbarEndIndex(int constant) {
+        return 82;
+    }
 }
