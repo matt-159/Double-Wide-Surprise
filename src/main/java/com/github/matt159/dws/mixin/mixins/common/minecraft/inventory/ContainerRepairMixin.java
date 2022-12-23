@@ -62,6 +62,13 @@ public abstract class ContainerRepairMixin extends Container implements IContain
         return 18;
     }
 
+    @ModifyConstant(method = "transferStackInSlot",
+                    constant = @Constant(intValue = 39),
+                    require = 3)
+    private int modifyHotbarEndIndex(int constant) {
+        return 75;
+    }
+
     public IInventory getInputSlots() {
         return inputSlots;
     }
