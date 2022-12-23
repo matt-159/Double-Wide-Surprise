@@ -25,4 +25,18 @@ public abstract class ContainerBrewingStandMixin extends Container {
     private int modifyPlayerInventorySize(int constant) {
         return 18;
     }
+
+    @ModifyConstant(method = "transferStackInSlot",
+            constant = @Constant(intValue = 31),
+            require = 4)
+    private int modifyHotbarStartIndex(int constant) {
+        return 58;
+    }
+
+    @ModifyConstant(method = "transferStackInSlot",
+            constant = @Constant(intValue = 40),
+            require = 4)
+    private int modifyHotbarEndIndex(int constant) {
+        return 76;
+    }
 }
