@@ -23,4 +23,11 @@ public abstract class ContainerDispenserMixin extends Container {
     private int modifyPlayerInventorySize(int constant) {
         return 18;
     }
+
+    @ModifyConstant(method = "transferStackInSlot",
+                    constant = @Constant(intValue = 45),
+                    require = 1)
+    private int modifyHotbarStartIndex(int constant) {
+        return 81;
+    }
 }
