@@ -11,10 +11,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ContainerPlayer.class)
-public abstract class ContainerPlayerMixin extends Container implements IAddsBaubleSlots,
-                                                                        IAddsTinkersSlots,
-                                                                        IAddsGCSlots,
-                                                                        IAddsTGSlots {
+public abstract class ContainerPlayerMixin extends Container  {
 
     @ModifyConstant(method = "<init>",
                     constant = {    @Constant(intValue = 88),
