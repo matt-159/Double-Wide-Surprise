@@ -3,6 +3,7 @@ package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
 import com.github.matt159.dws.util.ModCompat;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import tconstruct.library.accessory.IAccessory;
 
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container  {
@@ -90,8 +92,26 @@ public abstract class ContainerPlayerMixin extends Container  {
                 }
                 didMerge = true;
             }
-        } else if (ModCompat.isTinkersConstructPresent()) {
+        } else if (ModCompat.isTinkersConstructPresent() && itemstack.getItem() instanceof IAccessory) {
+            IAccessory accessory = (IAccessory) itemstack.getItem();
 
+            startIndex = ((IAddsTinkersSlots) this).getTinkersSlotStart();
+
+            int i;
+            for (i = 0; i < startIndex + 7; i++) {
+                if (accessory.canEquipAccessory(itemstack, i)) {
+                    break;
+                }
+            }
+
+            startIndex += TinkersSlotMappings[i];
+            endIndex = startIndex + 1;
+
+            if (!mergeItemStack(itemstack1, startIndex, endIndex, false)) {
+                cir.setReturnValue(null);
+                cir.cancel();
+            }
+            didMerge = true;
         } else if (ModCompat.isTravellersGearPresent()) {
 
         } else if (ModCompat.isGalacticraftPresent()) {
@@ -120,4 +140,7 @@ public abstract class ContainerPlayerMixin extends Container  {
 
         return ret;
     }
+
+    //Have this janky shit because of how I've ordered the tinkers slots
+    private static final int[] TinkersSlotMappings = new int[] {0, 1, 3, 2, 6, 5, 4};
 }
