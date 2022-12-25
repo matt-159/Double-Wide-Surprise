@@ -65,7 +65,7 @@ public abstract class ContainerPlayerMixin extends Container  {
         int startIndex;
         int endIndex = -1;
 
-        if (ModCompat.isBaublesPresent() && itemstack.getItem() instanceof IBauble) {
+        if (ModCompat.isBaublesPresent() && itemstack.getItem() instanceof IBauble && ((IBauble) itemstack.getItem()).getBaubleType(itemstack) != null) {
             IBauble bauble = (IBauble) itemstack.getItem();
             BaubleType type = bauble.getBaubleType(itemstack);
 
