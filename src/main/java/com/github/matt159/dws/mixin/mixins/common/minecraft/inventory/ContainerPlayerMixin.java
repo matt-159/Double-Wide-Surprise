@@ -3,6 +3,7 @@ package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
 import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
 import com.github.matt159.dws.util.ModCompat;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
@@ -15,6 +16,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import tconstruct.library.accessory.IAccessory;
+import travellersgear.api.ITravellersGear;
 
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container  {
@@ -112,8 +114,15 @@ public abstract class ContainerPlayerMixin extends Container  {
                 cir.cancel();
             }
             didMerge = true;
-        } else if (ModCompat.isTravellersGearPresent()) {
+        } else if (ModCompat.isTravellersGearPresent() && itemstack.getItem() instanceof ITravellersGear) {
+            startIndex = ((IAddsTGSlots) this).getTGSlotStart() + ((ITravellersGear) itemstack.getItem()).getSlot(itemstack);
+            endIndex = startIndex + 1;
 
+            if (!mergeItemStack(itemstack1, startIndex, endIndex, false)) {
+                cir.setReturnValue(null);
+                cir.cancel();
+            }
+            didMerge = true;
         } else if (ModCompat.isGalacticraftPresent()) {
 
         }
