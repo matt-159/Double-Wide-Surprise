@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.gregtech;
 
+import com.github.matt159.dws.util.Constants;
 import gregtech.common.gui.GT_GUIContainer_OutputHatch;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -14,6 +15,6 @@ public abstract class GT_GUIContainer_OutputHatchMixin {
                     },
                     require = 1)
     private int modifyDrawStringXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

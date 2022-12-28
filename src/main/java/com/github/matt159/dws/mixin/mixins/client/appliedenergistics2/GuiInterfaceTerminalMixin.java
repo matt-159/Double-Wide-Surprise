@@ -2,6 +2,7 @@ package com.github.matt159.dws.mixin.mixins.client.appliedenergistics2;
 
 import appeng.client.gui.AEBaseGui;
 import appeng.client.gui.implementations.GuiInterfaceTerminal;
+import com.github.matt159.dws.util.Constants;
 import net.minecraft.inventory.Container;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -25,7 +26,7 @@ public abstract class GuiInterfaceTerminalMixin extends AEBaseGui {
                     constant = @Constant(intValue = 175),
                     require = 1)
     private int modifyScrollbarXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = { "drawFG",
@@ -38,7 +39,7 @@ public abstract class GuiInterfaceTerminalMixin extends AEBaseGui {
                     remap = false,
                     require = 3)
     private int modifySlotXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "initGui",

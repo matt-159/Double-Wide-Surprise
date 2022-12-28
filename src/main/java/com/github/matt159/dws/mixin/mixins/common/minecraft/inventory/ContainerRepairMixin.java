@@ -2,6 +2,7 @@ package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
 import com.github.matt159.dws.interfaces.minecraft.IContainerRepairMixin;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotAnvilOutput;
+import com.github.matt159.dws.util.Constants;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerRepair;
 import net.minecraft.inventory.IInventory;
@@ -37,7 +38,7 @@ public abstract class ContainerRepairMixin extends Container implements IContain
                                     @Constant(intValue = 76)    },
                     require = 2)
     private int modifyXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @Redirect(  method = "<init>",
@@ -50,7 +51,7 @@ public abstract class ContainerRepairMixin extends Container implements IContain
                                                             this.theWorld,
                                                             (ContainerRepair) (Object) this,
                                                             2,
-                                                            134 + 81,
+                                                            134 + Constants.GENERAL_X_OFFSET,
                                                             47));
     }
 
@@ -59,6 +60,13 @@ public abstract class ContainerRepairMixin extends Container implements IContain
                     require = 4)
     private int modifyPlayerInventorySize(int constant) {
         return 18;
+    }
+
+    @ModifyConstant(method = "transferStackInSlot",
+                    constant = @Constant(intValue = 39),
+                    require = 3)
+    private int modifyHotbarEndIndex(int constant) {
+        return 75;
     }
 
     public IInventory getInputSlots() {

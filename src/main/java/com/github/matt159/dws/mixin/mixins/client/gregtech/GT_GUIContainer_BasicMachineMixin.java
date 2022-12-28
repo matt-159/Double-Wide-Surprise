@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.gregtech;
 
+import com.github.matt159.dws.util.Constants;
 import gregtech.api.gui.GT_GUIContainer_BasicMachine;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -17,7 +18,7 @@ public abstract class GT_GUIContainer_BasicMachineMixin {
                     remap = false,
                     require = 1)
     private int modifyXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
@@ -29,13 +30,13 @@ public abstract class GT_GUIContainer_BasicMachineMixin {
                     },
                     require = 1)
     private int modifyProgressBarXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
                     constant = @Constant(intValue = 176),
                     require = 1)
     private int modifyUVXOffset(int constant) {
-        return 338;
+        return Constants.GENERAL_DWS_GUI_WIDTH;
     }
 }

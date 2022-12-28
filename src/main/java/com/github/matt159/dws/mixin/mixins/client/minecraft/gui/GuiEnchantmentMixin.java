@@ -1,6 +1,7 @@
 package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 
 import com.github.matt159.dws.interfaces.IDWSGui;
+import com.github.matt159.dws.util.Constants;
 import net.minecraft.client.gui.GuiEnchantment;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
@@ -20,6 +21,6 @@ public abstract class GuiEnchantmentMixin extends GuiContainer implements IDWSGu
                                     @Constant(intValue = 62)    },
                     require = 1)
     private int modifyXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

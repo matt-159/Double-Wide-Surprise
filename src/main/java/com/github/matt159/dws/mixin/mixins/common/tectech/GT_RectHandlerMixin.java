@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.tectech;
 
+import com.github.matt159.dws.util.Constants;
 import com.github.technus.tectech.nei.TT_NEI_ResearchHandler;
 import com.github.technus.tectech.nei.TT_NEI_ScannerHandler;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +23,7 @@ public abstract class GT_RectHandlerMixin {
                     remap = false,
                     require = 1)
     private int modifyBasicMachineRecipeRectangleXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyArgs(method = {

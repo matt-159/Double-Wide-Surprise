@@ -3,6 +3,7 @@ package com.github.matt159.dws.mixin.mixins.common.appliedenergistics2;
 import appeng.api.implementations.IUpgradeableHost;
 import appeng.container.implementations.ContainerCellWorkbench;
 import appeng.container.implementations.ContainerUpgradeable;
+import com.github.matt159.dws.util.Constants;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,7 +24,7 @@ public abstract class ContainerCellWorkbenchMixin extends ContainerUpgradeable {
                     remap = false,
                     require = 2)
     private int modifySlotXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @Redirect(method = "setupConfig",
@@ -32,7 +33,7 @@ public abstract class ContainerCellWorkbenchMixin extends ContainerUpgradeable {
                        ordinal = 1),
               require = 1)
     private Slot redirectFakeSlotConstructor(ContainerCellWorkbench instance, Slot slot) {
-        slot.xDisplayPosition += 81;
+        slot.xDisplayPosition += Constants.GENERAL_X_OFFSET;
         return this.addSlotToContainer(slot);
     }
 }

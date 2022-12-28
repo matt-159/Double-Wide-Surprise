@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.forestry.apiculture.gui;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.apiculture.gui.GuiAlveary;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -11,7 +12,7 @@ public abstract class GuiAlvearyMixin {
                     constant = @Constant(intValue = 20),
                     require = 1)
     private int modifyXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "drawHealthMeter",
@@ -19,6 +20,6 @@ public abstract class GuiAlvearyMixin {
                     remap = false,
                     require = 1)
     private int modifyTextureUVXOffset(int constant) {
-        return 338;
+        return Constants.GENERAL_DWS_GUI_WIDTH;
     }
 }

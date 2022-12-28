@@ -1,6 +1,7 @@
 package com.github.matt159.dws.mixin.mixins.common.appliedenergistics2;
 
 import appeng.container.implementations.ContainerGrinder;
+import com.github.matt159.dws.util.Constants;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
@@ -18,6 +19,6 @@ public abstract class ContainerGrinderMixin {
                     remap = false,
                     require = 7)
     private int modifySlotXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }
