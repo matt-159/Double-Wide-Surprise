@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.gregtech;
 
+import com.github.matt159.dws.util.Constants;
 import gregtech.api.gui.GT_Container_MultiMachine;
 import net.minecraft.inventory.Container;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,6 +14,6 @@ public abstract class GT_Container_MultiMachineMixin extends Container {
                     remap = false,
                     require = 1)
     private int modifySlotXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

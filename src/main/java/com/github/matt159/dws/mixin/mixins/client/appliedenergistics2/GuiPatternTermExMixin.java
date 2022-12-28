@@ -1,6 +1,7 @@
 package com.github.matt159.dws.mixin.mixins.client.appliedenergistics2;
 
 import appeng.client.gui.implementations.GuiPatternTermEx;
+import com.github.matt159.dws.util.Constants;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
@@ -13,6 +14,6 @@ public abstract class GuiPatternTermExMixin {
                                  @Constant(intValue = 147) },
                     require = 1)
     private int modifyGuiButtonXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

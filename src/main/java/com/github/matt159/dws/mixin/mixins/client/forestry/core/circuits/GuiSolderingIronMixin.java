@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.forestry.core.circuits;
 
+import com.github.matt159.dws.util.Constants;
 import forestry.core.circuits.GuiSolderingIron;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -15,7 +16,7 @@ public abstract class GuiSolderingIronMixin {
                                  @Constant(intValue = 32) },
                     require = 2)
     private int modifyTextXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 
     @ModifyConstant(method = "initGui",
@@ -24,6 +25,6 @@ public abstract class GuiSolderingIronMixin {
                                  @Constant(intValue = 130) },
                     require = 2)
     private int modifyButtonXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

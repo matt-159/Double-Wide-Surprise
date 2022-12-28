@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.gregtech;
 
+import com.github.matt159.dws.util.Constants;
 import gregtech.api.gui.GT_Container_BasicMachine;
 import gregtech.api.gui.GT_Container_BasicTank;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
@@ -30,6 +31,6 @@ public abstract class GT_Container_BasicMachineMixin extends GT_Container_BasicT
                     remap = false,
                     require = 1)
     private int ModifyXOffsets(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

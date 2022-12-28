@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.gregtech;
 
+import com.github.matt159.dws.util.Constants;
 import gregtech.common.gui.GT_Container_SuperBuffer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -17,6 +18,6 @@ public abstract class GT_Container_SuperBufferMixin {
                     remap = false,
                     require = 1)
     private int modifySlotXOffsets(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

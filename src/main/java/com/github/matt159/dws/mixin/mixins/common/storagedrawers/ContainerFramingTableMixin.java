@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.storagedrawers;
 
+import com.github.matt159.dws.util.Constants;
 import com.jaquadro.minecraft.storagedrawers.inventory.ContainerFramingTable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -22,6 +23,6 @@ public abstract class ContainerFramingTableMixin {
                                  @Constant(intValue = 133) },
                     require = 1)
     private int modifySlotXOffset(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

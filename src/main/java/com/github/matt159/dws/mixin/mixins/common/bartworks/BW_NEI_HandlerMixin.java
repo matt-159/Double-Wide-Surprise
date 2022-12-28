@@ -2,6 +2,7 @@ package com.github.matt159.dws.mixin.mixins.common.bartworks;
 
 import com.github.bartimaeusnek.bartworks.neiHandler.BW_NEI_BioLabHandler;
 import com.github.bartimaeusnek.bartworks.neiHandler.BW_NEI_BioVatHandler;
+import com.github.matt159.dws.util.Constants;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
@@ -16,6 +17,6 @@ public abstract class BW_NEI_HandlerMixin {
                     remap = false,
                     require = 1)
     private int modifyXPos(int constant) {
-        return constant + 81;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }
