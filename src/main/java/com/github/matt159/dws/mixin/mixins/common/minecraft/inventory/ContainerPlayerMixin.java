@@ -3,8 +3,10 @@ package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.matt159.dws.interfaces.dws.IAddsGCSlots;
 import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
 import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
+import com.github.matt159.dws.interfaces.galacticraft.IGalacticWearable;
 import com.github.matt159.dws.util.ModCompat;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.entity.player.EntityPlayer;
@@ -123,8 +125,25 @@ public abstract class ContainerPlayerMixin extends Container  {
                 cir.cancel();
             }
             didMerge = true;
-        } else if (ModCompat.isGalacticraftPresent()) {
+        } else if (ModCompat.isGalacticraftPresent() && itemstack.getItem() instanceof IGalacticWearable) {
+            startIndex = ((IAddsGCSlots) this).getGCSlotStart();
 
+            int i;
+            for (i = 0; i < 10; i++) {
+                Slot slot = (Slot) this.inventorySlots.get(startIndex + i);
+                if (slot.isItemValid(itemstack) && !slot.getHasStack()) {
+                    break;
+                }
+            }
+
+            startIndex += i;
+            endIndex = startIndex + 1;
+
+            if (!mergeItemStack(itemstack1, startIndex, endIndex, false)) {
+                cir.setReturnValue(null);
+                cir.cancel();
+            }
+            didMerge = true;
         }
     }
 
