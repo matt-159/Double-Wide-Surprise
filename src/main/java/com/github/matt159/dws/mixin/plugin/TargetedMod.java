@@ -29,6 +29,7 @@ public enum TargetedMod implements ITargetedMod {
     FORESTRY             ("Forestry"             , true  , startsWith("forestry")),
     STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers")),
     INVENTORYTWEAKS      ("InventoryTweaks"      , true  , startsWith("inventorytweaks")),
+    ENDERCORE            ("EnderCore"            , true  , startsWith("endercore")),
     ;
 
 
