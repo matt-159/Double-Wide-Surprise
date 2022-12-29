@@ -25,17 +25,4 @@ public abstract class ContainerFurnaceMixin extends Container {
         return 18;
     }
 
-    @ModifyConstant(method = "transferStackInSlot",
-                    constant = @Constant(intValue = 30),
-                    require = 4)
-    private int modifyHotbarStartIndex(int constant) {
-        return 57;
-    }
-
-    @ModifyConstant(method = "transferStackInSlot",
-                    constant = @Constant(intValue = 39),
-                    require = 4)
-    private int modifyHotbarEndIndex(int constant) {
-        return 75;
-    }
 }
