@@ -93,6 +93,7 @@ public abstract class ContainerPlayerMixin extends Container  {
                 if (!mergeItemStack(itemstack1, startIndex, endIndex, false)) {
                     cir.setReturnValue(null);
                     cir.cancel();
+                    return;
                 }
                 didMerge = true;
             }
@@ -102,7 +103,7 @@ public abstract class ContainerPlayerMixin extends Container  {
             startIndex = ((IAddsTinkersSlots) this).getTinkersSlotStart();
 
             int i;
-            for (i = 0; i < startIndex + 7; i++) {
+            for (i = 0; i < 7; i++) {
                 if (accessory.canEquipAccessory(itemstack, i)) {
                     break;
                 }
@@ -120,6 +121,7 @@ public abstract class ContainerPlayerMixin extends Container  {
             if (!mergeItemStack(itemstack1, startIndex, endIndex, false)) {
                 cir.setReturnValue(null);
                 cir.cancel();
+                return;
             }
             didMerge = true;
         } else if (ModCompat.isTravellersGearPresent() && itemstack.getItem() instanceof ITravellersGear) {
@@ -129,6 +131,7 @@ public abstract class ContainerPlayerMixin extends Container  {
             if (!mergeItemStack(itemstack1, startIndex, endIndex, false)) {
                 cir.setReturnValue(null);
                 cir.cancel();
+                return;
             }
             didMerge = true;
         } else if (ModCompat.isGalacticraftPresent() && itemstack.getItem() instanceof IGalacticWearable) {
@@ -148,6 +151,7 @@ public abstract class ContainerPlayerMixin extends Container  {
             if (!mergeItemStack(itemstack1, startIndex, endIndex, false)) {
                 cir.setReturnValue(null);
                 cir.cancel();
+                return;
             }
             didMerge = true;
         }
