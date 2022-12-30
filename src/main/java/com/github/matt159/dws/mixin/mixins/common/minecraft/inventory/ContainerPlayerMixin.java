@@ -108,6 +108,12 @@ public abstract class ContainerPlayerMixin extends Container  {
                 }
             }
 
+            if (i == 7) {
+                cir.setReturnValue(null);
+                cir.cancel();
+                return;
+            }
+
             startIndex += TinkersSlotMappings[i];
             endIndex = startIndex + 1;
 
