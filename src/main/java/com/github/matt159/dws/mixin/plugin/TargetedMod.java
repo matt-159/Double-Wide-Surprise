@@ -30,6 +30,7 @@ public enum TargetedMod implements ITargetedMod {
     STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers")),
     INVENTORYTWEAKS      ("InventoryTweaks"      , true  , startsWith("inventorytweaks")),
     ENDERCORE            ("EnderCore"            , true  , startsWith("endercore")),
+    CHISEL               ("Chisel"               , true  , startsWith("chisel")),
     ;
 
 
