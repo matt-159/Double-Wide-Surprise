@@ -321,5 +321,15 @@ public final class TextureWhitelist {
         addTextureToWhitelist("storagedrawers:textures/gui/drawers_comp.png");
         addTextureToWhitelist("storagedrawers:textures/gui/framing.png");
         //endregion
+
+        //region Chisel
+        addTextureToWhitelist("chisel:textures/autochisel-gui.png");
+        addTextureToWhitelist("chisel:textures/chisel2Gui.png");
+        addTextureToWhitelist("chisel:textures/chisel2GuiAlt.png");
+        addTextureToWhitelist("chisel:textures/chisel2GuiScroll.png");
+        addTextureToWhitelist("chisel:textures/chisel-gui.png");
+        addTextureToWhitelist("chisel:textures/chisel-gui-24.png");
+
+        //endregion
     }
 }
