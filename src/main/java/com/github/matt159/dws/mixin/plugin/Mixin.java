@@ -214,6 +214,7 @@ public enum Mixin implements IMixin {
 
     GuiAlvearyMixin                                   (CLIENT, require(FORESTRY),            "forestry.apiculture.gui.GuiAlvearyMixin"),
     GuiBeealyzerMixin                                 (CLIENT, require(FORESTRY),            "forestry.apiculture.gui.GuiBeealyzerMixin"),
+    GuiBeeHousingMixin                                (CLIENT, require(FORESTRY),            "forestry.apiculture.gui.GuiBeeHousingMixin"),
     GuiHabitatLocatorMixin                            (CLIENT, require(FORESTRY),            "forestry.apiculture.gui.GuiHabitatLocatorMixin"),
     GuiImprinterMixin                                 (CLIENT, require(FORESTRY),            "forestry.apiculture.gui.GuiImprinterMixin"),
     //endregion
