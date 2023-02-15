@@ -56,7 +56,7 @@ dependencies {
     compile("eu.usrv:YAMCore:1.7.10-0.5.79:deobf") {
         transitive = false
     }
-    compile("com.github.GTMEGA:StructureLib:0237ab2549:deobf") {
+    compile("mega:structurelib-mc1.7.10:1.1.2:dev") {
         transitive = false
     }
     compileOnly("gtmega:gt5u-mc1.7.10:5.28.23-gtmega:dev") {
@@ -75,7 +75,7 @@ dependencies {
 
     // GregTech Addons
     compileOnly(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")
-    compileOnly(name:"TecTech-1.7.10-4.10.4-023479da", ext:"jar")
+    compileOnly("mega:tectech-mc1.7.10:4.11.0:dev")
 
     compile("gtmega:ae2-mc1.7.10:rv3-beta.58-gtmega:dev") {
         transitive = false
