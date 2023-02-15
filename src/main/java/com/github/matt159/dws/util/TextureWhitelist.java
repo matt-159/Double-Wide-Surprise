@@ -1,19 +1,15 @@
 package com.github.matt159.dws.util;
 
-import codechicken.nei.recipe.TemplateRecipeHandler;
 import com.github.matt159.dws.Tags;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
 
 public final class TextureWhitelist {
     private static final Set<String> whitelist = new HashSet<>();
-    private static final Map<String, Class<?>> cachedClass = new HashMap<>();
 
+    public static boolean isNEIContext = false;
     public static boolean useDoubleWideTexture = false;
 
     private TextureWhitelist() {}
@@ -27,21 +23,7 @@ public final class TextureWhitelist {
     }
 
     public static ResourceLocation checkResourceLocation(ResourceLocation rl) {
-        boolean isNEIShowingShit = false;
-        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-
-        for (int i = 3; i < 8 && i < stackTraceElements.length; ++i) {
-            try {
-                Function<String, Class<?>> method = TextureWhitelist::newClass;
-                Class<?> clazz = cachedClass.computeIfAbsent(stackTraceElements[i].getClassName(), method);
-                if (clazz != null && TemplateRecipeHandler.class.isAssignableFrom(clazz)) {
-                    isNEIShowingShit = true;
-                    break;
-                }
-            } catch (Exception ignored) {}
-        }
-
-        useDoubleWideTexture = checkTextureWhitelist(rl) && !isNEIShowingShit;
+        useDoubleWideTexture = checkTextureWhitelist(rl) && !isNEIContext;
 
         //transforming from:    modid:textures/blahblahblah
         //to:                   dws:textures/modid/blahblahblah
@@ -51,14 +33,6 @@ public final class TextureWhitelist {
         }
 
         return rl;
-    }
-
-    private static Class<?> newClass(String name) {
-        try {
-            return Class.forName(name);
-        } catch (ClassNotFoundException ignored) {
-            return null;
-        }
     }
 
     private static boolean checkTextureWhitelist(ResourceLocation resourceLocation) {
