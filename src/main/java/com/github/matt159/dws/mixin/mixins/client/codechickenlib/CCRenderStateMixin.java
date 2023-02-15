@@ -15,6 +15,8 @@ public abstract class CCRenderStateMixin {
             remap = false,
             require = 1)
     private static void injectStateEntry(ResourceLocation texture, CallbackInfo ci) {
+        if (texture.toString().equals("nei:textures/gui/inv.png")) return;
+
         TextureWhitelist.isNEIContext = true;
     }
 
