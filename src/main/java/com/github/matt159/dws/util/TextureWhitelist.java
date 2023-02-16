@@ -9,7 +9,7 @@ import java.util.Set;
 public final class TextureWhitelist {
     private static final Set<String> whitelist = new HashSet<>();
 
-    public static boolean isNEIContext = false;
+    public static boolean isBadContext = false;
     public static boolean useDoubleWideTexture = false;
 
     private TextureWhitelist() {}
@@ -23,7 +23,7 @@ public final class TextureWhitelist {
     }
 
     public static ResourceLocation checkResourceLocation(ResourceLocation rl) {
-        useDoubleWideTexture = checkTextureWhitelist(rl) && !isNEIContext;
+        useDoubleWideTexture = checkTextureWhitelist(rl) && !isBadContext;
 
         //transforming from:    modid:textures/blahblahblah
         //to:                   dws:textures/modid/blahblahblah
