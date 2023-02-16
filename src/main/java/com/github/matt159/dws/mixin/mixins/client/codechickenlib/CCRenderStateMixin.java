@@ -17,7 +17,7 @@ public abstract class CCRenderStateMixin {
     private static void injectStateEntry(ResourceLocation texture, CallbackInfo ci) {
         if (texture.toString().equals("nei:textures/gui/inv.png")) return;
 
-        TextureWhitelist.isNEIContext = true;
+        TextureWhitelist.isBadContext = true;
     }
 
     @Inject(method = "changeTexture(Lnet/minecraft/util/ResourceLocation;)V",
@@ -25,6 +25,6 @@ public abstract class CCRenderStateMixin {
             remap = false,
             require = 1)
     private static void injectStateExit(ResourceLocation texture, CallbackInfo ci) {
-        TextureWhitelist.isNEIContext = false;
+        TextureWhitelist.isBadContext = false;
     }
 }
