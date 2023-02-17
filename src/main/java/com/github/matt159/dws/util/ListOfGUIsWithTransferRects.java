@@ -2,6 +2,7 @@ package com.github.matt159.dws.util;
 
 import appeng.client.gui.implementations.GuiGrinder;
 import appeng.client.gui.implementations.GuiInscriber;
+import com.jaquadro.minecraft.storagedrawers.integration.AppliedEnergistics;
 import forestry.factory.gui.*;
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -28,18 +29,22 @@ public final class ListOfGUIsWithTransferRects {
         addClassToList(GuiFurnace.class);
         //endregion
         //region AE2
-        addClassToList(GuiGrinder.class);
-        addClassToList(GuiInscriber.class);
+        if (ModCompat.areModsPresent(ModCompat.CompatibleMods.AE2.modID())) {
+            addClassToList(GuiGrinder.class);
+            addClassToList(GuiInscriber.class);
+        }
         //endregion
         //region Forestry
-        addClassToList(GuiBottler.class);
-        addClassToList(GuiCarpenter.class);
-        addClassToList(GuiCentrifuge.class);
-        addClassToList(GuiFabricator.class);
-        addClassToList(GuiFermenter.class);
-        addClassToList(GuiMoistener.class);
-        addClassToList(GuiSqueezer.class);
-        addClassToList(GuiStill.class);
+        if (ModCompat.areModsPresent(ModCompat.CompatibleMods.FORESTRY.modID())) {
+            addClassToList(GuiBottler.class);
+            addClassToList(GuiCarpenter.class);
+            addClassToList(GuiCentrifuge.class);
+            addClassToList(GuiFabricator.class);
+            addClassToList(GuiFermenter.class);
+            addClassToList(GuiMoistener.class);
+            addClassToList(GuiSqueezer.class);
+            addClassToList(GuiStill.class);
+        }
         //endregion
         //region Gregtech
         //Gregtech's NEI Handler overrides handleToolTip in TemplateRecipeHandler so a list of classes isn't needed here
