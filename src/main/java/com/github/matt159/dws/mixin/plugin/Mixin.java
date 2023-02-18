@@ -309,7 +309,15 @@ public enum Mixin implements IMixin {
     //endregion
     //region EnderCore
     EnderCoreMethodsMixin                             (COMMON, require(ENDERCORE),           "endercore.EnderCoreMethodsMixin"),
+    //endregion
+    //region Chisel
+    ChiselControllerMixin                             (COMMON, require(CHISEL),              "chisel.ChiselControllerMixin"),
+    ContainerChiselMixin                              (COMMON, require(CHISEL),              "chisel.ContainerChiselMixin"),
 
+    GuiButtonChiselModeMixin                          (CLIENT, require(CHISEL),              "chisel.GuiButtonChiselModeMixin"),
+    GuiChiselMixin                                    (CLIENT, require(CHISEL),              "chisel.GuiChiselMixin"),
+    Chisel_GuiScrollbarMixin                          (CLIENT, require(CHISEL),              "chisel.GuiScrollbarMixin")
+    //endregion
     // @formatter:on
     ;
 
