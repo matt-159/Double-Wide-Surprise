@@ -26,6 +26,7 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
     @Inject(method = "initGui",
             at = @At(value = "INVOKE",
                      target = "Lappeng/integration/IntegrationRegistry;isEnabled(Lappeng/integration/IntegrationType;)Z"),
+            remap = false,
             require = 1)
     private void injectPerRowValue(CallbackInfo ci) {
         this.perRow = 13;
@@ -35,6 +36,7 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
                at = @At(value = "INVOKE",
                         target = "Lappeng/client/me/InternalSlotME;<init>(Lappeng/client/me/ItemRepo;III)V"),
                index = 2,
+               remap = false,
                require = 1)
     private int modifyInternalMESlotXOffset(int xOffset) {
         return xOffset + 45;
@@ -52,6 +54,7 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
 
     @ModifyConstant(method = "initGui",
                     constant = @Constant(intValue = 197),
+                    remap = false,
                     require = 1)
     private int modifyXSizeCheck(int constant) {
         return 340;
@@ -61,6 +64,7 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiMEMonitorable;xSize:I",
                        opcode = Opcodes.PUTFIELD),
+              remap = false,
               require = 1)
     private void redirectXSizeAssignment(GuiMEMonitorable instance, int value) {
         this.xSize = this.standardSize;
@@ -105,6 +109,7 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
     @Redirect(method = "initGui",
               at = @At(value = "INVOKE",
                        target = "Lappeng/integration/IntegrationRegistry;isEnabled(Lappeng/integration/IntegrationType;)Z"),
+              remap = false,
               require = 1)
     private boolean redirectNEIIsEnabled(IntegrationRegistry instance, IntegrationType type) {
         return true;
