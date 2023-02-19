@@ -15,7 +15,6 @@ public abstract class ContainerChiselMixin extends Container {
     @ModifyConstant(method = { "<init>",
                                "slotClick" },
                     constant = @Constant(intValue = 27),
-                    remap = false,
                     require = 2)
     private int modifyMainInventoryRange(int constant) {
         return 54;
