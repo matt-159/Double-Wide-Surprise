@@ -23,7 +23,6 @@ public abstract class ContainerChiselMixin extends Container {
               at = @At(value = "INVOKE",
                        target = "Lteam/chisel/inventory/ContainerChisel;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
                        ordinal = 0),
-              remap = false,
               require = 1)
     private Slot redirectAddChiselSelectionSlots(ContainerChisel instance, Slot slot) {
         int i = slot.getSlotIndex();
@@ -45,7 +44,6 @@ public abstract class ContainerChiselMixin extends Container {
               at = @At(value = "INVOKE",
                        target = "Lteam/chisel/inventory/ContainerChisel;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
                        ordinal = 2),
-              remap = false,
               require = 1)
     private Slot redirectAddPlayerMainInventorySlot(ContainerChisel instance, Slot slot) {
         int i = slot.getSlotIndex() - 9;
@@ -66,7 +64,6 @@ public abstract class ContainerChiselMixin extends Container {
               at = @At(value = "INVOKE",
                        target = "Lteam/chisel/inventory/ContainerChisel;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;",
                        ordinal = 3),
-              remap = false,
               require = 1)
     private Slot redirectAddPlayerHotbarSlot(ContainerChisel instance, Slot slot) {
         int i = slot.getSlotIndex();
