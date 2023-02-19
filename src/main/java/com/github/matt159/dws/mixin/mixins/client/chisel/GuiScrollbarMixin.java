@@ -11,9 +11,11 @@ import team.chisel.client.gui.GuiScrollbar;
 
 @Mixin(GuiScrollbar.class)
 public abstract class GuiScrollbarMixin {
-    @Shadow private int rowSize;
+    @Shadow(remap = false)
+    private int rowSize;
 
-    @Shadow private int rowsOnPage;
+    @Shadow(remap = false)
+    private int rowsOnPage;
 
     @Inject(method = "<init>",
             at = @At("RETURN"),
@@ -28,7 +30,7 @@ public abstract class GuiScrollbarMixin {
             remap = false,
             require = 1)
     private void injectStateEntry(GuiChisel g, CallbackInfo ci) {
-        TextureWhitelist.isNEIContext = true;
+        TextureWhitelist.isBadContext = true;
     }
 
     @Inject(method = "draw",
@@ -36,6 +38,6 @@ public abstract class GuiScrollbarMixin {
             remap = false,
             require = 1)
     private void injectStateExit(GuiChisel g, CallbackInfo ci) {
-        TextureWhitelist.isNEIContext = false;
+        TextureWhitelist.isBadContext = false;
     }
 }

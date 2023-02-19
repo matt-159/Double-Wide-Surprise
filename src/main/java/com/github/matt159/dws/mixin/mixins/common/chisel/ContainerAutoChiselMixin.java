@@ -17,6 +17,7 @@ public abstract class ContainerAutoChiselMixin {
     @Redirect(method = "<init>",
               at = @At(value = "INVOKE",
                        target = "Lteam/chisel/inventory/ContainerAutoChisel;addSlot(Lnet/minecraft/inventory/IInventory;III)V"),
+              remap = false,
               require = 8)
     private void redirectAddSlot(ContainerAutoChisel instance, IInventory inv, int id, int x, int y) {
         this.addSlot(inv, id, x + 81, y);
