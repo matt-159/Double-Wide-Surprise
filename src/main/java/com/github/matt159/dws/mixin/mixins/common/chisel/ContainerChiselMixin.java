@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import team.chisel.inventory.ContainerChisel;
+import team.chisel.inventory.InventoryChiselSelection;
 
 @Mixin(ContainerChisel.class)
 public abstract class ContainerChiselMixin extends Container {
@@ -70,5 +71,12 @@ public abstract class ContainerChiselMixin extends Container {
         int i = slot.getSlotIndex();
 
         return this.addSlotToContainer(new Slot(slot.inventory, i, 8 + (i % 18) * 18, 142 + (i / 18) * 18));
+    }
+
+    @ModifyConstant(method = "transferStackInSlot",
+                    constant = @Constant(intValue = InventoryChiselSelection.normalSlots + 1 + 36),
+                    require = 1)
+    private int modifyPlayerInventorySize(int constant) {
+        return constant + 36;
     }
 }
