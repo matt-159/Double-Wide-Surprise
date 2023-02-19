@@ -15,23 +15,23 @@ import static com.falsepattern.lib.mixin.ITargetedMod.PredicateHelpers.startsWit
 @Getter
 @RequiredArgsConstructor
 public enum TargetedMod implements ITargetedMod {
-    GALACTICRAFT         ("Galacticraft"         , false , startsWith("galacticraft")),
-    TRAVELLERSGEAR       ("TravellersGear"       , true  , startsWith("traveller")),
-    IRONCHEST            ("IronChest"            , true  , startsWith("ironchest")),
-    BAUBLES              ("Baubles"              , true  , startsWith("baubles-")),
-    TINKERSCONSTRUCT     ("TConstruct"           , true  , startsWith("tconstruct")),
-    CODECHICKENLIB       ("CodeChickenLib"       , true  , startsWith("codechicken")),
-    NOTENOUGHITEMS       ("NotEnoughItems"       , true  , startsWith("notenoughitems")),
-    GREGTECH             ("GregTech"             , true  , startsWith("gregtech").or(startsWith("gt5u"))),
-    BARTWORKS            ("Bartworks"            , true  , startsWith("bartworks")),
-    TECTECH              ("TecTech"              , true  , startsWith("tectech").or(startsWith("tec-tech"))),
     APPLIEDENERGISTICS2  ("AppliedEnergistics2"  , true  , startsWith("appliedenergistics2").or(contains("ae2"))),
-    FORESTRY             ("Forestry"             , true  , startsWith("forestry")),
-    STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers")),
-    INVENTORYTWEAKS      ("InventoryTweaks"      , true  , startsWith("inventorytweaks")),
+    BARTWORKS            ("Bartworks"            , true  , startsWith("bartworks")),
+    BAUBLES              ("Baubles"              , true  , startsWith("baubles-")),
+    CHISEL               ("Chisel"               , true  , startsWith("chisel")),
     ENDERCORE            ("EnderCore"            , true  , startsWith("endercore")),
+    FORESTRY             ("Forestry"             , true  , startsWith("forestry")),
+    CODECHICKENLIB       ("CodeChickenLib"       , true  , startsWith("codechicken")),
+    GALACTICRAFT         ("Galacticraft"         , false , startsWith("galacticraft")),
+    GREGTECH             ("GregTech"             , true  , startsWith("gregtech").or(startsWith("gt5u"))),
+    INVENTORYTWEAKS      ("InventoryTweaks"      , true  , startsWith("inventorytweaks")),
+    IRONCHEST            ("IronChest"            , true  , startsWith("ironchest")),
+    NOTENOUGHITEMS       ("NotEnoughItems"       , true  , startsWith("notenoughitems")),
+    STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers")),
+    TECTECH              ("TecTech"              , true  , startsWith("tectech").or(startsWith("tec-tech"))),
+    TINKERSCONSTRUCT     ("TConstruct"           , true  , startsWith("tconstruct")),
+    TRAVELLERSGEAR       ("TravellersGear"       , true  , startsWith("traveller")),
     ;
-
 
     private final String modName;
     private final boolean loadInDevelopment;

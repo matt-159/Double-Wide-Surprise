@@ -2,6 +2,7 @@ package com.github.matt159.dws.mixin.plugin;
 
 import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
+import com.github.matt159.dws.mixin.mixins.common.chisel.RecipeHandlerChiselMixin;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -310,7 +311,19 @@ public enum Mixin implements IMixin {
     //endregion
     //region EnderCore
     EnderCoreMethodsMixin                             (COMMON, require(ENDERCORE),           "endercore.EnderCoreMethodsMixin"),
+    //endregion
+    //region Chisel
+    ChiselControllerMixin                             (COMMON, require(CHISEL),              "chisel.ChiselControllerMixin"),
+    ContainerAutoChiselMixin                          (COMMON, require(CHISEL),              "chisel.ContainerAutoChiselMixin"),
+    ContainerChiselMixin                              (COMMON, require(CHISEL),              "chisel.ContainerChiselMixin"),
 
+    GuiAutoChiselMixin                                (CLIENT, require(CHISEL),              "chisel.GuiAutoChiselMixin"),
+    GuiButtonChiselModeMixin                          (CLIENT, require(CHISEL),              "chisel.GuiButtonChiselModeMixin"),
+    GuiChiselMixin                                    (CLIENT, require(CHISEL),              "chisel.GuiChiselMixin"),
+    Chisel_GuiScrollbarMixin                          (CLIENT, require(CHISEL),              "chisel.GuiScrollbarMixin"),
+
+    RecipeHandlerChiselMixin                          (COMMON, require(CHISEL),              "chisel.RecipeHandlerChiselMixin"),
+    //endregion
     // @formatter:on
     ;
 
