@@ -313,8 +313,10 @@ public enum Mixin implements IMixin {
     //endregion
     //region Chisel
     ChiselControllerMixin                             (COMMON, require(CHISEL),              "chisel.ChiselControllerMixin"),
+    ContainerAutoChiselMixin                          (COMMON, require(CHISEL),              "chisel.ContainerAutoChiselMixin"),
     ContainerChiselMixin                              (COMMON, require(CHISEL),              "chisel.ContainerChiselMixin"),
 
+    GuiAutoChiselMixin                                (CLIENT, require(CHISEL),              "chisel.GuiAutoChiselMixin"),
     GuiButtonChiselModeMixin                          (CLIENT, require(CHISEL),              "chisel.GuiButtonChiselModeMixin"),
     GuiChiselMixin                                    (CLIENT, require(CHISEL),              "chisel.GuiChiselMixin"),
     Chisel_GuiScrollbarMixin                          (CLIENT, require(CHISEL),              "chisel.GuiScrollbarMixin"),
