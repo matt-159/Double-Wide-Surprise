@@ -11,10 +11,11 @@ import team.chisel.inventory.ContainerChisel;
 
 @Mixin(ContainerChisel.class)
 public abstract class ContainerChiselMixin extends Container {
-    @ModifyConstant(method = "<init>",
+    @ModifyConstant(method = { "<init>",
+                               "slotClick" },
                     constant = @Constant(intValue = 27),
                     remap = false,
-                    require = 1)
+                    require = 2)
     private int modifyMainInventoryRange(int constant) {
         return 54;
     }
