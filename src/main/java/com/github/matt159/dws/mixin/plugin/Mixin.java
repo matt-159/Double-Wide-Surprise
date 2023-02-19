@@ -2,6 +2,7 @@ package com.github.matt159.dws.mixin.plugin;
 
 import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
+import com.github.matt159.dws.mixin.mixins.common.chisel.RecipeHandlerChiselMixin;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -316,7 +317,9 @@ public enum Mixin implements IMixin {
 
     GuiButtonChiselModeMixin                          (CLIENT, require(CHISEL),              "chisel.GuiButtonChiselModeMixin"),
     GuiChiselMixin                                    (CLIENT, require(CHISEL),              "chisel.GuiChiselMixin"),
-    Chisel_GuiScrollbarMixin                          (CLIENT, require(CHISEL),              "chisel.GuiScrollbarMixin")
+    Chisel_GuiScrollbarMixin                          (CLIENT, require(CHISEL),              "chisel.GuiScrollbarMixin"),
+
+    RecipeHandlerChiselMixin                          (COMMON, require(CHISEL),              "chisel.RecipeHandlerChiselMixin"),
     //endregion
     // @formatter:on
     ;
