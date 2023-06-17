@@ -8,6 +8,7 @@ import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
 import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
 import com.github.matt159.dws.interfaces.galacticraft.IGalacticWearable;
 import com.github.matt159.dws.util.ModCompat;
+import com.github.matt159.dws.util.ReflectedModSupport;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -17,12 +18,10 @@ import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import tconstruct.library.accessory.IAccessory;
 import travellersgear.api.ITravellersGear;
 
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container  {
-
     private boolean didMerge = false;
 
     @ModifyConstant(method = "<init>",
@@ -71,7 +70,9 @@ public abstract class ContainerPlayerMixin extends Container  {
         int startIndex;
         int endIndex = -1;
 
-        if (ModCompat.isBaublesPresent() && itemstack.getItem() instanceof IBauble && ((IBauble) itemstack.getItem()).getBaubleType(itemstack) != null) {
+        if (ModCompat.isBaublesPresent() && ReflectedModSupport.isInstanceOfIBauble(itemstack.getItem())) {
+            if (((IBauble) itemstack.getItem()).getBaubleType(itemstack) == null) return;
+
             IBauble bauble = (IBauble) itemstack.getItem();
             BaubleType type = bauble.getBaubleType(itemstack);
 
@@ -97,14 +98,12 @@ public abstract class ContainerPlayerMixin extends Container  {
                 }
                 didMerge = true;
             }
-        } else if (ModCompat.isTinkersConstructPresent() && itemstack.getItem() instanceof IAccessory) {
-            IAccessory accessory = (IAccessory) itemstack.getItem();
-
+        } else if (ModCompat.isTinkersConstructPresent() && ReflectedModSupport.isInstanceOfIAccessory(itemstack.getItem())) {
             startIndex = ((IAddsTinkersSlots) this).getTinkersSlotStart();
 
             int i;
             for (i = 0; i < 7; i++) {
-                if (accessory.canEquipAccessory(itemstack, i)) {
+                if (ReflectedModSupport.IAccessory_canEquipAccessory(itemstack, i)) {
                     break;
                 }
             }
