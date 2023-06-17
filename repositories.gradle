@@ -22,6 +22,9 @@ repositories {
         url = "https://mvn.falsepattern.com/releases"
     }
     maven {
+        url = "https://mvn.falsepattern.com/usrv/"
+    }
+    maven {
         url = "https://mvn.falsepattern.com/gtmega_releases/"
     }
     maven {
