@@ -181,6 +181,7 @@ public enum Mixin implements IMixin {
     ContainerWirelessMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerWirelessMixin"),
 
     AEBaseGuiMixin                                    (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseGuiMixin"),
+    ItemRepoMixin                                     (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.ItemRepoMixin"),
     GuiCellWorkbenchMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCellWorkbenchMixin"),
     GuiChestMixin_AE                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiChestMixin"),
     GuiCondenserMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCondenserMixin"),
