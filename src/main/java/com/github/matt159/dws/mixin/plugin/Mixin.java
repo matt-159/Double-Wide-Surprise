@@ -2,7 +2,6 @@ package com.github.matt159.dws.mixin.plugin;
 
 import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
-import com.github.matt159.dws.mixin.mixins.common.chisel.RecipeHandlerChiselMixin;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

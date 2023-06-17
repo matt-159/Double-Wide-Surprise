@@ -29,7 +29,7 @@ public enum TargetedMod implements ITargetedMod {
     NOTENOUGHITEMS       ("NotEnoughItems"       , true  , startsWith("notenoughitems")),
     STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers")),
     TECTECH              ("TecTech"              , true  , startsWith("tectech").or(startsWith("tec-tech"))),
-    TINKERSCONSTRUCT     ("TConstruct"           , true  , startsWith("tconstruct")),
+    TINKERSCONSTRUCT     ("TConstruct"           , true  , startsWith("tconstruct").or(startsWith("tinkersconstruct"))),
     TRAVELLERSGEAR       ("TravellersGear"       , true  , startsWith("traveller")),
     ;
 
