@@ -33,4 +33,11 @@ public abstract class ContainerCreativeMixin extends Container {
     private int modifyDisplayScrollBarRequirement(int constant) {
         return 90;
     }
+
+    @ModifyConstant(method = "transferStackInSlot",
+                    constant = @Constant(intValue = 9),
+                    require = 1)
+    private int modifyAllowableTransferStackInSlotRange(int constant) {
+        return 18;
+    }
 }
