@@ -40,4 +40,11 @@ public abstract class ContainerCreativeMixin extends Container {
     private int modifyAllowableTransferStackInSlotRange(int constant) {
         return 18;
     }
+
+    @ModifyConstant(method = "canDragIntoSlot",
+                    constant = @Constant(intValue = 162),
+                    require = 1)
+    private int modifyAllowableMaxXDisplayPosition(int constant) {
+        return constant + 161;
+    }
 }
