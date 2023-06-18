@@ -1,7 +1,7 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
-import codechicken.nei.ContainerCreativeInv;
 import com.github.matt159.dws.interfaces.minecraft.IEntityPlayerMixin;
+import com.github.matt159.dws.util.ReflectedModSupport;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
@@ -26,7 +26,7 @@ public abstract class ContainerMixin {
             require = 1)
     private void injectPlayerInventoryReorganization(EntityPlayer player, CallbackInfo ci) {
         Container c = ((Container) (Object) this);
-        if (c instanceof ContainerPlayer || c instanceof ContainerCreativeInv) {
+        if (c instanceof ContainerPlayer || ReflectedModSupport.instanceof_ContainerCreativeInv(c)) {
             return;
         }
 

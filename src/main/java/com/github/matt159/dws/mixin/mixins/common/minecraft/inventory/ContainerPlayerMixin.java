@@ -18,7 +18,6 @@ import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import travellersgear.api.ITravellersGear;
 
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container  {
@@ -70,7 +69,7 @@ public abstract class ContainerPlayerMixin extends Container  {
         int startIndex;
         int endIndex = -1;
 
-        if (ModCompat.isBaublesPresent() && ReflectedModSupport.isInstanceOfIBauble(itemstack.getItem())) {
+        if (ModCompat.isBaublesPresent() && ReflectedModSupport.instanceof_IBauble(itemstack.getItem())) {
             if (((IBauble) itemstack.getItem()).getBaubleType(itemstack) == null) return;
 
             IBauble bauble = (IBauble) itemstack.getItem();
@@ -98,7 +97,7 @@ public abstract class ContainerPlayerMixin extends Container  {
                 }
                 didMerge = true;
             }
-        } else if (ModCompat.isTinkersConstructPresent() && ReflectedModSupport.isInstanceOfIAccessory(itemstack.getItem())) {
+        } else if (ModCompat.isTinkersConstructPresent() && ReflectedModSupport.instanceof_IAccessory(itemstack.getItem())) {
             startIndex = ((IAddsTinkersSlots) this).getTinkersSlotStart();
 
             int i;
@@ -123,8 +122,8 @@ public abstract class ContainerPlayerMixin extends Container  {
                 return;
             }
             didMerge = true;
-        } else if (ModCompat.isTravellersGearPresent() && itemstack.getItem() instanceof ITravellersGear) {
-            startIndex = ((IAddsTGSlots) this).getTGSlotStart() + ((ITravellersGear) itemstack.getItem()).getSlot(itemstack);
+        } else if (ModCompat.isTravellersGearPresent() && ReflectedModSupport.instanceof_ITravellersGear(itemstack.getItem())) {
+            startIndex = ((IAddsTGSlots) this).getTGSlotStart() + ReflectedModSupport.ITravellersGear_getSlot(itemstack);
             endIndex = startIndex + 1;
 
             if (!mergeItemStack(itemstack1, startIndex, endIndex, false)) {
