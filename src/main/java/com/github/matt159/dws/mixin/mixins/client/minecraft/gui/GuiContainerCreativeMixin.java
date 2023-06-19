@@ -3,6 +3,7 @@ package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 import com.github.matt159.dws.interfaces.IDWSGui;
 import com.github.matt159.dws.inventory.slots.minecraft.SlotCreative;
 import net.minecraft.client.gui.inventory.GuiContainerCreative;
+import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -176,43 +177,31 @@ public abstract class GuiContainerCreativeMixin extends InventoryEffectRenderer 
         return 10;
     }
 
-    @Inject(method = "handleMouseClick",
-            at = @At(   value = "INVOKE",
-                        target = "Lnet/minecraft/client/multiplayer/PlayerControllerMP;sendSlotPacket(Lnet/minecraft/item/ItemStack;I)V",
-                        ordinal = 1),
-            require = 1)
-    private void injectExtraHotbarPackets(Slot inventoryplayer, int l, int itemstack, int itemstack3, CallbackInfo ci) {
-
-    }
-
     @ModifyConstant(method = "handleMouseClick",
-                    constant = @Constant(intValue = 45),
+                    constant = @Constant(intValue = 9,
+                                         ordinal = 1),
                     require = 1)
-    private int modifyHotbarStartOffset(int constant) {
-        return 90;
-    }
-
-    @ModifyConstant(method = "handleMouseClick",
-                    constant = @Constant(   intValue = 36,
-                                            ordinal = 0),
-                    require = 1)
-    private int modifyMainInventoryEndOffset(int constant) {
-        return 63;
-    }
-
-    @ModifyConstant(method = "handleMouseClick",
-                    constant = @Constant(   intValue = 9,
-                                            ordinal = 2),
-                    require = 1)
-    private int modifyCreativeItemListOffset1(int constant) {
+    private int modifyForLoopRange(int constant) {
         return 18;
     }
 
-    @ModifyConstant(method = "handleMouseClick",
-                    constant = @Constant(   intValue = 36,
-                                            ordinal = 1),
-                    require = 1)
-    private int modifyCreativeItemListOffset2(int constant) {
-        return 63;
+    @Redirect(method = "handleMouseClick",
+              at = @At(value = "INVOKE",
+                       target = "Lnet/minecraft/client/multiplayer/PlayerControllerMP;sendSlotPacket(Lnet/minecraft/item/ItemStack;I)V",
+                       ordinal = 1),
+              require = 1)
+    private void redirectSendSlotPacket1(PlayerControllerMP instance, ItemStack itemStack, int slotId) {
+        int actualId = slotId - 36;
+
+        instance.sendSlotPacket(this.inventorySlots.getSlot(90 + actualId).getStack(), 63 + actualId);
+    }
+
+    @Redirect(method = "handleMouseClick",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/client/multiplayer/PlayerControllerMP;sendSlotPacket(Lnet/minecraft/item/ItemStack;I)V",
+                    ordinal = 2),
+            require = 1)
+    private void redirectSendSlotPacket2(PlayerControllerMP instance, ItemStack itemStack, int slotId) {
+        instance.sendSlotPacket(itemStack, slotId + 36);
     }
 }
