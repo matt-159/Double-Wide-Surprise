@@ -59,7 +59,7 @@ dependencies {
     compile("mega:structurelib-mc1.7.10:1.1.2:dev") {
         transitive = false
     }
-    compileOnly("gtmega:gt5u-mc1.7.10:5.28.23-gtmega:dev") {
+    compileOnly("gtmega:gt5u-mc1.7.10:5.31.0:dev") {
         transitive = false
     }
     compileOnly("com.github.GTNewHorizons:ForestryMC:4.4.0:dev") {
