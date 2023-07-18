@@ -17,6 +17,14 @@ public abstract class GuiFarmMixin {
         return constant + 61;
     }
 
+    @ModifyConstant(method = "<init>",
+                    constant = @Constant(intValue = 216,
+                                         ordinal = 0),
+                    require = 1)
+    private int modifyTankGaugeTextureXOffset(int constant) {
+        return 338;
+    }
+
     @ModifyConstant(method = "drawGuiContainerBackgroundLayer",
                     constant = @Constant(intValue = 81),
                     require = 1)
