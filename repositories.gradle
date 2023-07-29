@@ -1,4 +1,4 @@
-// Add any additional repositiroes for your dependencies here
+// Add any additional repositories for your dependencies here
 
 repositories {
     maven {
@@ -10,7 +10,7 @@ repositories {
         }
     }
     maven {
-        name = "cursemaven"
+        name = "FalsePattern CurseMaven Mirror"
         url = "https://mvn.falsepattern.com/cursemaven/"
     }
     maven {
@@ -18,10 +18,16 @@ repositories {
         url = "https://mvn.falsepattern.com/releases"
     }
     maven {
+        name = "FalsePattern Jenkins Mirror"
         url = "https://mvn.falsepattern.com/usrv/"
     }
     maven {
+        name = "FalsePattern GTMEGA Releases"
         url = "https://mvn.falsepattern.com/gtmega_releases/"
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
     }
     //TODO: Figure out what loads the libraries in the libs dir, since they are always loaded as `compile`
     flatDir {
