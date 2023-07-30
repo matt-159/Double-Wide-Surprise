@@ -12,6 +12,18 @@ def deobfCurse(curseDep) {
     }
 }
 
+static def modrinth(modrinthDep) {
+    return "maven.modrinth:" + modrinthDep;
+}
+
+def deobfModrinth(modrinthDep) {
+    try {
+        return deobfMaven("https://api.modrinth.com/maven", modrinth(modrinthDep))
+    } catch (Exception ignored) {
+        println("Failed to get dep " + modrinthDep + " from modrinth.")
+    }
+}
+
 dependencies {
     // Lombok
     compileOnly("org.projectlombok:lombok:1.18.22")
@@ -21,9 +33,11 @@ dependencies {
     compile("com.falsepattern:falsepatternlib-mc1.7.10:0.10.10:dev")
 
     // Baubles
-    compile("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
+    compileOnly("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
         transitive = true
     }
+
+    compile(deobfModrinth("baubles-expanded:2.1.4"))
 
     // Not Enough Items
     compile("codechicken:codechickencore-mc1.7.10:1.0.9-gtmega:dev") {
@@ -39,8 +53,8 @@ dependencies {
     }
 
     // Tinkers Construct
-    compile(deobfCurse("mantle-74924:2264244"))
-    compile(deobfCurse("tinkers-construct-74072:2264246"))
+    compileOnly(deobfCurse("mantle-74924:2264244"))
+    compileOnly(deobfCurse("tinkers-construct-74072:2264246"))
 
     // Galacticraft TODO: The @Mod annotation doesn't seem to be found when running as compile, however the core mod/mixins does load?
     compileOnly("com.github.GTNewHorizons:Galacticraft:3.0.36-GTNH:dev") {
@@ -50,7 +64,7 @@ dependencies {
     // Iron Chests
     compile(deobfCurse("iron-chests-228756:2230908"))
     // Travellers Gear
-    compile(deobfCurse("travellers-gear-224440:2262113"))
+    compileOnly(deobfCurse("travellers-gear-224440:2262113"))
 
     // GregTech
     compileOnly("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
@@ -59,13 +73,13 @@ dependencies {
     compile("eu.usrv:YAMCore:1.7.10-0.5.79:deobf") {
         transitive = false
     }
-    compile("mega:structurelib-mc1.7.10:1.1.2:dev")
+    compileOnly("mega:structurelib-mc1.7.10:1.1.2:dev")
 
     compileOnly("gtmega:gt5u-mc1.7.10:5.31.0:dev") {
         transitive = false
     }
 
-    compile(deobfCurse("forestry-59751:2333823"))
+    compileOnly(deobfCurse("forestry-59751:2333823"))
     compileOnly(deobfCurse("storage-drawers-223852:2469586"))
 
     compile("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev")
@@ -81,6 +95,6 @@ dependencies {
         transitive = false
     }
 
-    compile("curse.maven:cofh-core-69162:2388751")
-    compile("team.chisel:chisel-mc1.7.10:2.9.20-mega:dev")
+    compileOnly("curse.maven:cofh-core-69162:2388751")
+    compileOnly("team.chisel:chisel-mc1.7.10:2.9.20-mega:dev")
 }
