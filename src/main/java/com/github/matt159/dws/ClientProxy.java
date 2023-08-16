@@ -1,7 +1,6 @@
 package com.github.matt159.dws;
 
 import com.github.matt159.dws.events.DWSKeyHandler;
-import com.github.matt159.dws.events.GuiEvents;
 import com.github.matt159.dws.events.RenderGameOverlayEvents;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;
@@ -18,7 +17,6 @@ public class ClientProxy extends CommonProxy {
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
     public void init(FMLInitializationEvent event) {
         super.init(event);
-        MinecraftForge.EVENT_BUS.register(new GuiEvents());
         MinecraftForge.EVENT_BUS.register(new RenderGameOverlayEvents());
     }
 
