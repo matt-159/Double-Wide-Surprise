@@ -27,3 +27,4 @@ world/
 *.ipr
 *.iws
 src/main/resources/mixins.*.json
+srgmap.cfg
