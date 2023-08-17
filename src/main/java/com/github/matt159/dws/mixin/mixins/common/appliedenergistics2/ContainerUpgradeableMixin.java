@@ -22,7 +22,7 @@ public abstract class ContainerUpgradeableMixin {
                     constant = { @Constant(intValue = 186),
                                  @Constant(intValue = 187) },
                     remap = false,
-                    require = 1)
+                    require = 0)
     private int modifyUpgradeSlotXOffset(int constant) {
         return constant + 162;
     }
