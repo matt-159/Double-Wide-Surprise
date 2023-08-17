@@ -48,11 +48,13 @@ dependencies {
     }
 
     // Iron Chests
-    compile(deobfCurse("iron-chests-228756:2230908"))
+    compileOnly(deobfCurse("iron-chests-228756:2230908"))
     // Travellers Gear
-    compile(deobfCurse("travellers-gear-224440:2262113"))
+    compileOnly(deobfCurse("travellers-gear-224440:2262113"))
     // Garden Core
-    compile(deobfCurse("garden-stuff-225903:2269692"))
+    compileOnly(deobfCurse("garden-stuff-225903:2269692"))
+    // Agricraft
+    compile(deobfCurse("agricraft-225635:2284130"))
 
     // GregTech
     compileOnly("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
@@ -67,7 +69,7 @@ dependencies {
         transitive = false
     }
 
-    compile(deobfCurse("forestry-59751:2333823"))
+    compileOnly(deobfCurse("forestry-59751:2333823"))
     compileOnly(deobfCurse("storage-drawers-223852:2469586"))
 
     compile("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev")
