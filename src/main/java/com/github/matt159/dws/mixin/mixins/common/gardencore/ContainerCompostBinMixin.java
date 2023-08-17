@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ContainerCompostBin.class)
-public class ContainerCompostBinMixin {
+public abstract class ContainerCompostBinMixin {
     @ModifyConstant(method = "<init>",
                     constant = {
                         @Constant(intValue = 9, ordinal = 1),
