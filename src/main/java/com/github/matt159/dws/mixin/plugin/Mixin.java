@@ -329,6 +329,12 @@ public enum Mixin implements IMixin {
 
     GuiCompostBinMixin                                (CLIENT, require(GARDENCORE),          "gardencore.GuiCompostBinMixin"),
     //endregion
+    //region Agricraft
+    ContainerAgricraftMixin                           (COMMON, require(AGRICRAFT),           "agricraft.ContainerAgricraftMixin"),
+    ContainerSeedAnalyzerMixin                        (COMMON, require(AGRICRAFT),           "agricraft.ContainerSeedAnalyzerMixin"),
+
+    GuiSeedAnalyzerMixin                              (CLIENT, require(AGRICRAFT),           "agricraft.GuiSeedAnalyzerMixin"),
+    //endregion
     // @formatter:on
     ;
 

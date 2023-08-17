@@ -15,6 +15,7 @@ import static com.falsepattern.lib.mixin.ITargetedMod.PredicateHelpers.startsWit
 @Getter
 @RequiredArgsConstructor
 public enum TargetedMod implements ITargetedMod {
+    AGRICRAFT            ("Agricraft"            , true  , startsWith("agricraft-1.7.10")),
     APPLIEDENERGISTICS2  ("AppliedEnergistics2"  , true  , startsWith("appliedenergistics2").or(contains("ae2"))),
     BARTWORKS            ("Bartworks"            , true  , startsWith("bartworks")),
     BAUBLES              ("Baubles"              , true  , startsWith("baubles-")),
@@ -31,7 +32,7 @@ public enum TargetedMod implements ITargetedMod {
     STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers-1.7.10")),
     TECTECH              ("TecTech"              , true  , startsWith("tectech").or(startsWith("tec-tech"))),
     TINKERSCONSTRUCT     ("TConstruct"           , true  , startsWith("tconstruct").or(startsWith("tinkersconstruct"))),
-    TRAVELLERSGEAR       ("TravellersGear"       , true  , startsWith("traveller")),
+    TRAVELLERSGEAR       ("TravellersGear"       , false , startsWith("traveller")),
     ;
 
     private final String modName;

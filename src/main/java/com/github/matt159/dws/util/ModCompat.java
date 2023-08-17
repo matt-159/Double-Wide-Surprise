@@ -24,6 +24,7 @@ public final class ModCompat {
         NEI("NotEnoughItems"),
         STORAGEDRAWERS("StorageDrawers"),
         GARDENCORE("GardenCore"),
+        AGRICRAFT("AgriCraft"),
         ;
 
         private final String modID;

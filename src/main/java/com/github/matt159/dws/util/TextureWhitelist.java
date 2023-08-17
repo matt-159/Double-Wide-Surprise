@@ -308,5 +308,9 @@ public final class TextureWhitelist {
         //region GardenStuff
         addTextureToWhitelist("gardencore:textures/gui/compostBin.png");
         //endregion
+
+        //region Agricraft
+        addTextureToWhitelist("agricraft:textures/gui/GuiSeedAnalyzer.png");
+        //endregion
     }
 }
