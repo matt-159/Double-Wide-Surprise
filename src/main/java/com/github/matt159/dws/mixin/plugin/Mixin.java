@@ -324,6 +324,11 @@ public enum Mixin implements IMixin {
 
     RecipeHandlerChiselMixin                          (COMMON, require(CHISEL),              "chisel.RecipeHandlerChiselMixin"),
     //endregion
+    //region GardenCore
+    ContainerCompostBinMixin                          (COMMON, require(GARDENCORE),          "gardencore.ContainerCompostBinMixin"),
+
+    GuiCompostBinMixin                                (CLIENT, require(GARDENCORE),          "gardencore.GuiCompostBinMixin"),
+    //endregion
     // @formatter:on
     ;
 

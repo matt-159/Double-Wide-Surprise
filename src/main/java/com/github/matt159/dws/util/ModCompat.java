@@ -23,6 +23,7 @@ public final class ModCompat {
         IRONCHEST("IronChest"),
         NEI("NotEnoughItems"),
         STORAGEDRAWERS("StorageDrawers"),
+        GARDENCORE("GardenCore"),
         ;
 
         private final String modID;

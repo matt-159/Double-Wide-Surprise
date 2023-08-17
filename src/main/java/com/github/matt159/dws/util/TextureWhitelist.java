@@ -303,7 +303,10 @@ public final class TextureWhitelist {
         addTextureToWhitelist("chisel:textures/chisel2GuiScroll.png");
         addTextureToWhitelist("chisel:textures/chisel-gui.png");
         addTextureToWhitelist("chisel:textures/chisel-gui-24.png");
+        //endregion
 
+        //region GardenStuff
+        addTextureToWhitelist("gardencore:textures/gui/compostBin.png");
         //endregion
     }
 }

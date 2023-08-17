@@ -51,6 +51,8 @@ dependencies {
     compile(deobfCurse("iron-chests-228756:2230908"))
     // Travellers Gear
     compile(deobfCurse("travellers-gear-224440:2262113"))
+    // Garden Core
+    compile(deobfCurse("garden-stuff-225903:2269692"))
 
     // GregTech
     compileOnly("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
