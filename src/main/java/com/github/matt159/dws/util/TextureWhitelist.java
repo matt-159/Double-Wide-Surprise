@@ -312,5 +312,9 @@ public final class TextureWhitelist {
         //region Agricraft
         addTextureToWhitelist("agricraft:textures/gui/GuiSeedAnalyzer.png");
         //endregion
+
+        //region Mariculture
+        addTextureToWhitelist("mariculture:textures/gui/liquifier.png");
+        //endregion
     }
 }

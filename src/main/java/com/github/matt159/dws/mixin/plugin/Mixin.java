@@ -335,6 +335,16 @@ public enum Mixin implements IMixin {
 
     GuiSeedAnalyzerMixin                              (CLIENT, require(AGRICRAFT),           "agricraft.GuiSeedAnalyzerMixin"),
     //endregion
+    //region Mariculture
+    ContainerCrucibleMixin                            (COMMON, require(MARICULTURE),         "mariculture.ContainerCrucibleMixin"),
+    ContainerMaricultureMixin                         (COMMON, require(MARICULTURE),         "mariculture.ContainerMaricultureMixin"),
+
+    FeatureGeneralMixin                               (CLIENT, require(MARICULTURE),         "mariculture.feature.FeatureGeneralMixin"),
+    FeatureUpgradesMixin                              (CLIENT, require(MARICULTURE),         "mariculture.feature.FeatureUpgradesMixin"),
+
+    GuiCrucibleMixin                                  (CLIENT, require(MARICULTURE),         "mariculture.GuiCrucibleMixin"),
+    GuiMaricultureMixin                               (CLIENT, require(MARICULTURE),         "mariculture.GuiMaricultureMixin"),
+    //endregion
     // @formatter:on
     ;
 
