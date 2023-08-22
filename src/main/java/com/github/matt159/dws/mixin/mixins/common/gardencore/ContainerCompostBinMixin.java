@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.gardencore;
 
+import com.github.matt159.dws.interfaces.IDWSContainer;
 import com.github.matt159.dws.util.Constants;
 import com.jaquadro.minecraft.gardencore.inventory.ContainerCompostBin;
 import org.spongepowered.asm.mixin.Mixin;
@@ -7,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ContainerCompostBin.class)
-public abstract class ContainerCompostBinMixin {
+public abstract class ContainerCompostBinMixin implements IDWSContainer {
     @ModifyConstant(method = "<init>",
                     constant = {
                         @Constant(intValue = 9, ordinal = 1),

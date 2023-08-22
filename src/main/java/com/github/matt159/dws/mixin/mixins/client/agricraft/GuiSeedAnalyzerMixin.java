@@ -2,6 +2,7 @@ package com.github.matt159.dws.mixin.mixins.client.agricraft;
 
 import com.InfinityRaider.AgriCraft.gui.GuiSeedAnalyzer;
 import com.InfinityRaider.AgriCraft.tileentity.TileEntitySeedAnalyzer;
+import com.github.matt159.dws.interfaces.IDWSGui;
 import com.github.matt159.dws.util.Constants;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -14,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiSeedAnalyzer.class)
-public abstract class GuiSeedAnalyzerMixin extends GuiContainer {
+public abstract class GuiSeedAnalyzerMixin extends GuiContainer implements IDWSGui {
     public GuiSeedAnalyzerMixin(Container container) {
         super(container);
     }
