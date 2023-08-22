@@ -51,10 +51,15 @@ dependencies {
     compileOnly(deobfCurse("iron-chests-228756:2230908"))
     // Travellers Gear
     compileOnly(deobfCurse("travellers-gear-224440:2262113"))
+
+    //region Regrowth Compat
     // Garden Core
     compileOnly(deobfCurse("garden-stuff-225903:2269692"))
+    //Mariculture
+    compile(deobfCurse("mariculture-68023:2234977"))
     // Agricraft
     compile(deobfCurse("agricraft-225635:2284130"))
+    //endregion
 
     // GregTech
     compileOnly("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
