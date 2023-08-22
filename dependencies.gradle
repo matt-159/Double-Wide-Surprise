@@ -30,17 +30,17 @@ dependencies {
         transitive = false;
     }
 
-    compile("codechicken:codechickenlib-mc1.7.10:1.1.4-gtmega:dev"){
+    compile("codechicken:codechickenlib-mc1.7.10:1.1.4-gtmega:dev") {
         transitive = false;
     }
 
-    compile("codechicken:notenoughitems-mc1.7.10:2.1.5-gtmega:dev"){
+    compile("codechicken:notenoughitems-mc1.7.10:2.1.5-gtmega:dev") {
         transitive = false;
     }
 
     // Tinkers Construct
-    compile(deobfCurse("mantle-74924:2264244"))
-    compile(deobfCurse("tinkers-construct-74072:2264246"))
+    compileOnly(deobfCurse("mantle-74924:2264244"))
+    compileOnly(deobfCurse("tinkers-construct-74072:2264246"))
 
     // Galacticraft TODO: The @Mod annotation doesn't seem to be found when running as compile, however the core mod/mixins does load?
     compileOnly("com.github.GTNewHorizons:Galacticraft:3.0.36-GTNH:dev") {
