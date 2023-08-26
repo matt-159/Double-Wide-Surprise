@@ -29,6 +29,7 @@ public enum TargetedMod implements ITargetedMod {
     INVENTORYTWEAKS      ("InventoryTweaks"      , true  , startsWith("inventorytweaks")),
     IRONCHEST            ("IronChest"            , true  , startsWith("ironchest")),
     MARICULTURE          ("Mariculture"          , true  , startsWith("mariculture")),
+    NATURA               ("Natura"               , true  , startsWith("natura-")),
     NOTENOUGHITEMS       ("NotEnoughItems"       , true  , startsWith("notenoughitems")),
     STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers-1.7.10")),
     TECTECH              ("TecTech"              , false , startsWith("tectech").or(startsWith("tec-tech"))),

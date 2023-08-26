@@ -345,6 +345,11 @@ public enum Mixin implements IMixin {
     GuiCrucibleMixin                                  (CLIENT, require(MARICULTURE),         "mariculture.GuiCrucibleMixin"),
     GuiMaricultureMixin                               (CLIENT, require(MARICULTURE),         "mariculture.GuiMaricultureMixin"),
     //endregion
+    //region Natura
+    NGuiHandlerMixin                                  (COMMON, require(NATURA),              "natura.NGuiHandlerMixin"),
+
+    FurnaceGuiMixin                                   (CLIENT, require(NATURA),              "natura.FurnaceGuiMixin"),
+    //endregion
     // @formatter:on
     ;
 

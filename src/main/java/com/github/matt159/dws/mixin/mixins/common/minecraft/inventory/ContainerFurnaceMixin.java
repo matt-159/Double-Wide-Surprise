@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
+import com.github.matt159.dws.interfaces.IDWSContainer;
 import com.github.matt159.dws.util.Constants;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerFurnace;
@@ -8,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ContainerFurnace.class)
-public abstract class ContainerFurnaceMixin extends Container {
+public abstract class ContainerFurnaceMixin extends Container implements IDWSContainer {
 
     @ModifyConstant(method = "<init>",
                     constant = {    @Constant(intValue = 56),

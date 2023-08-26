@@ -39,7 +39,7 @@ dependencies {
     }
 
     // Tinkers Construct
-    compileOnly(deobfCurse("mantle-74924:2264244"))
+    compile(deobfCurse("mantle-74924:2264244"))
     compileOnly(deobfCurse("tinkers-construct-74072:2264246"))
 
     // Galacticraft TODO: The @Mod annotation doesn't seem to be found when running as compile, however the core mod/mixins does load?
@@ -61,6 +61,8 @@ dependencies {
     compile(deobfCurse("agricraft-225635:2284130"))
     //endregion
 
+    // Natura
+    compile(deobfCurse("natura-74120:2257670"))
     // GregTech
     compileOnly("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
         transitive = false
