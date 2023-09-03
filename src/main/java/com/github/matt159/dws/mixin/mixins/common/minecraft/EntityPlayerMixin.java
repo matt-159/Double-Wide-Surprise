@@ -22,27 +22,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class EntityPlayerMixin implements IEntityPlayerMixin {
     boolean isReorganizedForFallbackSupport = false;
 
-//    @Inject(method = "openGui",
-//            at = @At(value = "INVOKE",
-//                     target = "Lcpw/mods/fml/common/network/internal/FMLNetworkHandler;openGui(Lnet/minecraft/entity/player/EntityPlayer;Ljava/lang/Object;ILnet/minecraft/world/World;III)V",
-//                     shift = At.Shift.BEFORE),
-//            remap = false,
-//            require = 1)
-//    private void injectPlayerInventoryReorganization(Object mod, int modGuiId, World world, int x, int y, int z, CallbackInfo ci) {
-//        if (world.isRemote) {
-//            return;
-//        }
-//
-//        ModContainer mc = FMLCommonHandler.instance().findContainerFor(mod);
-//        Container remoteGuiContainer = NetworkRegistry.INSTANCE.getRemoteGuiContainer(mc, entityPlayerMP, modGuiId, world, x, y, z);
-//
-//        this.isReorganizedForFallbackSupport = !ModCompat.hasDWSCompat(mc);
-//
-//        if (this.isReorganizedForFallbackSupport) {
-//            DWSUtil.ReorganizeInventoryForFallbackSupport((EntityPlayer) (Object) this, DWSUtil.Reorganization.Do);
-//        }
-//    }
-
     @Redirect(method = "openGui",
               at = @At(value = "INVOKE",
                        target = "Lcpw/mods/fml/common/network/internal/FMLNetworkHandler;openGui(Lnet/minecraft/entity/player/EntityPlayer;Ljava/lang/Object;ILnet/minecraft/world/World;III)V"),
@@ -51,9 +30,17 @@ public abstract class EntityPlayerMixin implements IEntityPlayerMixin {
     private void redirectOpenGui(EntityPlayer player, Object mod, int modGuiId, World world, int x, int y, int z) {
         if (!world.isRemote && player instanceof EntityPlayerMP) {
             ModContainer mc = FMLCommonHandler.instance().findContainerFor(mod);
-            Container guiContainer = NetworkRegistry.INSTANCE.getRemoteGuiContainer(mc, (EntityPlayerMP) player, modGuiId, world, x, y, z);
+            Container guiContainer = NetworkRegistry.INSTANCE.getRemoteGuiContainer(mc,
+                                                                                    (EntityPlayerMP) player,
+                                                                                    modGuiId,
+                                                                                    world,
+                                                                                    x,
+                                                                                    y,
+                                                                                    z);
 
-            this.isReorganizedForFallbackSupport = !(ModCompat.hasDWSCompat(mc) || guiContainer instanceof IDWSContainer);
+            this.isReorganizedForFallbackSupport = !(ModCompat.hasDWSCompat(mc) ||
+                                                     guiContainer == null ||
+                                                     guiContainer instanceof IDWSContainer);
 
             if (this.isReorganizedForFallbackSupport) {
                 DWSUtil.ReorganizeInventoryForFallbackSupport((EntityPlayer) (Object) this, DWSUtil.Reorganization.Do);
