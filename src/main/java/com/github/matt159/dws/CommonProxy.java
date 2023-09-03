@@ -1,7 +1,7 @@
 package com.github.matt159.dws;
 
 import baubles.client.gui.GuiEvents;
-import com.github.matt159.dws.events.DWSKeyHandler;
+import com.github.matt159.dws.events.DWSSwapKeyHandler;
 import com.github.matt159.dws.events.PlayerOpenContainerEventHandler;
 import com.github.matt159.dws.network.PacketHandler;
 import cpw.mods.fml.common.event.*;
@@ -18,9 +18,6 @@ import static com.github.matt159.dws.util.ModCompat.isBaublesPresent;
 import static com.github.matt159.dws.util.ModCompat.isTinkersConstructPresent;
 
 public class CommonProxy {
-
-    public DWSKeyHandler keyHandler;
-
     // preInit "Run before anything else. Read your config, create blocks, items,
     // etc, and register them with the GameRegistry."
     public void preInit(FMLPreInitializationEvent event) {

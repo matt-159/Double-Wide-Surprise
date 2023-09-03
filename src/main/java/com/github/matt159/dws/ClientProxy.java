@@ -1,12 +1,12 @@
 package com.github.matt159.dws;
 
-import com.github.matt159.dws.events.DWSKeyHandler;
+import com.github.matt159.dws.events.DWSSwapKeyHandler;
 import com.github.matt159.dws.events.RenderGameOverlayEvents;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
+    public DWSSwapKeyHandler keyHandler;
 
     // preInit "Run before anything else. Read your config, create blocks, items,
     // etc, and register them with the GameRegistry."
@@ -50,7 +50,6 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerKeyBindings() {
-        keyHandler = new DWSKeyHandler();
-        FMLCommonHandler.instance().bus().register(keyHandler);
+        keyHandler = new DWSSwapKeyHandler();
     }
 }
