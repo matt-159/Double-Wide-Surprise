@@ -78,6 +78,7 @@ dependencies {
 
     compileOnly(deobfCurse("forestry-59751:2333823"))
     compileOnly(deobfCurse("storage-drawers-223852:2469586"))
+    compile(deobfCurse("thaumcraft-223628:2227552"))
 
     compile("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev")
     compile('com.github.GTNewHorizons:EnderCore:0.2.9:dev') {
