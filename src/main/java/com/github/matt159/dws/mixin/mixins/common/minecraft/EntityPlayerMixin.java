@@ -28,9 +28,17 @@ public abstract class EntityPlayerMixin implements IEntityPlayerMixin {
     private void redirectOpenGui(EntityPlayer player, Object mod, int modGuiId, World world, int x, int y, int z) {
         if (!world.isRemote && player instanceof EntityPlayerMP) {
             ModContainer mc = FMLCommonHandler.instance().findContainerFor(mod);
-            Container guiContainer = NetworkRegistry.INSTANCE.getRemoteGuiContainer(mc, (EntityPlayerMP) player, modGuiId, world, x, y, z);
+            Container guiContainer = NetworkRegistry.INSTANCE.getRemoteGuiContainer(mc,
+                                                                                    (EntityPlayerMP) player,
+                                                                                    modGuiId,
+                                                                                    world,
+                                                                                    x,
+                                                                                    y,
+                                                                                    z);
 
-            this.isReorganizedForFallbackSupport = !(ModCompat.hasDWSCompat(mc) || guiContainer instanceof IDWSContainer);
+            this.isReorganizedForFallbackSupport = !(ModCompat.hasDWSCompat(mc) ||
+                                                     guiContainer == null ||
+                                                     guiContainer instanceof IDWSContainer);
 
             if (this.isReorganizedForFallbackSupport) {
                 DWSUtil.ReorganizeInventoryForFallbackSupport((EntityPlayer) (Object) this, DWSUtil.Reorganization.Do);
