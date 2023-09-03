@@ -303,7 +303,18 @@ public final class TextureWhitelist {
         addTextureToWhitelist("chisel:textures/chisel2GuiScroll.png");
         addTextureToWhitelist("chisel:textures/chisel-gui.png");
         addTextureToWhitelist("chisel:textures/chisel-gui-24.png");
+        //endregion
 
+        //region GardenStuff
+        addTextureToWhitelist("gardencore:textures/gui/compostBin.png");
+        //endregion
+
+        //region Agricraft
+        addTextureToWhitelist("agricraft:textures/gui/GuiSeedAnalyzer.png");
+        //endregion
+
+        //region Mariculture
+        addTextureToWhitelist("mariculture:textures/gui/liquifier.png");
         //endregion
     }
 }

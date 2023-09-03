@@ -324,6 +324,32 @@ public enum Mixin implements IMixin {
 
     RecipeHandlerChiselMixin                          (COMMON, require(CHISEL),              "chisel.RecipeHandlerChiselMixin"),
     //endregion
+    //region GardenCore
+    ContainerCompostBinMixin                          (COMMON, require(GARDENCORE),          "gardencore.ContainerCompostBinMixin"),
+
+    GuiCompostBinMixin                                (CLIENT, require(GARDENCORE),          "gardencore.GuiCompostBinMixin"),
+    //endregion
+    //region Agricraft
+    ContainerAgricraftMixin                           (COMMON, require(AGRICRAFT),           "agricraft.ContainerAgricraftMixin"),
+    ContainerSeedAnalyzerMixin                        (COMMON, require(AGRICRAFT),           "agricraft.ContainerSeedAnalyzerMixin"),
+
+    GuiSeedAnalyzerMixin                              (CLIENT, require(AGRICRAFT),           "agricraft.GuiSeedAnalyzerMixin"),
+    //endregion
+    //region Mariculture
+    ContainerCrucibleMixin                            (COMMON, require(MARICULTURE),         "mariculture.ContainerCrucibleMixin"),
+    ContainerMaricultureMixin                         (COMMON, require(MARICULTURE),         "mariculture.ContainerMaricultureMixin"),
+
+    FeatureGeneralMixin                               (CLIENT, require(MARICULTURE),         "mariculture.feature.FeatureGeneralMixin"),
+    FeatureUpgradesMixin                              (CLIENT, require(MARICULTURE),         "mariculture.feature.FeatureUpgradesMixin"),
+
+    GuiCrucibleMixin                                  (CLIENT, require(MARICULTURE),         "mariculture.GuiCrucibleMixin"),
+    GuiMaricultureMixin                               (CLIENT, require(MARICULTURE),         "mariculture.GuiMaricultureMixin"),
+    //endregion
+    //region Natura
+    NGuiHandlerMixin                                  (COMMON, require(NATURA),              "natura.NGuiHandlerMixin"),
+
+    FurnaceGuiMixin                                   (CLIENT, require(NATURA),              "natura.FurnaceGuiMixin"),
+    //endregion
     // @formatter:on
     ;
 

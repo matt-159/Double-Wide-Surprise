@@ -14,6 +14,12 @@ Most modded inventories should work, but explicit support has been completed for
 - Storage Drawers
 - Inventory Tweaks
 
+Partially Supported Mods:
+- Garden Core
+  - Compost Bin
+- Agricraft
+  - Seed Analyzer
+
 Future plans for the mod:
 - Support more and more modded inventories
 

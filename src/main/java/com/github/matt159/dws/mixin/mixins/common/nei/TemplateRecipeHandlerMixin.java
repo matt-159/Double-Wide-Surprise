@@ -3,6 +3,8 @@ package com.github.matt159.dws.mixin.mixins.common.nei;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 import com.github.matt159.dws.util.Constants;
 import com.github.matt159.dws.util.ListOfGUIsWithTransferRects;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,9 +25,10 @@ public abstract class TemplateRecipeHandlerMixin {
 //    private int modifyBackgroundXOffset(int constant) {
 //        return constant + 81;
 //    }
-
+    @SideOnly(Side.CLIENT)
     private static Class<? extends GuiContainer> clazz = null;
 
+    @SideOnly(Side.CLIENT)
     @Inject(method = "transferRect(Lnet/minecraft/client/gui/inventory/GuiContainer;Ljava/util/Collection;IIZ)Z",
             at = @At("HEAD"),
             remap = false,
@@ -39,6 +42,8 @@ public abstract class TemplateRecipeHandlerMixin {
         clazz = gui.getClass();
     }
 
+
+    @SideOnly(Side.CLIENT)
     @Inject(method = "transferRectTooltip",
             at = @At("HEAD"),
             remap = false,
@@ -52,6 +57,8 @@ public abstract class TemplateRecipeHandlerMixin {
         clazz = gui.getClass();
     }
 
+
+    @SideOnly(Side.CLIENT)
     @SuppressWarnings("rawtypes")
     @Redirect(method = { "transferRect(Lnet/minecraft/client/gui/inventory/GuiContainer;Ljava/util/Collection;IIZ)Z",
                          "transferRectTooltip" },
@@ -71,6 +78,7 @@ public abstract class TemplateRecipeHandlerMixin {
         return instance.contains(point);
     }
 
+    @SideOnly(Side.CLIENT)
     @Inject(method = "transferRect(Lnet/minecraft/client/gui/inventory/GuiContainer;Ljava/util/Collection;IIZ)Z",
             at = @At("RETURN"),
             remap = false,
@@ -84,6 +92,7 @@ public abstract class TemplateRecipeHandlerMixin {
         clazz = null;
     }
 
+    @SideOnly(Side.CLIENT)
     @Inject(method = "transferRectTooltip",
             at = @At("RETURN"),
             remap = false,

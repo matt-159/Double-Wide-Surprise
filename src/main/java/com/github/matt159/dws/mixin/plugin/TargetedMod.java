@@ -15,22 +15,26 @@ import static com.falsepattern.lib.mixin.ITargetedMod.PredicateHelpers.startsWit
 @Getter
 @RequiredArgsConstructor
 public enum TargetedMod implements ITargetedMod {
-    APPLIEDENERGISTICS2  ("AppliedEnergistics2"  , true  , startsWith("appliedenergistics2").or(contains("ae2"))),
-    BARTWORKS            ("Bartworks"            , true  , startsWith("bartworks")),
+    AGRICRAFT            ("Agricraft"            , true  , startsWith("agricraft-1.7.10")),
+    APPLIEDENERGISTICS2  ("AppliedEnergistics2"  , false , startsWith("appliedenergistics2").or(contains("ae2"))),
+    BARTWORKS            ("Bartworks"            , false , startsWith("bartworks")),
     BAUBLES              ("Baubles"              , true  , startsWith("baubles-")),
     CHISEL               ("Chisel"               , true  , startsWith("chisel")),
     ENDERCORE            ("EnderCore"            , true  , startsWith("endercore")),
     FORESTRY             ("Forestry"             , true  , startsWith("forestry")),
     CODECHICKENLIB       ("CodeChickenLib"       , true  , startsWith("codechicken")),
     GALACTICRAFT         ("Galacticraft"         , false , startsWith("galacticraft")),
-    GREGTECH             ("GregTech"             , true  , startsWith("gregtech").or(startsWith("gt5u"))),
+    GARDENCORE           ("GardenCore"           , true  , startsWith("gardenstuff")),
+    GREGTECH             ("GregTech"             , false , startsWith("gregtech").or(startsWith("gt5u"))),
     INVENTORYTWEAKS      ("InventoryTweaks"      , true  , startsWith("inventorytweaks")),
     IRONCHEST            ("IronChest"            , true  , startsWith("ironchest")),
+    MARICULTURE          ("Mariculture"          , true  , startsWith("mariculture")),
+    NATURA               ("Natura"               , true  , startsWith("natura-")),
     NOTENOUGHITEMS       ("NotEnoughItems"       , true  , startsWith("notenoughitems")),
-    STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers")),
-    TECTECH              ("TecTech"              , true  , startsWith("tectech").or(startsWith("tec-tech"))),
-    TINKERSCONSTRUCT     ("TConstruct"           , true  , startsWith("tconstruct").or(startsWith("tinkersconstruct"))),
-    TRAVELLERSGEAR       ("TravellersGear"       , true  , startsWith("traveller")),
+    STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers-1.7.10")),
+    TECTECH              ("TecTech"              , false , startsWith("tectech").or(startsWith("tec-tech"))),
+    TINKERSCONSTRUCT     ("TConstruct"           , false , startsWith("tconstruct").or(startsWith("tinkersconstruct"))),
+    TRAVELLERSGEAR       ("TravellersGear"       , false , startsWith("traveller")),
     ;
 
     private final String modName;
