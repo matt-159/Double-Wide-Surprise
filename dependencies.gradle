@@ -33,9 +33,7 @@ dependencies {
     compile("com.falsepattern:falsepatternlib-mc1.7.10:0.10.10:dev")
 
     // Baubles
-    compileOnly("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
-        transitive = true
-    }
+    compileOnly("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf")
 
     compile(deobfModrinth("baubles-expanded:2.1.4"))
 
@@ -52,31 +50,23 @@ dependencies {
         transitive = false;
     }
 
-    // Tinkers Construct
-    compileOnly(deobfCurse("mantle-74924:2264244"))
-    compileOnly(deobfCurse("tinkers-construct-74072:2264246"))
-
     // Galacticraft TODO: The @Mod annotation doesn't seem to be found when running as compile, however the core mod/mixins does load?
     compileOnly("com.github.GTNewHorizons:Galacticraft:3.0.36-GTNH:dev") {
         transitive = false
     }
 
-    // Iron Chests
+    compileOnly(deobfCurse("agricraft-225635:2284130"))
+    compileOnly(deobfCurse("cofh-core-69162:2388751"))
+    compileOnly(deobfCurse("forestry-59751:2333823"))
+    compileOnly(deobfCurse("garden-stuff-225903:2269692"))
     compileOnly(deobfCurse("iron-chests-228756:2230908"))
-    // Travellers Gear
+    compileOnly(deobfCurse("mantle-74924:2264244"))
+    compileOnly(deobfCurse("mariculture-68023:2234977"))
+    compileOnly(deobfCurse("natura-74120:2257670"))
+    compileOnly(deobfCurse("storage-drawers-223852:2469586"))
+    compileOnly(deobfCurse("tinkers-construct-74072:2264246"))
     compileOnly(deobfCurse("travellers-gear-224440:2262113"))
 
-    //region Regrowth Compat
-    // Garden Core
-    compileOnly(deobfCurse("garden-stuff-225903:2269692"))
-    //Mariculture
-    compile(deobfCurse("mariculture-68023:2234977"))
-    // Agricraft
-    compile(deobfCurse("agricraft-225635:2284130"))
-    //endregion
-
-    // Natura
-    compile(deobfCurse("natura-74120:2257670"))
     // GregTech
     compileOnly("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
         transitive = false
@@ -89,9 +79,6 @@ dependencies {
     compileOnly("gtmega:gt5u-mc1.7.10:5.31.0:dev") {
         transitive = false
     }
-
-    compileOnly(deobfCurse("forestry-59751:2333823"))
-    compileOnly(deobfCurse("storage-drawers-223852:2469586"))
 
     compile("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev")
     compile('com.github.GTNewHorizons:EnderCore:0.2.9:dev') {
@@ -106,6 +93,5 @@ dependencies {
         transitive = false
     }
 
-    compileOnly("curse.maven:cofh-core-69162:2388751")
     compileOnly("team.chisel:chisel-mc1.7.10:2.9.20-mega:dev")
 }
