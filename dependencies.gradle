@@ -30,7 +30,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.22")
 
     // FalsePattern Lib
-    compile("com.falsepattern:falsepatternlib-mc1.7.10:0.10.10:dev")
+    compile("com.falsepattern:falsepatternlib-mc1.7.10:0.12.1:dev")
 
     // Baubles
     compileOnly("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf")
