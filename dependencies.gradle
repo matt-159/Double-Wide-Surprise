@@ -79,9 +79,7 @@ dependencies {
     compileOnly(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")
     compileOnly("mega:tectech-mc1.7.10:4.11.0:dev")
 
-    compileOnly("gtmega:ae2-mc1.7.10:rv3-beta.58-gtmega:dev") {
-        transitive = false
-    }
+    compileOnly("gtmega:ae2-mc1.7.10:rv3-beta.58-gtmega:dev")
 
     compileOnly("team.chisel:chisel-mc1.7.10:2.9.20-mega:dev")
 }
