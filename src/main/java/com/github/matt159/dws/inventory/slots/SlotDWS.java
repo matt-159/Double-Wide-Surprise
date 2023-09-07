@@ -2,6 +2,7 @@ package com.github.matt159.dws.inventory.slots;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import lombok.Getter;
 import micdoodle8.mods.galacticraft.api.item.IItemThermal;
 import micdoodle8.mods.galacticraft.core.items.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -131,6 +132,7 @@ public class SlotDWS extends Slot {
         }
     }
 
+    @Getter
     public enum SlotType {
         /* Tinkers Construct */
         TINKERS_MASK(0, 0),
@@ -168,10 +170,6 @@ public class SlotDWS extends Slot {
          * X and Y location in the sprite grid within dws:textures/minecraft/gui/container/inventory.png
          */
         private final int x, y;
-
-        public int getX() { return x; }
-
-        public int getY() { return y; }
 
         SlotType(int x, int y) {
             this.x = x;
