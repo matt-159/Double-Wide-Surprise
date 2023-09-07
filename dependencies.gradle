@@ -68,17 +68,7 @@ dependencies {
     compileOnly(deobfCurse("travellers-gear-224440:2262113"))
 
     // GregTech
-    compileOnly("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
-        transitive = false
-    }
-    compile("eu.usrv:YAMCore:1.7.10-0.5.79:deobf") {
-        transitive = false
-    }
-    compileOnly("mega:structurelib-mc1.7.10:1.1.2:dev")
-
-    compileOnly("gtmega:gt5u-mc1.7.10:5.31.0:dev") {
-        transitive = false
-    }
+    compileOnly("gtmega:gt5u-mc1.7.10:5.32.0-mega:dev")
 
     compile("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev")
     compile('com.github.GTNewHorizons:EnderCore:0.2.9:dev') {
