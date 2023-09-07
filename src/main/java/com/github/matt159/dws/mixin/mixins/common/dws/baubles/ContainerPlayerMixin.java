@@ -4,6 +4,7 @@ import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
 import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
+import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.util.ModCompat;
 import com.github.matt159.dws.util.SlotLayoutManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,8 +19,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import static com.github.matt159.dws.inventory.slots.SlotDWS.SlotType.*;
 
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container implements IAddsBaubleSlots {
@@ -80,10 +79,10 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsBau
             ((InventoryBaubles) baublesAccessories).stackList = PlayerHandler.getPlayerBaubles(player).stackList;
         }
 
-        this.addSlotToContainer(new SlotDWS(baublesAccessories, 0, xOffset, 8 + 0 * 18, player, BAUBLE_AMULET));
-        this.addSlotToContainer(new SlotDWS(baublesAccessories, 1, xOffset, 8 + 1 * 18, player, BAUBLE_RING));
-        this.addSlotToContainer(new SlotDWS(baublesAccessories, 2, xOffset, 8 + 2 * 18, player, BAUBLE_RING));
-        this.addSlotToContainer(new SlotDWS(baublesAccessories, 3, xOffset, 8 + 3 * 18, player, BAUBLE_BELT));
+        this.addSlotToContainer(new SlotDWS(baublesAccessories, 0, xOffset, 8 + 0 * 18, player, SlotType.BAUBLE_AMULET));
+        this.addSlotToContainer(new SlotDWS(baublesAccessories, 1, xOffset, 8 + 1 * 18, player, SlotType.BAUBLE_RING));
+        this.addSlotToContainer(new SlotDWS(baublesAccessories, 2, xOffset, 8 + 2 * 18, player, SlotType.BAUBLE_RING));
+        this.addSlotToContainer(new SlotDWS(baublesAccessories, 3, xOffset, 8 + 3 * 18, player, SlotType.BAUBLE_BELT));
     }
 
     @Inject(method = "onContainerClosed",

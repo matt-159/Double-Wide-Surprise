@@ -2,6 +2,7 @@ package com.github.matt159.dws.mixin.mixins.common.dws.galacticraft;
 
 import com.github.matt159.dws.interfaces.dws.IAddsGCSlots;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
+import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.util.SlotLayoutManager;
 import micdoodle8.mods.galacticraft.core.entities.player.GCPlayerStats;
 import micdoodle8.mods.galacticraft.core.proxy.ClientProxyCore;
@@ -16,8 +17,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import static com.github.matt159.dws.inventory.slots.SlotDWS.SlotType.*;
 
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container implements IAddsGCSlots {
@@ -50,21 +49,21 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsGCS
             }
         }
 
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 6, xOffset, 8 + 0 * 18, player, GC_THERMAL_HELM));
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 7, xOffset, 8 + 1 * 18, player, GC_THERMAL_CHEST));
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 8, xOffset, 8 + 2 * 18, player, GC_THERMAL_LEGS));
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 9, xOffset, 8 + 3 * 18, player, GC_THERMAL_BOOTS));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 6, xOffset, 8 + 0 * 18, player, SlotType.GC_THERMAL_HELM));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 7, xOffset, 8 + 1 * 18, player, SlotType.GC_THERMAL_CHEST));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 8, xOffset, 8 + 2 * 18, player, SlotType.GC_THERMAL_LEGS));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 9, xOffset, 8 + 3 * 18, player, SlotType.GC_THERMAL_BOOTS));
         xOffset += 18;
 
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 4, xOffset, 8 + 0 * 18, player, GC_PARACHUTE));
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 0, xOffset, 8 + 1 * 18, player, GC_OXYGEN_MASK));
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 2, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 4, xOffset, 8 + 0 * 18, player, SlotType.GC_PARACHUTE));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 0, xOffset, 8 + 1 * 18, player, SlotType.GC_OXYGEN_MASK));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 2, xOffset, 8 + 2 * 18, player, SlotType.GC_OXYGEN_TANK));
 //        nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
         xOffset += 18;
 
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 5, xOffset, 8 + 0 * 18, player, GC_FREQUENCY_MODULE));
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 1, xOffset, 8 + 1 * 18, player, GC_OXYGEN_GEAR));
-        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 3, xOffset, 8 + 2 * 18, player, GC_OXYGEN_TANK));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 5, xOffset, 8 + 0 * 18, player, SlotType.GC_FREQUENCY_MODULE));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 1, xOffset, 8 + 1 * 18, player, SlotType.GC_OXYGEN_GEAR));
+        this.addSlotToContainer(new SlotDWS(galacticraftAccessories, 3, xOffset, 8 + 2 * 18, player, SlotType.GC_OXYGEN_TANK));
 //        nullSlots.add(Pair.of(xOffset, 8 + 3 * 18));
     }
 }
