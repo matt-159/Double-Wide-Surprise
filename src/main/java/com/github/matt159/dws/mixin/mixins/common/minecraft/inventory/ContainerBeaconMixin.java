@@ -8,22 +8,6 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ContainerBeacon.class)
 public abstract class ContainerBeaconMixin extends Container {
-
-//    @Mutable
-//    @Shadow @Final private ContainerBeacon.BeaconSlot beaconSlot;
-//
-//    @Inject(method = "<init>",
-//            at = @At(value = "RETURN"),
-//            require = 1)
-//    private void addSlotsToContainer(InventoryPlayer inventoryPlayer, TileEntityBeacon tileEntityBeacon, CallbackInfo ci) {
-//        this.inventorySlots.clear();
-//
-//        this.beaconSlot = new SlotBeacon((ContainerBeacon) (Object) (this), tileEntityBeacon, 0, 190, 110);
-//        this.addSlotToContainer(beaconSlot);
-//
-//        DWSUtil.addDWSSlotsToContainer((ContainerBeacon) (Object) (this), inventoryPlayer, 8, 137, 195);
-//    }
-
     @ModifyConstant(method = "<init>",
                     constant = @Constant(intValue = 136),
                     require = 1)
