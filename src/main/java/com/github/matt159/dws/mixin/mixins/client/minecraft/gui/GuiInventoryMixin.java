@@ -11,6 +11,7 @@ import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.inventory.Container;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -50,12 +51,12 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
             tgSlotStart = ((IAddsTGSlots) this.inventorySlots).getTGSlotStart();
         }
 
-        int accessorySlotStart = getMinValueFromList(tinkersSlotStart, baublesSlotStart, gcSlotStart, tgSlotStart);
+        int accessorySlotStart = dws$GetMinValueFromList(tinkersSlotStart, baublesSlotStart, gcSlotStart, tgSlotStart);
 
         for (int i = accessorySlotStart; i < this.inventorySlots.inventorySlots.size(); i++) {
             SlotDWS slot = (SlotDWS) this.inventorySlots.getSlot(i);
 
-            drawSlotAndOverlay(slot);
+            dws$drawSlotAndOverlay(slot);
         }
     }
 
@@ -66,7 +67,8 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
         return constant + 162;
     }
 
-    private void drawSlotAndOverlay(SlotDWS slot) {
+    @Unique
+    private void dws$drawSlotAndOverlay(SlotDWS slot) {
         int x = this.guiLeft + slot.xDisplayPosition;
         int y = this.guiTop + slot.yDisplayPosition;
 
@@ -83,7 +85,8 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
         }
     }
 
-    private int getMinValueFromList(int value, int ... values) {
+    @Unique
+    private int dws$GetMinValueFromList(int value, int ... values) {
         int min = value;
 
         for (int i : values) {
