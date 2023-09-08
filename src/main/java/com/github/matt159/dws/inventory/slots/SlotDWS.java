@@ -22,11 +22,8 @@ public class SlotDWS extends Slot {
         this.player = player;
         this.type = type;
 
-        if (this.type.equals(SlotType.TINKERS_HEART_RED) ||
-            this.type.equals(SlotType.TINKERS_HEART_YELLOW) ||
-            this.type.equals(SlotType.TINKERS_HEART_GREEN)) {
-            this.slotLimit = 10;
-        }
+        this.slotLimit = this.type.getStackSize();
+        this.texture = this.type.getSlotHintTexture();
     }
 
     @Override

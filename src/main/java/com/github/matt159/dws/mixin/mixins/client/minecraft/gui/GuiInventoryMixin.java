@@ -5,11 +5,11 @@ import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
 import com.github.matt159.dws.interfaces.dws.IAddsGCSlots;
 import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
 import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
-import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.util.ModCompat;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -54,9 +54,7 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
         int accessorySlotStart = dws$GetMinValueFromList(tinkersSlotStart, baublesSlotStart, gcSlotStart, tgSlotStart);
 
         for (int i = accessorySlotStart; i < this.inventorySlots.inventorySlots.size(); i++) {
-            SlotDWS slot = (SlotDWS) this.inventorySlots.getSlot(i);
-
-            dws$drawSlotAndOverlay(slot);
+            dws$drawEmptySlot(this.inventorySlots.getSlot(i));
         }
     }
 
@@ -68,21 +66,12 @@ public abstract class GuiInventoryMixin extends InventoryEffectRenderer implemen
     }
 
     @Unique
-    private void dws$drawSlotAndOverlay(SlotDWS slot) {
+    private void dws$drawEmptySlot(Slot slot) {
         int x = this.guiLeft + slot.xDisplayPosition;
         int y = this.guiTop + slot.yDisplayPosition;
 
         //draw empty slot
-//        GL11.glColor3f(1.0F, 1.0F, 1.0F);
-//        GL11.glEnable(3042);
         this.drawTexturedModalRect(x - 1, y - 1, 144,198, 18,18);
-
-        if(!slot.getHasStack()) {
-            int u = 162 + 18 * slot.type.getX() + 1;
-            int v = 180 + 18 * slot.type.getY() + 1;
-
-            this.drawTexturedModalRect( x, y, u, v, 16, 16);
-        }
     }
 
     @Unique

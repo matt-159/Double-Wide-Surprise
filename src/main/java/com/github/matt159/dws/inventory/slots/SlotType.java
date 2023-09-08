@@ -1,48 +1,52 @@
 package com.github.matt159.dws.inventory.slots;
 
+import com.github.matt159.dws.Tags;
 import lombok.Getter;
+import net.minecraft.util.ResourceLocation;
 
 @Getter
 public enum SlotType {
     /* Tinkers Construct */
-    TINKERS_MASK(0, 0),
-    TINKERS_GLOVE(0, 1),
-    TINKERS_BELT(0, 2),
-    TINKERS_KNAPSACK(0, 3),
-    TINKERS_HEART_RED(1, 0),
-    TINKERS_HEART_YELLOW(1, 1),
-    TINKERS_HEART_GREEN(1, 2),
+    TINKERS_MASK("mask"),
+    TINKERS_GLOVE("glove"),
+    TINKERS_BELT("tinkersBelt"),
+    TINKERS_KNAPSACK("knapsack"),
+    TINKERS_HEART_RED("redHeartCanister", 10),
+    TINKERS_HEART_YELLOW("yellowHeartCanister", 10),
+    TINKERS_HEART_GREEN("greenHearCanister", 10),
 
     /* Baubles */
-    BAUBLE_AMULET(2, 0),
-    BAUBLE_RING(2, 1),
-    BAUBLE_BELT(2, 2),
+    BAUBLE_AMULET("amulet"),
+    BAUBLE_RING("ring"),
+    BAUBLE_BELT("baublesBelt"),
 
     /* Traveller's Gear */
-    TRAVEL_CLOAK(3, 0),
-    TRAVEL_PAULDRON(3, 1),
-    TRAVEL_VAMBRACE(3, 2),
-    TRAVEL_TITLE(3, 3),
+    TRAVEL_CLOAK("cloak"),
+    TRAVEL_PAULDRON("pauldron"),
+    TRAVEL_VAMBRACE("vambrace"),
+    TRAVEL_TITLE("titleScroll"),
 
     /* Galacticraft */
-    GC_THERMAL_HELM(6, 0),
-    GC_THERMAL_CHEST(6, 1),
-    GC_THERMAL_LEGS(6, 2),
-    GC_THERMAL_BOOTS(6, 3),
-    GC_FREQUENCY_MODULE(4, 0),
-    GC_OXYGEN_MASK(5, 0),
-    GC_OXYGEN_GEAR(5, 1),
-    GC_OXYGEN_TANK(4, 1),
-    GC_PARACHUTE(5, 2),
+    GC_THERMAL_HELM("thermalHelmet"),
+    GC_THERMAL_CHEST("thermalChest"),
+    GC_THERMAL_LEGS("thermalPants"),
+    GC_THERMAL_BOOTS("thermalBoots"),
+    GC_FREQUENCY_MODULE("frequencyModule"),
+    GC_OXYGEN_MASK("oxygenMask"),
+    GC_OXYGEN_GEAR("oxygenGear"),
+    GC_OXYGEN_TANK("oxygenTank"),
+    GC_PARACHUTE("parachute"),
     ;
 
-    /**
-     * X and Y location in the sprite grid within dws:textures/minecraft/gui/container/inventory.png
-     */
-    private final int x, y;
+    private final ResourceLocation slotHintTexture;
+    private final int stackSize;
 
-    SlotType(int x, int y) {
-        this.x = x;
-        this.y = y;
+    SlotType(String resourceLocation) {
+        this(resourceLocation, 1);
+    }
+
+    SlotType(String hintIcon, int stackSize) {
+        this.slotHintTexture = new ResourceLocation(Tags.MODID, String.format("textures/gui/slotIcons/%s.png", hintIcon));
+        this.stackSize = stackSize;
     }
 }
