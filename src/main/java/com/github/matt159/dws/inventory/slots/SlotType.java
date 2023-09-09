@@ -13,7 +13,7 @@ public enum SlotType {
     TINKERS_KNAPSACK("knapsack"),
     TINKERS_HEART_RED("redHeartCanister", 10),
     TINKERS_HEART_YELLOW("yellowHeartCanister", 10),
-    TINKERS_HEART_GREEN("greenHearCanister", 10),
+    TINKERS_HEART_GREEN("greenHeartCanister", 10),
 
     /* Baubles */
     BAUBLE_AMULET("amulet"),
@@ -41,12 +41,12 @@ public enum SlotType {
     private final ResourceLocation slotHintTexture;
     private final int stackSize;
 
-    SlotType(String resourceLocation) {
-        this(resourceLocation, 1);
+    SlotType(String hintTexture) {
+        this(hintTexture, 1);
     }
 
-    SlotType(String hintIcon, int stackSize) {
-        this.slotHintTexture = new ResourceLocation(Tags.MODID, String.format("textures/gui/slotIcons/%s.png", hintIcon));
+    SlotType(String hintTexture, int stackSize) {
+        this.slotHintTexture = new ResourceLocation(Tags.MODID, String.format("textures/gui/slotIcons/%s.png", hintTexture));
         this.stackSize = stackSize;
     }
 }
