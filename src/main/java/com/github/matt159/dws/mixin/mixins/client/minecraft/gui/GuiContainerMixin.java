@@ -8,6 +8,7 @@ import com.github.matt159.dws.network.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
@@ -99,5 +100,14 @@ public abstract class GuiContainerMixin extends GuiScreen {
         }
 
         return icon;
+    }
+
+    @Inject(method = "func_146977_a",
+            at = @At(value = "INVOKE",
+                     target = "Lnet/minecraft/client/renderer/texture/TextureManager;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
+                     shift = At.Shift.BEFORE),
+            require = 1)
+    private void injectGLBlendFunction(Slot slot, CallbackInfo ci) {
+        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
     }
 }
