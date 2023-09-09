@@ -1,23 +1,25 @@
 package com.github.matt159.dws.util;
 
+import lombok.RequiredArgsConstructor;
+
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Supplier;
 
 public final class SlotLayoutManager {
+    @RequiredArgsConstructor
     public enum Mods {
-        Baubles(1),
-        TinkersConstruct(2),
-        TravellersGear(1),
-        Galacticraft(3),
+        Baubles(() -> 1),
+        BaublesExpanded(() -> 1 + ReflectedModSupport.BaublesExpandedSlots_slotsCurrentlyUsed() / 4),
+        TinkersConstruct(() -> 2),
+        TravellersGear(() -> 1),
+        Galacticraft(() -> 3),
         ;
 
-        private final int numColumns;
-        Mods(int numColums) {
-            this.numColumns = numColums;
-        }
+        private final Supplier<Integer> numColumns;
 
         public int getNumColumns() {
-            return this.numColumns;
+            return this.numColumns.get();
         }
     }
 
@@ -42,7 +44,11 @@ public final class SlotLayoutManager {
         List<Mods> loadedMods = new LinkedList<>();
 
         if (ModCompat.isBaublesPresent()) {
-            loadedMods.add(Mods.Baubles);
+            if (ModCompat.isBaublesExpandedPresent()) {
+                loadedMods.add(Mods.BaublesExpanded);
+            } else {
+                loadedMods.add(Mods.Baubles);
+            }
         }
 
         if (ModCompat.isTinkersConstructPresent()) {
