@@ -2,7 +2,7 @@ package com.github.matt159.dws.inventory.slots;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import lombok.Getter;
+import lombok.val;
 import micdoodle8.mods.galacticraft.api.item.IItemThermal;
 import micdoodle8.mods.galacticraft.core.items.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,71 +28,79 @@ public class SlotDWS extends Slot {
 
     @Override
     public boolean isItemValid(ItemStack itemStack) {
-        if (itemStack == null || itemStack.getItem() == null)
+        if (itemStack == null || itemStack.getItem() == null) {
             return false;
+        }
+
+        val item = itemStack.getItem();
 
         switch (this.type) {
             case TRAVEL_CLOAK:
             case TRAVEL_PAULDRON:
             case TRAVEL_VAMBRACE:
             case TRAVEL_TITLE:
-                return (itemStack.getItem() instanceof ITravellersGear) &&
-                        ((ITravellersGear)itemStack.getItem()).getSlot(itemStack) == this.type.ordinal() - SlotType.TRAVEL_CLOAK.ordinal();
+                if (item instanceof ITravellersGear) {
+                    val travellersSlot = ((ITravellersGear) item).getSlot(itemStack);
+
+                    return travellersSlot == this.type.ordinal() - SlotType.TRAVEL_CLOAK.ordinal();
+                }
+
+                return false;
 
             case BAUBLE_AMULET:
-                return itemStack.getItem() instanceof IBauble &&
-                        ((IBauble)itemStack.getItem()).getBaubleType(itemStack) == BaubleType.AMULET &&
-                        ((IBauble)itemStack.getItem()).canEquip(itemStack, this.player);
+                return item instanceof IBauble &&
+                        ((IBauble) item).getBaubleType(itemStack) == BaubleType.AMULET &&
+                        ((IBauble) item).canEquip(itemStack, this.player);
             case BAUBLE_RING:
-                return itemStack.getItem() instanceof IBauble &&
-                        ((IBauble)itemStack.getItem()).getBaubleType(itemStack) == BaubleType.RING &&
-                        ((IBauble)itemStack.getItem()).canEquip(itemStack, this.player);
+                return item instanceof IBauble &&
+                        ((IBauble) item).getBaubleType(itemStack) == BaubleType.RING &&
+                        ((IBauble) item).canEquip(itemStack, this.player);
             case BAUBLE_BELT:
-                return itemStack.getItem() instanceof IBauble &&
-                        ((IBauble)itemStack.getItem()).getBaubleType(itemStack) == BaubleType.BELT &&
-                        ((IBauble)itemStack.getItem()).canEquip(itemStack, this.player);
+                return item instanceof IBauble &&
+                        ((IBauble) item).getBaubleType(itemStack) == BaubleType.BELT &&
+                        ((IBauble) item).canEquip(itemStack, this.player);
 
             case TINKERS_GLOVE:
-                return itemStack.getItem() instanceof IAccessory &&
-                        ((IAccessory)itemStack.getItem()).canEquipAccessory(itemStack, 1);
+                return item instanceof IAccessory &&
+                        ((IAccessory) item).canEquipAccessory(itemStack, 1);
             case TINKERS_KNAPSACK:
-                return itemStack.getItem() instanceof IAccessory &&
-                        ((IAccessory)itemStack.getItem()).canEquipAccessory(itemStack, 2);
+                return item instanceof IAccessory &&
+                        ((IAccessory) item).canEquipAccessory(itemStack, 2);
             case TINKERS_BELT:
-                return itemStack.getItem() instanceof IAccessory &&
-                        ((IAccessory)itemStack.getItem()).canEquipAccessory(itemStack, 3);
+                return item instanceof IAccessory &&
+                        ((IAccessory) item).canEquipAccessory(itemStack, 3);
             case TINKERS_MASK:
-                return itemStack.getItem() instanceof IAccessory &&
-                        ((IAccessory)itemStack.getItem()).canEquipAccessory(itemStack, 0);
+                return item instanceof IAccessory &&
+                        ((IAccessory) item).canEquipAccessory(itemStack, 0);
 
             case TINKERS_HEART_RED:
-                return itemStack.getItem() instanceof IAccessory &&
-                        ((IAccessory)itemStack.getItem()).canEquipAccessory(itemStack, 6);
+                return item instanceof IAccessory &&
+                        ((IAccessory) item).canEquipAccessory(itemStack, 6);
             case TINKERS_HEART_YELLOW:
-                return itemStack.getItem() instanceof IAccessory &&
-                        ((IAccessory)itemStack.getItem()).canEquipAccessory(itemStack, 5);
+                return item instanceof IAccessory &&
+                        ((IAccessory) item).canEquipAccessory(itemStack, 5);
             case TINKERS_HEART_GREEN:
-                return itemStack.getItem() instanceof IAccessory &&
-                        ((IAccessory)itemStack.getItem()).canEquipAccessory(itemStack, 4);
+                return item instanceof IAccessory &&
+                        ((IAccessory) item).canEquipAccessory(itemStack, 4);
 
             case GC_THERMAL_HELM:
             case GC_THERMAL_CHEST:
             case GC_THERMAL_LEGS:
             case GC_THERMAL_BOOTS:
-                return itemStack.getItem() instanceof IItemThermal &&
-                        ((IItemThermal)itemStack.getItem()).isValidForSlot(itemStack, this.type.ordinal() - SlotType.GC_THERMAL_HELM.ordinal());
+                return item instanceof IItemThermal &&
+                        ((IItemThermal) item).isValidForSlot(itemStack, this.type.ordinal() - SlotType.GC_THERMAL_HELM.ordinal());
 
             case GC_FREQUENCY_MODULE:
-                return itemStack.getItem() == GCItems.basicItem &&
+                return item == GCItems.basicItem &&
                         itemStack.getItemDamage() == 19;
             case GC_OXYGEN_MASK:
-                return itemStack.getItem() instanceof ItemOxygenMask;
+                return item instanceof ItemOxygenMask;
             case GC_OXYGEN_GEAR:
-                return itemStack.getItem() instanceof ItemOxygenGear;
+                return item instanceof ItemOxygenGear;
             case GC_OXYGEN_TANK:
-                return itemStack.getItem() instanceof ItemOxygenTank;
+                return item instanceof ItemOxygenTank;
             case GC_PARACHUTE:
-                return itemStack.getItem() instanceof ItemParaChute;
+                return item instanceof ItemParaChute;
 
             default:
                 return false;
@@ -100,32 +108,35 @@ public class SlotDWS extends Slot {
     }
 
     @Override
-    public int getSlotStackLimit()
-    {
+    public int getSlotStackLimit() {
         return this.slotLimit;
     }
 
     @Override
-    public boolean canTakeStack(EntityPlayer player)
-    {
-        if(getStack()==null)
+    public boolean canTakeStack(EntityPlayer player) {
+        if (this.getStack() == null) {
             return false;
-        switch(this.type)
-        {
-            case BAUBLE_BELT:
-                return getStack().getItem() instanceof IBauble &&
-                        ((IBauble)getStack().getItem()).getBaubleType(getStack()) == BaubleType.BELT &&
-                        ((IBauble)getStack().getItem()).canUnequip(getStack(), this.player);
-            case BAUBLE_AMULET:
-                return getStack().getItem() instanceof IBauble &&
-                        ((IBauble)getStack().getItem()).getBaubleType(getStack()) == BaubleType.AMULET &&
-                        ((IBauble)getStack().getItem()).canUnequip(getStack(), this.player);
-            case BAUBLE_RING:
-                return getStack().getItem() instanceof IBauble &&
-                        ((IBauble)getStack().getItem()).getBaubleType(getStack()) == BaubleType.RING &&
-                        ((IBauble)getStack().getItem()).canUnequip(getStack(), this.player);
-            default:
-                return true;
         }
+
+        val item = this.getStack().getItem();
+        if (item instanceof IBauble) {
+            val bauble = (IBauble) item;
+
+            switch(this.type) {
+                case BAUBLE_BELT:
+                    return bauble.getBaubleType(getStack()) == BaubleType.BELT &&
+                           bauble.canUnequip(getStack(), this.player);
+                case BAUBLE_AMULET:
+                    return bauble.getBaubleType(getStack()) == BaubleType.AMULET &&
+                           bauble.canUnequip(getStack(), this.player);
+                case BAUBLE_RING:
+                    return bauble.getBaubleType(getStack()) == BaubleType.RING &&
+                           bauble.canUnequip(getStack(), this.player);
+                default:
+                    return true;
+            }
+        }
+
+        return false;
     }
 }
