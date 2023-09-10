@@ -3,6 +3,7 @@ package com.github.matt159.dws.mixin.mixins.common.dws.travellersgear;
 import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.inventory.slots.SlotType;
+import com.github.matt159.dws.inventory.slots.compat.SlotTravellersGearCompat;
 import com.github.matt159.dws.util.ModCompat;
 import com.github.matt159.dws.util.SlotLayoutManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -78,10 +79,26 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTGS
             ((InventoryTG) (travellersGearAccessories)).stackList = TravellersGearAPI.getExtendedInventory(player);
         }
 
-        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 0, xOffset, 8 + 0 * 18, player, SlotType.TRAVEL_CLOAK));
-        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 1, xOffset, 8 + 1 * 18, player, SlotType.TRAVEL_PAULDRON));
-        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 2, xOffset, 8 + 2 * 18, player, SlotType.TRAVEL_VAMBRACE));
-        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 3, xOffset, 8 + 3 * 18, player, SlotType.TRAVEL_TITLE));
+        this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
+                                                             0,
+                                                             xOffset,
+                                                             8 + 0 * 18,
+                                                             SlotType.TRAVEL_CLOAK));
+        this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
+                                                             1,
+                                                             xOffset,
+                                                             8 + 1 * 18,
+                                                             SlotType.TRAVEL_PAULDRON));
+        this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
+                                                             2,
+                                                             xOffset,
+                                                             8 + 2 * 18,
+                                                             SlotType.TRAVEL_VAMBRACE));
+        this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
+                                                             3,
+                                                             xOffset,
+                                                             8 + 3 * 18,
+                                                             SlotType.TRAVEL_TITLE));
     }
 
     @Inject(method = "onContainerClosed",

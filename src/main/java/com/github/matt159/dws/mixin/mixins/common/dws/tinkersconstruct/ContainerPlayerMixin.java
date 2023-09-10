@@ -3,6 +3,7 @@ package com.github.matt159.dws.mixin.mixins.common.dws.tinkersconstruct;
 import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.inventory.slots.SlotType;
+import com.github.matt159.dws.inventory.slots.compat.SlotTinkersCompat;
 import com.github.matt159.dws.util.SlotLayoutManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -46,14 +47,42 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
             this.tinkersAccessories = TPlayerStats.get(player).armor;
         }
 
-        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 0, xOffset, 8 + 0 * 18, player, SlotType.TINKERS_MASK));
-        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 1, xOffset, 8 + 1 * 18, player, SlotType.TINKERS_GLOVE));
-        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 3, xOffset, 8 + 2 * 18, player, SlotType.TINKERS_BELT));
-        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 2, xOffset, 8 + 3 * 18, player, SlotType.TINKERS_KNAPSACK));
+        this.addSlotToContainer(new SlotTinkersCompat(tinkersAccessories,
+                                                      0,
+                                                      xOffset,
+                                                      8 + 0 * 18,
+                                                      SlotType.TINKERS_MASK));
+        this.addSlotToContainer(new SlotTinkersCompat(tinkersAccessories,
+                                                      1,
+                                                      xOffset,
+                                                      8 + 1 * 18,
+                                                      SlotType.TINKERS_GLOVE));
+        this.addSlotToContainer(new SlotTinkersCompat(tinkersAccessories,
+                                                      3,
+                                                      xOffset,
+                                                      8 + 2 * 18,
+                                                      SlotType.TINKERS_BELT));
+        this.addSlotToContainer(new SlotTinkersCompat(tinkersAccessories,
+                                                      2,
+                                                      xOffset,
+                                                      8 + 3 * 18,
+                                                      SlotType.TINKERS_KNAPSACK));
         xOffset += 18;
 
-        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 6, xOffset, 8 + 0 * 18, player, SlotType.TINKERS_HEART_RED));
-        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 5, xOffset, 8 + 1 * 18, player, SlotType.TINKERS_HEART_YELLOW));
-        this.addSlotToContainer(new SlotDWS(tinkersAccessories, 4, xOffset, 8 + 2 * 18, player, SlotType.TINKERS_HEART_GREEN));
+        this.addSlotToContainer(new SlotTinkersCompat(tinkersAccessories,
+                                                      6,
+                                                      xOffset,
+                                                      8 + 0 * 18,
+                                                      SlotType.TINKERS_HEART_RED));
+        this.addSlotToContainer(new SlotTinkersCompat(tinkersAccessories,
+                                                      5,
+                                                      xOffset,
+                                                      8 + 1 * 18,
+                                                      SlotType.TINKERS_HEART_YELLOW));
+        this.addSlotToContainer(new SlotTinkersCompat(tinkersAccessories,
+                                                      4,
+                                                      xOffset,
+                                                      8 + 2 * 18,
+                                                      SlotType.TINKERS_HEART_GREEN));
     }
 }

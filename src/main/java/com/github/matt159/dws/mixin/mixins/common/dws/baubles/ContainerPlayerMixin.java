@@ -6,6 +6,7 @@ import baubles.common.lib.PlayerHandler;
 import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.inventory.slots.SlotType;
+import com.github.matt159.dws.inventory.slots.compat.SlotBaublesCompat;
 import com.github.matt159.dws.util.ModCompat;
 import com.github.matt159.dws.util.ReflectedModSupport;
 import com.github.matt159.dws.util.SlotLayoutManager;
@@ -97,10 +98,27 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsBau
                 }
             }
         } else {
-            this.addSlotToContainer(new SlotDWS(baublesAccessories, 0, xOffset, 8 + 0 * 18, player, SlotType.BAUBLE_AMULET));
-            this.addSlotToContainer(new SlotDWS(baublesAccessories, 1, xOffset, 8 + 1 * 18, player, SlotType.BAUBLE_RING));
-            this.addSlotToContainer(new SlotDWS(baublesAccessories, 2, xOffset, 8 + 2 * 18, player, SlotType.BAUBLE_RING));
-            this.addSlotToContainer(new SlotDWS(baublesAccessories, 3, xOffset, 8 + 3 * 18, player, SlotType.BAUBLE_RING));
+            this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
+                                                          0, xOffset,
+                                                          8 + 0 * 18,
+                                                          player,
+                                                          SlotType.BAUBLE_AMULET));
+            this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
+                                                          1, xOffset,
+                                                          8 + 1 * 18,
+                                                          player,
+                                                          SlotType.BAUBLE_RING));
+            this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
+                                                          2, xOffset,
+                                                          8 + 2 * 18,
+                                                          player,
+                                                          SlotType.BAUBLE_RING));
+            this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
+                                                          3,
+                                                          xOffset,
+                                                          8 + 3 * 18,
+                                                          player,
+                                                          SlotType.BAUBLE_BELT));
         }
     }
 
