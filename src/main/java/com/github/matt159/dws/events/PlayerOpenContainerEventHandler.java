@@ -2,7 +2,7 @@ package com.github.matt159.dws.events;
 
 import baubles.common.container.InventoryBaubles;
 import baubles.common.lib.PlayerHandler;
-import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
+import com.github.matt159.dws.interfaces.dws.IBaubleManager;
 import com.github.matt159.dws.util.ModCompat;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.inventory.Container;
@@ -19,17 +19,10 @@ public class PlayerOpenContainerEventHandler {
                 Container container = event.entityPlayer.inventoryContainer;
                 InventoryBaubles baubles = PlayerHandler.getPlayerBaubles(event.entityPlayer);
 
-                ((IAddsBaubleSlots) container).setBaublesAccessories(baubles);
+                ((IBaubleManager) container).setBaublesAccessories(baubles);
 
                 container.detectAndSendChanges();
             }
-
-//            if (ModCompat.isTravellersGearPresent()) {
-//                Container container = event.entityPlayer.inventoryContainer;
-//                ItemStack[] playerTGAccessories = TravellersGearAPI.getExtendedInventory(event.entityPlayer);
-//
-//                ((IAddsTGSlots) container).setTravellersGearAccessories(playerTGAccessories);
-//            }
         }
     }
 }

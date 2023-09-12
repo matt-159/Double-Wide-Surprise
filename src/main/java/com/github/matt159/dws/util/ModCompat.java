@@ -1,6 +1,7 @@
 package com.github.matt159.dws.util;
 
 import baubles.common.Baubles;
+import baubles.common.BaublesExpanded;
 import cpw.mods.fml.common.ModContainer;
 import micdoodle8.mods.galacticraft.core.Constants;
 import tconstruct.TConstruct;
@@ -57,6 +58,10 @@ public final class ModCompat {
 
     public static boolean isBaublesPresent() {
         return areModsPresent(Baubles.MODID);
+    }
+
+    public static boolean isBaublesExpandedPresent() {
+        return areModsPresent(BaublesExpanded.MODID);
     }
 
     public static boolean isTinkersConstructPresent() {

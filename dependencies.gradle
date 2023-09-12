@@ -12,18 +12,30 @@ def deobfCurse(curseDep) {
     }
 }
 
+static def modrinth(modrinthDep) {
+    return "maven.modrinth:" + modrinthDep;
+}
+
+def deobfModrinth(modrinthDep) {
+    try {
+        return deobfMaven("https://api.modrinth.com/maven", modrinth(modrinthDep))
+    } catch (Exception ignored) {
+        println("Failed to get dep " + modrinthDep + " from modrinth.")
+    }
+}
+
 dependencies {
     // Lombok
     compileOnly("org.projectlombok:lombok:1.18.22")
     annotationProcessor("org.projectlombok:lombok:1.18.22")
 
     // FalsePattern Lib
-    compile("com.falsepattern:falsepatternlib-mc1.7.10:0.10.10:dev")
+    compile("com.falsepattern:falsepatternlib-mc1.7.10:0.12.1:dev")
 
     // Baubles
-    compile("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf") {
-        transitive = true
-    }
+    compileOnly("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf")
+
+    compile(deobfModrinth("baubles-expanded:2.1.4"))
 
     // Not Enough Items
     compile("codechicken:codechickencore-mc1.7.10:1.0.9-gtmega:dev") {
@@ -38,46 +50,25 @@ dependencies {
         transitive = false;
     }
 
-    // Tinkers Construct
-    compile(deobfCurse("mantle-74924:2264244"))
-    compileOnly(deobfCurse("tinkers-construct-74072:2264246"))
-
     // Galacticraft TODO: The @Mod annotation doesn't seem to be found when running as compile, however the core mod/mixins does load?
     compileOnly("com.github.GTNewHorizons:Galacticraft:3.0.36-GTNH:dev") {
         transitive = false
     }
 
-    // Iron Chests
+    compileOnly(deobfCurse("agricraft-225635:2284130"))
+    compileOnly(deobfCurse("cofh-core-69162:2388751"))
+    compileOnly(deobfCurse("forestry-59751:2333823"))
+    compileOnly(deobfCurse("garden-stuff-225903:2269692"))
     compileOnly(deobfCurse("iron-chests-228756:2230908"))
-    // Travellers Gear
+    compileOnly(deobfCurse("mantle-74924:2264244"))
+    compileOnly(deobfCurse("mariculture-68023:2234977"))
+    compileOnly(deobfCurse("natura-74120:2257670"))
+    compileOnly(deobfCurse("storage-drawers-223852:2469586"))
+    compileOnly(deobfCurse("tinkers-construct-74072:2264246"))
     compileOnly(deobfCurse("travellers-gear-224440:2262113"))
 
-    //region Regrowth Compat
-    // Garden Core
-    compileOnly(deobfCurse("garden-stuff-225903:2269692"))
-    //Mariculture
-    compileOnly(deobfCurse("mariculture-68023:2234977"))
-    // Agricraft
-    compileOnly(deobfCurse("agricraft-225635:2284130"))
-    //endregion
-
-    // Natura
-    compileOnly(deobfCurse("natura-74120:2257670"))
     // GregTech
-    compileOnly("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev") {
-        transitive = false
-    }
-    compile("eu.usrv:YAMCore:1.7.10-0.5.79:deobf") {
-        transitive = false
-    }
-    compile("mega:structurelib-mc1.7.10:1.1.2:dev")
-
-    compileOnly("gtmega:gt5u-mc1.7.10:5.31.0:dev") {
-        transitive = false
-    }
-
-    compileOnly(deobfCurse("forestry-59751:2333823"))
-    compileOnly(deobfCurse("storage-drawers-223852:2469586"))
+    compileOnly("gtmega:gt5u-mc1.7.10:5.32.0-mega:dev")
 
     compile("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev")
     compile('com.github.GTNewHorizons:EnderCore:0.2.9:dev') {
@@ -88,10 +79,7 @@ dependencies {
     compileOnly(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")
     compileOnly("mega:tectech-mc1.7.10:4.11.0:dev")
 
-    compileOnly("gtmega:ae2-mc1.7.10:rv3-beta.58-gtmega:dev") {
-        transitive = false
-    }
+    compileOnly("gtmega:ae2-mc1.7.10:rv3-beta.58-gtmega:dev")
 
-    compile("curse.maven:cofh-core-69162:2388751")
-    compile("team.chisel:chisel-mc1.7.10:2.9.20-mega:dev")
+    compileOnly("team.chisel:chisel-mc1.7.10:2.9.20-mega:dev")
 }

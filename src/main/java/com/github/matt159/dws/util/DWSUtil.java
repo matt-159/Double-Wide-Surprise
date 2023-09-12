@@ -33,12 +33,14 @@ public final class DWSUtil {
         int xPosMax = xPos + width;
         int yPosMax = yPos + height;
 
-        Tessellator.instance.startDrawingQuads();
-        Tessellator.instance.addVertexWithUV(xPos, yPosMax, zLevel, 0F, 1F);
-        Tessellator.instance.addVertexWithUV(xPosMax, yPosMax, zLevel, 0F, 1F);
-        Tessellator.instance.addVertexWithUV(xPosMax, yPos, zLevel, 0F, 1F);
-        Tessellator.instance.addVertexWithUV(xPos, yPos, zLevel, 0F, 1F);
-        Tessellator.instance.draw();
+        Tessellator tessellator = Tessellator.instance;
+
+        tessellator.startDrawingQuads();
+        tessellator.addVertexWithUV(xPos, yPosMax, zLevel, 0F, 1F);
+        tessellator.addVertexWithUV(xPosMax, yPosMax, zLevel, 1F, 1F);
+        tessellator.addVertexWithUV(xPosMax, yPos, zLevel, 1F, 0F);
+        tessellator.addVertexWithUV(xPos, yPos, zLevel, 0F, 0F);
+        tessellator.draw();
     }
 
     public enum Reorganization {

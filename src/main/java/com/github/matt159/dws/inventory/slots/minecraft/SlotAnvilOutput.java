@@ -11,8 +11,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
 public class SlotAnvilOutput extends Slot {
-    private static final String __OBFID = "CL_00001734";
-    
     private final World world;
     private final ContainerRepair container;
 
