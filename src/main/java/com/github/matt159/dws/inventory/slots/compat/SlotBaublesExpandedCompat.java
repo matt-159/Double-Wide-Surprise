@@ -1,6 +1,5 @@
 package com.github.matt159.dws.inventory.slots.compat;
 
-import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import baubles.api.expanded.BaubleExpandedSlots;
 import baubles.api.expanded.IBaubleExpanded;

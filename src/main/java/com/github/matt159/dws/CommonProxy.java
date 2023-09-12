@@ -1,10 +1,16 @@
 package com.github.matt159.dws;
 
 import baubles.client.gui.GuiEvents;
-import com.github.matt159.dws.events.DWSSwapKeyHandler;
 import com.github.matt159.dws.events.PlayerOpenContainerEventHandler;
 import com.github.matt159.dws.network.PacketHandler;
-import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.event.FMLServerStoppedEvent;
+import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import cpw.mods.fml.common.eventhandler.IEventListener;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.client.tabs.TabRegistry;

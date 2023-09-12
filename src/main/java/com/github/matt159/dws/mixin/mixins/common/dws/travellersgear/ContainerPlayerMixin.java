@@ -1,7 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.dws.travellersgear;
 
 import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
-import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.inventory.slots.compat.SlotTravellersGearCompat;
 import com.github.matt159.dws.util.ModCompat;

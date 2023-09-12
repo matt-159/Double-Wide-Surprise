@@ -1,7 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.dws.tinkersconstruct;
 
 import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
-import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.inventory.slots.compat.SlotTinkersCompat;
 import com.github.matt159.dws.util.SlotLayoutManager;

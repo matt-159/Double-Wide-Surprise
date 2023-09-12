@@ -13,7 +13,26 @@ import static com.falsepattern.lib.mixin.IMixin.PredicateHelpers.avoid;
 import static com.falsepattern.lib.mixin.IMixin.PredicateHelpers.require;
 import static com.falsepattern.lib.mixin.IMixin.Side.CLIENT;
 import static com.falsepattern.lib.mixin.IMixin.Side.COMMON;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.*;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.AGRICRAFT;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.APPLIEDENERGISTICS2;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.BARTWORKS;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.BAUBLES;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.CHISEL;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.CODECHICKENLIB;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.ENDERCORE;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.FORESTRY;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.GALACTICRAFT;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.GARDENCORE;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.GREGTECH;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.INVENTORYTWEAKS;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.IRONCHEST;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.MARICULTURE;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.NATURA;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.NOTENOUGHITEMS;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.STORAGEDRAWERS;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.TECTECH;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.TINKERSCONSTRUCT;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.TRAVELLERSGEAR;
 
 @Getter
 @RequiredArgsConstructor
