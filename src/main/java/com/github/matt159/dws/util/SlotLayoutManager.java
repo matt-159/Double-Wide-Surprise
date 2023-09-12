@@ -1,12 +1,37 @@
 package com.github.matt159.dws.util;
 
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.UtilityClass;
+import lombok.val;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Supplier;
 
+@UtilityClass
 public final class SlotLayoutManager {
+    public static int FIRST_GALACTICRAFT_SLOT = Integer.MAX_VALUE;
+    public static int FIRST_BAUBLES_SLOT = Integer.MAX_VALUE;
+    public static int FIRST_TINKERS_SLOT = Integer.MAX_VALUE;
+    public static int FIRST_TRAVELLERS_GEAR_SLOT = Integer.MAX_VALUE;
+    public static int FIRST_ACCESSORY_SLOT = Integer.MAX_VALUE;
+
+
+    public static int getFirstAccessorySlot() {
+        if (FIRST_ACCESSORY_SLOT == Integer.MAX_VALUE) {
+            val list = Arrays.asList(FIRST_BAUBLES_SLOT,
+                                     FIRST_GALACTICRAFT_SLOT,
+                                     FIRST_TINKERS_SLOT,
+                                     FIRST_TRAVELLERS_GEAR_SLOT);
+
+            FIRST_ACCESSORY_SLOT = Collections.min(list);
+        }
+
+        return FIRST_ACCESSORY_SLOT;
+    }
+
     @RequiredArgsConstructor
     public enum Mods {
         Baubles(() -> 1),

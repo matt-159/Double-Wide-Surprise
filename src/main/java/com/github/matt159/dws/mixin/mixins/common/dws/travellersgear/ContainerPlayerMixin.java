@@ -31,18 +31,6 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTGS
 
     private IInventory travellersGearAccessories = null;
 
-    private static int TG_SLOT_START = -1;
-
-    @Override
-    public int getTGSlotStart() {
-        return TG_SLOT_START;
-    }
-
-    @Override
-    public ItemStack[] getTravellersAccessoriesItemStacks() {
-        return ((InventoryTG) (this.travellersGearAccessories)).stackList;
-    }
-
     @Override
     public void setTravellersGearAccessories(ItemStack[] actualPlayerTGAccessories) {
         if (ModCompat.isTravellersGearPresent()) {
@@ -68,8 +56,8 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTGS
             at = @At("RETURN"),
             require = 1)
     private void injectTravellersGearSlots(InventoryPlayer inventoryPlayer, boolean isLocalWorld, EntityPlayer player, CallbackInfo ci) {
-        if (TG_SLOT_START == -1) {
-            TG_SLOT_START = this.inventorySlots.size();
+        if (SlotLayoutManager.FIRST_TRAVELLERS_GEAR_SLOT == Integer.MAX_VALUE) {
+            SlotLayoutManager.FIRST_TRAVELLERS_GEAR_SLOT = this.inventorySlots.size();
         }
 
         int xOffset = SlotLayoutManager.getXOffset(SlotLayoutManager.Mods.TravellersGear);
@@ -84,16 +72,19 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTGS
                                                              xOffset,
                                                              8 + 0 * 18,
                                                              SlotType.TRAVEL_CLOAK));
+
         this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
                                                              1,
                                                              xOffset,
                                                              8 + 1 * 18,
                                                              SlotType.TRAVEL_PAULDRON));
+
         this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
                                                              2,
                                                              xOffset,
                                                              8 + 2 * 18,
                                                              SlotType.TRAVEL_VAMBRACE));
+
         this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
                                                              3,
                                                              xOffset,

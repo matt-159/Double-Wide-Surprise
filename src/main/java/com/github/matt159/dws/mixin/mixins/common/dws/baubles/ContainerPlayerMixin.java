@@ -3,8 +3,7 @@ package com.github.matt159.dws.mixin.mixins.common.dws.baubles;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.container.SlotBauble;
 import baubles.common.lib.PlayerHandler;
-import com.github.matt159.dws.interfaces.dws.IAddsBaubleSlots;
-import com.github.matt159.dws.inventory.slots.SlotDWS;
+import com.github.matt159.dws.interfaces.dws.IBaubleManager;
 import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.inventory.slots.compat.SlotBaublesCompat;
 import com.github.matt159.dws.util.ModCompat;
@@ -27,18 +26,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import static com.github.matt159.dws.util.SlotLayoutManager.Mods;
 
 @Mixin(ContainerPlayer.class)
-public abstract class ContainerPlayerMixin extends Container implements IAddsBaubleSlots {
+public abstract class ContainerPlayerMixin extends Container implements IBaubleManager {
     @Shadow @Final
     private EntityPlayer thePlayer;
 
     private IInventory baublesAccessories = null;
-
-    private static int BAUBLES_SLOT_START = -1;
-
-    @Override
-    public IInventory getBaublesAccessories() {
-        return this.baublesAccessories;
-    }
 
     @Override
     public void setBaublesAccessories(IInventory baublesAccessories) {
@@ -63,17 +55,12 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsBau
         }
     }
 
-    @Override
-    public int getBaublesSlotStart() {
-        return BAUBLES_SLOT_START;
-    }
-
     @Inject(method = "<init>",
             at = @At("RETURN"),
             require = 1)
     public void injectBaubleSlots(InventoryPlayer inventoryPlayer, boolean isLocalWorld, EntityPlayer player, CallbackInfo ci) {
-        if (BAUBLES_SLOT_START == -1) {
-            BAUBLES_SLOT_START = this.inventorySlots.size();
+        if (SlotLayoutManager.FIRST_BAUBLES_SLOT == Integer.MAX_VALUE) {
+            SlotLayoutManager.FIRST_BAUBLES_SLOT = this.inventorySlots.size();
         }
 
         val mod = ModCompat.isBaublesExpandedPresent() ? Mods.BaublesExpanded : Mods.Baubles;
@@ -87,8 +74,9 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsBau
         }
 
         if (ModCompat.isBaublesExpandedPresent()) {
-            for(int index = 0; index < 20; ++index) {
+            for (int index = 0; index < 20; ++index) {
                 String slotType = ReflectedModSupport.BaublesExpandedSlots_getSlotType(index);
+
                 if (ReflectedModSupport.BaublesConfig_showUnusedSlots || !slotType.equals("unknown")) {
                     this.addSlotToContainer(new SlotBauble(baublesAccessories,
                                                            slotType,
@@ -103,16 +91,19 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsBau
                                                           8 + 0 * 18,
                                                           player,
                                                           SlotType.BAUBLE_AMULET));
+
             this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
                                                           1, xOffset,
                                                           8 + 1 * 18,
                                                           player,
                                                           SlotType.BAUBLE_RING));
+
             this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
                                                           2, xOffset,
                                                           8 + 2 * 18,
                                                           player,
                                                           SlotType.BAUBLE_RING));
+
             this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
                                                           3,
                                                           xOffset,

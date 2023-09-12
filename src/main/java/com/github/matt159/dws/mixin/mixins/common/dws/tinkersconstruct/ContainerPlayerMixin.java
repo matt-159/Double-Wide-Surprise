@@ -21,24 +21,12 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
 
     private IInventory tinkersAccessories = null;
 
-    private static int TINKERS_SLOT_START = -1;
-
-    @Override
-    public IInventory getTinkersAccessories() {
-        return this.tinkersAccessories;
-    }
-
-    @Override
-    public int getTinkersSlotStart() {
-        return TINKERS_SLOT_START;
-    }
-
     @Inject(method = "<init>",
             at = @At("RETURN"),
             require = 1)
     private void injectTinkersSlots(InventoryPlayer inventoryPlayer, boolean isLocalWorld, EntityPlayer player, CallbackInfo ci) {
-        if (TINKERS_SLOT_START == -1) {
-            TINKERS_SLOT_START = this.inventorySlots.size();
+        if (SlotLayoutManager.FIRST_TINKERS_SLOT == Integer.MAX_VALUE) {
+            SlotLayoutManager.FIRST_TINKERS_SLOT = this.inventorySlots.size();
         }
 
         int xOffset = SlotLayoutManager.getXOffset(SlotLayoutManager.Mods.TinkersConstruct);
