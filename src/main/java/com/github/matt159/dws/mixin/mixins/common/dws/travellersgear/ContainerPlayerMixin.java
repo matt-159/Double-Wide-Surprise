@@ -1,7 +1,8 @@
 package com.github.matt159.dws.mixin.mixins.common.dws.travellersgear;
 
 import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
-import com.github.matt159.dws.inventory.slots.SlotDWS;
+import com.github.matt159.dws.inventory.slots.SlotType;
+import com.github.matt159.dws.inventory.slots.compat.SlotTravellersGearCompat;
 import com.github.matt159.dws.util.ModCompat;
 import com.github.matt159.dws.util.SlotLayoutManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,8 +22,6 @@ import travellersgear.api.TravellersGearAPI;
 import travellersgear.common.inventory.InventoryTG;
 import travellersgear.common.network.MessageNBTSync;
 
-import static com.github.matt159.dws.inventory.slots.SlotDWS.SlotType.*;
-
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container implements IAddsTGSlots {
 
@@ -30,18 +29,6 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTGS
     private EntityPlayer thePlayer;
 
     private IInventory travellersGearAccessories = null;
-
-    private static int TG_SLOT_START = -1;
-
-    @Override
-    public int getTGSlotStart() {
-        return TG_SLOT_START;
-    }
-
-    @Override
-    public ItemStack[] getTravellersAccessoriesItemStacks() {
-        return ((InventoryTG) (this.travellersGearAccessories)).stackList;
-    }
 
     @Override
     public void setTravellersGearAccessories(ItemStack[] actualPlayerTGAccessories) {
@@ -68,8 +55,8 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTGS
             at = @At("RETURN"),
             require = 1)
     private void injectTravellersGearSlots(InventoryPlayer inventoryPlayer, boolean isLocalWorld, EntityPlayer player, CallbackInfo ci) {
-        if (TG_SLOT_START == -1) {
-            TG_SLOT_START = this.inventorySlots.size();
+        if (SlotLayoutManager.FIRST_TRAVELLERS_GEAR_SLOT == Integer.MAX_VALUE) {
+            SlotLayoutManager.FIRST_TRAVELLERS_GEAR_SLOT = this.inventorySlots.size();
         }
 
         int xOffset = SlotLayoutManager.getXOffset(SlotLayoutManager.Mods.TravellersGear);
@@ -79,10 +66,29 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTGS
             ((InventoryTG) (travellersGearAccessories)).stackList = TravellersGearAPI.getExtendedInventory(player);
         }
 
-        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 0, xOffset, 8 + 0 * 18, player, TRAVEL_CLOAK));
-        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 1, xOffset, 8 + 1 * 18, player, TRAVEL_PAULDRON));
-        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 2, xOffset, 8 + 2 * 18, player, TRAVEL_VAMBRACE));
-        this.addSlotToContainer(new SlotDWS(travellersGearAccessories, 3, xOffset, 8 + 3 * 18, player, TRAVEL_TITLE));
+        this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
+                                                             0,
+                                                             xOffset,
+                                                             8 + 0 * 18,
+                                                             SlotType.TRAVEL_CLOAK));
+
+        this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
+                                                             1,
+                                                             xOffset,
+                                                             8 + 1 * 18,
+                                                             SlotType.TRAVEL_PAULDRON));
+
+        this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
+                                                             2,
+                                                             xOffset,
+                                                             8 + 2 * 18,
+                                                             SlotType.TRAVEL_VAMBRACE));
+
+        this.addSlotToContainer(new SlotTravellersGearCompat(travellersGearAccessories,
+                                                             3,
+                                                             xOffset,
+                                                             8 + 3 * 18,
+                                                             SlotType.TRAVEL_TITLE));
     }
 
     @Inject(method = "onContainerClosed",

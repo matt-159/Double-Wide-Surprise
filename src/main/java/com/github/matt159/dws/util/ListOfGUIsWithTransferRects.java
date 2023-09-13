@@ -2,8 +2,14 @@ package com.github.matt159.dws.util;
 
 import appeng.client.gui.implementations.GuiGrinder;
 import appeng.client.gui.implementations.GuiInscriber;
-import com.jaquadro.minecraft.storagedrawers.integration.AppliedEnergistics;
-import forestry.factory.gui.*;
+import forestry.factory.gui.GuiBottler;
+import forestry.factory.gui.GuiCarpenter;
+import forestry.factory.gui.GuiCentrifuge;
+import forestry.factory.gui.GuiFabricator;
+import forestry.factory.gui.GuiFermenter;
+import forestry.factory.gui.GuiMoistener;
+import forestry.factory.gui.GuiSqueezer;
+import forestry.factory.gui.GuiStill;
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiCrafting;
