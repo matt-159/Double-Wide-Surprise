@@ -34,22 +34,20 @@ public abstract class ContainerPlayerMixin extends Container implements IBaubleM
 
     @Override
     public void setBaublesAccessories(IInventory baublesAccessories) {
-        if (ModCompat.isBaublesPresent()) {
-            ItemStack[] playerBaubles = ((InventoryBaubles) (this.baublesAccessories)).stackList;
-            ItemStack[] actualPlayerBaubles = ((InventoryBaubles) (baublesAccessories)).stackList;
+        ItemStack[] playerBaubles = ((InventoryBaubles) (this.baublesAccessories)).stackList;
+        ItemStack[] actualPlayerBaubles = ((InventoryBaubles) (baublesAccessories)).stackList;
 
-            if (playerBaubles.length != actualPlayerBaubles.length) {
-                throw new RuntimeException("What the actual fuck? How?");
-            }
+        if (playerBaubles.length != actualPlayerBaubles.length) {
+            throw new RuntimeException("What the actual fuck? How?");
+        }
 
-            //tie references together on the server, but copy pasta on the client side
-            if (!this.thePlayer.worldObj.isRemote) {
-                ((InventoryBaubles) (this.baublesAccessories)).stackList = actualPlayerBaubles;
-            } else {
-                for (int i = 0; i < playerBaubles.length; i++) {
-                    if (playerBaubles[i] == null && actualPlayerBaubles[i] != null) {
-                        playerBaubles[i] = actualPlayerBaubles[i].copy();
-                    }
+        //tie references together on the server, but copy pasta on the client side
+        if (!this.thePlayer.worldObj.isRemote) {
+            ((InventoryBaubles) (this.baublesAccessories)).stackList = actualPlayerBaubles;
+        } else {
+            for (int i = 0; i < playerBaubles.length; i++) {
+                if (playerBaubles[i] == null && actualPlayerBaubles[i] != null) {
+                    playerBaubles[i] = actualPlayerBaubles[i].copy();
                 }
             }
         }

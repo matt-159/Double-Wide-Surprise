@@ -16,8 +16,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(ContainerPlayer.class)
 public abstract class ContainerPlayerMixin extends Container  {
     @ModifyConstant(method = "<init>",
-                    constant = {    @Constant(intValue = 88),
-                                    @Constant(intValue = 144)   },
+                    constant = {
+                        @Constant(intValue = 88),
+                        @Constant(intValue = 144)
+                    },
                     require = 1)
     private int modifyCraftingSlotsXOffset(int constant) {
         return constant + 162;
