@@ -17,6 +17,7 @@ import static com.github.matt159.dws.mixin.plugin.TargetedMod.AGRICRAFT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.APPLIEDENERGISTICS2;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.BARTWORKS;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.BAUBLES;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.BAUBLESEXPANDED;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.CHISEL;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.CODECHICKENLIB;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.ENDERCORE;
@@ -40,8 +41,8 @@ public enum Mixin implements IMixin {
     // @formatter:off
 
     // region Double Wide Surprise Slot Injections
-    BaublesSlotSyncMixin                              (CLIENT, require(BAUBLES), "dws.baubles.GuiInventoryMixin"),
-    BaublesSlotInjectMixin                            (COMMON, require(BAUBLES), "dws.baubles.ContainerPlayerMixin"),
+    BaublesSlotSyncMixin                              (CLIENT, require(BAUBLES).or(require(BAUBLESEXPANDED)), "dws.baubles.GuiInventoryMixin"),
+    BaublesSlotInjectMixin                            (COMMON, require(BAUBLES).or(require(BAUBLESEXPANDED)), "dws.baubles.ContainerPlayerMixin"),
     TinkersSlotInjectMixin                            (COMMON, require(TINKERSCONSTRUCT), "dws.tinkersconstruct.ContainerPlayerMixin"),
     TravellersGearSlotInjectMixin                     (COMMON, require(TRAVELLERSGEAR), "dws.travellersgear.ContainerPlayerMixin"),
     GalacticraftSlotInjectMixin                       (COMMON, require(GALACTICRAFT), "dws.galacticraft.ContainerPlayerMixin"),
@@ -118,7 +119,7 @@ public enum Mixin implements IMixin {
     ClientProxyMixin                                  (CLIENT, require(TRAVELLERSGEAR), "travellersgear.ClientProxyMixin"),
     //endregion
     // region Baubles Mixins
-    GuiEventsMixin                                    (CLIENT, require(BAUBLES), "baubles.GuiEventsMixin"),
+    GuiEventsMixin                                    (CLIENT, require(BAUBLES).or(require(BAUBLESEXPANDED)), "baubles.GuiEventsMixin"),
     //endregion
     // region Ironchest Mixins
     ContainerIronChestMixin                           (COMMON, require(IRONCHEST), "ironchest.ContainerIronChestMixin"),

@@ -19,7 +19,7 @@ public enum TargetedMod implements ITargetedMod {
     APPLIEDENERGISTICS2  ("AppliedEnergistics2"  , false , startsWith("appliedenergistics2").or(contains("ae2"))),
     BARTWORKS            ("Bartworks"            , false , startsWith("bartworks")),
     BAUBLES              ("Baubles"              , true  , startsWith("baubles-").and(contains("expanded").negate())),
-    BAUBLESEXPANDED      ("Baubles"              , true  , startsWith("baubles-expanded")),
+    BAUBLESEXPANDED      ("Baubles Expanded"     , true  , startsWith("baublesexpanded")),
     CHISEL               ("Chisel"               , true  , startsWith("chisel")),
     ENDERCORE            ("EnderCore"            , true  , startsWith("endercore")),
     FORESTRY             ("Forestry"             , true  , startsWith("forestry")),
