@@ -1,7 +1,6 @@
 package com.github.matt159.dws;
 
 import com.github.matt159.dws.events.DWSSwapKeyHandler;
-import com.github.matt159.dws.events.RenderGameOverlayEvents;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -10,7 +9,6 @@ import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
-import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
     public DWSSwapKeyHandler keyHandler;
@@ -24,7 +22,6 @@ public class ClientProxy extends CommonProxy {
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
     public void init(FMLInitializationEvent event) {
         super.init(event);
-        MinecraftForge.EVENT_BUS.register(new RenderGameOverlayEvents());
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
