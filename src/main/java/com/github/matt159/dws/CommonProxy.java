@@ -2,6 +2,7 @@ package com.github.matt159.dws;
 
 import baubles.client.gui.GuiEvents;
 import com.github.matt159.dws.events.PlayerOpenContainerEventHandler;
+import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.network.PacketHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -14,6 +15,8 @@ import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import cpw.mods.fml.common.eventhandler.IEventListener;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.client.tabs.TabRegistry;
+
+import net.minecraft.util.ResourceLocation;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -95,5 +98,7 @@ public class CommonProxy {
         }
     }
 
-    static boolean test = false;
+    public ResourceLocation getSlotHintTexture(SlotType type) {
+        return null;
+    }
 }

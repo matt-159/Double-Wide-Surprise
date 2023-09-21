@@ -1,19 +1,26 @@
 package com.github.matt159.dws.inventory.slots;
 
+import com.github.matt159.dws.ClientProxy;
+import com.github.matt159.dws.DoubleWideSurprise;
+
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class SlotDWS extends Slot {
     public int slotLimit;
     public final SlotType type;
+
+    private final ResourceLocation slotHintTexture;
 
     public SlotDWS(IInventory inventory, int id, int x, int y, SlotType type) {
         super(inventory, id, x, y);
         this.type = type;
 
         this.slotLimit = this.type.getStackSize();
-        this.texture = this.type.getSlotHintTexture();
+        this.slotHintTexture = DoubleWideSurprise.proxy.getSlotHintTexture(type);
     }
 
     @Override
@@ -22,5 +29,10 @@ public abstract class SlotDWS extends Slot {
     @Override
     public final int getSlotStackLimit() {
         return this.slotLimit;
+    }
+
+    @Override
+    public ResourceLocation getBackgroundIconTexture() {
+        return this.slotHintTexture;
     }
 }

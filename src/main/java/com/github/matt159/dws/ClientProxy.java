@@ -1,6 +1,9 @@
 package com.github.matt159.dws;
 
 import com.github.matt159.dws.events.DWSSwapKeyHandler;
+import com.github.matt159.dws.inventory.slots.SlotType;
+
+import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -55,5 +58,10 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void registerKeyBindings() {
         keyHandler = new DWSSwapKeyHandler();
+    }
+
+    @Override
+    public ResourceLocation getSlotHintTexture(SlotType type) {
+        return type.getSlotHintTexture();
     }
 }
