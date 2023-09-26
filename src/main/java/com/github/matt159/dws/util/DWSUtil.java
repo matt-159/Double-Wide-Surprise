@@ -223,18 +223,19 @@ public final class DWSUtil {
     }
 
     public static int getAccessorySlotCount() {
-        return  (ModCompat.isBaublesPresent()           ?  4 : 0) +
-                (ModCompat.isTinkersConstructPresent()  ?  7 : 0) +
-                (ModCompat.isTravellersGearPresent()    ?  4 : 0) +
-                (ModCompat.isGalacticraftPresent()      ? 10 : 0);
+        return getBaubleSlotCount() +
+               (ModCompat.isTinkersConstructPresent()  ?  7 : 0) +
+               (ModCompat.isTravellersGearPresent()    ?  4 : 0) +
+               (ModCompat.isGalacticraftPresent()      ? 10 : 0);
     }
-//
-//    public static int getFirstPlayerSlotIndex(Container container) {
-//        for (int i = 0; i < container.inventorySlots.size(); ++i) {
-//            if (container.getSlot(i).inventory instanceof InventoryDWS) {
-//                return i;
-//            }
-//        }
-//        return -1;
-//    }
+
+    public static int getBaubleSlotCount() {
+        if (ModCompat.isBaublesExpandedPresent()) {
+            return ReflectedModSupport.BaublesExpandedSlots_slotsCurrentlyUsed();
+        } else if (ModCompat.isBaublesPresent()) {
+            return 4;
+        }
+
+        return 0;
+    }
 }

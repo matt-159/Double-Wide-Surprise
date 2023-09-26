@@ -1,4 +1,4 @@
-package com.github.matt159.dws.mixin.mixins.client.inventorytweaks;
+package com.github.matt159.dws.mixin.mixins.common.inventorytweaks;
 
 import invtweaks.containers.VanillaSlotMaps;
 import org.spongepowered.asm.mixin.Mixin;

@@ -324,11 +324,11 @@ public enum Mixin implements IMixin {
     GuiFramingMixin                                   (CLIENT, require(STORAGEDRAWERS), "storagedrawers.GuiFramingMixin"),
     //endregion
     //region Inventory Tweaks
-    InvTweaksConfigInventoryRuleset                   (CLIENT, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksConfigInventoryRulesetMixin"),
-    InvTweaksContainerManagerMixin                    (CLIENT, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksContainerManagerMixin"),
-    InvTweaksContainerSectionManagerMixin             (CLIENT, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksContainerSectionManagerMixin"),
-    InvTweaksMixin                                    (CLIENT, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksMixin"),
-    VanillaSlotMapsMixin                              (CLIENT, require(INVENTORYTWEAKS), "inventorytweaks.VanillaSlotMapsMixin"),
+    InvTweaksConfigInventoryRuleset                   (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksConfigInventoryRulesetMixin"),
+    InvTweaksContainerManagerMixin                    (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksContainerManagerMixin"),
+//    InvTweaksContainerSectionManagerMixin             (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksContainerSectionManagerMixin"),
+    InvTweaksMixin                                    (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksMixin"),
+    VanillaSlotMapsMixin                              (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.VanillaSlotMapsMixin"),
     //endregion
     //region EnderCore
     EnderCoreMethodsMixin                             (COMMON, require(ENDERCORE), "endercore.EnderCoreMethodsMixin"),
