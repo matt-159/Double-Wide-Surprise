@@ -13,15 +13,21 @@ Most modded inventories should work, but explicit support has been completed for
 - Forestry
 - Storage Drawers
 - Inventory Tweaks
+  
+Accessories from the following mods have their slots added to the main inventory when present:
+- Baubles 
+- Baubles Expanded
+- Travellers Gear
+- Galacticraft
+- Tinkers Construct
 
-Partially Supported Mods:
+Supported Modded Inventories:
 - Garden Core
   - Compost Bin
 - Agricraft
   - Seed Analyzer
 
-Future plans for the mod:
-- Support more and more modded inventories
+### Current focus - Thaumcraft 4
 
 ## Dependencies
 - [GasStation](https://github.com/FalsePattern/GasStation)
@@ -36,3 +42,5 @@ Future plans for the mod:
   
 - Will any version passed 1.7.10 be supported?
   - What are you talking about? 1.7.10 ***is*** the latest version of Minecraft
+ 
+- How do I access the other 

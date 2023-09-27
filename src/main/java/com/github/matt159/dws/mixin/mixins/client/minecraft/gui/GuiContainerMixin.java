@@ -91,7 +91,7 @@ public abstract class GuiContainerMixin extends GuiScreen {
         ResourceLocation slotHint = instance.getBackgroundIconTexture();
 
         if (icon == null && slotHint != null && instance instanceof SlotDWS) {
-            drawTexturedRect(instance.getBackgroundIconTexture(),
+            drawTexturedRect(slotHint,
                              instance.xDisplayPosition,
                              instance.yDisplayPosition,
                              16,
