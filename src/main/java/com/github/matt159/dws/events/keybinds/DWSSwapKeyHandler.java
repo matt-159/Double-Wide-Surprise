@@ -1,4 +1,4 @@
-package com.github.matt159.dws.events;
+package com.github.matt159.dws.events.keybinds;
 
 import com.github.matt159.dws.network.DWSInventorySwapPacket;
 import com.github.matt159.dws.network.PacketHandler;
