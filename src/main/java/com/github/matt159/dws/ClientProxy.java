@@ -1,7 +1,8 @@
 package com.github.matt159.dws;
 
-import com.github.matt159.dws.events.DWSSwapKeyHandler;
+import com.github.matt159.dws.events.keybinds.DWSSwapKeyHandler;
 import com.github.matt159.dws.inventory.slots.SlotType;
+import com.github.matt159.dws.registry.Keybindings;
 
 import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -25,6 +26,8 @@ public class ClientProxy extends CommonProxy {
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes."
     public void init(FMLInitializationEvent event) {
         super.init(event);
+
+        Keybindings.register();
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this."
