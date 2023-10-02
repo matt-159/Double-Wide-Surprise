@@ -4,6 +4,7 @@ import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.lwjgl.opencl.CL;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -380,8 +381,14 @@ public enum Mixin implements IMixin {
     ContainerIronFurnaceMixin                         (COMMON, require(INDUSTRIALCRAFT2), "ic2.ContainerIronFurnaceMixin"),
     //endregion
     //region Railcraft
+    GuiBoilerFluidMixin                               (CLIENT, require(RAILCRAFT), "railcraft.GuiBoilerFluidMixin"),
+    GuiBoilerSolidMixin                               (CLIENT, require(RAILCRAFT), "railcraft.GuiBoilerSolidMixin"),
+    GuiCokeOvenMixin                                  (CLIENT, require(RAILCRAFT), "railcraft.GuiCokeOvenMixin"),
     GuiSteamOvenMixin                                 (CLIENT, require(RAILCRAFT), "railcraft.GuiSteamOvenMixin"),
 
+    ContainerBoilerFluidMixin                         (COMMON, require(RAILCRAFT), "railcraft.ContainerBoilerFluidMixin"),
+    ContainerBoilerSolidMixin                         (COMMON, require(RAILCRAFT), "railcraft.ContainerBoilerSolidMixin"),
+    ContainerCokeOvenMixin                            (COMMON, require(RAILCRAFT), "railcraft.ContainerCokeOvenMixin"),
     ContainerSteamOvenMixin                           (COMMON, require(RAILCRAFT), "railcraft.ContainerSteamOvenMixin"),
     //endregion
     // @formatter:on
