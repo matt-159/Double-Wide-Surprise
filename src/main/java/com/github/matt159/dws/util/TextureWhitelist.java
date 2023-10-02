@@ -316,5 +316,9 @@ public final class TextureWhitelist {
         //region Mariculture
         addTextureToWhitelist("mariculture:textures/gui/liquifier.png");
         //endregion
+
+        //region Industrialcraft 2
+        addTextureToWhitelist("ic2:textures/gui/GUIFurnace.png");
+        //endregion
     }
 }

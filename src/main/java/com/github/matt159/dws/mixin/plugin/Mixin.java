@@ -25,6 +25,7 @@ import static com.github.matt159.dws.mixin.plugin.TargetedMod.FORESTRY;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.GALACTICRAFT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.GARDENCORE;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.GREGTECH;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.INDUSTRIALCRAFT2;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.INVENTORYTWEAKS;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.IRONCHEST;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.MARICULTURE;
@@ -370,6 +371,12 @@ public enum Mixin implements IMixin {
     NGuiHandlerMixin                                  (COMMON, require(NATURA), "natura.NGuiHandlerMixin"),
 
     FurnaceGuiMixin                                   (CLIENT, require(NATURA), "natura.FurnaceGuiMixin"),
+    //endregion
+    //region IndustrialCraft 2
+    GuiIronFurnaceMixin                               (CLIENT, require(INDUSTRIALCRAFT2), "ic2.GuiIronFurnaceMixin"),
+
+    ContainerBaseMixin                                (COMMON, require(INDUSTRIALCRAFT2), "ic2.ContainerBaseMixin"),
+    ContainerIronFurnaceMixin                         (COMMON, require(INDUSTRIALCRAFT2), "ic2.ContainerIronFurnaceMixin"),
     //endregion
     // @formatter:on
     ;
