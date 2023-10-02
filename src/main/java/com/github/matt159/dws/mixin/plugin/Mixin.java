@@ -31,6 +31,7 @@ import static com.github.matt159.dws.mixin.plugin.TargetedMod.IRONCHEST;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.MARICULTURE;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.NATURA;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.NOTENOUGHITEMS;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.RAILCRAFT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.STORAGEDRAWERS;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.TECTECH;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.TINKERSCONSTRUCT;
@@ -377,6 +378,11 @@ public enum Mixin implements IMixin {
 
     ContainerBaseMixin                                (COMMON, require(INDUSTRIALCRAFT2), "ic2.ContainerBaseMixin"),
     ContainerIronFurnaceMixin                         (COMMON, require(INDUSTRIALCRAFT2), "ic2.ContainerIronFurnaceMixin"),
+    //endregion
+    //region Railcraft
+    GuiSteamOvenMixin                                 (CLIENT, require(RAILCRAFT), "railcraft.GuiSteamOvenMixin"),
+
+    ContainerSteamOvenMixin                           (COMMON, require(RAILCRAFT), "railcraft.ContainerSteamOvenMixin"),
     //endregion
     // @formatter:on
     ;
