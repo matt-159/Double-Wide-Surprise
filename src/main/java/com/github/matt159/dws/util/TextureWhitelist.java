@@ -320,5 +320,12 @@ public final class TextureWhitelist {
         //region Industrialcraft 2
         addTextureToWhitelist("ic2:textures/gui/GUIFurnace.png");
         //endregion
+
+        //region Railcraft
+        addTextureToWhitelist("railcraft:textures/gui/gui_boiler_liquid.png");
+        addTextureToWhitelist("railcraft:textures/gui/gui_boiler_solid.png");
+        addTextureToWhitelist("railcraft:textures/gui/gui_coke_oven.png");
+        addTextureToWhitelist("railcraft:textures/gui/gui_steam_oven.png");
+        //endregion
     }
 }
