@@ -16,9 +16,6 @@ import java.util.List;
 
 @Mixin(Minecraft.class)
 public abstract class MinecraftMixin {
-
-    @Shadow public GuiIngame ingameGUI;
-
     // inventorySlots.size() can't be trusted to provide a constant number of slots
     // since accessory slots are added to the ContainerPlayer object
     @Redirect(  method = "func_147112_ai",
