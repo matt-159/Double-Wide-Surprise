@@ -392,6 +392,8 @@ public enum Mixin implements IMixin {
     ContainerCokeOvenMixin                            (COMMON, require(RAILCRAFT), "railcraft.ContainerCokeOvenMixin"),
     ContainerSteamOvenMixin                           (COMMON, require(RAILCRAFT), "railcraft.ContainerSteamOvenMixin"),
     ContainerTankMixin                                (COMMON, require(RAILCRAFT), "railcraft.ContainerTankMixin"),
+
+    RailcraftContainerMixin                           (COMMON, require(RAILCRAFT), "railcraft.RailcraftContainerMixin"),
     //endregion
     // @formatter:on
     ;
