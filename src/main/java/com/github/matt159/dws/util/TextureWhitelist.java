@@ -326,6 +326,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("railcraft:textures/gui/gui_boiler_solid.png");
         addTextureToWhitelist("railcraft:textures/gui/gui_coke_oven.png");
         addTextureToWhitelist("railcraft:textures/gui/gui_steam_oven.png");
+        addTextureToWhitelist("railcraft:textures/gui/gui_tank_water.png");
         //endregion
     }
 }
