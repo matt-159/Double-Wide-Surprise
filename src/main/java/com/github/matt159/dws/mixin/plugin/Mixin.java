@@ -373,8 +373,10 @@ public enum Mixin implements IMixin {
     FurnaceGuiMixin                                   (CLIENT, require(NATURA), "natura.FurnaceGuiMixin"),
     //endregion
     //region Thaumcraft
+    ContainerAlchemyFurnaceMixin                      (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerAlchemyFurnaceMixin"),
     ContainerArcaneWorkbenchMixin                     (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerArcaneWorkbenchMixin"),
 
+    GuiAlchemyFurnaceMixin                            (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiAlchemyFurnaceMixin"),
     GuiArcaneWorkbenchMixin                           (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiArcaneWorkbenchMixin"),
     //endregion
     // @formatter:on

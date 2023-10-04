@@ -318,6 +318,7 @@ public final class TextureWhitelist {
         //endregion
 
         //region Thaumcraft
+        addTextureToWhitelist("thaumcraft:textures/gui/gui_alchemyfurnace.png");
         addTextureToWhitelist("thaumcraft:textures/gui/gui_arcaneworkbench.png");
         //endregion
     }
