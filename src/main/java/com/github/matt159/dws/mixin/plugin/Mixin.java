@@ -32,6 +32,7 @@ import static com.github.matt159.dws.mixin.plugin.TargetedMod.NATURA;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.NOTENOUGHITEMS;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.STORAGEDRAWERS;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.TECTECH;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.THAUMCRAFT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.TINKERSCONSTRUCT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.TRAVELLERSGEAR;
 
@@ -370,6 +371,11 @@ public enum Mixin implements IMixin {
     NGuiHandlerMixin                                  (COMMON, require(NATURA), "natura.NGuiHandlerMixin"),
 
     FurnaceGuiMixin                                   (CLIENT, require(NATURA), "natura.FurnaceGuiMixin"),
+    //endregion
+    //region Thaumcraft
+    ContainerArcaneWorkbenchMixin                     (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerArcaneWorkbenchMixin"),
+
+    GuiArcaneWorkbenchMixin                           (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiArcaneWorkbenchMixin"),
     //endregion
     // @formatter:on
     ;

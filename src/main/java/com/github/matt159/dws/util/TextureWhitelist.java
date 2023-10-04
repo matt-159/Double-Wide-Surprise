@@ -316,5 +316,9 @@ public final class TextureWhitelist {
         //region Mariculture
         addTextureToWhitelist("mariculture:textures/gui/liquifier.png");
         //endregion
+
+        //region Thaumcraft
+        addTextureToWhitelist("thaumcraft:textures/gui/gui_arcaneworkbench.png");
+        //endregion
     }
 }
