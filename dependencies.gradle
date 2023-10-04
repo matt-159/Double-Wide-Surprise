@@ -66,7 +66,7 @@ dependencies {
     compileOnly(deobfCurse("storage-drawers-223852:2469586"))
     compileOnly(deobfCurse("tinkers-construct-74072:2264246"))
     compileOnly(deobfCurse("travellers-gear-224440:2262113"))
-    compile(deobfCurse("thaumcraft-223628:2227552"))
+    compileOnly(deobfCurse("thaumcraft-223628:2227552"))
 
     // GregTech
     compileOnly("gtmega:gt5u-mc1.7.10:5.32.0-mega:dev")
