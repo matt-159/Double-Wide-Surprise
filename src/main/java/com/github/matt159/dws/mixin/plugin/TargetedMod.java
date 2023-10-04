@@ -34,6 +34,7 @@ public enum TargetedMod implements ITargetedMod {
     NOTENOUGHITEMS       ("NotEnoughItems"       , true  , startsWith("notenoughitems")),
     STORAGEDRAWERS       ("StorageDrawers"       , true  , startsWith("storagedrawers-1.7.10")),
     TECTECH              ("TecTech"              , false , startsWith("tectech").or(startsWith("tec-tech"))),
+    THAUMCRAFT           ("Thaumcraft"           , false , startsWith("thaumcraft-")),
     TINKERSCONSTRUCT     ("TConstruct"           , false , startsWith("tconstruct").or(startsWith("tinkersconstruct"))),
     TRAVELLERSGEAR       ("TravellersGear"       , false , startsWith("traveller")),
     ;
