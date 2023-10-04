@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.ic2;
 
+import com.github.matt159.dws.interfaces.IDWSContainer;
 import ic2.core.ContainerBase;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -14,6 +15,6 @@ public abstract class ContainerBaseMixin extends Container {
                     remap = false,
                     require = 4)
     private int modifyPlayerInventorySize(int constant) {
-        return 18;
+        return this instanceof IDWSContainer ? 18 : constant;
     }
 }
