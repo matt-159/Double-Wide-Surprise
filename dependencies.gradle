@@ -68,6 +68,7 @@ dependencies {
     compileOnly(deobfCurse("travellers-gear-224440:2262113"))
     compileOnly(deobfCurse("railcraft-51195:2458987"))
     compileOnly(deobfCurse("industrial-craft-242638:2353971"))
+    compileOnly(deobfCurse("thaumcraft-223628:2227552"))
 
     // GregTech
     compileOnly("gtmega:gt5u-mc1.7.10:5.32.0-mega:dev")

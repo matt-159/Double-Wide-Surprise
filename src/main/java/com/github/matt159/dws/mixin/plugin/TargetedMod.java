@@ -36,6 +36,7 @@ public enum TargetedMod implements ITargetedMod {
     STORAGEDRAWERS       ("StorageDrawers"       , false , startsWith("storagedrawers-1.7.10")),
     RAILCRAFT            ("Railcraft"            , false , startsWith("railcraft-")),
     TECTECH              ("TecTech"              , false , startsWith("tectech").or(startsWith("tec-tech"))),
+    THAUMCRAFT           ("Thaumcraft"           , false , startsWith("thaumcraft-")),
     TINKERSCONSTRUCT     ("TConstruct"           , false , startsWith("tconstruct").or(startsWith("tinkersconstruct"))),
     TRAVELLERSGEAR       ("TravellersGear"       , false , startsWith("traveller")),
     ;

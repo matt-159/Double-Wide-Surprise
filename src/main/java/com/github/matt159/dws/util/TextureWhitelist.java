@@ -317,6 +317,12 @@ public final class TextureWhitelist {
         addTextureToWhitelist("mariculture:textures/gui/liquifier.png");
         //endregion
 
+        //region Thaumcraft
+        addTextureToWhitelist("thaumcraft:textures/gui/gui_alchemyfurnace.png");
+        addTextureToWhitelist("thaumcraft:textures/gui/gui_arcaneworkbench.png");
+        addTextureToWhitelist("thaumcraft:textures/gui/guiresearchtable2.png");
+        //endregion
+
         //region Industrialcraft 2
         addTextureToWhitelist("ic2:textures/gui/GUIFurnace.png");
         //endregion

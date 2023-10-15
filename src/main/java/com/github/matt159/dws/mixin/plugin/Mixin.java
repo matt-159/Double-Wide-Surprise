@@ -4,7 +4,6 @@ import com.falsepattern.lib.mixin.IMixin;
 import com.falsepattern.lib.mixin.ITargetedMod;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.lwjgl.opencl.CL;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -35,6 +34,7 @@ import static com.github.matt159.dws.mixin.plugin.TargetedMod.NOTENOUGHITEMS;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.RAILCRAFT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.STORAGEDRAWERS;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.TECTECH;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.THAUMCRAFT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.TINKERSCONSTRUCT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.TRAVELLERSGEAR;
 
@@ -373,6 +373,14 @@ public enum Mixin implements IMixin {
     NGuiHandlerMixin                                  (COMMON, require(NATURA), "natura.NGuiHandlerMixin"),
 
     FurnaceGuiMixin                                   (CLIENT, require(NATURA), "natura.FurnaceGuiMixin"),
+    //endregion
+    //region Thaumcraft
+    ContainerAlchemyFurnaceMixin                      (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerAlchemyFurnaceMixin"),
+    ContainerArcaneWorkbenchMixin                     (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerArcaneWorkbenchMixin"),
+
+    GuiAlchemyFurnaceMixin                            (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiAlchemyFurnaceMixin"),
+    GuiArcaneWorkbenchMixin                           (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiArcaneWorkbenchMixin"),
+    GuiResearchTableMixin                             (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiResearchTableMixin"),
     //endregion
     //region IndustrialCraft 2
     GuiIronFurnaceMixin                               (CLIENT, require(INDUSTRIALCRAFT2), "ic2.GuiIronFurnaceMixin"),
