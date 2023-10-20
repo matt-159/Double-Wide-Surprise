@@ -112,6 +112,7 @@ public enum Mixin implements IMixin {
     NEIServerUtilsMixin                               (COMMON, require(NOTENOUGHITEMS), "nei.NEIServerUtilsMixin"),
     PlayerSaveMixin                                   (COMMON, require(NOTENOUGHITEMS), "nei.PlayerSaveMixin"),
 
+    DefaultOverlayHandlerMixin                        (CLIENT, require(NOTENOUGHITEMS), "nei.DefaultOverlayHandlerMixin"),
     TemplateRecipeHandlerMixin                        (COMMON, require(NOTENOUGHITEMS), "nei.TemplateRecipeHandlerMixin"),
     //endregion
     // region Galacticraft Mixins
