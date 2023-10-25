@@ -30,7 +30,7 @@ import net.minecraft.inventory.Container;
 
 import java.util.Arrays;
 
-@Mixin(GuiResearchTable.class)
+@Mixin(value = GuiResearchTable.class, priority = 0)
 public abstract class GuiResearchTableMixin extends GuiContainer implements IDWSGui {
     private static final int ASPECT_GRID_ROW_SIZE = 10;
 
@@ -46,7 +46,7 @@ public abstract class GuiResearchTableMixin extends GuiContainer implements IDWS
     private TileResearchTable tileEntity;
 
     @Shadow(remap = false)
-    private ResearchNoteData note;
+    public ResearchNoteData note;
 
     @Shadow(remap = false)
     private int lastPage;
@@ -407,7 +407,7 @@ public abstract class GuiResearchTableMixin extends GuiContainer implements IDWS
             at = @At("TAIL"),
             require = 1)
     private void injectDrawResearchDupeButton(float par1, int par2, int par3, CallbackInfo ci) {
-        if (this.note != null && this.note.isComplete()) {
+        if (this.note != null && RESEARCHDUPE && this.note.isComplete()) {
             UtilsFX.bindTexture("textures/gui/guiresearchtable2.png");
             GL11.glEnable(GL11.GL_BLEND);
             RenderHelper.enableStandardItemLighting();
@@ -475,12 +475,6 @@ public abstract class GuiResearchTableMixin extends GuiContainer implements IDWS
                      target = "Lthaumcraft/client/gui/GuiResearchTable;checkClickedHex(IIII)V",
                      remap = false,
                      shift = At.Shift.AFTER),
-            slice = @Slice(from = @At(value = "FIELD",
-                                      target = "Lthaumcraft/client/gui/GuiResearchTable;note:Lthaumcraft/common/lib/research/ResearchNoteData;",
-                                      remap = false),
-                           to = @At(value = "INVOKE",
-                                    target = "Lthaumcraft/client/gui/GuiResearchTable;isShiftKeyDown()Z",
-                                    remap = false)),
             cancellable = true,
             require = 1)
     private void injectNewResearchDupeClickCheck(int mx, int my, int par3, CallbackInfo ci) {
