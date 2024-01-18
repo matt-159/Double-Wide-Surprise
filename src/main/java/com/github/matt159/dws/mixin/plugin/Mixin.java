@@ -22,6 +22,7 @@ import static com.github.matt159.dws.mixin.plugin.TargetedMod.CHISEL;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.CODECHICKENLIB;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.ENDERCORE;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.FORESTRY;
+import static com.github.matt159.dws.mixin.plugin.TargetedMod.FORGEBACKPACKS;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.GALACTICRAFT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.GARDENCORE;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.GREGTECH;
@@ -404,6 +405,10 @@ public enum Mixin implements IMixin {
     ContainerTankMixin                                (COMMON, require(RAILCRAFT), "railcraft.ContainerTankMixin"),
 
     RailcraftContainerMixin                           (COMMON, require(RAILCRAFT), "railcraft.RailcraftContainerMixin"),
+    //endregion
+    //region Forge Backpacks
+    ContainerAdvancedMixin                            (COMMON, require(FORGEBACKPACKS), "backpack.ContainerAdvancedMixin"),
+    FactoryBackpackNormalMixin                        (COMMON, require(FORGEBACKPACKS), "backpack.FactoryBackpackNormalMixin"),
     //endregion
     // @formatter:on
     ;

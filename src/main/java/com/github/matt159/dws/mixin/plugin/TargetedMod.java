@@ -23,6 +23,7 @@ public enum TargetedMod implements ITargetedMod {
     CHISEL               ("Chisel"               , true  , startsWith("chisel")),
     ENDERCORE            ("EnderCore"            , true  , startsWith("endercore")),
     FORESTRY             ("Forestry"             , false , startsWith("forestry")),
+    FORGEBACKPACKS       ("Backpack"             , true  , startsWith("backpack")),
     CODECHICKENLIB       ("CodeChickenLib"       , true  , startsWith("codechicken")),
     GALACTICRAFT         ("Galacticraft"         , false , startsWith("galacticraft")),
     GARDENCORE           ("GardenCore"           , false , startsWith("gardenstuff")),
