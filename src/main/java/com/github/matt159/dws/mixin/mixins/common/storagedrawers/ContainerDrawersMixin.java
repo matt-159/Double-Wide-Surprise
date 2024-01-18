@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.storagedrawers;
 
+import com.github.matt159.dws.interfaces.IDWSContainer;
 import com.github.matt159.dws.util.Constants;
 import com.jaquadro.minecraft.storagedrawers.inventory.ContainerDrawers;
 import org.spongepowered.asm.mixin.Mixin;
@@ -10,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ContainerDrawers.class)
-public abstract class ContainerDrawersMixin {
+public abstract class ContainerDrawersMixin implements IDWSContainer {
     @Shadow(remap = false)
     protected abstract int getStorageSlotX(int slot);
 
