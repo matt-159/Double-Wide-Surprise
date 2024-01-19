@@ -36,16 +36,4 @@ public abstract class FactoryBackpackNormalMixin {
     private void redirectContainerSetWidth(ContainerAdvanced instance, int value) {
         instance.setWidth(Constants.GENERAL_DWS_GUI_WIDTH);
     }
-
-    @Redirect(method = "getContainer(Lde/eydamos/backpack/saves/BackpackSave;[Lnet/minecraft/inventory/IInventory;Lnet/minecraft/entity/player/EntityPlayer;)Lde/eydamos/backpack/inventory/container/ContainerAdvanced;",
-              at = @At(value = "INVOKE",
-                       target = "Lde/eydamos/backpack/inventory/container/ContainerAdvanced;addSlot(Lnet/minecraft/inventory/Slot;)V",
-                       ordinal = 0),
-              remap = false,
-              require = 1)
-    private void redirectAddBackpackSlot(ContainerAdvanced instance, Slot slot) {
-        slot.xDisplayPosition += Constants.GENERAL_X_OFFSET;
-
-        instance.addSlot(slot);
-    }
 }

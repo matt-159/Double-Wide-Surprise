@@ -407,8 +407,13 @@ public enum Mixin implements IMixin {
     RailcraftContainerMixin                           (COMMON, require(RAILCRAFT), "railcraft.RailcraftContainerMixin"),
     //endregion
     //region Forge Backpacks
+    BackpackSaveMixin                                 (COMMON, require(FORGEBACKPACKS), "backpack.BackpackSaveMixin"),
+
     ContainerAdvancedMixin                            (COMMON, require(FORGEBACKPACKS), "backpack.ContainerAdvancedMixin"),
     FactoryBackpackNormalMixin                        (COMMON, require(FORGEBACKPACKS), "backpack.FactoryBackpackNormalMixin"),
+    FactoryPersonalSlotMixin                          (COMMON, require(FORGEBACKPACKS), "backpack.FactoryPersonalSlotMixin"),
+
+    InventoryPickupMixin                              (COMMON, require(FORGEBACKPACKS), "backpack.InventoryPickupMixin"),
     //endregion
     // @formatter:on
     ;
