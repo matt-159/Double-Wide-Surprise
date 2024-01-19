@@ -17,6 +17,20 @@ public abstract class FactoryBackpackNormalMixin {
     @ModifyConstant(method = "getContainer(Lde/eydamos/backpack/saves/BackpackSave;[Lnet/minecraft/inventory/IInventory;Lnet/minecraft/entity/player/EntityPlayer;)Lde/eydamos/backpack/inventory/container/ContainerAdvanced;",
                     slice = @Slice(from = @At(value = "INVOKE",
                                               target = "Lde/eydamos/backpack/inventory/container/ContainerAdvanced;addBoundary(Lde/eydamos/backpack/inventory/container/Boundaries;)V",
+                                              ordinal = 0),
+                                   to = @At(value = "INVOKE",
+                                            target = "Lde/eydamos/backpack/inventory/container/ContainerAdvanced;addBoundary(Lde/eydamos/backpack/inventory/container/Boundaries;)V",
+                                            ordinal = 1)),
+                    constant = @Constant(intValue = 9),
+                    remap = false,
+                    require = 1)
+    private int modifyBackpackInventorySlotIndices(int constant) {
+        return 18;
+    }
+
+    @ModifyConstant(method = "getContainer(Lde/eydamos/backpack/saves/BackpackSave;[Lnet/minecraft/inventory/IInventory;Lnet/minecraft/entity/player/EntityPlayer;)Lde/eydamos/backpack/inventory/container/ContainerAdvanced;",
+                    slice = @Slice(from = @At(value = "INVOKE",
+                                              target = "Lde/eydamos/backpack/inventory/container/ContainerAdvanced;addBoundary(Lde/eydamos/backpack/inventory/container/Boundaries;)V",
                                               ordinal = 2),
                                    to = @At(value = "INVOKE",
                                             target = "Lde/eydamos/backpack/inventory/container/ContainerAdvanced;addBoundary(Lde/eydamos/backpack/inventory/container/Boundaries;)V",
