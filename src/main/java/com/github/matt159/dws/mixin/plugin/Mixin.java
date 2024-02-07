@@ -412,6 +412,9 @@ public enum Mixin implements IMixin {
     ContainerAdvancedMixin                            (COMMON, require(FORGEBACKPACKS), "backpack.ContainerAdvancedMixin"),
     FactoryBackpackNormalMixin                        (COMMON, require(FORGEBACKPACKS), "backpack.FactoryBackpackNormalMixin"),
     FactoryPersonalSlotMixin                          (COMMON, require(FORGEBACKPACKS), "backpack.FactoryPersonalSlotMixin"),
+    //todo finish these
+//    FactoryWorkbenchBackpackMixin_COMMON              (COMMON, require(FORGEBACKPACKS), "backpack.FactoryWorkbenchBackpackMixin"),
+//    FactoryWorkbenchBackpackMixin_CLIENT              (CLIENT, require(FORGEBACKPACKS), "backpack.FactoryWorkbenchBackpackMixin"),
 
     InventoryPickupMixin                              (COMMON, require(FORGEBACKPACKS), "backpack.InventoryPickupMixin"),
     //endregion
