@@ -1,6 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.minecraft;
 
-import com.github.matt159.dws.events.keybinds.HotbarKeyhandler;
+import com.github.matt159.dws.events.keybinds.HotbarKey;
 import lombok.val;
 import org.spongepowered.asm.lib.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,10 +25,10 @@ public abstract class GameSettingsMixin {
         for (int index = 0; index < hotbarKeybinds.length; index++) {
             val hotbarKeybind = hotbarKeybinds[index];
 
-            val hotbarKeyhandler = new HotbarKeyhandler(hotbarKeybind.getKeyDescription(),
-                                                        hotbarKeybind.getKeyCode(),
-                                                        hotbarKeybind.getKeyCategory(),
-                                                        index);
+            val hotbarKeyhandler = new HotbarKey(hotbarKeybind.getKeyDescription(),
+                                                 hotbarKeybind.getKeyCode(),
+                                                 hotbarKeybind.getKeyCategory(),
+                                                 index);
 
             hotbarKeyhandlers[index] = hotbarKeyhandler;
         }

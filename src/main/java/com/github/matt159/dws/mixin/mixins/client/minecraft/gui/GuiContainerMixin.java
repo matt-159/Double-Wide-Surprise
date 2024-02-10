@@ -1,6 +1,7 @@
 package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 
 import com.github.matt159.dws.config.DWSConfig;
+import com.github.matt159.dws.events.keybinds.InventorySwapKey;
 import com.github.matt159.dws.interfaces.IDWSGui;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.network.DWSInventorySwapPacket;
@@ -15,6 +16,8 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+
+import com.github.matt159.dws.registry.Keybindings;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -47,21 +50,9 @@ public abstract class GuiContainerMixin extends GuiScreen {
     @Inject(method = "keyTyped",
             at = @At(value = "TAIL"),
             require = 1)
-    private void injectDWSHotkey(char p_73869_1_, int key, CallbackInfo ci) {
-        KeyBinding swapKey;
-        try {
-            String description = StatCollector.translateToLocal("keybind.inventoryswap");
-
-            swapKey = Arrays.stream(Minecraft.getMinecraft().gameSettings.keyBindings)
-                            .filter(keyBind -> keyBind.getKeyDescription().equals(description))
-                            .findFirst()
-                            .get();
-        } catch (NoSuchElementException e) {
-            swapKey = null;
-        }
-
-        if (swapKey != null && swapKey.getKeyCode() == key) {
-            PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(!(this instanceof IDWSGui)));
+    private void injectDWSHotkey(char typedChar, int key, CallbackInfo ci) {
+        if (Keybindings.SwapKey.getKeyCode() == key && !(this instanceof IDWSGui)) {
+            PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(true));
         }
     }
 

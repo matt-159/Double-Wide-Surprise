@@ -46,13 +46,11 @@ public class DoubleWideSurprise {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
-        proxy.registerHandlers();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
-        proxy.registerKeyBindings();
     }
 
     @Mod.EventHandler

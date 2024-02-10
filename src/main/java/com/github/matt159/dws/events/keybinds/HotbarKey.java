@@ -6,8 +6,8 @@ import lombok.val;
 
 import net.minecraft.client.Minecraft;
 
-public class HotbarKeyhandler extends KeyHandler {
-    public HotbarKeyhandler(String description, int keyCode, String category, int index) {
+public class HotbarKey extends KeyHandler {
+    public HotbarKey(String description, int keyCode, String category, int index) {
         super(description, keyCode, category, new HotbarKeyhandlerCallback(index));
     }
 

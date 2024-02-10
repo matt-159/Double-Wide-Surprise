@@ -31,18 +31,11 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-        this.registerHandlers();
+        MinecraftForge.EVENT_BUS.register(new PlayerOpenContainerEventHandler());
     }
 
     public void postInit(FMLPostInitializationEvent event) {
         this.disableOtherInventoryButtons();
-    }
-
-    public void registerHandlers() {
-        MinecraftForge.EVENT_BUS.register(new PlayerOpenContainerEventHandler());
-    }
-
-    public void registerKeyBindings() {
     }
 
     @SuppressWarnings("unchecked")
