@@ -1,13 +1,11 @@
 package com.github.matt159.dws.inventory.slots;
 
-import com.github.matt159.dws.ClientProxy;
 import com.github.matt159.dws.DoubleWideSurprise;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class SlotDWS extends Slot {
     public int slotLimit;

@@ -1,6 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.client.minecraft.gui;
 
-import com.github.matt159.dws.Config;
+import com.github.matt159.dws.config.DWSConfig;
 import com.github.matt159.dws.interfaces.IDWSGui;
 import com.github.matt159.dws.inventory.slots.SlotDWS;
 import com.github.matt159.dws.network.DWSInventorySwapPacket;
@@ -53,15 +53,15 @@ public abstract class GuiContainerMixin extends GuiScreen {
             String description = StatCollector.translateToLocal("keybind.inventoryswap");
 
             swapKey = Arrays.stream(Minecraft.getMinecraft().gameSettings.keyBindings)
-                    .filter(keyBind -> keyBind.getKeyDescription().equals(description))
-                    .findFirst()
-                    .get();
+                            .filter(keyBind -> keyBind.getKeyDescription().equals(description))
+                            .findFirst()
+                            .get();
         } catch (NoSuchElementException e) {
             swapKey = null;
         }
 
         if (swapKey != null && swapKey.getKeyCode() == key) {
-            PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(this instanceof IDWSGui == false));
+            PacketHandler.INSTANCE.sendToServer(new DWSInventorySwapPacket(!(this instanceof IDWSGui)));
         }
     }
 
@@ -70,12 +70,14 @@ public abstract class GuiContainerMixin extends GuiScreen {
                      target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawGuiContainerForegroundLayer(II)V",
                      shift = At.Shift.AFTER),
             require = 1)
-    private void injectDebugStringDrawCalls(int p_73863_1_, int p_73863_2_, float p_73863_3_, CallbackInfo ci) {
-        if (Config.showDebugSlotInfo) {
+    private void injectDebugStringDrawCalls(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
+        if (DWSConfig.General.showDebugSlotInfo) {
             for (int i = 0; i < this.inventorySlots.inventorySlots.size(); ++i) {
-                Slot slot = (Slot)this.inventorySlots.inventorySlots.get(i);
+                Slot slot = (Slot) this.inventorySlots.inventorySlots.get(i);
+
                 String slotNumber = Integer.toString(slot.slotNumber);
                 String slotIndex = Integer.toString(slot.getSlotIndex());
+
                 this.fontRendererObj.drawString(slotNumber, slot.xDisplayPosition, slot.yDisplayPosition, Color.CYAN.getRGB());
                 this.fontRendererObj.drawString(slotIndex, slot.xDisplayPosition, slot.yDisplayPosition + 8, Color.MAGENTA.getRGB());
             }

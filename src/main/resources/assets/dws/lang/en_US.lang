@@ -1,3 +1,5 @@
 # Keybinding
-keybind.inventoryswap=Swap Inventory Halves
-keybind.dws.modifier.name=modifier key
+dws.keybind.inventoryswap.name=Swap Inventory Halves
+dws.keybind.modifier.name=Modifier Key
+dws.config.showSlotInfo.name=Show debug slot number and index
+dws.config.hotbarTimer.name=Hotbar double-tap timer

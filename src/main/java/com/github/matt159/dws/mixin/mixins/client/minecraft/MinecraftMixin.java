@@ -1,16 +1,14 @@
 package com.github.matt159.dws.mixin.mixins.client.minecraft;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiIngame;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.client.settings.KeyBinding;
 
-import com.github.matt159.dws.registry.Keybindings;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Slice;
 
 import java.util.List;
 
@@ -23,7 +21,7 @@ public abstract class MinecraftMixin {
                             target = "Ljava/util/List;size()I"),
                 require = 1)
     private int redirectGetMainInventorySize(List instance) {
-        return 81;
+        return 9 + 72;
     }
 
     @ModifyConstant(method="func_147112_ai",
@@ -34,14 +32,15 @@ public abstract class MinecraftMixin {
     }
 
     @Redirect(method = "runTick",
-              at = @At(value = "FIELD",
-                       target = "Lnet/minecraft/entity/player/InventoryPlayer;currentItem:I"),
+              at = @At(value = "INVOKE",
+                       target = "Lnet/minecraft/client/settings/KeyBinding;isPressed()Z"),
+              slice = @Slice(from = @At(value = "INVOKE",
+                                        target = "Lcpw/mods/fml/common/FMLCommonHandler;fireKeyInput()V"),
+                             to = @At(value = "FIELD",
+                                      target = "Lnet/minecraft/client/settings/GameSettings;chatVisibility:Lnet/minecraft/entity/player/EntityPlayer$EnumChatVisibility;")),
               require = 1)
-    private void redirectSlotSelection(InventoryPlayer instance, int value) {
-        if (Keybindings.ModifierKey.getIsKeyPressed()) {
-            value += 9;
-        }
-
-        instance.currentItem = value;
+    private boolean skipKeybindIsPressed(KeyBinding instance) {
+        //skipping this because the callback in KeyHandler calls isPressed()
+        return false;
     }
 }

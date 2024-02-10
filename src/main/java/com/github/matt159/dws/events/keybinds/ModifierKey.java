@@ -6,10 +6,10 @@ import org.lwjgl.input.Keyboard;
 import net.minecraft.util.StatCollector;
 
 public class ModifierKey extends KeyHandler {
-    private static final String UNLOCALIZED_NAME = "keybind." + Tags.MODID + ".modifier";
+    private static final String UNLOCALIZED_NAME = "dws.keybind.modifier.name";
 
     public ModifierKey() {
-        super(StatCollector.translateToLocal(UNLOCALIZED_NAME + ".name"),
+        super(StatCollector.translateToLocal(UNLOCALIZED_NAME),
               Keyboard.KEY_LCONTROL,
               Tags.MODNAME,
               new ModifierCallback());
@@ -18,6 +18,11 @@ public class ModifierKey extends KeyHandler {
     private static class ModifierCallback implements KeyHandler.CallBack {
         @Override
         public void onPress() {
+
+        }
+
+        @Override
+        public void tick() {
 
         }
     }

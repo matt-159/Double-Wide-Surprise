@@ -5,8 +5,8 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
 
-public class KeyHandler extends KeyBinding {
-    private final CallBack callBack;
+public abstract class KeyHandler extends KeyBinding {
+    protected final CallBack callBack;
 
     public KeyHandler(String description, int keyCode, String category, CallBack callback) {
         super(description, keyCode, category);
@@ -21,7 +21,16 @@ public class KeyHandler extends KeyBinding {
         }
     }
 
+    @Override
+    public boolean isPressed() {
+        this.callBack.tick();
+
+        return super.isPressed();
+    }
+
     public interface CallBack {
         void onPress();
+
+        void tick();
     }
 }
