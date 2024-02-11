@@ -21,16 +21,7 @@ public abstract class KeyHandler extends KeyBinding {
         }
     }
 
-    @Override
-    public boolean isPressed() {
-        this.callBack.tick();
-
-        return super.isPressed();
-    }
-
     public interface CallBack {
         void onPress();
-
-        void tick();
     }
 }

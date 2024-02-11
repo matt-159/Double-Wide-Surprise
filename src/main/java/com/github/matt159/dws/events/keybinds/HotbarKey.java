@@ -14,26 +14,24 @@ public class HotbarKey extends KeyHandler {
     @RequiredArgsConstructor
     private static class HotbarKeyhandlerCallback implements KeyHandler.CallBack {
         private final int slotNumber;
-        private int doubleTapTimer = 0;
+        private long timeOfLastPress = 0;
 
         @Override
         public void onPress() {
             val player = Minecraft.getMinecraft().thePlayer;
 
-            if (this.doubleTapTimer == 0) {
-                this.doubleTapTimer = DWSConfig.General.hotbarTimerLength;
+            val now = System.nanoTime();
+            val threshold = DWSConfig.General.hotbarTimerLength * 1_000_000;
 
-                player.inventory.currentItem = this.slotNumber;
-            } else {
-                this.doubleTapTimer = 0;
-
+            if (now - this.timeOfLastPress <= threshold) {
                 player.inventory.currentItem = this.slotNumber + 9;
-            }
-        }
 
-        @Override
-        public void tick() {
-            this.doubleTapTimer = Math.max(0, this.doubleTapTimer - 1);
+                this.timeOfLastPress = 0;
+            } else {
+                player.inventory.currentItem = this.slotNumber;
+
+                this.timeOfLastPress = now;
+            }
         }
     }
 }

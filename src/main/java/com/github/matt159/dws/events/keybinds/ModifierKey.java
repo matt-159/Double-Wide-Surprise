@@ -20,10 +20,5 @@ public class ModifierKey extends KeyHandler {
         public void onPress() {
 
         }
-
-        @Override
-        public void tick() {
-
-        }
     }
 }

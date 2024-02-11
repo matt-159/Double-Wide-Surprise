@@ -12,9 +12,9 @@ public class DWSConfig {
         @Config.LangKey("dws.config.showSlotInfo.name")
         public static boolean showDebugSlotInfo;
 
-        @Config.Comment("Timer measured in game ticks")
-        @Config.DefaultInt(4)
-        @Config.RangeInt(min = 1, max = 10)
+        @Config.Comment("Timer measured in milliseconds")
+        @Config.DefaultInt(400)
+        @Config.RangeInt(min = 50, max = 1000)
         @Config.LangKey("dws.config.hotbarTimer.name")
         public static int hotbarTimerLength;
 
