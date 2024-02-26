@@ -32,7 +32,8 @@ import java.util.Arrays;
 
 @Mixin(value = GuiResearchTable.class, priority = 0)
 public abstract class GuiResearchTableMixin extends GuiContainer implements IDWSGui {
-    private static final int ASPECT_GRID_ROW_SIZE = 10;
+    private static final int ASPECT_GRID_ROW_COUNT = 7;
+    private static final int ASPECT_GRID_ROW_LENGTH = 10;
 
     @Shadow(remap = false)
     private static boolean RESEARCHER_1;
@@ -192,11 +193,14 @@ public abstract class GuiResearchTableMixin extends GuiContainer implements IDWS
         AspectList aspects = Thaumcraft.proxy.getPlayerKnowledge().getAspectsDiscovered(this.username);
 
         Aspect[] aspectsSorted = aspects.getAspectsSorted();
+
+        val rows = 1 + (aspectsSorted.length / ASPECT_GRID_ROW_LENGTH);
+
         for (int i = 0; i < aspectsSorted.length; i++) {
             Aspect aspect = aspectsSorted[i];
 
-            int xx = (i % ASPECT_GRID_ROW_SIZE) * 16;
-            int yy = (i / ASPECT_GRID_ROW_SIZE) * 16;
+            int xx = (i / rows) * 16;
+            int yy = (i % rows) * 16;
 
             boolean faded = aspects.getAmount(aspect) <= 0 && this.tileEntity.bonusAspects.getAmount(aspect) <= 0;
 
@@ -219,10 +223,12 @@ public abstract class GuiResearchTableMixin extends GuiContainer implements IDWS
         if (aspects != null) {
             Aspect[] aspectsSorted = aspects.getAspectsSorted();
 
+            val rows = 1 + (aspectsSorted.length / ASPECT_GRID_ROW_LENGTH);
+
             for (int i = 0; i < aspectsSorted.length; i++) {
                 val aspect = aspectsSorted[i];
-                val aspectXOffset = (i % ASPECT_GRID_ROW_SIZE) * 16;
-                val aspectYOffset = (i / ASPECT_GRID_ROW_SIZE) * 16;
+                val aspectXOffset = (i / rows) * 16;
+                val aspectYOffset = (i % rows) * 16;
 
                 val aspectXPos = mx - (gx + aspectXOffset + 11);
                 val aspectYPos = my - (gy + aspectYOffset + 41);
@@ -252,11 +258,13 @@ public abstract class GuiResearchTableMixin extends GuiContainer implements IDWS
 
         if (aspects != null) {
             val aspectsSorted = aspects.getAspectsSorted();
+            val rows = 1 + (aspectsSorted.length / ASPECT_GRID_ROW_LENGTH);
 
             for (int i = 0; i < aspectsSorted.length; i++) {
                 val aspect = aspectsSorted[i];
-                val aspectXOffset = (i % ASPECT_GRID_ROW_SIZE) * 16;
-                val aspectYOffset = (i / ASPECT_GRID_ROW_SIZE) * 16;
+
+                val aspectXOffset = (i / rows) * 16;
+                val aspectYOffset = (i % rows) * 16;
 
                 val aspectXPos = mx - (x + aspectXOffset);
                 val aspectYPos = my - (y + aspectYOffset);
