@@ -380,10 +380,12 @@ public enum Mixin implements IMixin {
     //region Thaumcraft
     ContainerAlchemyFurnaceMixin                      (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerAlchemyFurnaceMixin"),
     ContainerArcaneWorkbenchMixin                     (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerArcaneWorkbenchMixin"),
+    ContainerFocusPouchMixin                          (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerFocusPouchMixin"),
     ContainerResearchTableMixin                       (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerResearchTableMixin"),
 
     GuiAlchemyFurnaceMixin                            (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiAlchemyFurnaceMixin"),
     GuiArcaneWorkbenchMixin                           (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiArcaneWorkbenchMixin"),
+    GuiFocusPouchMixin                                (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiFocusPouchMixin"),
     GuiResearchTableMixin                             (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiResearchTableMixin"),
 
     REHWandHandlerMixin                               (CLIENT, require(THAUMCRAFT), "thaumcraft.REHWandHandlerMixin"),
