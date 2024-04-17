@@ -385,6 +385,9 @@ public enum Mixin implements IMixin {
     GuiAlchemyFurnaceMixin                            (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiAlchemyFurnaceMixin"),
     GuiArcaneWorkbenchMixin                           (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiArcaneWorkbenchMixin"),
     GuiResearchTableMixin                             (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiResearchTableMixin"),
+
+    REHWandHandlerMixin                               (CLIENT, require(THAUMCRAFT), "thaumcraft.REHWandHandlerMixin"),
+    WandManagerMixin                                  (COMMON, require(THAUMCRAFT), "thaumcraft.WandManagerMixin"),
     //endregion
     //region IndustrialCraft 2
     GuiIronFurnaceMixin                               (CLIENT, require(INDUSTRIALCRAFT2), "ic2.GuiIronFurnaceMixin"),
