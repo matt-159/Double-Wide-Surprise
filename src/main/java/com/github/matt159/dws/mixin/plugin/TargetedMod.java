@@ -34,7 +34,7 @@ public enum TargetedMod implements ITargetedMod {
     MARICULTURE          ("Mariculture"          , false , startsWith("mariculture")),
     NATURA               ("Natura"               , false , startsWith("natura-")),
     NOTENOUGHITEMS       ("NotEnoughItems"       , true  , startsWith("notenoughitems")),
-    STORAGEDRAWERS       ("StorageDrawers"       , false , startsWith("storagedrawers-1.7.10")),
+    STORAGEDRAWERS       ("StorageDrawers"       , false , startsWith("storagedrawers-")),
     RAILCRAFT            ("Railcraft"            , false , startsWith("railcraft-")),
     TECTECH              ("TecTech"              , false , startsWith("tectech").or(startsWith("tec-tech"))),
     THAUMCRAFT           ("Thaumcraft"           , false , startsWith("thaumcraft-")),
