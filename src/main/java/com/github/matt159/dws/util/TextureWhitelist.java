@@ -320,6 +320,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("thaumcraft:textures/gui/gui_arcaneworkbench.png");
         addTextureToWhitelist("thaumcraft:textures/gui/gui_focuspouch.png");
         addTextureToWhitelist("thaumcraft:textures/gui/guiresearchtable2.png");
+        addTextureToWhitelist("thaumcraft:textures/gui/gui_thaumatorium.png");
         //endregion
 
         //region Industrialcraft 2
