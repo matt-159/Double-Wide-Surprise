@@ -33,7 +33,7 @@ dependencies {
     compile("com.falsepattern:falsepatternlib-mc1.7.10:0.12.1:dev")
 
     // Baubles
-    compileOnly("com.azanor.baubles:Baubles:1.7.10-1.0.1.10:deobf")
+    compileOnly("com.azanor.baubles:Baubles:1.0.1.10:deobf")
 
     compile(deobfModrinth("baubles-expanded:2.1.4"))
 
@@ -80,7 +80,6 @@ dependencies {
     }
 
     // GregTech Addons
-    compileOnly(name:"bartworks[1.7.10]-[c9836c6]-0.5.20-dev", ext:"jar")
     compileOnly("mega:tectech-mc1.7.10:4.11.0:dev")
 
     compileOnly("gtmega:ae2-mc1.7.10:rv3-beta.58-gtmega:dev")

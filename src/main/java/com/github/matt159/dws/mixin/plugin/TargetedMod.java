@@ -17,7 +17,6 @@ import static com.falsepattern.lib.mixin.ITargetedMod.PredicateHelpers.startsWit
 public enum TargetedMod implements ITargetedMod {
     AGRICRAFT            ("Agricraft"            , false , startsWith("agricraft-1.7.10")),
     APPLIEDENERGISTICS2  ("AppliedEnergistics2"  , false , startsWith("appliedenergistics2").or(contains("ae2"))),
-    BARTWORKS            ("Bartworks"            , false , startsWith("bartworks")),
     BAUBLES              ("Baubles"              , true  , startsWith("baubles-").and(contains("expanded").negate())),
     BAUBLESEXPANDED      ("Baubles Expanded"     , true  , startsWith("baublesexpanded")),
     CHISEL               ("Chisel"               , true  , startsWith("chisel")),

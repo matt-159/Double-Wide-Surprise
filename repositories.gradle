@@ -4,6 +4,9 @@ repositories {
     maven {
         name = "FalsePattern CurseMaven Mirror"
         url = "https://mvn.falsepattern.com/cursemaven/"
+        content {
+            includeGroup("curse.maven")
+        }
     }
     maven {
         name = "FalsePattern Maven"
@@ -28,10 +31,5 @@ repositories {
             mavenPom()
             artifact()
         }
-    }
-
-    //TODO: Figure out what loads the libraries in the libs dir, since they are always loaded as `compile`
-    flatDir {
-        dirs "libz"
     }
 }

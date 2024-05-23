@@ -15,7 +15,6 @@ import static com.falsepattern.lib.mixin.IMixin.Side.CLIENT;
 import static com.falsepattern.lib.mixin.IMixin.Side.COMMON;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.AGRICRAFT;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.APPLIEDENERGISTICS2;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.BARTWORKS;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.BAUBLES;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.BAUBLESEXPANDED;
 import static com.github.matt159.dws.mixin.plugin.TargetedMod.CHISEL;
@@ -172,9 +171,6 @@ public enum Mixin implements IMixin {
     GT_MetaTileEntity_BasicMachineMixin               (COMMON, require(GREGTECH), "gregtech.GT_MetaTileEntity_BasicMachineMixin"),
     //    GT_NEI_DefaultHandlerMixin                        (COMMON, require(GREGTECH),            "gregtech.GT_NEI_DefaultHandlerMixin"),
     GT_RectHandlerMixin                               (COMMON, require(GREGTECH), "gregtech.GT_RectHandlerMixin"),
-    //endregion
-    // region Bartworks Mixins
-    BW_NEI_HandlerMixin                               (COMMON, require(BARTWORKS), "bartworks.BW_NEI_HandlerMixin"),
     //endregion
     // region TecTech Mixins
     TecTech_NEI_HandlerMixin                          (COMMON, require(TECTECH), "tectech.TecTech_NEI_HandlerMixin"),

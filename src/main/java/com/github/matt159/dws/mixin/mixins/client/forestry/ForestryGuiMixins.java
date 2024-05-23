@@ -43,7 +43,10 @@ import forestry.storage.gui.GuiBackpack;
 import forestry.storage.gui.GuiBackpackT2;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
+
+import org.spongepowered.asm.mixin.Dynamic;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -109,15 +112,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
                  GuiBackpack.class,
                  GuiBackpackT2.class
                  //endregion
-               })
+               },
+       remap = false) //this is required because of srg mapping resolution logic in UniMixins' mixin compiler for multitarget injects
 public abstract class ForestryGuiMixins extends GuiContainer {
     public ForestryGuiMixins(Container container) {
         super(container);
     }
 
     @Inject(method = "<init>",
-            at = @At("RETURN"),
-            require = 1)
+            at = @At("RETURN"))
     private void injectNewXSize(CallbackInfo ci) {
         this.xSize = 338;
     }
