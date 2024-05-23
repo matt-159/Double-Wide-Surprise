@@ -53,6 +53,6 @@ public abstract class GT_MetaTileEntity_BasicMachineMixin extends GT_MetaTileEnt
                     remap = false,
                     require = 1)
     private int modifyCircuitSlotXOffset(int constant) {
-        return constant + Constants.GENERAL_DWS_GUI_WIDTH;
+        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.gregtech;
 
+import com.github.matt159.dws.interfaces.IDWSContainer;
 import gregtech.api.gui.GT_Container;
 import net.minecraft.inventory.Container;
 import org.spongepowered.asm.mixin.Mixin;
@@ -7,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GT_Container.class)
-public abstract class GT_ContainerMixin extends Container {
+public abstract class GT_ContainerMixin extends Container implements IDWSContainer {
     @ModifyConstant(method = { "bindPlayerInventory",
                                "getAllSlotCount" },
                     constant = { @Constant(intValue = 9),
