@@ -26,7 +26,7 @@ public enum TargetedMod implements ITargetedMod {
     CODECHICKENLIB       ("CodeChickenLib"       , true  , startsWith("codechicken")),
     GALACTICRAFT         ("Galacticraft"         , false , startsWith("galacticraft")),
     GARDENCORE           ("GardenCore"           , false , startsWith("gardenstuff")),
-    GREGTECH             ("GregTech"             , false , startsWith("gregtech").or(startsWith("gt5u"))),
+    GREGTECH             ("GregTech"             , true  , startsWith("gregtech").or(startsWith("gt5u"))),
     INDUSTRIALCRAFT2     ("IndustrialCraft 2"    , false , startsWith("industrialcraft-2")),
     INVENTORYTWEAKS      ("InventoryTweaks"      , true  , startsWith("inventorytweaks")),
     IRONCHEST            ("IronChest"            , true  , startsWith("ironchest")),

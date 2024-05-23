@@ -32,11 +32,6 @@ dependencies {
     // FalsePattern Lib
     compile("com.falsepattern:falsepatternlib-mc1.7.10:0.12.1:dev")
 
-    // Baubles
-    compileOnly("com.azanor.baubles:Baubles:1.0.1.10:deobf")
-
-    compile(deobfModrinth("baubles-expanded:2.1.4"))
-
     // Not Enough Items
     compile("codechicken:codechickencore-mc1.7.10:1.0.9-gtmega:dev") {
         transitive = false;
@@ -71,8 +66,13 @@ dependencies {
     compileOnly(deobfCurse("thaumcraft-223628:2227552"))
     compileOnly(deobfCurse("forge-backpacks-59143:2268883"))
 
+    implementation(deobfModrinth("baubles-expanded:2.1.4"))
+
     // GregTech
-    implementation "gtmega:gt5u-mc1.7.10:5.38.0-mega:dev"
+    implementation("gtmega:gt5u-mc1.7.10:5.38.0-mega:dev") {
+        exclude group: 'com.azanor.baubles',
+                module: 'Baubles'
+    }
 
     compile("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev")
     compile('com.github.GTNewHorizons:EnderCore:0.2.9:dev') {
@@ -80,7 +80,9 @@ dependencies {
     }
 
     // GregTech Addons
-    compileOnly("mega:tectech-mc1.7.10:4.11.0:dev")
+    compileOnly ("mega:tectech-mc1.7.10:4.11.0:dev") {
+        transitive = false
+    }
 
     compileOnly("gtmega:ae2-mc1.7.10:rv3-beta.58-gtmega:dev")
 
