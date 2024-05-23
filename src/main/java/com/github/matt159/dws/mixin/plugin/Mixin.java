@@ -169,6 +169,7 @@ public enum Mixin implements IMixin {
     GT_GUIContainer_TeleporterMixin                   (CLIENT, require(GREGTECH), "gregtech.GT_GUIContainer_TeleporterMixin"),
     GT_GUIContainerVolumetricFlaskMixin               (CLIENT, require(GREGTECH), "gregtech.GT_GUIContainerVolumetricFlaskMixin"),
 
+    GT_MetaTileEntity_BasicMachineMixin               (COMMON, require(GREGTECH), "gregtech.GT_MetaTileEntity_BasicMachineMixin"),
     //    GT_NEI_DefaultHandlerMixin                        (COMMON, require(GREGTECH),            "gregtech.GT_NEI_DefaultHandlerMixin"),
     GT_RectHandlerMixin                               (COMMON, require(GREGTECH), "gregtech.GT_RectHandlerMixin"),
     //endregion

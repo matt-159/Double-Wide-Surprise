@@ -19,8 +19,17 @@ repositories {
     }
     maven {
         name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
+        url = "https://mvn.falsepattern.com/modrinth/"
     }
+    maven {
+        name = "ic2"
+        url = "https://mvn.falsepattern.com/ic2/"
+        metadataSources {
+            mavenPom()
+            artifact()
+        }
+    }
+
     //TODO: Figure out what loads the libraries in the libs dir, since they are always loaded as `compile`
     flatDir {
         dirs "libz"

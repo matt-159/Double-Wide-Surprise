@@ -72,7 +72,7 @@ dependencies {
     compileOnly(deobfCurse("forge-backpacks-59143:2268883"))
 
     // GregTech
-    compileOnly("gtmega:gt5u-mc1.7.10:5.32.0-mega:dev")
+    implementation "gtmega:gt5u-mc1.7.10:5.38.0-mega:dev"
 
     compile("com.github.GTNewHorizons:inventory-tweaks:1.5.13:dev")
     compile('com.github.GTNewHorizons:EnderCore:0.2.9:dev') {

@@ -8,12 +8,9 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(GT_GUIContainer_BasicMachine.class)
 public abstract class GT_GUIContainer_BasicMachineMixin {
-    @ModifyConstant(method = "drawTooltip",
+    @ModifyConstant(method = "setupTooltips",
                     constant = {
-                        @Constant(intValue = 7),
-                        @Constant(intValue = 24),
-                        @Constant(intValue = 25),
-                        @Constant(intValue = 42),
+                        @Constant(intValue = 79),
                     },
                     remap = false,
                     require = 1)
