@@ -33,11 +33,7 @@ dependencies {
     compile("com.falsepattern:falsepatternlib-mc1.7.10:0.12.1:dev")
 
     // Not Enough Items
-    compile("codechicken:codechickencore-mc1.7.10:1.0.9-gtmega:dev") {
-        transitive = false;
-    }
-
-    compile("codechicken:codechickenlib-mc1.7.10:1.1.4-gtmega:dev") {
+    compile("codechicken:codechickencore-mc1.7.10:1.4.0-mega:dev") {
         transitive = false;
     }
 
