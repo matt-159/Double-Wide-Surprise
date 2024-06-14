@@ -53,6 +53,7 @@ public enum Mixin implements IMixin {
     // region Vanilla Mixins
     CreativeTabsMixin                                 (CLIENT, always(), "minecraft.gui.CreativeTabsMixin"),
     EntityPlayerMixin                                 (COMMON, always(), "minecraft.EntityPlayerMixin"),
+    FMLNetworkHandlerMixin                            (COMMON, always(), "minecraft.FMLNetworkHandlerMixin"),
     ForgeHooksMixin                                   (COMMON, always(), "minecraft.ForgeHooksMixin"),
     GameSettingsMixin                                 (CLIENT, always(), "minecraft.GameSettingsMixin"),
     GuiUtilsMixin                                     (CLIENT, always(), "minecraft.GuiUtilsMixin"),
