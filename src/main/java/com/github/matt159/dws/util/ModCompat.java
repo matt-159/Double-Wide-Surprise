@@ -24,6 +24,7 @@ public final class ModCompat {
         IRONCHEST("IronChest"),
         NEI("NotEnoughItems"),
         STORAGEDRAWERS("StorageDrawers"),
+        THAUMCRAFT("Thaumcraft"),
         ;
 
         private final String modID;

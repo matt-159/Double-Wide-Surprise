@@ -32,4 +32,9 @@ repositories {
             artifact()
         }
     }
+    maven {
+        name 'gt'
+        url 'http://gregtech.overminddl1.com/'
+    }
+    mavenLocal()
 }

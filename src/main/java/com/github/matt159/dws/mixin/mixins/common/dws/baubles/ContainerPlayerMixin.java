@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.dws.baubles;
 
+import baubles.api.expanded.BaubleExpandedSlots;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.container.SlotBauble;
 import baubles.common.lib.PlayerHandler;
@@ -72,7 +73,7 @@ public abstract class ContainerPlayerMixin extends Container implements IBaubleM
         }
 
         if (ModCompat.isBaublesExpandedPresent()) {
-            for (int index = 0; index < 20; ++index) {
+            for (int index = 0; index < BaubleExpandedSlots.slotLimit; ++index) {
                 String slotType = ReflectedModSupport.BaublesExpandedSlots_getSlotType(index);
 
                 if (ReflectedModSupport.BaublesConfig_showUnusedSlots || !slotType.equals("unknown")) {

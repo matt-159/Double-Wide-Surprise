@@ -19,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.7.10]",
      guiFactory = Tags.GROUPNAME + ".client.gui.config.DWSGuiFactory",
      dependencies =  "after:Baubles; " +
+                     "after:Baubles|Expanded; " +
                      "after:TravellersGear; " +
                      "after:GalacticraftCore; " +
                      "after:TConstruct; " +

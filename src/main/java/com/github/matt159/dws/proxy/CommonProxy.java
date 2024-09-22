@@ -1,15 +1,19 @@
 package com.github.matt159.dws.proxy;
 
+import baubles.api.expanded.BaubleExpandedSlots;
 import baubles.client.gui.GuiEvents;
+import baubles.common.BaublesExpanded;
 import com.github.matt159.dws.DoubleWideSurprise;
 import com.github.matt159.dws.Tags;
 import com.github.matt159.dws.events.PlayerOpenContainerEventHandler;
 import com.github.matt159.dws.inventory.slots.SlotType;
+import com.github.matt159.dws.mixin.mixins.common.baublesexpanded.BaublesExpandedSlotsMixin;
 import com.github.matt159.dws.network.PacketHandler;
 import tconstruct.client.tabs.TabRegistry;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -27,11 +31,27 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         DoubleWideSurprise.info("I am " + Tags.MODNAME + " at version " + Tags.VERSION + " and group name " + Tags.GROUPNAME);
 
+        if (Loader.isModLoaded("Baubles|Expanded")) {
+            BaubleExpandedSlots.tryRegisterType("any");
+            BaubleExpandedSlots.tryAssignSlotOfType("any");
+
+            if (BaubleExpandedSlots.isTypeRegistered("any")) {
+                DoubleWideSurprise.info("A new slot type was added!");
+            }
+        }
+
         PacketHandler.init();
     }
 
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new PlayerOpenContainerEventHandler());
+
+        if (Loader.isModLoaded("Baubles|Expanded")) {
+            BaubleExpandedSlots.overrideSlots(new String[] { "any", "any", "any", "any", "any", "any", "any", "any", "any",
+                                                             "any", "any", "any", "any", "any", "any", "any", "any", "any",
+                                                             "any", "any", "any", "any", "any", "any", "any", "any", "any",
+                                                             "any", "any", "any", "any", "any", "any", "any", "any", "any" });
+        }
     }
 
     public void postInit(FMLPostInitializationEvent event) {

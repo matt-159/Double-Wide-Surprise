@@ -29,8 +29,7 @@ public abstract class ContainerWorkbenchMixin extends Container {
     //here because NEI slides in a method with asm
     @SuppressWarnings("all")
     @ModifyConstant(method = "transferStackInSlot",
-                    constant = @Constant(intValue = 36),
-                    require = 0)
+                    constant = @Constant(intValue = 36))
     private int modifyNEIsASMBullshit(int constant) {
         return constant + 27;
     }

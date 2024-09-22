@@ -30,14 +30,14 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.32")
 
     // FalsePattern Lib
-    implementation("com.falsepattern:falsepatternlib-mc1.7.10:1.2.4:dev")
+    implementation("com.falsepattern:falsepatternlib-mc1.7.10:1.3.1:dev")
 
     // Not Enough Items
-    compileOnly("codechicken:codechickencore-mc1.7.10:1.4.0-mega:dev") {
+    compile("codechicken:codechickencore-mc1.7.10:1.4.0-mega:dev") {
         transitive = false;
     }
 
-    compileOnly("codechicken:notenoughitems-mc1.7.10:2.1.5-gtmega:dev") {
+    compile("codechicken:notenoughitems-mc1.7.10:2.1.5-gtmega:dev") {
         transitive = false;
     }
 
@@ -59,10 +59,13 @@ dependencies {
     compileOnly(deobfCurse("travellers-gear-224440:2262113"))
     compileOnly(deobfCurse("railcraft-51195:2458987"))
     compileOnly(deobfCurse("industrial-craft-242638:2353971"))
-    compileOnly(deobfCurse("thaumcraft-223628:2227552"))
+    compile(deobfCurse("thaumcraft-nei-plugin-225095:2241913"))
     compileOnly(deobfCurse("forge-backpacks-59143:2268883"))
 
-    compileOnly(deobfModrinth("baubles-expanded:2.1.4"))
+//    compile(deobfModrinth("baubles-expanded:2.1.4"))
+
+    compile("thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev")
+    compile("jss2a98aj:baublesexpanded-mc1.7.10:79ad92c.dirty:dev")
 
     // GregTech
     compileOnly("gtmega:gt5u-mc1.7.10:5.38.0-mega:dev") {

@@ -10,6 +10,8 @@ import forestry.factory.gui.GuiFermenter;
 import forestry.factory.gui.GuiMoistener;
 import forestry.factory.gui.GuiSqueezer;
 import forestry.factory.gui.GuiStill;
+import thaumcraft.client.gui.GuiArcaneWorkbench;
+
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiCrafting;
@@ -50,6 +52,11 @@ public final class ListOfGUIsWithTransferRects {
             addClassToList(GuiMoistener.class);
             addClassToList(GuiSqueezer.class);
             addClassToList(GuiStill.class);
+        }
+        //endregion
+        //region Thaumcraft
+        if (ModCompat.areModsPresent(ModCompat.CompatibleMods.THAUMCRAFT.modID())) {
+            addClassToList(GuiArcaneWorkbench.class);
         }
         //endregion
         //region Gregtech
