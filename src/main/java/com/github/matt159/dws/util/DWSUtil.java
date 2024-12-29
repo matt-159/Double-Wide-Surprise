@@ -238,4 +238,24 @@ public final class DWSUtil {
 
         return 0;
     }
+
+    public static float getOffset0() {
+        return 0;
+    }
+
+    public static float getOffset1() {
+        return 90.0F;
+    }
+
+    public static float getOffset2() {
+        return 4F / 3F;
+    }
+
+    public static float getOffset3() {
+        return 10.0F;
+    }
+
+    public static float getOffset4() {
+        return 80.0F;
+    }
 }

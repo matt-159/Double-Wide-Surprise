@@ -59,13 +59,13 @@ dependencies {
     compileOnly(deobfCurse("travellers-gear-224440:2262113"))
     compileOnly(deobfCurse("railcraft-51195:2458987"))
     compileOnly(deobfCurse("industrial-craft-242638:2353971"))
+    compile(deobfCurse("thaumcraft-223628:2227552"))
     compile(deobfCurse("thaumcraft-nei-plugin-225095:2241913"))
     compileOnly(deobfCurse("forge-backpacks-59143:2268883"))
+    compile(deobfModrinth("baubles-expanded:2.1.4"))
 
-//    compile(deobfModrinth("baubles-expanded:2.1.4"))
-
-    compile("thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev")
-    compile("jss2a98aj:baublesexpanded-mc1.7.10:79ad92c.dirty:dev")
+//    compileOnly("jss2a98aj:baublesexpanded-mc1.7.10:79ad92c.dirty:dev")
+//    compile("jss2a98aj:baublesexpanded-mc1.7.10:0ccc039:dev")
 
     // GregTech
     compileOnly("gtmega:gt5u-mc1.7.10:5.38.0-mega:dev") {
@@ -84,6 +84,5 @@ dependencies {
     }
 
     compileOnly("gtmega:ae2-mc1.7.10:rv3-beta.58-gtmega:dev")
-
     compileOnly("team.chisel:chisel-mc1.7.10:2.9.20-mega:dev")
 }
