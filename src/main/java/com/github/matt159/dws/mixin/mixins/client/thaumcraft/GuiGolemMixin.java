@@ -33,17 +33,6 @@ public abstract class GuiGolemMixin implements IDWSGui {
     }
 
     @Redirect(method = "drawGolem",
-              at = @At(value = "FIELD",
-                       target = "Lthaumcraft/common/entities/golems/EntityGolemBase;renderYawOffset:F",
-                       opcode = Opcodes.PUTFIELD,
-                       ordinal = 0),
-              remap = false,
-              require = 1)
-    private void redirectGolemRotation(EntityGolemBase instance, float value) {
-        instance.renderYawOffset = 10F;
-    }
-
-    @Redirect(method = "drawGolem",
               at = @At(value = "INVOKE",
                        target = "Lorg/lwjgl/util/glu/GLU;gluPerspective(FFFF)V"),
               remap = false,
