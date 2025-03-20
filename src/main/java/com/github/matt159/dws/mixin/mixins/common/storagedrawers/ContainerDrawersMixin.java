@@ -9,32 +9,31 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Slice;
+
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Slot;
 
 @Mixin(ContainerDrawers.class)
-public abstract class ContainerDrawersMixin implements IDWSContainer {
-    @Shadow(remap = false)
-    protected abstract int getStorageSlotX(int slot);
+public abstract class ContainerDrawersMixin extends Container implements IDWSContainer {
+    @Redirect(method = "<init>",
+              slice = @Slice(from = @At(value = "HEAD"),
+                             to = @At(value = "INVOKE",
+                                      target = "Ljava/util/ArrayList;<init>()V",
+                                      ordinal = 2)),
+              at = @At(value = "INVOKE",
+                       target = "Lcom/jaquadro/minecraft/storagedrawers/inventory/ContainerDrawers;addSlotToContainer(Lnet/minecraft/inventory/Slot;)Lnet/minecraft/inventory/Slot;"),
+              require = 2)
+    private Slot addXOffset(ContainerDrawers instance, Slot slot) {
+        slot.xDisplayPosition += Constants.GENERAL_X_OFFSET;
+
+        return this.addSlotToContainer(slot);
+    }
 
     @ModifyConstant(method = "<init>",
                     constant = @Constant(intValue = 9),
                     require = 4)
-    private int modifyPlayerContainerSize(int constant) {
+    private int modifyPlayerInventorySize(int constant) {
         return 18;
-    }
-
-    @Redirect(method = "<init>",
-              at = @At(value = "INVOKE",
-                       target = "Lcom/jaquadro/minecraft/storagedrawers/inventory/ContainerDrawers;getStorageSlotX(I)I"),
-              remap = false,
-              require = 1)
-    private int redirectAddSlot(ContainerDrawers instance, int slot) {
-        return getStorageSlotX(slot) + Constants.GENERAL_X_OFFSET;
-    }
-
-    @ModifyConstant(method = "<init>",
-                    constant = @Constant(intValue = 44),
-                    require = 1)
-    private int modifySlotXOffset(int constant) {
-        return constant + Constants.GENERAL_X_OFFSET;
     }
 }

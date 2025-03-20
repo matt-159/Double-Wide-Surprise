@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.minecraft.inventory;
 
+import com.github.matt159.dws.interfaces.IDWSContainer;
 import com.github.matt159.dws.util.Constants;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerWorkbench;
@@ -8,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ContainerWorkbench.class)
-public abstract class ContainerWorkbenchMixin extends Container {
+public abstract class ContainerWorkbenchMixin extends Container implements IDWSContainer {
 
     @ModifyConstant(method = "<init>",
                     constant = {    @Constant(intValue = 30),
@@ -31,7 +32,7 @@ public abstract class ContainerWorkbenchMixin extends Container {
     @ModifyConstant(method = "transferStackInSlot",
                     constant = @Constant(intValue = 36))
     private int modifyNEIsASMBullshit(int constant) {
-        return constant + 27;
+        return 72;
     }
 
     @ModifyConstant(method = "transferStackInSlot",
