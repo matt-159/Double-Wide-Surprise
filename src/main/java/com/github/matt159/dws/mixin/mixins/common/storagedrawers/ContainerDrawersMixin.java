@@ -4,15 +4,18 @@ import com.github.matt159.dws.interfaces.IDWSContainer;
 import com.github.matt159.dws.util.Constants;
 import com.jaquadro.minecraft.storagedrawers.inventory.ContainerDrawers;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.Slice;
 
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 
 @Mixin(ContainerDrawers.class)
 public abstract class ContainerDrawersMixin extends Container implements IDWSContainer {
@@ -35,5 +38,12 @@ public abstract class ContainerDrawersMixin extends Container implements IDWSCon
                     require = 4)
     private int modifyPlayerInventorySize(int constant) {
         return 18;
+    }
+
+    @Override
+    public void putStackInSlot(int index, ItemStack itemStack) {
+        if (index < this.inventorySlots.size()) {
+            super.putStackInSlot(index, itemStack);
+        }
     }
 }
