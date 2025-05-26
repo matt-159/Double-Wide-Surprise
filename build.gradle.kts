@@ -1,35 +1,31 @@
 plugins {
-    id("com.falsepattern.fpgradle-mc") version("0.16.1")
+    id("com.falsepattern.fpgradle-mc") version ("0.16.1")
 }
 
 group = "matt159"
 
 minecraft_fp {
     mod {
-        modid   = "dws"
-        name    = "Double Wide Surprise"
+        modid = "dws"
+        name = "Double Wide Surprise"
         rootPkg = "com.github.matt159.dws"
     }
 
     mixin {
-        pkg           = "mixin.mixins"
-        pluginClass   = "mixin.plugin.MixinPlugin"
+        pkg = "mixin.mixins"
+        pluginClass = "mixin.plugin.MixinPlugin"
     }
     core {
-        accessTransformerFile          = "dws_at.cfg"
+        accessTransformerFile = "dws_at.cfg"
     }
 
     tokens {
         tokenClass = "Tags"
-        modid                   = "MODID"
-        name                    = "MODNAME"
-        version                 = "VERSION"
-        rootPkg                 = "GROUPNAME"
     }
 
     publish {
         maven {
-            repoUrl  = "https://mvn.falsepattern.com/gtmega_releases/"
+            repoUrl = "https://mvn.falsepattern.com/gtmega_releases/"
             repoName = "mega"
         }
     }
@@ -96,7 +92,7 @@ dependencies {
     }
 
     // GregTech Addons
-    compileOnly ("mega:tectech-mc1.7.10:4.11.0:dev") {
+    compileOnly("mega:tectech-mc1.7.10:4.11.0:dev") {
         excludeDeps()
     }
 

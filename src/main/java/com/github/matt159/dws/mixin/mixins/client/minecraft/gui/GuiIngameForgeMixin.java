@@ -17,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 @Mixin(GuiIngameForge.class)
 public abstract class GuiIngameForgeMixin {
     @Unique
-    private static final ResourceLocation $dws_WIDGETS_TEXTURE = new ResourceLocation(Tags.MODID, "textures/gui/widgets.png");
+    private static final ResourceLocation $dws_WIDGETS_TEXTURE = new ResourceLocation(Tags.MOD_ID, "textures/gui/widgets.png");
 
     @Redirect(method = "renderHotbar",
               at = @At(value = "INVOKE",

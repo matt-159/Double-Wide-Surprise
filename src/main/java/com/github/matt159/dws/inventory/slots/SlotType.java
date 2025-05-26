@@ -46,7 +46,7 @@ public enum SlotType {
     }
 
     SlotType(String hintTexture, int stackSize) {
-        this.slotHintTexture = new ResourceLocation(Tags.MODID, String.format("textures/gui/slotIcons/%s.png", hintTexture));
+        this.slotHintTexture = new ResourceLocation(Tags.MOD_ID, String.format("textures/gui/slotIcons/%s.png", hintTexture));
         this.stackSize = stackSize;
     }
 }

@@ -14,7 +14,7 @@ public class InventorySwapKey extends KeyHandler {
     public InventorySwapKey() {
         super(StatCollector.translateToLocal("dws.keybind.inventoryswap.name"),
               Keyboard.KEY_H,
-              Tags.MODNAME,
+              Tags.MOD_NAME,
               new SwapKeyCallback());
     }
 

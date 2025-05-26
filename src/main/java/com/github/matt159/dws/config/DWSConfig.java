@@ -5,7 +5,7 @@ import com.falsepattern.lib.config.ConfigurationManager;
 import com.github.matt159.dws.Tags;
 
 public class DWSConfig {
-    @Config(modid = Tags.MODID)
+    @Config(modid = Tags.MOD_ID)
     public static class General {
         @Config.Comment("Show debug slot number and index")
         @Config.DefaultBoolean(false)

@@ -9,6 +9,6 @@ import net.minecraft.client.gui.GuiScreen;
 
 public class DWSGuiConfig extends SimpleGuiConfig {
     public DWSGuiConfig(GuiScreen parent) throws ConfigException {
-        super(parent, Tags.MODID, Tags.MODNAME, DWSConfig.General.class);
+        super(parent, Tags.MOD_ID, Tags.MOD_NAME, DWSConfig.General.class);
     }
 }

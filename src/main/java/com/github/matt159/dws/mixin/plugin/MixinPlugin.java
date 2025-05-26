@@ -7,7 +7,7 @@ import lombok.Getter;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 
-import static com.github.matt159.dws.Tags.MODNAME;
+import static com.github.matt159.dws.Tags.MOD_NAME;
 
 
 /**
@@ -18,7 +18,7 @@ public final class MixinPlugin implements IMixinPlugin {
      * Logger provided by FalsePatternLib.
      */
     @Getter
-    private final Logger logger = IMixinPlugin.createLogger(MODNAME);
+    private final Logger logger = IMixinPlugin.createLogger(MOD_NAME);
 
     /**
      * Invoked by FalsePattern Lib to decide what targeted mods to check for.

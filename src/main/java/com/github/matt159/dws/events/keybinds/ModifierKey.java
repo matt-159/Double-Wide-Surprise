@@ -11,7 +11,7 @@ public class ModifierKey extends KeyHandler {
     public ModifierKey() {
         super(StatCollector.translateToLocal(UNLOCALIZED_NAME),
               Keyboard.KEY_LCONTROL,
-              Tags.MODNAME,
+              Tags.MOD_NAME,
               new ModifierCallback());
     }
 

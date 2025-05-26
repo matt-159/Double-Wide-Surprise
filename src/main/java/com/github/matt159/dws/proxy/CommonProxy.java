@@ -25,7 +25,7 @@ import static com.github.matt159.dws.util.ModCompat.isTinkersConstructPresent;
 
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
-        DoubleWideSurprise.info("I am " + Tags.MODNAME + " at version " + Tags.VERSION + " and group name " + Tags.GROUPNAME);
+        DoubleWideSurprise.info("I am " + Tags.MOD_NAME + " at version " + Tags.MOD_VERSION + " and group name " + Tags.ROOT_PKG);
 
         PacketHandler.init();
     }

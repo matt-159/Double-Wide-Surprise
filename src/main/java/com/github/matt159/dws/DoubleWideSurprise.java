@@ -5,19 +5,14 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerAboutToStartEvent;
-import cpw.mods.fml.common.event.FMLServerStartedEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.event.FMLServerStoppedEvent;
-import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 
 import com.github.matt159.dws.config.DWSConfig;
 import com.github.matt159.dws.proxy.CommonProxy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.7.10]",
-     guiFactory = Tags.GROUPNAME + ".client.gui.config.DWSGuiFactory",
+@Mod(modid = Tags.MOD_ID, version = Tags.MOD_VERSION, name = Tags.MOD_NAME, acceptedMinecraftVersions = "[1.7.10]",
+     guiFactory = Tags.ROOT_PKG + ".client.gui.config.DWSGuiFactory",
      dependencies =  "after:Baubles; " +
                      "after:Baubles|Expanded; " +
                      "after:TravellersGear; " +
@@ -31,13 +26,13 @@ import org.apache.logging.log4j.Logger;
                      "after:inventorytweaks; " +
                      "after:endercore; ")
 public class DoubleWideSurprise {
-    private static Logger LOG = LogManager.getLogger(Tags.MODID);
+    private static Logger LOG = LogManager.getLogger(Tags.MOD_ID);
 
-    @Mod.Instance(Tags.MODID)
+    @Mod.Instance(Tags.MOD_ID)
     public static DoubleWideSurprise INSTANCE;
 
-    @SidedProxy(clientSide= Tags.GROUPNAME + ".proxy.ClientProxy",
-                serverSide=Tags.GROUPNAME + ".proxy.CommonProxy")
+    @SidedProxy(clientSide= Tags.ROOT_PKG + ".proxy.ClientProxy",
+                serverSide= Tags.ROOT_PKG + ".proxy.CommonProxy")
     public static CommonProxy proxy;
 
     static {

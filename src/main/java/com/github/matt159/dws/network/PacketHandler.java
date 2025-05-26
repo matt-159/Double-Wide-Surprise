@@ -6,7 +6,7 @@ import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 
 public class PacketHandler {
-    public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Tags.MODID);
+    public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Tags.MOD_ID);
 
     public static void init() {
         INSTANCE.registerMessage(DWSInventorySwapPacket.class, DWSInventorySwapPacket.class, 0, Side.CLIENT);

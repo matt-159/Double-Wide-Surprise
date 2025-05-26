@@ -28,7 +28,7 @@ public final class TextureWhitelist {
         //transforming from:    modid:textures/blahblahblah
         //to:                   dws:textures/modid/blahblahblah
         if (useDoubleWideTexture) {
-            rl = new ResourceLocation(Tags.MODID,
+            rl = new ResourceLocation(Tags.MOD_ID,
                     rl.getResourcePath().substring(0, 9) + rl.getResourceDomain() + rl.getResourcePath().substring(8));
         }
 
