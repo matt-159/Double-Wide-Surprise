@@ -22,6 +22,7 @@ public abstract class GuiChestMixin extends AEBaseGui {
     @Redirect(method = "initGui",
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiChest;priority:Lappeng/client/gui/widgets/GuiTabButton;",
+                       remap = false,
                        opcode = Opcodes.PUTFIELD),
               require = 1)
     private void redirectPriorityButtonInstantiation(GuiChest instance, GuiTabButton value) {

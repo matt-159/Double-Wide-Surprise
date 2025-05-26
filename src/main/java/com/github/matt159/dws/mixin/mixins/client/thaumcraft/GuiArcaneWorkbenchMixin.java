@@ -29,7 +29,8 @@ public abstract class GuiArcaneWorkbenchMixin extends GuiContainer implements ID
 
     @ModifyArg(method = "drawGuiContainerBackgroundLayer",
                at = @At(value = "INVOKE",
-                        target = "Lthaumcraft/client/lib/UtilsFX;drawTag(IILthaumcraft/api/aspects/Aspect;FIDIFZ)V"),
+                        target = "Lthaumcraft/client/lib/UtilsFX;drawTag(IILthaumcraft/api/aspects/Aspect;FIDIFZ)V",
+                        remap = false),
                index = 0)
     private int modifyAspectXOffset(int constant) {
         return constant + Constants.GENERAL_X_OFFSET;

@@ -19,6 +19,7 @@ public abstract class GuiScrollbarMixin {
 
     @Inject(method = "<init>",
             at = @At("RETURN"),
+            remap = false,
             require = 1)
     private void updateRowInfo(CallbackInfo ci) {
         this.rowSize = 15;

@@ -37,6 +37,7 @@ public abstract class GuiCraftAmountMixin extends AEBaseGui {
     @Redirect(method = "initGui",
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiCraftAmount;originalGuiBtn:Lappeng/client/gui/widgets/GuiTabButton;",
+                       remap = false,
                        opcode = Opcodes.PUTFIELD),
               require = 1)
     private void redirectOriginalGuiBtnInstantiation(GuiCraftAmount instance, GuiTabButton value) {
@@ -47,6 +48,7 @@ public abstract class GuiCraftAmountMixin extends AEBaseGui {
     @Redirect(method = "initGui",
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiCraftAmount;amountToCraft:Lappeng/client/gui/widgets/GuiNumberBox;",
+                       remap = false,
                        opcode = Opcodes.PUTFIELD),
               require = 1)
     private void redirectNewTextboxPosition(GuiCraftAmount instance, GuiNumberBox value) {

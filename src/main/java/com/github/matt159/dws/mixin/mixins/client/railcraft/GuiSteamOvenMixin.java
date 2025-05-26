@@ -23,7 +23,8 @@ public abstract class GuiSteamOvenMixin extends TileGui implements IDWSGui {
 
     @Redirect(method = "drawGuiContainerForegroundLayer",
               at = @At(value = "INVOKE",
-                       target = "Lmods/railcraft/client/gui/GuiTools;drawCenteredString(Lnet/minecraft/client/gui/FontRenderer;Ljava/lang/String;I)V"),
+                       target = "Lmods/railcraft/client/gui/GuiTools;drawCenteredString(Lnet/minecraft/client/gui/FontRenderer;Ljava/lang/String;I)V",
+                       remap = false),
               require = 1)
     private void redirectDrawCenteredString(FontRenderer fr, String s, int y) {
         GuiTools.drawCenteredString(fr, s, y, this.xSize);

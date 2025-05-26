@@ -35,7 +35,8 @@ public abstract class MinecraftMixin {
               at = @At(value = "INVOKE",
                        target = "Lnet/minecraft/client/settings/KeyBinding;isPressed()Z"),
               slice = @Slice(from = @At(value = "INVOKE",
-                                        target = "Lcpw/mods/fml/common/FMLCommonHandler;fireKeyInput()V"),
+                                        target = "Lcpw/mods/fml/common/FMLCommonHandler;fireKeyInput()V",
+                                        remap = false),
                              to = @At(value = "FIELD",
                                       target = "Lnet/minecraft/client/settings/GameSettings;chatVisibility:Lnet/minecraft/entity/player/EntityPlayer$EnumChatVisibility;")),
               require = 1)

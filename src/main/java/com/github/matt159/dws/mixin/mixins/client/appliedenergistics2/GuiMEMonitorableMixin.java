@@ -30,7 +30,8 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
 
     @Inject(method = "initGui",
             at = @At(value = "INVOKE",
-                     target = "Lappeng/integration/IntegrationRegistry;isEnabled(Lappeng/integration/IntegrationType;)Z"),
+                     target = "Lappeng/integration/IntegrationRegistry;isEnabled(Lappeng/integration/IntegrationType;)Z",
+                     remap = false),
             require = 1)
     private void injectPerRowValue(CallbackInfo ci) {
         this.perRow = 13;
@@ -38,7 +39,8 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
 
     @ModifyArg(method = "initGui",
                at = @At(value = "INVOKE",
-                        target = "Lappeng/client/me/InternalSlotME;<init>(Lappeng/client/me/ItemRepo;III)V"),
+                        target = "Lappeng/client/me/InternalSlotME;<init>(Lappeng/client/me/ItemRepo;III)V",
+                        remap = false),
                index = 2,
                require = 1)
     private int modifyInternalMESlotXOffset(int xOffset) {
@@ -109,7 +111,8 @@ public abstract class GuiMEMonitorableMixin extends AEBaseMEGui {
 
     @Redirect(method = "initGui",
               at = @At(value = "INVOKE",
-                       target = "Lappeng/integration/IntegrationRegistry;isEnabled(Lappeng/integration/IntegrationType;)Z"),
+                       target = "Lappeng/integration/IntegrationRegistry;isEnabled(Lappeng/integration/IntegrationType;)Z",
+                       remap = false),
               require = 1)
     private boolean redirectNEIIsEnabled(IntegrationRegistry instance, IntegrationType type) {
         return true;

@@ -37,6 +37,7 @@ public abstract class GuiPriorityMixin extends AEBaseGui {
     @Redirect(method = "initGui",
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiPriority;originalGuiBtn:Lappeng/client/gui/widgets/GuiTabButton;",
+                       remap = false,
                        opcode = Opcodes.PUTFIELD),
               require = 1)
     private void redirectOriginalGuiBtnInstantiation(GuiPriority instance, GuiTabButton value) {
@@ -47,6 +48,7 @@ public abstract class GuiPriorityMixin extends AEBaseGui {
     @Redirect(method = "initGui",
               at = @At(value = "FIELD",
                        target = "Lappeng/client/gui/implementations/GuiPriority;priority:Lappeng/client/gui/widgets/GuiNumberBox;",
+                       remap = false,
                        opcode = Opcodes.PUTFIELD),
               require = 1)
     private void redirectNewTextboxPosition(GuiPriority instance, GuiNumberBox value) {

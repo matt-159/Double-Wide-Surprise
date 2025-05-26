@@ -19,6 +19,7 @@ public abstract class GuiMaricultureMixin extends GuiContainer implements IDWSGu
 
     @Inject(method = "<init>(Lmariculture/core/gui/ContainerMariculture;Ljava/lang/String;I)V",
             at = @At("RETURN"),
+            remap = false,
             require = 1)
     private void injectNewXSize(ContainerMariculture container, String texture, int yOffset, CallbackInfo ci) {
         this.xSize = Constants.GENERAL_DWS_GUI_WIDTH + 25;
