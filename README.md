@@ -21,16 +21,14 @@ Accessories from the following mods have their slots added to the main inventory
 - Galacticraft
 - Tinkers Construct
 
-Supported Modded Inventories:
+Individually Supported Modded Inventories:
 - Garden Core
   - Compost Bin
 - Agricraft
   - Seed Analyzer
 
-### Current focus - Thaumcraft 4
-
 ## Dependencies
-- [GasStation](https://github.com/FalsePattern/GasStation)
+- [UniMixins](https://github.com/LegacyModdingMC/UniMixins)
 - [FalsePatternLib](https://github.com/FalsePattern/FalsePatternLib)
 
 ## FAQ:
@@ -43,4 +41,5 @@ Supported Modded Inventories:
 - Will any version passed 1.7.10 be supported?
   - What are you talking about? 1.7.10 ***is*** the latest version of Minecraft
  
-- How do I access the other 
+- How do I access the second half of my hotbar?
+  - You can quickly double tap a key to get to the corresponding slot in the second half of the hotbar. 1, 1 -> slot 10
