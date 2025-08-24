@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.dws.tinkersconstruct;
 
+import com.github.matt159.dws.config.DWSConfig;
 import com.github.matt159.dws.interfaces.dws.IAddsTinkersSlots;
 import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.inventory.slots.compat.SlotTinkersCompat;
@@ -24,6 +25,10 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTin
             at = @At("RETURN"),
             require = 1)
     private void injectTinkersSlots(InventoryPlayer inventoryPlayer, boolean isLocalWorld, EntityPlayer player, CallbackInfo ci) {
+        if (DWSConfig.Slots.slotOverride) {
+            return;
+        }
+
         if (SlotLayoutManager.FIRST_TINKERS_SLOT == Integer.MAX_VALUE) {
             SlotLayoutManager.FIRST_TINKERS_SLOT = this.inventorySlots.size();
         }

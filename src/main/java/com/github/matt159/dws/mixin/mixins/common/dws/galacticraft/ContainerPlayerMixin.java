@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.dws.galacticraft;
 
+import com.github.matt159.dws.config.DWSConfig;
 import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.inventory.slots.compat.SlotGalacticraftCompat;
 import com.github.matt159.dws.util.SlotLayoutManager;
@@ -26,6 +27,10 @@ public abstract class ContainerPlayerMixin extends Container {
             at = @At("RETURN"),
             require = 1)
     private void injectGalacticraftSlots(InventoryPlayer inventoryPlayer, boolean isLocalWorld, EntityPlayer player, CallbackInfo ci) {
+        if (DWSConfig.Slots.slotOverride) {
+            return;
+        }
+
         if (SlotLayoutManager.FIRST_GALACTICRAFT_SLOT == -1) {
             SlotLayoutManager.FIRST_GALACTICRAFT_SLOT = this.inventorySlots.size();
         }

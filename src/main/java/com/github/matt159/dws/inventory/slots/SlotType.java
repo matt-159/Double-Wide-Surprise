@@ -36,6 +36,8 @@ public enum SlotType {
     GC_OXYGEN_GEAR("oxygenGear"),
     GC_OXYGEN_TANK("oxygenTank"),
     GC_PARACHUTE("parachute"),
+
+    ANY("any"),
     ;
 
     private final ResourceLocation slotHintTexture;

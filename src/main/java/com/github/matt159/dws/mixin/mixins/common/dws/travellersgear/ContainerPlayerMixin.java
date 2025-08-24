@@ -1,5 +1,6 @@
 package com.github.matt159.dws.mixin.mixins.common.dws.travellersgear;
 
+import com.github.matt159.dws.config.DWSConfig;
 import com.github.matt159.dws.interfaces.dws.IAddsTGSlots;
 import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.inventory.slots.compat.SlotTravellersGearCompat;
@@ -55,6 +56,10 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTGS
             at = @At("RETURN"),
             require = 1)
     private void injectTravellersGearSlots(InventoryPlayer inventoryPlayer, boolean isLocalWorld, EntityPlayer player, CallbackInfo ci) {
+         if (DWSConfig.Slots.slotOverride) {
+             return;
+         }
+
         if (SlotLayoutManager.FIRST_TRAVELLERS_GEAR_SLOT == Integer.MAX_VALUE) {
             SlotLayoutManager.FIRST_TRAVELLERS_GEAR_SLOT = this.inventorySlots.size();
         }
@@ -95,6 +100,10 @@ public abstract class ContainerPlayerMixin extends Container implements IAddsTGS
             at = @At("RETURN"),
             require = 1)
     private void injectTravellersGearOnContainerClosed(EntityPlayer player, CallbackInfo ci) {
+        if (DWSConfig.Slots.slotOverride) {
+            return;
+        }
+
         if (ModCompat.isTravellersGearPresent() && !player.worldObj.isRemote) {
             TravellersGearAPI.setExtendedInventory(player, ((InventoryTG) (this.travellersGearAccessories)).stackList);
             TravellersGear.packetHandler.sendToAll(new MessageNBTSync(player));

@@ -4,7 +4,9 @@ import baubles.api.expanded.BaubleExpandedSlots;
 import baubles.common.container.InventoryBaubles;
 import baubles.common.container.SlotBauble;
 import baubles.common.lib.PlayerHandler;
+import com.github.matt159.dws.config.DWSConfig;
 import com.github.matt159.dws.interfaces.dws.IBaubleManager;
+import com.github.matt159.dws.inventory.slots.MixAndMatchBaublesSlot;
 import com.github.matt159.dws.inventory.slots.SlotType;
 import com.github.matt159.dws.inventory.slots.compat.SlotBaublesCompat;
 import com.github.matt159.dws.util.ModCompat;
@@ -72,43 +74,53 @@ public abstract class ContainerPlayerMixin extends Container implements IBaubleM
             ((InventoryBaubles) baublesAccessories).stackList = PlayerHandler.getPlayerBaubles(player).stackList;
         }
 
-        if (ModCompat.isBaublesExpandedPresent()) {
+        if (DWSConfig.Slots.slotOverride && ModCompat.isBaublesExpandedPresent()) {
             for (int index = 0; index < BaubleExpandedSlots.slotLimit; ++index) {
-                String slotType = ReflectedModSupport.BaublesExpandedSlots_getSlotType(index);
-
-                if (ReflectedModSupport.BaublesConfig_showUnusedSlots || !slotType.equals("unknown")) {
-                    this.addSlotToContainer(new SlotBauble(baublesAccessories,
-                                                           slotType,
-                                                           index,
-                                                           xOffset + 18 * (index / 4),
-                                                           8 + 18 * (index % 4)));
-                }
+                this.addSlotToContainer(new MixAndMatchBaublesSlot(player,
+                                                                   baublesAccessories,
+                                                                   index,
+                                                                   xOffset + 18 * (index / 4),
+                                                                   8 + 18 * (index % 4)));
             }
         } else {
-            this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
-                                                          0, xOffset,
-                                                          8 + 0 * 18,
-                                                          player,
-                                                          SlotType.BAUBLE_AMULET));
+            if (ModCompat.isBaublesExpandedPresent()) {
+                for (int index = 0; index < BaubleExpandedSlots.slotLimit; ++index) {
+                    String slotType = ReflectedModSupport.BaublesExpandedSlots_getSlotType(index);
 
-            this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
-                                                          1, xOffset,
-                                                          8 + 1 * 18,
-                                                          player,
-                                                          SlotType.BAUBLE_RING));
+                    if (ReflectedModSupport.BaublesConfig_showUnusedSlots || !slotType.equals("unknown")) {
+                        this.addSlotToContainer(new SlotBauble(baublesAccessories,
+                                                               slotType,
+                                                               index,
+                                                               xOffset + 18 * (index / 4),
+                                                               8 + 18 * (index % 4)));
+                    }
+                }
+            } else {
+                this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
+                                                              0, xOffset,
+                                                              8 + 0 * 18,
+                                                              player,
+                                                              SlotType.BAUBLE_AMULET));
 
-            this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
-                                                          2, xOffset,
-                                                          8 + 2 * 18,
-                                                          player,
-                                                          SlotType.BAUBLE_RING));
+                this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
+                                                              1, xOffset,
+                                                              8 + 1 * 18,
+                                                              player,
+                                                              SlotType.BAUBLE_RING));
 
-            this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
-                                                          3,
-                                                          xOffset,
-                                                          8 + 3 * 18,
-                                                          player,
-                                                          SlotType.BAUBLE_BELT));
+                this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
+                                                              2, xOffset,
+                                                              8 + 2 * 18,
+                                                              player,
+                                                              SlotType.BAUBLE_RING));
+
+                this.addSlotToContainer(new SlotBaublesCompat(baublesAccessories,
+                                                              3,
+                                                              xOffset,
+                                                              8 + 3 * 18,
+                                                              player,
+                                                              SlotType.BAUBLE_BELT));
+            }
         }
     }
 

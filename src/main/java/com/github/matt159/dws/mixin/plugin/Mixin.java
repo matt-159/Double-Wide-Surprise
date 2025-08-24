@@ -129,6 +129,7 @@ public enum Mixin implements IMixin {
     GuiEventsMixin                                    (CLIENT, require(BAUBLES).or(require(BAUBLESEXPANDED)), "baubles.GuiEventsMixin"),
 
 //    BaublesExpandedSlotsMixin                         (COMMON, require(BAUBLESEXPANDED), "baublesexpanded.BaublesExpandedSlotsMixin"),
+    InventoryBaublesMixin                             (COMMON, require(BAUBLESEXPANDED), "dws.baubles.InventoryBaublesMixin"),
     //endregion
     // region Ironchest Mixins
     ContainerIronChestMixin                           (COMMON, require(IRONCHEST), "ironchest.ContainerIronChestMixin"),
