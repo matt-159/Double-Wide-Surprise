@@ -76,10 +76,7 @@ dependencies {
     compileOnly(deobfCurse("thaumcraft-223628:2227552"))
     compileOnly(deobfCurse("thaumcraft-nei-plugin-225095:2241913"))
     compileOnly(deobfCurse("forge-backpacks-59143:2268883"))
-    implementation(deobfModrinth("baubles-expanded:2.1.4"))
-
-//    compileOnly("jss2a98aj:baublesexpanded-mc1.7.10:79ad92c.dirty:dev")
-//    compile("jss2a98aj:baublesexpanded-mc1.7.10:0ccc039:dev")
+    implementation(deobfModrinth("baubles-expanded:2.2.1"))
 
     // GregTech
     compileOnly("gtmega:gt5u-mc1.7.10:5.38.0-mega:dev") {
