@@ -18,6 +18,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import com.github.matt159.dws.registry.Keybindings;
+import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -84,6 +85,9 @@ public abstract class GuiContainerMixin extends GuiScreen {
         ResourceLocation slotHint = instance.getBackgroundIconTexture();
 
         if (icon == null && slotHint != null && instance instanceof SlotDWS) {
+            GL11.glEnable(GL11.GL_BLEND);
+            OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
+
             drawTexturedRect(slotHint,
                              instance.xDisplayPosition,
                              instance.yDisplayPosition,

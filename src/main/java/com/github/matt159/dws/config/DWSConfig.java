@@ -43,7 +43,6 @@ public class DWSConfig {
         @Config.LangKey("dws.config.slotOverride.name")
         public static boolean slotOverride;
 
-        @Config.ListMaxLength(20)
         @Config.DefaultStringList({"amulet", "ring", "ring", "belt"})
         @Config.Comment({"Item groupings for Mix 'n' Match slots",
                          "Frequency of values determines how many of corresponding bauble type can be worn",

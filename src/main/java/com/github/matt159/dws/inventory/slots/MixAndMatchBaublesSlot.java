@@ -35,7 +35,7 @@ public class MixAndMatchBaublesSlot extends SlotDWS {
         if (item instanceof IBaubleExpanded) {
             slotTypes = ((IBaubleExpanded) item).getBaubleTypes(itemStack);
         } else if (item instanceof IBauble) {
-            slotTypes = new String[] { ((IBauble) item).getBaubleType(itemStack).toString() };
+            slotTypes = new String[] { ((IBauble) item).getBaubleType(itemStack).toString().toLowerCase() };
         } else {
             return false;
         }
@@ -50,7 +50,7 @@ public class MixAndMatchBaublesSlot extends SlotDWS {
         for (int i = 0; i < equippedBaubles.getSizeInventory(); i++) {
             val stackInSlot = equippedBaubles.getStackInSlot(i);
 
-            if (stackInSlot == null || stackInSlot.getItem() == null) {
+            if (stackInSlot == null || stackInSlot.getItem() == null || this.getSlotIndex() == i) {
                 continue;
             }
 
@@ -62,7 +62,7 @@ public class MixAndMatchBaublesSlot extends SlotDWS {
                 baubleTypesInSlot = ((IBaubleExpanded) itemInSlot).getBaubleTypes(stackInSlot);
             } else {
                 val baubleType = BaubleExpandedSlots.getTypeFromBaubleType(((IBauble) itemInSlot).getBaubleType(stackInSlot));
-                baubleTypesInSlot = new String[] { baubleType };
+                baubleTypesInSlot = new String[] { baubleType.toLowerCase() };
             }
 
             for (val baubleType : baubleTypesInSlot) {
