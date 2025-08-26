@@ -31,6 +31,76 @@ Individually Supported Modded Inventories:
 - [UniMixins](https://github.com/LegacyModdingMC/UniMixins)
 - [FalsePatternLib](https://github.com/FalsePattern/FalsePatternLib)
 
+## Mix-'n'-Match Bauble Slots
+Adds tag based baubles slots to the player inventory.
+You can enable these slots in the `dws.cfg`:
+```
+# Ignore modded accessory slots and use Mix 'n' Match bauble slots instead
+# [default: false]
+B:slotOverride=true
+```
+### THESE SLOTS WILL PREVENT OTHER MODDED ACCESSORY SLOTS FROM BEING ADDED!
+These mix and match slots require some alteration to the Baubles Expanded config to work properly.  
+You'll want your Baubles Expanded config to look as such:
+```
+# Manually override slot assignments.
+# !Bauble slot types must be configured manually with this option enabled!
+#  [default: false]
+B:manualSlotSelection=true
+```
+```
+# Slot assignments to use if manualSlotSelection is enabled.
+# Any assignents after the first 20 will be ignored.
+# !Adding, moving, or removing slots of the amulet, ring, or belt types will reduce compatibility with mods made for original Baubles versions!
+#  [default: [amulet], [ring], [ring], [belt]]
+S:slotTypeOverrides <
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+    universal
+ >
+```
+This will create a 5x4 baubles inventory grid in the player inventory window.  
+You can specify the tag list in `dws.cfg` (load the mod once so the config file generates)
+```
+slots {
+    # Ignore modded accessory slots and use Mix 'n' Match bauble slots instead
+    # [default: false]
+    B:slotOverride=true
+
+    # Item groupings for Mix 'n' Match slots
+    # Frequency of values determines how many of corresponding bauble type can be worn
+    # "amulet", "ring", "ring", "belt" -> 1 amulet, 2 rings, 1 belt
+    # [default: ["amulet", "ring", "ring", "belt"]]
+    S:slotGroupings <
+        amulet
+        ring
+        ring
+        ring
+        ring
+        belt
+     >
+}
+```
+In this example, you'd have the ability to wear 1 amulet, 4 rings, and 1 belt.  
+Do note that Baubles Expanded provides the ability for a bauble to have more than one type!
+
 ## FAQ:
 - Will you need to use an item to unlock these extra slots?
   - No. You get it for free
