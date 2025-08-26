@@ -2,9 +2,14 @@ plugins {
     id("com.falsepattern.fpgradle-mc") version ("0.16.1")
 }
 
+
 group = "matt159"
 
 minecraft_fp {
+    java {
+        compatibility = jabel
+    }
+
     mod {
         modid = "dws"
         name = "Double Wide Surprise"

@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import java.util.HashMap;
 
 public class MixAndMatchBaublesSlot extends SlotDWS {
-    public static final String TYPE = "*";
     private final EntityPlayer player;
 
     public MixAndMatchBaublesSlot(EntityPlayer player, IInventory inventory, int id, int x, int y) {
