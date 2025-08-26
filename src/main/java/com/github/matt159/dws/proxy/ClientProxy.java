@@ -1,6 +1,7 @@
 package com.github.matt159.dws.proxy;
 
 import com.github.matt159.dws.inventory.slots.SlotType;
+import com.github.matt159.dws.registry.Events;
 import com.github.matt159.dws.registry.Keybindings;
 
 import net.minecraft.util.ResourceLocation;
@@ -17,6 +18,7 @@ public class ClientProxy extends CommonProxy {
         super.init(event);
 
         Keybindings.register();
+        Events.registerClientEvents();
     }
 
     public void postInit(FMLPostInitializationEvent event) {
