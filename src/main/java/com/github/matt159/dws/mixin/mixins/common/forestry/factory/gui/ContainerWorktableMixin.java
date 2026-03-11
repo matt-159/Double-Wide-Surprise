@@ -14,7 +14,7 @@ public abstract class ContainerWorktableMixin {
                                  @Constant(intValue = 11),
                                  @Constant(intValue = 77) },
                     remap = false,
-                    require = 3)
+                    require = 0)
     private int modifySlotXOffset(int constant) {
         return constant + Constants.GENERAL_X_OFFSET;
     }

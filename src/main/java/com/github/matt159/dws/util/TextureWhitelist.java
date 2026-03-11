@@ -157,6 +157,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Hammer.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/LaserEngraver.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Lathe.png");
+        addTextureToWhitelist("gregtech:textures/gui/basicmachines/Lathe0.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Macerator1.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Macerator2.png");
         addTextureToWhitelist("gregtech:textures/gui/basicmachines/Macerator3.png");
@@ -283,6 +284,7 @@ public final class TextureWhitelist {
         addTextureToWhitelist("gregtech:textures/gui/machines/Laminator.png");
         addTextureToWhitelist("gregtech:textures/gui/machines/LaserEngraver.png");
         addTextureToWhitelist("gregtech:textures/gui/machines/Lathe.png");
+        addTextureToWhitelist("gregtech:textures/gui/machines/Lathe0.png");
         addTextureToWhitelist("gregtech:textures/gui/machines/Lightning.png");
         addTextureToWhitelist("gregtech:textures/gui/machines/Loom.png");
         addTextureToWhitelist("gregtech:textures/gui/machines/MagneticSeparator.png");
