@@ -147,6 +147,7 @@ public enum Mixin implements IMixin {
     GT_Container_FilterMixin                           (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_FilterMixin"),
     GT_Container_ItemDistributorMixin                  (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_ItemDistributorMixin"),
     GT_Container_MaintenanceHatchMixin                 (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_MaintenanceHatchMixin"),
+    GT_Container_MetaTileMachineMixin                  (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_MetaTileMachineMixin"),
     GT_Container_MicrowaveEnergyTransmitterMixin       (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_MicrowaveEnergyTransmitterMixin"),
     GT_Container_MultiMachineMixin                     (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_MultiMachineMixin"),
     GT_Container_OutputHatchMixin                      (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_OutputHatchMixin"),
@@ -171,7 +172,6 @@ public enum Mixin implements IMixin {
     GT_GUIContainer_TeleporterMixin                    (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_TeleporterMixin"),
     GT_GUIContainerVolumetricFlaskMixin                (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainerVolumetricFlaskMixin"),
 
-    GT_MetaTileEntity_BasicMachineMixin                (COMMON, require(GREGTECH_5U), "gregtech5u.GT_MetaTileEntity_BasicMachineMixin"),
     //    GT_NEI_DefaultHandlerMixin                         (COMMON, require(GREGTECH),            "gregtech.GT_NEI_DefaultHandlerMixin"),
     GT5u_GT_RectHandlerMixin                           (COMMON, require(GREGTECH_5U), "gregtech5u.GT_RectHandlerMixin"),
     //endregion
