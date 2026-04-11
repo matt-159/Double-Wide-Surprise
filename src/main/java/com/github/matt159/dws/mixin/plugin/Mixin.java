@@ -174,7 +174,7 @@ public enum Mixin implements IMixins {
             Phase.EARLY,
             require(TargetMod.EnderCore),
             common("endercore.EnderCoreMethodsMixin")),
-    // endregionreturn "";
+    // endregion
     // region Forestry
     Forestry(
             Phase.LATE,
