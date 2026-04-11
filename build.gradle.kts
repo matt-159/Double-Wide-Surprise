@@ -17,10 +17,10 @@ minecraft_fp {
 
     mixin {
         pkg = "mixin.mixins"
-        pluginClass = "mixin.plugin.MixinPlugin"
     }
     core {
         accessTransformerFile = "dws_at.cfg"
+        coreModClass = "asm.CoreLoadingPlugin"
     }
 
     tokens {
@@ -52,7 +52,7 @@ repositories {
 dependencies {
 
     // FalsePattern Lib
-    implementation("com.falsepattern:falsepatternlib-mc1.7.10:1.6.1:dev")
+    implementation("com.falsepattern:falsepatternlib-mc1.7.10:1.10.7:dev")
 
     // Not Enough Items
     implementation("codechicken:codechickencore-mc1.7.10:1.4.0-mega:dev") {

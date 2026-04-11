@@ -1,449 +1,504 @@
 package com.github.matt159.dws.mixin.plugin;
 
-import com.falsepattern.lib.mixin.IMixin;
-import com.falsepattern.lib.mixin.ITargetedMod;
+import com.falsepattern.lib.mixin.v2.MixinHelper;
+import com.falsepattern.lib.mixin.v2.SidedMixins;
+import com.falsepattern.lib.mixin.v2.TaggedMod;
+import com.github.matt159.dws.Tags;
+import com.gtnewhorizon.gtnhmixins.builders.IMixins;
+import com.gtnewhorizon.gtnhmixins.builders.MixinBuilder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.intellij.lang.annotations.Language;
 
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.BooleanSupplier;
 
-import static com.falsepattern.lib.mixin.IMixin.PredicateHelpers.always;
-import static com.falsepattern.lib.mixin.IMixin.PredicateHelpers.avoid;
-import static com.falsepattern.lib.mixin.IMixin.PredicateHelpers.require;
-import static com.falsepattern.lib.mixin.IMixin.Side.CLIENT;
-import static com.falsepattern.lib.mixin.IMixin.Side.COMMON;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.AGRICRAFT;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.APPLIEDENERGISTICS2;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.BAUBLES;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.BAUBLESEXPANDED;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.CHISEL;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.CODECHICKENLIB;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.ENDERCORE;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.FORESTRY;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.FORGEBACKPACKS;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.GALACTICRAFT;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.GARDENCORE;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.GREGTECH_5U;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.GREGTECH_6;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.INDUSTRIALCRAFT2;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.INVENTORYTWEAKS;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.IRONCHEST;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.MARICULTURE;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.NATURA;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.NOTENOUGHITEMS;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.RAILCRAFT;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.STORAGEDRAWERS;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.TECTECH;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.THAUMCRAFT;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.TINKERSCONSTRUCT;
-import static com.github.matt159.dws.mixin.plugin.TargetedMod.TRAVELLERSGEAR;
+import static com.falsepattern.lib.mixin.v2.MixinHelper.avoid;
+import static com.falsepattern.lib.mixin.v2.MixinHelper.builder;
+import static com.falsepattern.lib.mixin.v2.MixinHelper.require;
 
-@Getter
+@SuppressWarnings("UnstableApiUsage")
 @RequiredArgsConstructor
-public enum Mixin implements IMixin {
+public enum Mixin implements IMixins {
     // @formatter:off
 
-    // region Double Wide Surprise Slot Injections
-    BaublesSlotSyncMixin                               (CLIENT, require(BAUBLES).or(require(BAUBLESEXPANDED)), "dws.baubles.GuiInventoryMixin"),
-    BaublesSlotInjectMixin                             (COMMON, require(BAUBLES).or(require(BAUBLESEXPANDED)), "dws.baubles.ContainerPlayerMixin"),
-    TinkersSlotInjectMixin                             (COMMON, require(TINKERSCONSTRUCT), "dws.tinkersconstruct.ContainerPlayerMixin"),
-    TravellersGearSlotInjectMixin                      (COMMON, require(TRAVELLERSGEAR), "dws.travellersgear.ContainerPlayerMixin"),
-    GalacticraftSlotInjectMixin                        (COMMON, require(GALACTICRAFT), "dws.galacticraft.ContainerPlayerMixin"),
-    //endregion
-    // region Vanilla Mixins
-    CreativeTabsMixin                                  (CLIENT, always(), "minecraft.gui.CreativeTabsMixin"),
-    EntityPlayerMixin                                  (COMMON, always(), "minecraft.EntityPlayerMixin"),
-    FMLNetworkHandlerMixin                             (COMMON, always(), "minecraft.FMLNetworkHandlerMixin"),
-    ForgeHooksMixin                                    (COMMON, always(), "minecraft.ForgeHooksMixin"),
-    GameSettingsMixin                                  (CLIENT, always(), "minecraft.GameSettingsMixin"),
-    GuiUtilsMixin                                      (CLIENT, always(), "minecraft.GuiUtilsMixin"),
-    InventoryPlayerMixin_CLIENT                        (CLIENT, always(), "minecraft.inventory.InventoryPlayerMixin"),
-    InventoryPlayerMixin_COMMON                        (COMMON, always(), "minecraft.inventory.InventoryPlayerMixin"),
-    MinecraftMixin                                     (CLIENT, always(), "minecraft.MinecraftMixin"),
-    NetHandlerPlayClientMixin                          (CLIENT, always(), "minecraft.NetHandlerPlayClientMixin"),
-    NetHandlerPlayServerMixin                          (COMMON, always(), "minecraft.NetHandlerPlayServerMixin"),
-    TextureManagerMixin                                (CLIENT, always(), "minecraft.TextureManagerMixin"),
+    // region Vanilla
+    Vanilla(
+            Phase.EARLY,
+            common("minecraft.EntityPlayerMixin",
+                   "minecraft.FMLNetworkHandlerMixin",
+                   "minecraft.ForgeHooksMixin",
+                   "minecraft.NetHandlerPlayServerMixin",
+                   "minecraft.inventory.ContainerBeaconMixin",
+                   "minecraft.inventory.ContainerBrewingStandMixin",
+                   "minecraft.inventory.ContainerChestMixin",
+                   "minecraft.inventory.ContainerDispenserMixin",
+                   "minecraft.inventory.ContainerEnchantmentMixin",
+                   "minecraft.inventory.ContainerFurnaceMixin",
+                   "minecraft.inventory.ContainerHopperMixin",
+                   "minecraft.inventory.ContainerHorseInventoryMixin",
+                   "minecraft.inventory.ContainerMerchantMixin",
+                   "minecraft.inventory.ContainerMixin",
+                   "minecraft.inventory.ContainerPlayerMixin",
+                   "minecraft.inventory.ContainerRepairMixin",
+                   "minecraft.inventory.ContainerWorkbenchMixin",
+                   "minecraft.inventory.InventoryPlayerMixin"),
+            client("minecraft.GameSettingsMixin",
+                   "minecraft.GuiUtilsMixin",
+                   "minecraft.MinecraftMixin",
+                   "minecraft.NetHandlerPlayClientMixin",
+                   "minecraft.TextureManagerMixin",
+                   "minecraft.gui.CreativeTabsMixin",
+                   "minecraft.gui.GuiBeaconMixin",
+                   "minecraft.gui.GuiBrewingStandMixin",
+                   "minecraft.gui.GuiChestMixin",
+                   "minecraft.gui.GuiContainerCreativeMixin",
+                   "minecraft.gui.GuiContainerMixin",
+                   "minecraft.gui.GuiCraftingMixin",
+                   "minecraft.gui.GuiDispenserMixin",
+                   "minecraft.gui.GuiEnchantmentMixin",
+                   "minecraft.gui.GuiFurnaceMixin",
+                   "minecraft.gui.GuiHopperMixin",
+                   "minecraft.gui.GuiIngameForgeMixin",
+                   "minecraft.gui.GuiInventoryMixin",
+                   "minecraft.gui.GuiMerchantMixin",
+                   "minecraft.gui.GuiMixin",
+                   "minecraft.gui.GuiRepairMixin",
+                   "minecraft.gui.GuiScreenHorseInventoryMixin",
+                   "minecraft.gui.MerchantButtonMixin",
+                   "minecraft.inventory.ContainerCreativeMixin",
+                   "minecraft.inventory.InventoryPlayerMixin")),
+    VanillaNoEndercore(
+            Phase.EARLY,
+            avoid(TargetMod.EnderCore),
+            common("minecraft.inventory.ContainerFurnace_TransferStackInSlotMixin")),
+    // endregion
+    // region AgriCraft
+    AgriCraft(
+            Phase.LATE,
+            require(TargetMod.Agricraft),
+            common("agricraft.ContainerAgricraftMixin",
+                   "agricraft.ContainerSeedAnalyzerMixin"),
+            client("agricraft.GuiSeedAnalyzerMixin")),
+    // endregion
+    // region AppliedEnergistics2
+    AppliedEnergistics2(
+            Phase.EARLY,
+            require(TargetMod.AppliedEnergistics2),
+            common("appliedenergistics2.AEBaseContainerMixin",
+                   "appliedenergistics2.ContainerCellWorkbenchMixin",
+                   "appliedenergistics2.ContainerChestMixin",
+                   "appliedenergistics2.ContainerCondenserMixin",
+                   "appliedenergistics2.ContainerCraftAmountMixin",
+                   "appliedenergistics2.ContainerCraftingTermMixin",
+                   "appliedenergistics2.ContainerDriveMixin",
+                   "appliedenergistics2.ContainerFormationPlaneMixin",
+                   "appliedenergistics2.ContainerGrinderMixin",
+                   "appliedenergistics2.ContainerIOPortMixin",
+                   "appliedenergistics2.ContainerInscriberMixin",
+                   "appliedenergistics2.ContainerInterfaceMixin",
+                   "appliedenergistics2.ContainerLevelEmitterMixin",
+                   "appliedenergistics2.ContainerMACMixin",
+                   "appliedenergistics2.ContainerMEMonitorableMixin",
+                   "appliedenergistics2.ContainerNetworkToolMixin",
+                   "appliedenergistics2.ContainerPatternTermExMixin",
+                   "appliedenergistics2.ContainerPatternTermMixin",
+                   "appliedenergistics2.ContainerQNBMixin",
+                   "appliedenergistics2.ContainerQuartzKnifeMixin",
+                   "appliedenergistics2.ContainerSecurityMixin",
+                   "appliedenergistics2.ContainerSkyChestMixin",
+                   "appliedenergistics2.ContainerSpatialIOPortMixin",
+                   "appliedenergistics2.ContainerStorageBusMixin",
+                   "appliedenergistics2.ContainerUpgradeableMixin",
+                   "appliedenergistics2.ContainerVibrationChamberMixin",
+                   "appliedenergistics2.ContainerWirelessMixin"),
+            client("appliedenergistics2.AEBaseGuiMixin",
+                   "appliedenergistics2.GuiCellWorkbenchMixin",
+                   "appliedenergistics2.GuiChestMixin",
+                   "appliedenergistics2.GuiCondenserMixin",
+                   "appliedenergistics2.GuiCraftAmountMixin",
+                   "appliedenergistics2.GuiCraftingTermMixin",
+                   "appliedenergistics2.GuiDriveMixin",
+                   "appliedenergistics2.GuiFormationPlaneMixin",
+                   "appliedenergistics2.GuiIOPortMixin",
+                   "appliedenergistics2.GuiInscriberMixin",
+                   "appliedenergistics2.GuiInterfaceMixin",
+                   "appliedenergistics2.GuiInterfaceTerminalMixin",
+                   "appliedenergistics2.GuiLevelEmitterMixin",
+                   "appliedenergistics2.GuiMACMixin",
+                   "appliedenergistics2.GuiMEMonitorableMixin",
+                   "appliedenergistics2.GuiPatternTermExMixin",
+                   "appliedenergistics2.GuiPatternTermMixin",
+                   "appliedenergistics2.GuiPriorityMixin",
+                   "appliedenergistics2.GuiQuartzKnifeMixin",
+                   "appliedenergistics2.GuiScrollbarMixin",
+                   "appliedenergistics2.GuiSecurityMixin",
+                   "appliedenergistics2.GuiStorageBusMixin",
+                   "appliedenergistics2.GuiUpgradeableMixin",
+                   "appliedenergistics2.GuiVibrationChamberMixin",
+                   "appliedenergistics2.ItemRepoMixin")),
+    // endregion
+    // region Baubles
 
-    ContainerMixin                                     (COMMON, always(), "minecraft.inventory.ContainerMixin"),
-    ContainerBeaconMixin                               (COMMON, always(), "minecraft.inventory.ContainerBeaconMixin"),
-    ContainerBrewingStandMixin                         (COMMON, always(), "minecraft.inventory.ContainerBrewingStandMixin"),
-    ContainerChestMixin                                (COMMON, always(), "minecraft.inventory.ContainerChestMixin"),
-    ContainerCreativeMixin                             (CLIENT, always(), "minecraft.inventory.ContainerCreativeMixin"),
-    ContainerDispenserMixin                            (COMMON, always(), "minecraft.inventory.ContainerDispenserMixin"),
-    ContainerEnchantmentMixin                          (COMMON, always(), "minecraft.inventory.ContainerEnchantmentMixin"),
-    ContainerFurnaceMixin                              (COMMON, always(), "minecraft.inventory.ContainerFurnaceMixin"),
-    ContainerFurnace_TransferStackInSlotMixin          (COMMON, avoid(ENDERCORE), "minecraft.inventory.ContainerFurnace_TransferStackInSlotMixin"),
-    ContainerHopperMixin                               (COMMON, always(), "minecraft.inventory.ContainerHopperMixin"),
-    ContainerHorseInventoryMixin                       (COMMON, always(), "minecraft.inventory.ContainerHorseInventoryMixin"),
-    ContainerMerchantMixin                             (COMMON, always(), "minecraft.inventory.ContainerMerchantMixin"),
-    ContainerPlayerMixin                               (COMMON, always(), "minecraft.inventory.ContainerPlayerMixin"),
-    ContainerRepairMixin                               (COMMON, always(), "minecraft.inventory.ContainerRepairMixin"),
-    ContainerWorkbenchMixin                            (COMMON, always(), "minecraft.inventory.ContainerWorkbenchMixin"),
-
-    GuiContainerMixin                                  (CLIENT, always(), "minecraft.gui.GuiContainerMixin"),
-    GuiContainerCreativeMixin                          (CLIENT, always(), "minecraft.gui.GuiContainerCreativeMixin"),
-    GuiIngameForgeMixin                                (CLIENT, always(), "minecraft.gui.GuiIngameForgeMixin"),
-    GuiMixin                                           (CLIENT, always(), "minecraft.gui.GuiMixin"),
-
-    GuiBeaconMixin                                     (CLIENT, always(), "minecraft.gui.GuiBeaconMixin"),
-    GuiBrewingStandMixin                               (CLIENT, always(), "minecraft.gui.GuiBrewingStandMixin"),
-    GuiChestMixin                                      (CLIENT, always(), "minecraft.gui.GuiChestMixin"),
-    GuiCraftingMixin                                   (CLIENT, always(), "minecraft.gui.GuiCraftingMixin"),
-    GuiDispenserMixin                                  (CLIENT, always(), "minecraft.gui.GuiDispenserMixin"),
-    GuiEnchantmentMixin                                (CLIENT, always(), "minecraft.gui.GuiEnchantmentMixin"),
-    GuiHopperMixin                                     (CLIENT, always(), "minecraft.gui.GuiHopperMixin"),
-    GuiFurnaceMixin                                    (CLIENT, always(), "minecraft.gui.GuiFurnaceMixin"),
-    GuiInventoryMixin                                  (CLIENT, always(), "minecraft.gui.GuiInventoryMixin"),
-
-    GuiMerchantMixin                                   (CLIENT, always(), "minecraft.gui.GuiMerchantMixin"),
-    MerchantButtonMixin                                (CLIENT, always(), "minecraft.gui.MerchantButtonMixin"),
-
-    GuiRepairMixin                                     (CLIENT, always(), "minecraft.gui.GuiRepairMixin"),
-    GuiScreenHorseInventoryMixin                       (CLIENT, always(), "minecraft.gui.GuiScreenHorseInventoryMixin"),
-    //endregion
-    // region CodeChickenLib Mixins
-    CCRenderStateMixin                                 (CLIENT, require(CODECHICKENLIB), "codechickenlib.CCRenderStateMixin"),
-    InventoryRangeMixin                                (COMMON, require(CODECHICKENLIB), "codechickenlib.InventoryRangeMixin"),
-    //endregion
-    //region NEI Mixins
-    ClientUtilsMixin                                   (CLIENT, require(NOTENOUGHITEMS), "nei.NEIClientUtilsMixin"),
-    ContainerCreativeInvMixin                          (COMMON, require(NOTENOUGHITEMS), "nei.ContainerCreativeInvMixin"),
-    ExtendedCreativeInvMixin                           (COMMON, require(NOTENOUGHITEMS), "nei.ExtendedCreativeInvMixin"),
-    GuiExtendedCreativeInvMixin                        (CLIENT, require(NOTENOUGHITEMS), "nei.GuiExtendedCreativeInvMixin"),
-    LayoutManagerMixin                                 (CLIENT, require(NOTENOUGHITEMS), "nei.LayoutManagerMixin"),
-    NEIClientConfigMixin                               (CLIENT, require(NOTENOUGHITEMS), "nei.NEIClientConfigMixin"),
-    NEIServerUtilsMixin                                (COMMON, require(NOTENOUGHITEMS), "nei.NEIServerUtilsMixin"),
-    PlayerSaveMixin                                    (COMMON, require(NOTENOUGHITEMS), "nei.PlayerSaveMixin"),
-
-    DefaultOverlayHandlerMixin                         (CLIENT, require(NOTENOUGHITEMS), "nei.DefaultOverlayHandlerMixin"),
-    TemplateRecipeHandlerMixin                         (COMMON, require(NOTENOUGHITEMS), "nei.TemplateRecipeHandlerMixin"),
-    //endregion
-    // region Galacticraft Mixins
-    IGalacticWearableMixin                             (COMMON, require(GALACTICRAFT), "galacticraft.GalacticWearableMixin"),
-    ContainerExtendedInventoryMixin                    (COMMON, require(GALACTICRAFT), "galacticraft.ContainerExtendedInventoryMixin"),
-    //endregion
+    BaublesEarly(
+            Phase.EARLY,
+            require(TargetMod.Baubles),
+            common("dws.baubles.ContainerPlayerMixin"),
+            client("dws.baubles.GuiInventoryMixin")),
+    BaublesLate(
+            Phase.LATE,
+            require(TargetMod.Baubles),
+            client("baubles.GuiEventsMixin")),
+    // endregion
+    // region Chisel
+    Chisel(
+            Phase.LATE,
+            require(TargetMod.Chisel),
+            common("chisel.ChiselControllerMixin",
+                   "chisel.ContainerAutoChiselMixin",
+                   "chisel.ContainerChiselMixin",
+                   "chisel.RecipeHandlerChiselMixin"),
+            client("chisel.GuiAutoChiselMixin",
+                   "chisel.GuiButtonChiselModeMixin",
+                   "chisel.GuiChiselMixin",
+                   "chisel.GuiScrollbarMixin")),
+    // endregion
+    // region CodeChickenLib
+    CodeChickenLib(
+            Phase.LATE,
+            require(TargetMod.CodeChickenLib),
+            common("codechickenlib.InventoryRangeMixin"),
+            client("codechickenlib.CCRenderStateMixin")),
+    // endregion
+    // region EnderCore
+    EnderCore(
+            Phase.EARLY,
+            require(TargetMod.EnderCore),
+            common("endercore.EnderCoreMethodsMixin")),
+    // endregionreturn "";
+    // region Forestry
+    Forestry(
+            Phase.LATE,
+            require(TargetMod.Forestry),
+            common("forestry.SlotUtilMixin",
+                   "forestry.apiculture.gui.ContainerAlvearyHygroregulatorMixin",
+                   "forestry.apiculture.gui.ContainerAlvearySieveMixin",
+                   "forestry.apiculture.gui.ContainerAlvearySwarmerMixin",
+                   "forestry.apiculture.gui.ContainerBeeHelperMixin",
+                   "forestry.apiculture.gui.ContainerHabitatLocatorMixin",
+                   "forestry.apiculture.gui.ContainerImprinterMixin",
+                   "forestry.core.circuits.ContainerSolderingIronMixin",
+                   "forestry.core.gui.ContainerAlyzerMixin",
+                   "forestry.core.gui.ContainerAnalyzerMixin",
+                   "forestry.core.gui.ContainerEscritoireMixin",
+                   "forestry.core.gui.ContainerForestryMixin",
+                   "forestry.core.gui.ContainerNaturalistInventoryMixin",
+                   "forestry.energy.gui.ContainerEngineBiogasMixin",
+                   "forestry.energy.gui.ContainerEngineElectricMixin",
+                   "forestry.energy.gui.ContainerEnginePeatMixin",
+                   "forestry.energy.gui.ContainerGeneratorMixin",
+                   "forestry.factory.gui.ContainerBottlerMixin",
+                   "forestry.factory.gui.ContainerCarpenterMixin",
+                   "forestry.factory.gui.ContainerCentrifugeMixin",
+                   "forestry.factory.gui.ContainerFabricatorMixin",
+                   "forestry.factory.gui.ContainerFermenterMixin",
+                   "forestry.factory.gui.ContainerMoistenerMixin",
+                   "forestry.factory.gui.ContainerRaintankMixin",
+                   "forestry.factory.gui.ContainerSqueezerMixin",
+                   "forestry.factory.gui.ContainerStillMixin",
+                   "forestry.factory.gui.ContainerWorktableMixin",
+                   "forestry.farming.gui.ContainerFarmMixin",
+                   "forestry.storage.gui.ContainerBackpackMixin"),
+            client("forestry.ForestryGuiMixins",
+                   "forestry.apiculture.gui.GuiAlvearyMixin",
+                   "forestry.apiculture.gui.GuiBeeHousingMixin",
+                   "forestry.apiculture.gui.GuiBeealyzerMixin",
+                   "forestry.apiculture.gui.GuiHabitatLocatorMixin",
+                   "forestry.apiculture.gui.GuiImprinterMixin",
+                   "forestry.arboriculture.gui.GuiTreealyzerMixin",
+                   "forestry.core.circuits.GuiSolderingIronMixin",
+                   "forestry.core.gui.GuiAlyzerMixin",
+                   "forestry.core.gui.GuiAnalyzerMixin",
+                   "forestry.core.gui.GuiEscritoireMixin",
+                   "forestry.core.gui.GuiNaturalistInventoryMixin",
+                   "forestry.core.widgets.TankWidgetMixin",
+                   "forestry.core.widgets.WidgetsMixin",
+                   "forestry.energy.gui.GuiEngineBiogasMixin",
+                   "forestry.energy.gui.GuiEngineElectricMixin",
+                   "forestry.energy.gui.GuiEnginePeatMixin",
+                   "forestry.energy.gui.GuiGeneratorMixin",
+                   "forestry.factory.gui.GuiBottlerMixin",
+                   "forestry.factory.gui.GuiCarpenterMixin",
+                   "forestry.factory.gui.GuiCentrifugeMixin",
+                   "forestry.factory.gui.GuiFabricatorMixin",
+                   "forestry.factory.gui.GuiFermenterMixin",
+                   "forestry.factory.gui.GuiMoistenerMixin",
+                   "forestry.factory.gui.GuiRaintankMixin",
+                   "forestry.factory.gui.GuiSqueezerMixin",
+                   "forestry.factory.gui.GuiStillMixin",
+                   "forestry.factory.gui.GuiWorktableMixin",
+                    // "forestry.factory.nei.CachedBottlerRecipeMixin"
+                    // "forestry.factory.nei.CachedCarpenterRecipeMixin"
+                    // "forestry.factory.nei.CachedFermenterRecipeMixin"
+                    // "forestry.factory.nei.CachedMoistenerRecipeMixin"
+                    // "forestry.factory.nei.CachedSqueezerRecipeMixin"
+                    // "forestry.factory.nei.CachedStillRecipeMixin"
+                   "forestry.farming.gui.GuiFarmMixin")),
+    // endregion
+    // region ForgeBackpacks
+    ForgeBackpacks(
+            Phase.LATE,
+            require(TargetMod.ForgeBackpacks),
+            common("backpack.BackpackSaveMixin",
+                   "backpack.ContainerAdvancedMixin",
+                   "backpack.FactoryBackpackNormalMixin",
+                   "backpack.FactoryPersonalSlotMixin",
+                   "backpack.InventoryPickupMixin")
+            //todo finish these
+            //common("backpack.FactoryWorkbenchBackpackMixin")
+            //client("backpack.FactoryWorkbenchBackpackMixin")
+    ),
+    // endregion
+    // region GalactiCraft
+    GalactiCraft(
+            Phase.EARLY,
+            require(TargetMod.GalactiCraft),
+            common("dws.galacticraft.ContainerPlayerMixin",
+                   "galacticraft.GalacticWearableMixin",
+                   "galacticraft.ContainerExtendedInventoryMixin")),
+    // endregion
+    // region GardenCore
+    GardenCore(
+            Phase.LATE,
+            require(TargetMod.GardenCore),
+            common("gardencore.ContainerCompostBinMixin"),
+            client("gardencore.GuiCompostBinMixin")),
+    // endregion
+    // region GregTech5U
+    GregTech5U(
+            Phase.LATE,
+            require(TargetMod.GregTech5U),
+            common("gregtech5u.GT_ContainerMixin",
+                   "gregtech5u.GT_Container_1by1Mixin",
+                   "gregtech5u.GT_Container_2by2Mixin",
+                   "gregtech5u.GT_Container_3by3Mixin",
+                   "gregtech5u.GT_Container_4by4Mixin",
+                   "gregtech5u.GT_Container_BasicMachineMixin",
+                   "gregtech5u.GT_Container_BasicTankMixin",
+                   "gregtech5u.GT_Container_BoilerMixin",
+                   "gregtech5u.GT_Container_ChestBufferMixin",
+                   "gregtech5u.GT_Container_FilterMixin",
+                   "gregtech5u.GT_Container_ItemDistributorMixin",
+                   "gregtech5u.GT_Container_MaintenanceHatchMixin",
+                   "gregtech5u.GT_Container_MetaTileMachineMixin",
+                   "gregtech5u.GT_Container_MicrowaveEnergyTransmitterMixin",
+                   "gregtech5u.GT_Container_MultiMachineMixin",
+                   "gregtech5u.GT_Container_OutputHatchMixin",
+                   "gregtech5u.GT_Container_PrimitiveBlastFurnaceMixin",
+                   "gregtech5u.GT_Container_QuantumChestMixin",
+                   "gregtech5u.GT_Container_RegulatorMixin",
+                   "gregtech5u.GT_Container_SuperBufferMixin",
+                   "gregtech5u.GT_Container_TeleporterMixin",
+                   "gregtech5u.GT_Container_TypeFilterMixin",
+                    // "gregtech5u.GT_NEI_DefaultHandlerMixin"
+                   "gregtech5u.GT_RectHandlerMixin"),
+            client("gregtech5u.GT_GUIContainerMetaTile_MachineMixin",
+                   "gregtech5u.GT_GUIContainerVolumetricFlaskMixin",
+                   "gregtech5u.GT_GUIContainer_BasicMachineMixin",
+                   "gregtech5u.GT_GUIContainer_BasicTankMixin",
+                   "gregtech5u.GT_GUIContainer_BoilerMixin",
+                   "gregtech5u.GT_GUIContainer_FusionReactorMixin",
+                   "gregtech5u.GT_GUIContainer_MicrowaveEnergyTransmitterMixin",
+                   "gregtech5u.GT_GUIContainer_MultiMachineMixin",
+                   "gregtech5u.GT_GUIContainer_OutputHatchMixin",
+                   "gregtech5u.GT_GUIContainer_PrimitiveBlastFurnaceMixin",
+                   "gregtech5u.GT_GUIContainer_QuantumChestMixin",
+                   "gregtech5u.GT_GUIContainer_RegulatorMixin",
+                   "gregtech5u.GT_GUIContainer_TeleporterMixin")),
+    // endregion
+    // region GregTech6
+    GregTech6(
+            Phase.EARLY,
+            require(TargetMod.GregTech6),
+            common("gregtech6.ContainerCommonBasicMachineMixin",
+                   "gregtech6.ContainerCommonChestMixin",
+                   "gregtech6.ContainerCommonMixin",
+                   "gregtech6.MultiTileEntityGUICommonAdvancedCraftingTableMixin",
+                   "gregtech6.GT_RectHandlerMixin"),
+            client("gregtech6.ContainerClientBasicMachineMixin",
+                   "gregtech6.ContainerClientMixin")),
+    // endregion
+    // region IndustrialCraft2
+    IndustrialCraft2(
+            Phase.EARLY,
+            require(TargetMod.IndustrialCraft2),
+            common("ic2.ContainerBaseMixin",
+                   "ic2.ContainerIronFurnaceMixin"),
+            client("ic2.GuiIronFurnaceMixin")),
+    // endregion
+    // region InventoryTweaks
+    InventoryTweaks(
+            Phase.EARLY,
+            require(TargetMod.InventoryTweaks),
+            common("inventorytweaks.InvTweaksConfigInventoryRulesetMixin",
+                   "inventorytweaks.InvTweaksContainerManagerMixin",
+                    // "inventorytweaks.InvTweaksContainerSectionManagerMixin"
+                   "inventorytweaks.InvTweaksMixin",
+                   "inventorytweaks.VanillaSlotMapsMixin")),
+    // endregion
+    // region IronChest
+    IronChest(
+            Phase.LATE,
+            require(TargetMod.IronChest),
+            common("ironchest.ContainerIronChestMixin"),
+            client("ironchest.GUIChestMixin")),
+    // endregion
+    // region Mariculture
+    Mariculture(
+            Phase.EARLY,
+            require(TargetMod.Mariculture),
+            common("mariculture.ContainerCrucibleMixin",
+                   "mariculture.ContainerMaricultureMixin"),
+            client("mariculture.GuiCrucibleMixin",
+                   "mariculture.GuiMaricultureMixin",
+                   "mariculture.feature.FeatureGeneralMixin",
+                   "mariculture.feature.FeatureUpgradesMixin")),
+    // endregion
+    // region Natura
+    Natura(
+            Phase.LATE,
+            require(TargetMod.Natura),
+            common("natura.NGuiHandlerMixin"),
+            client("natura.FurnaceGuiMixin")),
+    // endregion
+    // region NotEnoughItems
+    NotEnoughItems(
+            Phase.EARLY,
+            require(TargetMod.NotEnoughItems),
+            common("nei.ContainerCreativeInvMixin",
+                   "nei.ExtendedCreativeInvMixin",
+                   "nei.NEIServerUtilsMixin",
+                   "nei.PlayerSaveMixin",
+                   "nei.TemplateRecipeHandlerMixin"),
+            client("nei.DefaultOverlayHandlerMixin",
+                   "nei.GuiExtendedCreativeInvMixin",
+                   "nei.LayoutManagerMixin",
+                   "nei.NEIClientConfigMixin",
+                   "nei.NEIClientUtilsMixin")),
+    // endregion
+    // region RailCraft
+    RailCraft(
+            Phase.LATE,
+            require(TargetMod.RailCraft),
+            common("railcraft.ContainerBoilerFluidMixin",
+                   "railcraft.ContainerBoilerSolidMixin",
+                   "railcraft.ContainerCokeOvenMixin",
+                   "railcraft.ContainerSteamOvenMixin",
+                   "railcraft.ContainerTankMixin",
+                   "railcraft.RailcraftContainerMixin"),
+            client("railcraft.GuiBoilerFluidMixin",
+                   "railcraft.GuiBoilerSolidMixin",
+                   "railcraft.GuiCokeOvenMixin",
+                   "railcraft.GuiSteamOvenMixin",
+                   "railcraft.GuiTankMixin")),
+    // endregion
+    // region StorageDrawers
+    StorageDrawers(
+            Phase.LATE,
+            require(TargetMod.StorageDrawers),
+            common("storagedrawers.ContainerDrawersMixin",
+                   "storagedrawers.ContainerFramingTableMixin"),
+            client("storagedrawers.GuiDrawersMixin",
+                   "storagedrawers.GuiFramingMixin")),
+    // endregion
+    // region TecTech
+    TecTech(
+            Phase.LATE,
+            require(TargetMod.TecTech),
+            common("tectech.GT_RectHandlerMixin",
+                   "tectech.TecTech_NEI_HandlerMixin")),
+    // endregion
+    // region ThaumCraft
+    ThaumCraft(
+            Phase.LATE,
+            require(TargetMod.ThaumCraft),
+            common("thaumcraft.ContainerAlchemyFurnaceMixin",
+                   "thaumcraft.ContainerArcaneWorkbenchMixin",
+                   "thaumcraft.ContainerFocusPouchMixin",
+                   "thaumcraft.ContainerGolemMixin",
+                   "thaumcraft.ContainerResearchTableMixin",
+                   "thaumcraft.ContainerThaumatoriumMixin",
+                   "thaumcraft.WandManagerMixin"),
+            client("thaumcraft.GuiAlchemyFurnaceMixin",
+                   "thaumcraft.GuiArcaneWorkbenchMixin",
+                   "thaumcraft.GuiFocusPouchMixin",
+                   "thaumcraft.GuiGolemMixin",
+                   "thaumcraft.GuiResearchTableMixin",
+                   "thaumcraft.GuiThaumatoriumMixin",
+                   "thaumcraft.REHWandHandlerMixin")),
+    // endregion
+    // region TinkersConstruct
+    TinkersConstructEarly(
+            Phase.EARLY,
+            require(TargetMod.TinkersConstruct),
+            common("dws.tinkersconstruct.ContainerPlayerMixin")),
+    // endregion
     // region TravellersGear
-    ClientProxyMixin                                   (CLIENT, require(TRAVELLERSGEAR), "travellersgear.ClientProxyMixin"),
-    //endregion
-    // region Baubles Mixins
-    GuiEventsMixin                                     (CLIENT, require(BAUBLES).or(require(BAUBLESEXPANDED)), "baubles.GuiEventsMixin"),
+    TravellersGearEarly(
+            Phase.EARLY,
+            require(TargetMod.TravellersGear),
+            common("dws.travellersgear.ContainerPlayerMixin")),
+    TravellersGear(
+            Phase.LATE,
+            require(TargetMod.TravellersGear),
+            client("travellersgear.ClientProxyMixin")),
+    // endregion
 
-    //endregion
-    // region Ironchest Mixins
-    ContainerIronChestMixin                            (COMMON, require(IRONCHEST), "ironchest.ContainerIronChestMixin"),
-    GUIChestMixin                                      (CLIENT, require(IRONCHEST), "ironchest.GUIChestMixin"),
-    //endregion
-    // region Gregtech 5u Mixins
-    GT_ContainerMixin                                  (COMMON, require(GREGTECH_5U), "gregtech5u.GT_ContainerMixin"),
-    GT_Container_1by1Mixin                             (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_1by1Mixin"),
-    GT_Container_2by2Mixin                             (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_2by2Mixin"),
-    GT_Container_3by3Mixin                             (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_3by3Mixin"),
-    GT_Container_4by4Mixin                             (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_4by4Mixin"),
-    GT_Container_BasicMachineMixin                     (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_BasicMachineMixin"),
-    GT_Container_BasicTankMixin                        (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_BasicTankMixin"),
-    GT_Container_BoilerMixin                           (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_BoilerMixin"),
-    GT_Container_ChestBufferMixin                      (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_ChestBufferMixin"),
-    GT_Container_FilterMixin                           (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_FilterMixin"),
-    GT_Container_ItemDistributorMixin                  (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_ItemDistributorMixin"),
-    GT_Container_MaintenanceHatchMixin                 (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_MaintenanceHatchMixin"),
-    GT_Container_MetaTileMachineMixin                  (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_MetaTileMachineMixin"),
-    GT_Container_MicrowaveEnergyTransmitterMixin       (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_MicrowaveEnergyTransmitterMixin"),
-    GT_Container_MultiMachineMixin                     (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_MultiMachineMixin"),
-    GT_Container_OutputHatchMixin                      (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_OutputHatchMixin"),
-    GT_Container_PrimitiveBlastFurnaceMixin            (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_PrimitiveBlastFurnaceMixin"),
-    GT_Container_QuantumChestMixin                     (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_QuantumChestMixin"),
-    GT_Container_RegulatorMixin                        (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_RegulatorMixin"),
-    GT_Container_SuperBufferMixin                      (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_SuperBufferMixin"),
-    GT_Container_TeleporterMixin                       (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_TeleporterMixin"),
-    GT_Container_TypeFilterMixin                       (COMMON, require(GREGTECH_5U), "gregtech5u.GT_Container_TypeFilterMixin"),
-
-    GT_GUIContainerMetaTile_MachineMixin               (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainerMetaTile_MachineMixin"),
-    GT_GUIContainer_BasicMachineMixin                  (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_BasicMachineMixin"),
-    GT_GUIContainer_BasicTankMixin                     (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_BasicTankMixin"),
-    GT_GUIContainer_BoilerMixin                        (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_BoilerMixin"),
-    GT_GUIContainer_FusionReactorMixin                 (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_FusionReactorMixin"),
-    GT_GUIContainer_MicrowaveEnergyTransmitterMixin    (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_MicrowaveEnergyTransmitterMixin"),
-    GT_GUIContainer_MultiMachineMixin                  (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_MultiMachineMixin"),
-    GT_GUIContainer_OutputHatchMixin                   (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_OutputHatchMixin"),
-    GT_GUIContainer_PrimitiveBlastFurnaceMixin         (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_PrimitiveBlastFurnaceMixin"),
-    GT_GUIContainer_QuantumChestMixin                  (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_QuantumChestMixin"),
-    GT_GUIContainer_RegulatorMixin                     (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_RegulatorMixin"),
-    GT_GUIContainer_TeleporterMixin                    (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainer_TeleporterMixin"),
-    GT_GUIContainerVolumetricFlaskMixin                (CLIENT, require(GREGTECH_5U), "gregtech5u.GT_GUIContainerVolumetricFlaskMixin"),
-
-    //    GT_NEI_DefaultHandlerMixin                         (COMMON, require(GREGTECH),            "gregtech.GT_NEI_DefaultHandlerMixin"),
-    GT5u_GT_RectHandlerMixin                           (COMMON, require(GREGTECH_5U), "gregtech5u.GT_RectHandlerMixin"),
-    //endregion
-    //region Gregtech 6 Mixins
-    ContainerCommonMixin                               (COMMON, require(GREGTECH_6), "gregtech6.ContainerCommonMixin"),
-    ContainerCommonChestMixin                          (COMMON, require(GREGTECH_6), "gregtech6.ContainerCommonChestMixin"),
-    ContainerCommonBasicMachineMixin                   (COMMON, require(GREGTECH_6), "gregtech6.ContainerCommonBasicMachineMixin"),
-    MultiTileEntityGUICommonAdvancedCraftingTableMixin (COMMON, require(GREGTECH_6), "gregtech6.MultiTileEntityGUICommonAdvancedCraftingTableMixin"),
-
-    ContainerClientMixin                               (CLIENT, require(GREGTECH_6), "gregtech6.ContainerClientMixin"),
-    ContainerClientBasicMachineMixin                   (CLIENT, require(GREGTECH_6), "gregtech6.ContainerClientBasicMachineMixin"),
-
-    GT6_GT_RectHandlerMixin                            (COMMON, require(GREGTECH_6), "gregtech6.GT_RectHandlerMixin"),
-    //endregion
-    // region TecTech Mixins
-    TecTech_NEI_HandlerMixin                           (COMMON, require(TECTECH), "tectech.TecTech_NEI_HandlerMixin"),
-    TecTech_GT_RectHandlerMixin                        (COMMON, require(TECTECH), "tectech.GT_RectHandlerMixin"),
-    //endregion
-    // region Applied Energistics 2 Mixins
-    AEBaseContainerMixin                               (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseContainerMixin"),
-    ContainerCellWorkbenchMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCellWorkbenchMixin"),
-    ContainerChestMixin_AE                             (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerChestMixin"),
-    ContainerCondenserMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCondenserMixin"),
-    ContainerCraftAmountMixin                          (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCraftAmountMixin"),
-    ContainerCraftingTermMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerCraftingTermMixin"),
-    ContainerFormationPlaneMixin                       (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerFormationPlaneMixin"),
-    ContainerDriveMixin                                (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerDriveMixin"),
-    ContainerGrinderMixin                              (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerGrinderMixin"),
-    ContainerInscriberMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerInscriberMixin"),
-    ContainerInterfaceMixin                            (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerInterfaceMixin"),
-    ContainerIOPortMixin                               (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerIOPortMixin"),
-    ContainerLevelEmitterMixin                         (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerLevelEmitterMixin"),
-    ContainerMACMixin                                  (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMACMixin"),
-    ContainerMEMonitorableMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerMEMonitorableMixin"),
-    ContainerNetworkToolMixin                          (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerNetworkToolMixin"),
-    ContainerPatternTermMixin                          (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerPatternTermMixin"),
-    ContainerPatternTermExMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerPatternTermExMixin"),
-    ContainerQuartzKnifeMixin                          (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerQuartzKnifeMixin"),
-    ContainerQNBMixin                                  (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerQNBMixin"),
-    ContainerSecurityMixin                             (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSecurityMixin"),
-    ContainerSkyChestMixin                             (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSkyChestMixin"),
-    ContainerSpatialIOPortMixin                        (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerSpatialIOPortMixin"),
-    ContainerStorageBusMixin                           (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerStorageBusMixin"),
-    ContainerUpgradeableMixin                          (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerUpgradeableMixin"),
-    ContainerVibrationChamberMixin                     (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerVibrationChamberMixin"),
-    ContainerWirelessMixin                             (COMMON, require(APPLIEDENERGISTICS2), "appliedenergistics2.ContainerWirelessMixin"),
-
-    AEBaseGuiMixin                                     (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.AEBaseGuiMixin"),
-    ItemRepoMixin                                      (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.ItemRepoMixin"),
-    GuiCellWorkbenchMixin                              (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCellWorkbenchMixin"),
-    GuiChestMixin_AE                                   (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiChestMixin"),
-    GuiCondenserMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCondenserMixin"),
-    GuiCraftAmountMixin                                (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCraftAmountMixin"),
-    GuiCraftingTermMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiCraftingTermMixin"),
-    GuiFormationPlaneMixin                             (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiFormationPlaneMixin"),
-    GuiDriveMixin                                      (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiDriveMixin"),
-    GuiInscriberMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInscriberMixin"),
-    GuiInterfaceMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInterfaceMixin"),
-    GuiInterfaceTerminalMixin                          (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiInterfaceTerminalMixin"),
-    GuiIOPortMixin                                     (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiIOPortMixin"),
-    GuiLevelEmitterMixin                               (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiLevelEmitterMixin"),
-    GuiMACMixin                                        (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiMACMixin"),
-    GuiMEMonitorableMixin                              (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiMEMonitorableMixin"),
-    GuiPatternTermMixin                                (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPatternTermMixin"),
-    GuiPatternTermExMixin                              (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPatternTermExMixin"),
-    GuiPriorityMixin                                   (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiPriorityMixin"),
-    GuiQuartzKnifeMixin                                (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiQuartzKnifeMixin"),
-    GuiSecurityMixin                                   (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiSecurityMixin"),
-    GuiScrollbarMixin                                  (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiScrollbarMixin"),
-    GuiStorageBusMixin                                 (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiStorageBusMixin"),
-    GuiUpgradeableMixin                                (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiUpgradeableMixin"),
-    GuiVibrationChamberMixin                           (CLIENT, require(APPLIEDENERGISTICS2), "appliedenergistics2.GuiVibrationChamberMixin"),
-    //endregion
-    //region Forestry
-    //region Apiculture
-    ContainerAlvearyHygroregulatorMixin                (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerAlvearyHygroregulatorMixin"),
-    ContainerAlvearySieveMixin                         (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerAlvearySieveMixin"),
-    ContainerAlvearySwarmerMixin                       (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerAlvearySwarmerMixin"),
-    ContainerBeeHelperMixin                            (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerBeeHelperMixin"),
-    ContainerHabitatLocatorMixin                       (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerHabitatLocatorMixin"),
-    ContainerImprinterMixin                            (COMMON, require(FORESTRY), "forestry.apiculture.gui.ContainerImprinterMixin"),
-
-    GuiAlvearyMixin                                    (CLIENT, require(FORESTRY), "forestry.apiculture.gui.GuiAlvearyMixin"),
-    GuiBeealyzerMixin                                  (CLIENT, require(FORESTRY), "forestry.apiculture.gui.GuiBeealyzerMixin"),
-    GuiBeeHousingMixin                                 (CLIENT, require(FORESTRY), "forestry.apiculture.gui.GuiBeeHousingMixin"),
-    GuiHabitatLocatorMixin                             (CLIENT, require(FORESTRY), "forestry.apiculture.gui.GuiHabitatLocatorMixin"),
-    GuiImprinterMixin                                  (CLIENT, require(FORESTRY), "forestry.apiculture.gui.GuiImprinterMixin"),
-    //endregion
-    //region Arboriculture
-    GuiTreealyzerMixin                                 (CLIENT, require(FORESTRY), "forestry.arboriculture.gui.GuiTreealyzerMixin"),
-    //endregion
-    //region Core
-    ContainerAlyzerMixin                               (COMMON, require(FORESTRY), "forestry.core.gui.ContainerAlyzerMixin"),
-    ContainerAnalyzerMixin                             (COMMON, require(FORESTRY), "forestry.core.gui.ContainerAnalyzerMixin"),
-    ContainerEscritoireMixin                           (COMMON, require(FORESTRY), "forestry.core.gui.ContainerEscritoireMixin"),
-    ContainerForestryMixin                             (COMMON, require(FORESTRY), "forestry.core.gui.ContainerForestryMixin"),
-    ContainerNaturalistInventoryMixin                  (COMMON, require(FORESTRY), "forestry.core.gui.ContainerNaturalistInventoryMixin"),
-
-    GuiAlyzerMixin                                     (CLIENT, require(FORESTRY), "forestry.core.gui.GuiAlyzerMixin"),
-    GuiAnalyzerMixin                                   (CLIENT, require(FORESTRY), "forestry.core.gui.GuiAnalyzerMixin"),
-    GuiEscritoireMixin                                 (CLIENT, require(FORESTRY), "forestry.core.gui.GuiEscritoireMixin"),
-    GuiNaturalistInventoryMixin                        (CLIENT, require(FORESTRY), "forestry.core.gui.GuiNaturalistInventoryMixin"),
-
-    ContainerSolderingIronMixin                        (COMMON, require(FORESTRY), "forestry.core.circuits.ContainerSolderingIronMixin"),
-
-    GuiSolderingIronMixin                              (CLIENT, require(FORESTRY), "forestry.core.circuits.GuiSolderingIronMixin"),
-
-    GuiWidgetsMixin                                    (CLIENT, require(FORESTRY), "forestry.core.widgets.WidgetsMixin"),
-    TankWidgetMixin                                    (CLIENT, require(FORESTRY), "forestry.core.widgets.TankWidgetMixin"),
-    //endregion
-    //region Energy
-    ContainerEngineBiogasMixin                         (COMMON, require(FORESTRY), "forestry.energy.gui.ContainerEngineBiogasMixin"),
-    ContainerEngineElectricMixin                       (COMMON, require(FORESTRY), "forestry.energy.gui.ContainerEngineElectricMixin"),
-    ContainerEnginePeatMixin                           (COMMON, require(FORESTRY), "forestry.energy.gui.ContainerEnginePeatMixin"),
-    ContainerGeneratorMixin                            (COMMON, require(FORESTRY), "forestry.energy.gui.ContainerGeneratorMixin"),
-
-    GuiEngineBiogasMixin                               (CLIENT, require(FORESTRY), "forestry.energy.gui.GuiEngineBiogasMixin"),
-    GuiEngineElectricMixin                             (CLIENT, require(FORESTRY), "forestry.energy.gui.GuiEngineElectricMixin"),
-    GuiEnginePeatMixin                                 (CLIENT, require(FORESTRY), "forestry.energy.gui.GuiEnginePeatMixin"),
-    GuiGeneratorMixin                                  (CLIENT, require(FORESTRY), "forestry.energy.gui.GuiGeneratorMixin"),
-    //endregion
-    //region Factory
-    ContainerBottlerMixin                              (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerBottlerMixin"),
-    ContainerCarpenterMixin                            (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerCarpenterMixin"),
-    ContainerCentrifugeMixin                           (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerCentrifugeMixin"),
-    ContainerFabricatorMixin                           (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerFabricatorMixin"),
-    ContainerFermenterMixin                            (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerFermenterMixin"),
-    ContainerMoistenerMixin                            (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerMoistenerMixin"),
-    ContainerRaintankMixin                             (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerRaintankMixin"),
-    ContainerStillMixin                                (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerStillMixin"),
-    ContainerSqueezerMixin                             (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerSqueezerMixin"),
-    ContainerWorktableMixin                            (COMMON, require(FORESTRY), "forestry.factory.gui.ContainerWorktableMixin"),
-
-    GuiBottlerMixin                                    (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiBottlerMixin"),
-    GuiCarpenterMixin                                  (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiCarpenterMixin"),
-    GuiCentrifugeMixin                                 (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiCentrifugeMixin"),
-    GuiFabricatorMixin                                 (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiFabricatorMixin"),
-    GuiFermenterMixin                                  (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiFermenterMixin"),
-    GuiMoistenerMixin                                  (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiMoistenerMixin"),
-    GuiRaintankMixin                                   (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiRaintankMixin"),
-    GuiSqueezerMixin                                   (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiSqueezerMixin"),
-    GuiStillMixin                                      (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiStillMixin"),
-    GuiWorktableMixin                                  (CLIENT, require(FORESTRY), "forestry.factory.gui.GuiWorktableMixin"),
-
-//    CachedBottlerRecipeMixin                           (CLIENT, require(FORESTRY),            "forestry.factory.nei.CachedBottlerRecipeMixin"),
-//    CachedCarpenterRecipeMixin                         (CLIENT, require(FORESTRY),            "forestry.factory.nei.CachedCarpenterRecipeMixin"),
-//    CachedFermenterRecipeMixin                         (CLIENT, require(FORESTRY),            "forestry.factory.nei.CachedFermenterRecipeMixin"),
-//    CachedMoistenerRecipeMixin                         (CLIENT, require(FORESTRY),            "forestry.factory.nei.CachedMoistenerRecipeMixin"),
-//    CachedSqueezerRecipeMixin                          (CLIENT, require(FORESTRY),            "forestry.factory.nei.CachedSqueezerRecipeMixin"),
-//    CachedStillRecipeMixin                             (CLIENT, require(FORESTRY),            "forestry.factory.nei.CachedStillRecipeMixin"),
-    //endregion
-    //region Farming
-    ContainerFarmMixin                                 (COMMON, require(FORESTRY), "forestry.farming.gui.ContainerFarmMixin"),
-
-    GuiFarmMixin                                       (CLIENT, require(FORESTRY), "forestry.farming.gui.GuiFarmMixin"),
-    //endregion
-    //region Storage
-    ContainerBackpackMixin                             (COMMON, require(FORESTRY), "forestry.storage.gui.ContainerBackpackMixin"),
-    //endregion
-    ForestryGuiMixins                                  (CLIENT, require(FORESTRY), "forestry.ForestryGuiMixins"),
-    SlotUtilMixin                                      (COMMON, require(FORESTRY), "forestry.SlotUtilMixin"),
-    //endregion
-    //region Storage Drawers
-    ContainerDrawersMixin                              (COMMON, require(STORAGEDRAWERS), "storagedrawers.ContainerDrawersMixin"),
-    ContainerFramingTableMixin                         (COMMON, require(STORAGEDRAWERS), "storagedrawers.ContainerFramingTableMixin"),
-
-    GuiDrawersMixin                                    (CLIENT, require(STORAGEDRAWERS), "storagedrawers.GuiDrawersMixin"),
-    GuiFramingMixin                                    (CLIENT, require(STORAGEDRAWERS), "storagedrawers.GuiFramingMixin"),
-    //endregion
-    //region Inventory Tweaks
-    InvTweaksConfigInventoryRuleset                    (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksConfigInventoryRulesetMixin"),
-    InvTweaksContainerManagerMixin                     (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksContainerManagerMixin"),
-//    InvTweaksContainerSectionManagerMixin              (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksContainerSectionManagerMixin"),
-    InvTweaksMixin                                     (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.InvTweaksMixin"),
-    VanillaSlotMapsMixin                               (COMMON, require(INVENTORYTWEAKS), "inventorytweaks.VanillaSlotMapsMixin"),
-    //endregion
-    //region EnderCore
-    EnderCoreMethodsMixin                              (COMMON, require(ENDERCORE), "endercore.EnderCoreMethodsMixin"),
-    //endregion
-    //region Chisel
-    ChiselControllerMixin                              (COMMON, require(CHISEL), "chisel.ChiselControllerMixin"),
-    ContainerAutoChiselMixin                           (COMMON, require(CHISEL), "chisel.ContainerAutoChiselMixin"),
-    ContainerChiselMixin                               (COMMON, require(CHISEL), "chisel.ContainerChiselMixin"),
-
-    GuiAutoChiselMixin                                 (CLIENT, require(CHISEL), "chisel.GuiAutoChiselMixin"),
-    GuiButtonChiselModeMixin                           (CLIENT, require(CHISEL), "chisel.GuiButtonChiselModeMixin"),
-    GuiChiselMixin                                     (CLIENT, require(CHISEL), "chisel.GuiChiselMixin"),
-    Chisel_GuiScrollbarMixin                           (CLIENT, require(CHISEL), "chisel.GuiScrollbarMixin"),
-
-    RecipeHandlerChiselMixin                           (COMMON, require(CHISEL), "chisel.RecipeHandlerChiselMixin"),
-    //endregion
-    //region GardenCore
-    ContainerCompostBinMixin                           (COMMON, require(GARDENCORE), "gardencore.ContainerCompostBinMixin"),
-
-    GuiCompostBinMixin                                 (CLIENT, require(GARDENCORE), "gardencore.GuiCompostBinMixin"),
-    //endregion
-    //region Agricraft
-    ContainerAgricraftMixin                            (COMMON, require(AGRICRAFT), "agricraft.ContainerAgricraftMixin"),
-    ContainerSeedAnalyzerMixin                         (COMMON, require(AGRICRAFT), "agricraft.ContainerSeedAnalyzerMixin"),
-
-    GuiSeedAnalyzerMixin                               (CLIENT, require(AGRICRAFT), "agricraft.GuiSeedAnalyzerMixin"),
-    //endregion
-    //region Mariculture
-    ContainerCrucibleMixin                             (COMMON, require(MARICULTURE), "mariculture.ContainerCrucibleMixin"),
-    ContainerMaricultureMixin                          (COMMON, require(MARICULTURE), "mariculture.ContainerMaricultureMixin"),
-
-    FeatureGeneralMixin                                (CLIENT, require(MARICULTURE), "mariculture.feature.FeatureGeneralMixin"),
-    FeatureUpgradesMixin                               (CLIENT, require(MARICULTURE), "mariculture.feature.FeatureUpgradesMixin"),
-
-    GuiCrucibleMixin                                   (CLIENT, require(MARICULTURE), "mariculture.GuiCrucibleMixin"),
-    GuiMaricultureMixin                                (CLIENT, require(MARICULTURE), "mariculture.GuiMaricultureMixin"),
-    //endregion
-    //region Natura
-    NGuiHandlerMixin                                   (COMMON, require(NATURA), "natura.NGuiHandlerMixin"),
-
-    FurnaceGuiMixin                                    (CLIENT, require(NATURA), "natura.FurnaceGuiMixin"),
-    //endregion
-    //region Thaumcraft
-    ContainerAlchemyFurnaceMixin                       (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerAlchemyFurnaceMixin"),
-    ContainerArcaneWorkbenchMixin                      (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerArcaneWorkbenchMixin"),
-    ContainerFocusPouchMixin                           (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerFocusPouchMixin"),
-    ContainerGolemMixin                                (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerGolemMixin"),
-    ContainerResearchTableMixin                        (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerResearchTableMixin"),
-    ContainerThaumatoriumMixin                         (COMMON, require(THAUMCRAFT), "thaumcraft.ContainerThaumatoriumMixin"),
-
-    GuiAlchemyFurnaceMixin                             (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiAlchemyFurnaceMixin"),
-    GuiArcaneWorkbenchMixin                            (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiArcaneWorkbenchMixin"),
-    GuiFocusPouchMixin                                 (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiFocusPouchMixin"),
-    GuiGolemMixin                                      (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiGolemMixin"),
-    GuiResearchTableMixin                              (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiResearchTableMixin"),
-    GuiThaumatoriumMixin                               (CLIENT, require(THAUMCRAFT), "thaumcraft.GuiThaumatoriumMixin"),
-
-    REHWandHandlerMixin                                (CLIENT, require(THAUMCRAFT), "thaumcraft.REHWandHandlerMixin"),
-    WandManagerMixin                                   (COMMON, require(THAUMCRAFT), "thaumcraft.WandManagerMixin"),
-    //endregion
-    //region IndustrialCraft 2
-    GuiIronFurnaceMixin                                (CLIENT, require(INDUSTRIALCRAFT2), "ic2.GuiIronFurnaceMixin"),
-
-    ContainerBaseMixin                                 (COMMON, require(INDUSTRIALCRAFT2), "ic2.ContainerBaseMixin"),
-    ContainerIronFurnaceMixin                          (COMMON, require(INDUSTRIALCRAFT2), "ic2.ContainerIronFurnaceMixin"),
-    //endregion
-    //region Railcraft
-    GuiBoilerFluidMixin                                (CLIENT, require(RAILCRAFT), "railcraft.GuiBoilerFluidMixin"),
-    GuiBoilerSolidMixin                                (CLIENT, require(RAILCRAFT), "railcraft.GuiBoilerSolidMixin"),
-    GuiCokeOvenMixin                                   (CLIENT, require(RAILCRAFT), "railcraft.GuiCokeOvenMixin"),
-    GuiSteamOvenMixin                                  (CLIENT, require(RAILCRAFT), "railcraft.GuiSteamOvenMixin"),
-    GuiTankMixin                                       (CLIENT, require(RAILCRAFT), "railcraft.GuiTankMixin"),
-
-    ContainerBoilerFluidMixin                          (COMMON, require(RAILCRAFT), "railcraft.ContainerBoilerFluidMixin"),
-    ContainerBoilerSolidMixin                          (COMMON, require(RAILCRAFT), "railcraft.ContainerBoilerSolidMixin"),
-    ContainerCokeOvenMixin                             (COMMON, require(RAILCRAFT), "railcraft.ContainerCokeOvenMixin"),
-    ContainerSteamOvenMixin                            (COMMON, require(RAILCRAFT), "railcraft.ContainerSteamOvenMixin"),
-    ContainerTankMixin                                 (COMMON, require(RAILCRAFT), "railcraft.ContainerTankMixin"),
-
-    RailcraftContainerMixin                            (COMMON, require(RAILCRAFT), "railcraft.RailcraftContainerMixin"),
-    //endregion
-    //region Forge Backpacks
-    BackpackSaveMixin                                  (COMMON, require(FORGEBACKPACKS), "backpack.BackpackSaveMixin"),
-
-    ContainerAdvancedMixin                             (COMMON, require(FORGEBACKPACKS), "backpack.ContainerAdvancedMixin"),
-    FactoryBackpackNormalMixin                         (COMMON, require(FORGEBACKPACKS), "backpack.FactoryBackpackNormalMixin"),
-    FactoryPersonalSlotMixin                           (COMMON, require(FORGEBACKPACKS), "backpack.FactoryPersonalSlotMixin"),
-    //todo finish these
-//    FactoryWorkbenchBackpackMixin_COMMON               (COMMON, require(FORGEBACKPACKS), "backpack.FactoryWorkbenchBackpackMixin"),
-//    FactoryWorkbenchBackpackMixin_CLIENT               (CLIENT, require(FORGEBACKPACKS), "backpack.FactoryWorkbenchBackpackMixin"),
-
-    InventoryPickupMixin                               (COMMON, require(FORGEBACKPACKS), "backpack.InventoryPickupMixin"),
-    //endregion
     // @formatter:on
+    //region boilerplate
     ;
+    @Getter
+    private final MixinBuilder builder;
 
-    private final Side side;
-    private final Predicate<List<ITargetedMod>> filter;
-    private final String mixin;
+    Mixin(Phase phase, SidedMixins... mixins) {
+        this(builder(mixins).setPhase(phase));
+    }
+
+    Mixin(Phase phase, BooleanSupplier cond, SidedMixins... mixins) {
+        this(builder(cond, mixins).setPhase(phase));
+    }
+
+    Mixin(Phase phase, TaggedMod mod, SidedMixins... mixins) {
+        this(builder(mod, mixins).setPhase(phase));
+    }
+
+    Mixin(Phase phase, TaggedMod[] mods, SidedMixins... mixins) {
+        this(builder(mods, mixins).setPhase(phase));
+    }
+
+    Mixin(Phase phase, BooleanSupplier cond, TaggedMod mod, SidedMixins... mixins) {
+        this(builder(cond, mod, mixins).setPhase(phase));
+    }
+
+    Mixin(Phase phase, BooleanSupplier cond, TaggedMod[] mods, SidedMixins... mixins) {
+        this(builder(cond, mods, mixins).setPhase(phase));
+    }
+
+    private static SidedMixins common(@Language(value = "JAVA",
+                                                prefix = "import " + Tags.ROOT_PKG + ".mixin.mixins.common.",
+                                                suffix = ";") String... mixins) {
+        return MixinHelper.common(mixins);
+    }
+
+    private static SidedMixins client(@Language(value = "JAVA",
+                                                prefix = "import " + Tags.ROOT_PKG + ".mixin.mixins.client.",
+                                                suffix = ";") String... mixins) {
+        return MixinHelper.client(mixins);
+    }
+
+    private static SidedMixins server(@Language(value = "JAVA",
+                                                prefix = "import " + Tags.ROOT_PKG + ".mixin.mixins.server.",
+                                                suffix = ";") String... mixins) {
+        return MixinHelper.server(mixins);
+    }
+    //endregion
 }
